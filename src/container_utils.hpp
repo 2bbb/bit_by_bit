@@ -4,34 +4,54 @@
 namespace bbb {
 	template <typename T>
 	using shared_vector = std::vector<std::shared_ptr<T>>;
-	
+
 	template <typename Container>
-	class reverse_range {
-		Container &container;
-	public:
-		reverse_range(Container &cont)
-		: container(cont){}
-		decltype(container.rbegin()) begin() { return container.rbegin(); }
-		decltype(container.rend()) end() { return container.rend(); }
-	};
-	
-	template <typename Container>
-	reverse_range<Container> make_reverse(Container &container) {
-		return reverse_range<Container>(container);
-	}
-	
-	template <typename Container>
-	class const_reverse_range {
+	class const_reversed_range {
+	protected:
+		using const_reverse_iterator = typename Container::const_reverse_iterator;
+		static_assert(static_cast<const_reverse_iterator (Container::*)() const>(&Container::rbegin),
+					  "require: `const_reverse_iterator Container::rbegin() const`");
+		static_assert(static_cast<const_reverse_iterator (Container::*)() const>(&Container::rend),
+					  "require: `const_reverse_iterator Container::rend() const`");
+
 		const Container &container;
 	public:
-		const_reverse_range(const Container &cont)
-		: container(cont){}
-		decltype(container.rbegin()) begin() const { return container.rbegin(); }
-		decltype(container.rend()) end() const { return container.rend(); }
+		const_reversed_range(const Container &cont)
+		: container(cont) {}
+
+		const_reverse_iterator begin() const { return container.rbegin(); }
+		const_reverse_iterator end() const { return container.rend(); }
+
+		const_reverse_iterator cbegin() const { return container.rbegin(); }
+		const_reverse_iterator cend() const { return container.rend(); }
+	};
+
+	template <typename Container>
+	const_reversed_range<Container> make_const_reverse(const Container &container) {
+		return const_reversed_range<Container>(container);
+	}
+
+	template <typename Container>
+	class reversed_range : public const_reversed_range<Container> {
+		using reverse_iterator = typename Container::reverse_iterator;
+		using const_reverse_iterator = typename const_reversed_range<Container>::const_reverse_iterator;
+		static_assert(static_cast<reverse_iterator (Container::*)()>(&Container::rbegin),
+					  "require: `reverse_iterator Container::rbegin()`");
+		static_assert(static_cast<reverse_iterator (Container::*)()>(&Container::rend),
+					  "require: `reverse_iterator Container::rend()`");
+
+		Container &container;
+	public:
+		reversed_range(Container &cont)
+		: const_reversed_range<Container>(cont)
+		, container(cont) {}
+
+		reverse_iterator begin() { return container.rbegin(); }
+		reverse_iterator end() { return container.rend(); }
 	};
 	
 	template <typename Container>
-	reverse_range<Container> make_const_reverse(const Container &container) {
-		return const_reverse_range<Container>(container);
+	reversed_range<Container> make_reverse(Container &container) {
+		return reversed_range<Container>(container);
 	}
 }
