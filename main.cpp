@@ -1,4 +1,4 @@
-#include "src/bit_by_bit.hpp"
+#include "bit_by_bit.hpp"
 #include <stdlib.h>
 #include <iostream>
 
@@ -9,9 +9,9 @@ struct particle {
 
     particle() {}
     particle(int life_time, int name)
-            : life_time(life_time)
-            , name(name)
-            , age(0) {}
+    : life_time(life_time)
+    , name(name)
+    , age(0) {}
 
     void init(int life_time, int name) {
         this->life_time = life_time;
@@ -22,10 +22,14 @@ struct particle {
     bool update() {
         return ++age < life_time;
     }
+
+    void print() const {
+        std::cout << name << ", " << (life_time - age) << std::endl;
+    }
 };
 
-constexpr int loop_num(10000);
-constexpr int elem_num(1000);
+constexpr int loop_num(1);
+constexpr int elem_num(10);
 
 int main(int argc, char *argv[]) {
     bbb::stop_watch watch;
@@ -38,7 +42,12 @@ int main(int argc, char *argv[]) {
 
         for(int k = 0; k++ < loop_num;) {
             do f.init(rand() % 100, f.current_size()); while(f.has_space());
-            while(f.current_size()) f.update();
+            while(f.current_size()) {
+                f.update();
+                for(auto &p : bbb::make_reverse(f)) {
+                    p.print();
+                }
+            }
         }
 
         watch.rap();
@@ -54,9 +63,9 @@ int main(int argc, char *argv[]) {
             for(; f.size() < elem_num; f.push_back(std::shared_ptr<particle>(new particle(rand() % 100, f.size()))));
             auto wrapper = bbb::make_reverse(f);
             while(f.size()) for(auto e : wrapper) if(!e->update()) {
-                        e = f.back();
-                        f.pop_back();
-                    }
+                e = f.back();
+                f.pop_back();
+            }
         }
 
         watch.rap();
