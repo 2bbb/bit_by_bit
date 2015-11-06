@@ -1,8 +1,6 @@
 #include <memory>
 #include <array>
 #include <iterator>
-#include <iostream>
-#include <functional>
 
 namespace bbb {
 	template <typename T, size_t s>
