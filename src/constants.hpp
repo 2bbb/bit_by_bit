@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * bit_by_bit.hpp
+ * constants.hpp
  *
  * author: ISHII 2bit
  * mail:   2bit@backspace.tokyo
@@ -16,10 +16,6 @@
 
 #pragma once
 
-#include "constants.hpp"
-#include "type_utils.hpp"
-#include "container_utils.hpp"
-#include "reusable_array.hpp"
-#include "thread_utils.hpp"
-#include "math_utils.hpp"
-#include "stop_watch.hpp"
+#ifndef __cplusplus
+#   error all you need is C++11
+#endif

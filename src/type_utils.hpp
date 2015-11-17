@@ -1,4 +1,24 @@
- #include <type_traits>
+/* **** **** **** **** **** **** **** **** *
+ *
+ *         _/        _/        _/
+ *        _/_/_/    _/_/_/    _/_/_/
+ *       _/    _/  _/    _/  _/    _/
+ *      _/    _/  _/    _/  _/    _/
+ *     _/_/_/    _/_/_/    _/_/_/
+ *
+ * bit by bit
+ * type_utils.hpp
+ *
+ * author: ISHII 2bit
+ * mail:   2bit@backspace.tokyo
+ *
+ * **** **** **** **** **** **** **** **** */
+
+#pragma once
+
+#include "constants.hpp"
+
+#include <type_traits>
 
 namespace bbb {
 	template <typename T>

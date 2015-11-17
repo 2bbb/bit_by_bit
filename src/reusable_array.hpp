@@ -1,3 +1,23 @@
+/* **** **** **** **** **** **** **** **** *
+ *
+ *         _/        _/        _/
+ *        _/_/_/    _/_/_/    _/_/_/
+ *       _/    _/  _/    _/  _/    _/
+ *      _/    _/  _/    _/  _/    _/
+ *     _/_/_/    _/_/_/    _/_/_/
+ *
+ * bit by bit
+ * reusable_array.hpp
+ *
+ * author: ISHII 2bit
+ * mail:   2bit@backspace.tokyo
+ *
+ * **** **** **** **** **** **** **** **** */
+
+#pragma once
+
+#include "constants.hpp"
+
 #include <memory>
 #include <array>
 #include <iterator>

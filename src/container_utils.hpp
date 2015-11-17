@@ -1,5 +1,26 @@
+/* **** **** **** **** **** **** **** **** *
+ *
+ *         _/        _/        _/
+ *        _/_/_/    _/_/_/    _/_/_/
+ *       _/    _/  _/    _/  _/    _/
+ *      _/    _/  _/    _/  _/    _/
+ *     _/_/_/    _/_/_/    _/_/_/
+ *
+ * bit by bit
+ * container_utils.hpp
+ *
+ * author: ISHII 2bit
+ * mail:   2bit@backspace.tokyo
+ *
+ * **** **** **** **** **** **** **** **** */
+
+#pragma once
+
+#include "constants.hpp"
+
 #include <vector>
 #include <memory>
+#include <algorithm>
 
 namespace bbb {
 	template <typename T>
@@ -54,4 +75,39 @@ namespace bbb {
 	reversed_range<Container> make_reverse(Container &container) {
 		return reversed_range<Container>(container);
 	}
-}
+
+	template <typename Container, typename Function>
+	void for_each(Container &c, Function f) {
+		std::for_each(c.begin(), c.end(), f);
+	}
+
+	template <typename T>
+	struct byte_array {
+		static_assert(std::is_arithmetic<T>::value, "require: arithmetic type");
+		union {
+			T t;
+			uint8_t bytes[sizeof(T)];
+		} raw_val;
+
+		byte_array(T t) {
+			raw_val.t = t;
+		}
+
+		size_t size() const {
+			return sizeof(T);
+		}
+
+		byte_array &operator=(T t) {
+			raw_val.t = t;
+		}
+
+		uint8_t &operator[](size_t index) {
+			return raw_val.bytes[index];
+		}
+
+		const uint8_t &operator[](size_t index) const {
+			return raw_val.bytes[index];
+		}
+	};
+};
+
