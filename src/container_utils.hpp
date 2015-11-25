@@ -185,5 +185,107 @@ namespace bbb {
 		iterator cbegin() const { return iterator(this, start); }
 		iterator cend() const { return iterator(this, last); }
 	};
+
+	namespace enumeratable {
+		template <typename Container>
+		class enumeratable_iterator;
+
+		template<typename Container>
+		class enumeratable_wrapper {
+			Container &body;
+			friend enumeratable_iterator<Container>;
+		public:
+			enumeratable_wrapper(Container &body)
+			: body(body) {}
+
+			using value_type = decltype(*(std::begin(body)));
+
+			using iterator = enumeratable_iterator<Container>;
+			using const_iterator = enumeratable_iterator<const Container>;
+
+			iterator begin() {  return iterator(this, 0); }
+			iterator end() { return iterator(this, body.size()); }
+			const_iterator begin() const { return iterator(this, 0); }
+			const_iterator end() const { return iterator(this, body.size()); }
+			const_iterator cbegin() const { return iterator(this, 0); }
+			const_iterator cend() const { return iterator(this, body.size()); }
+
+			struct wrapped_value {
+				size_t index;
+				value_type &value;
+
+				wrapped_value(size_t index, value_type &v)
+				: index(index)
+				, value(v) {}
+			};
+
+			struct const_wrapped_value {
+				size_t index;
+				const value_type &value;
+
+				const_wrapped_value(size_t index, const value_type &v)
+				: index(index)
+				, value(v) {}
+			};
+		};
+
+		template <typename Container>
+		class enumeratable_iterator : public std::iterator<std::forward_iterator_tag, typename enumeratable_wrapper<Container>::wrapped_value> {
+			using wrapped_value = typename enumeratable_wrapper<Container>::wrapped_value;
+			using value_iterator = get_type<std::conditional<
+					std::is_const<Container>::value,
+					typename Container::const_iterator,
+					typename Container::iterator
+			>>;
+			friend enumeratable_wrapper<Container>;
+
+			std::size_t current;
+			enumeratable_wrapper<Container> *parent;
+			value_iterator it, last;
+
+			enumeratable_iterator()
+			: current(0)
+			, parent(nullptr) {}
+
+			enumeratable_iterator(enumeratable_wrapper<Container> *parent, std::size_t current)
+			: current(current)
+			, parent(parent)
+			, it(parent->body.begin() + current)
+			, last(parent->body.end()) {}
+
+		public:
+			enumeratable_iterator(const enumeratable_iterator &it)
+			: enumeratable_iterator(it.parent, it.current) {}
+
+			enumeratable_iterator &operator++() {
+				it++, current++;
+				return *this;
+			}
+
+			enumeratable_iterator operator++(int) {
+				enumeratable_iterator tmp(*this);
+				++(*this);
+				return tmp;
+			}
+
+			wrapped_value operator*() { return {current, *it}; }
+			const wrapped_value operator*() const { return {current, *it}; }
+			decltype(it.operator->()) operator->() { return it.operator->(); }
+			const decltype(it.operator->()) operator->() const { return it.operator->(); }
+			bool operator==(const enumeratable_iterator &rhs) const { return it == rhs.it; }
+			bool operator!=(const enumeratable_iterator &rhs) const { return it != rhs.it; }
+		};
+
+		template<typename Container>
+		enumeratable_wrapper<Container> enumerate(Container &t) {
+			return {t};
+		}
+
+		template<typename Container>
+		enumeratable_wrapper<const Container> enumerate(const Container &t) {
+			return {t};
+		}
+	};
+	using namespace enumeratable;
 };
 
