@@ -110,5 +110,80 @@ namespace bbb {
 			return raw_val.bytes[index];
 		}
 	};
+
+	class range {
+		long start, last;
+	public:
+		range(long start, long last)
+				: start(start)
+				, last(last) {}
+
+		range(long last)
+				: start(0)
+				, last(last) {}
+
+		class range_iterator : public std::iterator<std::random_access_iterator_tag, long> {
+			long current;
+			const range *body;
+
+			range_iterator(const range *body, long current)
+					: body(body)
+					, current(current) {}
+
+			range_iterator()
+					: range_iterator(nullptr, 0) {}
+
+			friend range;
+		public:
+			range_iterator(const range_iterator &it)
+					: range_iterator(it.body, it.current) {}
+
+			long operator*() const { return current; }
+			long &operator*() { return current; }
+
+			range_iterator &operator++() {
+				++current;
+				return *this;
+			}
+			range_iterator operator++(int) {
+				range_iterator tmp{*this};
+				current++;
+				return tmp;
+			}
+			range_iterator &operator+=(long offset) {
+				current += offset;
+				return *this;
+			}
+
+			range_iterator &operator--() {
+				--current;
+				return *this;
+			}
+			range_iterator operator--(int) {
+				range_iterator tmp{*this};
+				current--;
+				return tmp;
+			}
+			range_iterator &operator-=(long offset) {
+				current -= offset;
+				return *this;
+			}
+
+			inline bool operator==(const range_iterator &it) const { return body == it.body && current == it.current; }
+			inline bool operator!=(const range_iterator &it) const { return !(*this == it); }
+			inline bool operator<(const range_iterator &it) const  { return body == it.body && current < it.current; }
+			inline bool operator<=(const range_iterator &it) const { return body == it.body && current <= it.current; }
+			inline bool operator>(const range_iterator &it) const  { return body == it.body && current > it.current; }
+			inline bool operator>=(const range_iterator &it) const { return body == it.body && current >= it.current; }
+		};
+
+		using iterator = range_iterator;
+		iterator begin() { return iterator(this, start); }
+		iterator end() { return iterator(this, last); }
+		iterator begin() const { return iterator(this, start); }
+		iterator end() const { return iterator(this, last); }
+		iterator cbegin() const { return iterator(this, start); }
+		iterator cend() const { return iterator(this, last); }
+	};
 };
 
