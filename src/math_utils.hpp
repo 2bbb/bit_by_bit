@@ -17,6 +17,7 @@
 #pragma once
 
 #include "constants.hpp"
+#include "type_utils.hpp"
 
 #include <random>
 
