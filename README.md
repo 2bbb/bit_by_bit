@@ -19,6 +19,8 @@
 * revesed range
 * simple for_each
 * byte array
+* range
+* enumerate
 
 ## thread utilities
 
