@@ -20,6 +20,7 @@
 #include "type_utils.hpp"
 
 #include <random>
+#include <algorithm>
 
 namespace bbb {
     namespace random {
@@ -94,5 +95,12 @@ namespace bbb {
         inline double random(double min, double max) {
             return random(min, max, engine_default);
         }
+    }
+
+    template <typename Container>
+    void shuffle(Container &v) {
+        static_assert(&Container::begin, "require: begin()");
+        static_assert(&Container::begin, "require: end()");
+        std::shuffle(v.cbegin(), v.cend(), random::engine_mt19937);
     }
 };
