@@ -15,7 +15,7 @@
 
 ```cpp
 typename T::type t;
-get_type<T> t; // same above
+bbb::get_type<T> t; // same above
 ```
 
 ### type_traits syntax sugar
@@ -57,6 +57,11 @@ for(auto v : bbb::range(100)) {
 
 ```cpp
 for(auto v : bbb::enumerate(vec)) {
+	std::cout << v.index() << ":" << v.value() << std::endl;
+}
+
+using bbb::enumeratable;
+for(auto v : enumerate(vec)) {
 	std::cout << v.index() << ":" << v.value() << std::endl;
 }
 ```
