@@ -115,23 +115,23 @@ namespace bbb {
 		long start, last;
 	public:
 		range(long start, long last)
-				: start(start)
-				, last(last) {}
+		: start(start)
+		, last(last) {}
 
 		range(long last)
-				: start(0)
-				, last(last) {}
+		: start(0)
+		, last(last) {}
 
 		class range_iterator : public std::iterator<std::random_access_iterator_tag, long> {
 			long current;
 			const range *body;
 
 			range_iterator(const range *body, long current)
-					: body(body)
-					, current(current) {}
+			: body(body)
+			, current(current) {}
 
 			range_iterator()
-					: range_iterator(nullptr, 0) {}
+			: range_iterator(nullptr, 0) {}
 
 			friend range;
 		public:
