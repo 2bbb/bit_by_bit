@@ -85,11 +85,14 @@ namespace bbb {
 	template <typename T>
 	struct byte_array {
 		static_assert(std::is_arithmetic<T>::value, "require: arithmetic type");
+
 		using array_type = std::array<std::uint8_t, sizeof(T)>;
 		union {
 			T t;
 			array_type bytes;
 		} raw_val;
+
+#pragma mark byte_array : constructor & operator=
 
 		byte_array(T t) { raw_val.t = t; }
 		byte_array(const array_type &bytes)  { raw_val.bytes = bytes; }
@@ -99,13 +102,17 @@ namespace bbb {
 		byte_array &operator=(const array_type &bytes)  { raw_val.bytes = bytes; }
 		byte_array &operator=(array_type &&bytes) { raw_val.bytes.swap(bytes); }
 
-		std::uint8_t *data() noexcept { return raw_val.bytes.data(); }
-		const std::uint8_t *data() const noexcept { return raw_val.bytes.data(); }
+#pragma mark byte_array : cast
 
 		operator T&() { return raw_val.t; }
 		const operator T&() const { return raw_val.t; }
 		operator array_type&() { return raw_val.bytes; }
 		const operator array_type&() const { return raw_val.bytes; }
+
+#pragma mark byte_array : array operatros
+
+		std::uint8_t *data() noexcept { return raw_val.bytes.data(); }
+		const std::uint8_t *data() const noexcept { return raw_val.bytes.data(); }
 
 		std::uint8_t &operator[](std::size_t index) { return raw_val.bytes[index]; }
 		const std::uint8_t &operator[](std::size_t index) const { return raw_val.bytes[index]; }
@@ -121,6 +128,8 @@ namespace bbb {
 		constexpr std::size_t max_size() const noexcept { return raw_val.bytes.max_size(); }
 
 		void swap(array_type &arr) noexcept { raw_val.bytes.swap(arr); }
+
+#pragma mark byte_array : iteator
 
 		using iterator       = typename array_type::iterator;
 		using const_iterator = typename array_type::const_iterator;
@@ -140,6 +149,8 @@ namespace bbb {
 		const_iterator crbegin() const noexcept { return raw_val.bytes.cbegin(); }
 		const_iterator crend() const noexcept { return raw_val.bytes.cend(); }
 	};
+
+#pragma mark range
 
 	class range {
 		long start, last;
@@ -215,6 +226,8 @@ namespace bbb {
 		iterator cbegin() const { return iterator(this, start); }
 		iterator cend() const { return iterator(this, last); }
 	};
+
+#pragma mark enumeratable
 
 	namespace enumeratable {
 		template <typename Container>
