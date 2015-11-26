@@ -24,16 +24,16 @@
 #include <iterator>
 
 namespace bbb {
-	template <typename T, size_t s>
+	template <typename T, std::size_t s>
 	class reusable_array_iterator;
-	template <typename T, size_t s>
+	template <typename T, std::size_t s>
 	class reusable_array_reverse_iterator;
-	template <typename T, size_t s>
+	template <typename T, std::size_t s>
 	using reusable_array_const_iterator = reusable_array_iterator<const T, s>;
-	template <typename T, size_t s>
+	template <typename T, std::size_t s>
 	using reusable_array_const_reverse_iterator = reusable_array_reverse_iterator<const T, s>;
 
-	template <typename T, size_t s>
+	template <typename T, std::size_t s>
 	class reusable_array {
 		static_assert(std::is_default_constructible<T>::value, "require: default constructor");
 		static_assert(&T::update, "require: `bool T::update()`");
@@ -46,16 +46,16 @@ namespace bbb {
 
 		std::array<T, s> impl;
 		std::array<T *, s> arr;
-		size_t cursor;
+		std::size_t cursor;
 	public:
 		reusable_array() : cursor(0) {
-			for(size_t i = 0; i < s; i++) arr[i] = &impl[i];
+			for(std::size_t i = 0; i < s; i++) arr[i] = &impl[i];
 		}
 		
 		~reusable_array() {}
 
-		constexpr size_t size() const { return s; }
-		inline size_t current_size() const { return cursor; }
+		constexpr std::size_t size() const { return s; }
+		inline std::size_t current_size() const { return cursor; }
 		inline bool has_space() const { return current_size() < size(); }
 		
 		template <typename ... Args>
@@ -66,7 +66,7 @@ namespace bbb {
 		
 		void update() {
 			if(!cursor) return;
-			size_t i = cursor;
+			std::size_t i = cursor;
 			T *tmp(nullptr);
 			while(i--) {
 				if(arr[i]->update()) continue;
@@ -78,11 +78,11 @@ namespace bbb {
 			}
 		}
 		
-		inline T &operator[](size_t index) {
+		inline T &operator[](std::size_t index) {
 			return *arr[index];
 		}
 		
-		inline T *operator+(size_t i) {
+		inline T *operator+(std::size_t i) {
 			return arr[index];
 		}
 
@@ -114,7 +114,7 @@ namespace bbb {
 
 #pragma mark iterator implementation
 
-	template <typename T, size_t s>
+	template <typename T, std::size_t s>
 	class reusable_array_iterator : public reusable_array_iterator<const T, s> {
 		using value_type = T;
 		using parent = reusable_array<T, s>;
@@ -137,14 +137,14 @@ namespace bbb {
 		value_type *operator->() { return body->arr[index]; }
 	};
 
-	template <typename T, size_t s>
+	template <typename T, std::size_t s>
 	class reusable_array_iterator<const T, s> : public std::iterator<std::random_access_iterator_tag, T> {
 		using value_type = const T;
 		using parent = reusable_array<T, s>;
 		friend parent;
 
 	protected:
-		size_t index;
+		std::size_t index;
 		const parent *body;
 
 		reusable_array_iterator(const parent *body, int index)
@@ -172,7 +172,7 @@ namespace bbb {
 			return it;
 		}
 
-		reusable_array_iterator &operator+=(size_t offset) {
+		reusable_array_iterator &operator+=(std::size_t offset) {
 			index += offset;
 			return *this;
 		}
@@ -188,7 +188,7 @@ namespace bbb {
 			return it;
 		}
 
-		reusable_array_iterator &operator-=(size_t offset) {
+		reusable_array_iterator &operator-=(std::size_t offset) {
 			index -= offset;
 			return *this;
 		}
@@ -218,7 +218,7 @@ namespace bbb {
 		}
 	};
 
-	template <typename T, size_t s>
+	template <typename T, std::size_t s>
 	class reusable_array_reverse_iterator : public reusable_array_const_reverse_iterator<T, s> {
 		using value_type = T;
 		using parent = reusable_array<T, s>;
@@ -241,14 +241,14 @@ namespace bbb {
 		value_type *operator->() { return body->arr[body->current_size() - 1 - index]; }
 	};
 
-	template <typename T, size_t s>
+	template <typename T, std::size_t s>
 	class reusable_array_reverse_iterator<const T, s> : public std::iterator<std::random_access_iterator_tag, T> {
 		using value_type = const T;
 		using parent = reusable_array<T, s>;
 		friend parent;
 
 	protected:
-		size_t index;
+		std::size_t index;
 		const parent *body;
 
 		reusable_array_reverse_iterator(const parent *body, int index)
@@ -276,7 +276,7 @@ namespace bbb {
 			return it;
 		}
 
-		reusable_array_reverse_iterator &operator+=(size_t offset) {
+		reusable_array_reverse_iterator &operator+=(std::size_t offset) {
 			index += offset;
 			return *this;
 		}
@@ -292,7 +292,7 @@ namespace bbb {
 			return it;
 		}
 
-		reusable_array_reverse_iterator &operator-=(size_t offset) {
+		reusable_array_reverse_iterator &operator-=(std::size_t offset) {
 			index -= offset;
 			return *this;
 		}

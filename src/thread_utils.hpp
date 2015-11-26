@@ -49,7 +49,7 @@ namespace bbb {
     }
 
     namespace multithread {
-        using process = std::function<void(size_t index, std::mutex &mutex)>;
+        using process = std::function<void(std::size_t index, std::mutex &mutex)>;
 
         class manager {
             const std::size_t size;
@@ -66,7 +66,7 @@ namespace bbb {
             : size(size)
             , process(process) {
                 threads.reserve(size);
-                for(size_t i = 0; i < size; i++) {
+                for(std::size_t i = 0; i < size; i++) {
                     threads.push_back(std::thread(create_process(i)));
                 }
             }

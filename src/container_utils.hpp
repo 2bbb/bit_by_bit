@@ -87,14 +87,14 @@ namespace bbb {
 		static_assert(std::is_arithmetic<T>::value, "require: arithmetic type");
 		union {
 			T t;
-			uint8_t bytes[sizeof(T)];
+			std::uint8_t bytes[sizeof(T)];
 		} raw_val;
 
 		byte_array(T t) {
 			raw_val.t = t;
 		}
 
-		size_t size() const {
+		std::size_t size() const {
 			return sizeof(T);
 		}
 
@@ -102,11 +102,11 @@ namespace bbb {
 			raw_val.t = t;
 		}
 
-		uint8_t &operator[](size_t index) {
+		std::uint8_t &operator[](std::size_t index) {
 			return raw_val.bytes[index];
 		}
 
-		const uint8_t &operator[](size_t index) const {
+		const std::uint8_t &operator[](std::size_t index) const {
 			return raw_val.bytes[index];
 		}
 	};
@@ -211,19 +211,19 @@ namespace bbb {
 			const_iterator cend() const { return const_iterator(this, body.size()); }
 
 			struct wrapped_value {
-				size_t index;
+				std::size_t index;
 				value_type &value;
 
-				wrapped_value(size_t index, value_type &v)
+				wrapped_value(std::size_t index, value_type &v)
 				: index(index)
 				, value(v) {}
 			};
 
 			struct const_wrapped_value {
-				size_t index;
+				std::size_t index;
 				const value_type &value;
 
-				const_wrapped_value(size_t index, const value_type &v)
+				const_wrapped_value(std::size_t index, const value_type &v)
 				: index(index)
 				, value(v) {}
 			};
@@ -231,7 +231,11 @@ namespace bbb {
 
 		template <typename Container>
 		class enumeratable_iterator : public std::iterator<std::forward_iterator_tag, typename enumeratable_wrapper<Container>::wrapped_value> {
-			using wrapped_value = typename enumeratable_wrapper<Container>::wrapped_value;
+			using wrapped_value = get_type<std::conditional<
+					std::is_const<Container>::value,
+					typename enumeratable_wrapper<Container>::const_wrapped_value,
+					typename enumeratable_wrapper<Container>::wrapped_value
+			>>;
 			using value_iterator = get_type<std::conditional<
 					std::is_const<Container>::value,
 					typename Container::const_iterator,

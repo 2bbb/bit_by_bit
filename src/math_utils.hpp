@@ -25,7 +25,7 @@
 namespace bbb {
     namespace random {
         std::random_device engine_device;
-        uint_fast64_t device() {
+        std::uint_fast64_t device() {
             return engine_device();
         }
 
@@ -37,31 +37,31 @@ namespace bbb {
             engine.seed(seed);
         }
 
-        void set_seed_fast(uint_fast32_t seed = device()) {
+        void set_seed_fast(std::uint_fast32_t seed = device()) {
             set_seed(engine_linear, seed);
         }
 
-        uint_fast32_t fast() {
+        std::uint_fast32_t fast() {
             return engine_linear();
         }
 
         std::mt19937_64 engine_mt19937;
 
-        void set_seed_mt(uint_fast32_t seed = device()) {
+        void set_seed_mt(std::uint_fast32_t seed = device()) {
             set_seed(engine_mt19937, seed);
         }
 
-        uint_fast32_t mt() {
+        std::uint_fast32_t mt() {
             return engine_mt19937();
         }
 
         std::mt19937_64 engine_mt19937_64;
 
-        void set_seed_mt64(uint_fast32_t seed = device()) {
+        void set_seed_mt64(std::uint_fast32_t seed = device()) {
             set_seed(engine_mt19937, seed);
         }
 
-        uint_fast64_t mt64() {
+        std::uint_fast64_t mt64() {
             return engine_mt19937_64();
         }
 
