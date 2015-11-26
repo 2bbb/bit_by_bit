@@ -87,28 +87,65 @@ namespace bbb {
 		static_assert(std::is_arithmetic<T>::value, "require: arithmetic type");
 		union {
 			T t;
-			std::uint8_t bytes[sizeof(T)];
+			std::array<std::uint8_t, sizeof(T)> bytes;
 		} raw_val;
 
 		byte_array(T t) {
 			raw_val.t = t;
 		}
 
-		std::size_t size() const {
+		byte_array(const std::array<std::uint8_t, sizeof(T)> &bytes) {
+			raw_val.bytes = bytes;
+		}
+
+		byte_array(const std::array<std::uint8_t, sizeof(T)> &&bytes) {
+			raw_val.bytes.swap(bytes);
+		}
+
+		constexpr std::size_t size() const noexcept {
 			return sizeof(T);
 		}
 
-		byte_array &operator=(T t) {
-			raw_val.t = t;
+		byte_array &operator=(T t) { raw_val.t = t; }
+
+		operator T&() { return raw_val.t; }
+		const operator T&() const { return raw_val.t; }
+		operator std::array<std::uint8_t, sizeof(T)>&() { return raw_val.bytes; }
+		const operator std::array<std::uint8_t, sizeof(T)>&() const { return raw_val.bytes; }
+
+		std::uint8_t &operator[](std::size_t index) { return raw_val.bytes[index]; }
+		const std::uint8_t &operator[](std::size_t index) const { return raw_val.bytes[index]; }
+		std::uint8_t &at(std::size_t index) { return raw_val.bytes.at(index); }
+		const std::uint8_t &at(std::size_t index) const { return raw_val.bytes.at(index); }
+
+		std::uint8_t &front() { return raw_val.bytes.front(); }
+		const std::uint8_t &front() const { return raw_val.bytes.front(); }
+		std::uint8_t &back() { return raw_val.bytes.back(); }
+		const std::uint8_t &back() const { return raw_val.bytes.back(); }
+
+		constexpr std::size_t max_size() noexcept { return raw_val.bytes.max_size(); }
+
+		void swap(std::array<std::uint8_t, sizeof(T)> &arr) noexcept {
+			raw_val.bytes.swap(arr);
 		}
 
-		std::uint8_t &operator[](std::size_t index) {
-			return raw_val.bytes[index];
-		}
+		using iterator       = typename std::array<std::uint8_t, sizeof(T)>::iterator;
+		using const_iterator = typename std::array<std::uint8_t, sizeof(T)>::const_iterator;
+		using reverse_iterator       = typename std::array<std::uint8_t, sizeof(T)>::reverse_iterator;
+		using const_reverse_iterator = typename std::array<std::uint8_t, sizeof(T)>::const_reverse_iterator;
 
-		const std::uint8_t &operator[](std::size_t index) const {
-			return raw_val.bytes[index];
-		}
+		iterator begin() noexcept { return raw_val.bytes.begin(); }
+		iterator end() noexcept { return raw_val.bytes.end(); }
+		const_iterator begin() const noexcept { return raw_val.bytes.cbegin(); }
+		const_iterator end() const noexcept { return raw_val.bytes.cend(); }
+		const_iterator cbegin() const noexcept { return raw_val.bytes.cbegin(); }
+		const_iterator cend() const noexcept { return raw_val.bytes.cend(); }
+		iterator rbegin() noexcept { return raw_val.bytes.begin(); }
+		iterator rend() noexcept { return raw_val.bytes.end(); }
+		const_iterator rbegin() const noexcept { return raw_val.bytes.cbegin(); }
+		const_iterator rend() const noexcept { return raw_val.bytes.cend(); }
+		const_iterator crbegin() const noexcept { return raw_val.bytes.cbegin(); }
+		const_iterator crend() const noexcept { return raw_val.bytes.cend(); }
 	};
 
 	class range {

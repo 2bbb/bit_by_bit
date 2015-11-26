@@ -36,7 +36,7 @@ for(auto &v : bbb::make_reverse(vec)) {
 bbb::for_each(vec, [](){});
 ```
 
-### byte array (maybe iterator will be implemented)
+### byte array
 
 ```cpp
 byte_array<int> bytes = 8;
