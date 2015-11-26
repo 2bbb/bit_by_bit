@@ -22,7 +22,7 @@
 for(auto &v : make_reverse(vec)) {
 	std::cout << v << std::endl;
 }
-
+```
 
 ### simple for_each
 
