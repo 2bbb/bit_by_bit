@@ -11,14 +11,14 @@
 
 ## type utilities
 
-## get type syntax sugar
+### get type syntax sugar
 
 ```cpp
 typename T::type t;
 get_type<T> t; // same above
 ```
 
-## type_traits syntax sugar
+### type_traits syntax sugar
 
 ## container utilities
 
