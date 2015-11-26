@@ -251,14 +251,21 @@ namespace bbb {
 			: current(current)
 			, parent(parent)
 			, it(parent->body.begin() + current)
-			, last(parent->body.end()) {}
+			, last(parent->body.end()) {
+				update_value();
+			}
 
+			std::unique_ptr<wrapped_value> value;
+			inline void update_value() {
+				value = std::unique_ptr<wrapped_value>{new wrapped_value(current, *it)};
+			}
 		public:
 			enumeratable_iterator(const enumeratable_iterator &it)
 			: enumeratable_iterator(it.parent, it.current) {}
 
 			enumeratable_iterator &operator++() {
 				it++, current++;
+				update_value();
 				return *this;
 			}
 
@@ -268,12 +275,12 @@ namespace bbb {
 				return tmp;
 			}
 
-			wrapped_value operator*() { return {current, *it}; }
-			const wrapped_value operator*() const { return {current, *it}; }
+			wrapped_value &operator*() { return *(value.get()); }
+			const wrapped_value &operator*() const { return *(value.get()); }
 			decltype(it.operator->()) operator->() { return it.operator->(); }
 			const decltype(it.operator->()) operator->() const { return it.operator->(); }
-			bool operator==(const enumeratable_iterator &rhs) const { return it == rhs.it; }
-			bool operator!=(const enumeratable_iterator &rhs) const { return it != rhs.it; }
+			inline bool operator==(const enumeratable_iterator &rhs) const { return it == rhs.it; }
+			inline bool operator!=(const enumeratable_iterator &rhs) const { return it != rhs.it; }
 		};
 
 		template<typename Container>
