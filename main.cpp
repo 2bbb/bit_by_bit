@@ -151,28 +151,29 @@ void range_test() {
             vec.push_back(i);
         }
 
-        for(auto v : bbb::enumerate(vec)) {
-            std::cout << v.index << ", " << v.value << std::endl;
-            v.value *= 2;
+        for(auto &v : bbb::enumerate(vec)) {
+            std::cout << v.index() << ", " << v.value() << std::endl;
+            v.value() *= 2;
         }
         for(auto v : bbb::enumerate(vec)) {
-            std::cout << v.index << ", " << v.value << std::endl;
-        }
-    }
-
-    {
-        const std::vector<int> cvec{1, 2, 3};
-        for(auto v : bbb::enumerate(cvec)) {
-            std::cout << v.index << ", " << v.value << std::endl;
+            std::cout << v.index() << ", " << v.value() << std::endl;
         }
     }
     std::cout << std::endl;
-
-    std::vector<std::string> svec{"a", "hoge", "foo"};
-    for(auto &v : bbb::enumerate(svec)) {
-        std::cout << v.index << ", " << v.value << std::endl;
+    {
+        std::vector<int> cvec{1, 2, 3};
+        for(auto v : bbb::enumerate(cvec)) {
+            std::cout << v.index() << ", " << v.value() << std::endl;
+        }
     }
-    for(const auto &v : bbb::enumerate(svec)) {
-        std::cout << v.index << ", " << v.value << std::endl;
-    }
+//    std::cout << std::endl;
+//    {
+//        std::vector<const std::string> svec{"a", "hoge", "foo"};
+//        for (const auto &v : bbb::enumerate(svec)) {
+//            std::cout << v.index() << ", " << v.value() << std::endl;
+//        }
+//        for (const auto &v : bbb::enumerate(svec)) {
+//            std::cout << v.index() << ", " << v.value() << std::endl;
+//        }
+//    }
 }
