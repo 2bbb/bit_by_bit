@@ -169,7 +169,10 @@ void range_test() {
     std::cout << std::endl;
 
     std::vector<std::string> svec{"a", "hoge", "foo"};
-    for(auto v : bbb::enumerate(svec)) {
+    for(auto &v : bbb::enumerate(svec)) {
+        std::cout << v.index << ", " << v.value << std::endl;
+    }
+    for(const auto &v : bbb::enumerate(svec)) {
         std::cout << v.index << ", " << v.value << std::endl;
     }
 }
