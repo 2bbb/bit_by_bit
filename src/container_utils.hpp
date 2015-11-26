@@ -85,33 +85,27 @@ namespace bbb {
 	template <typename T>
 	struct byte_array {
 		static_assert(std::is_arithmetic<T>::value, "require: arithmetic type");
+		using array_type = std::array<std::uint8_t, sizeof(T)>;
 		union {
 			T t;
-			std::array<std::uint8_t, sizeof(T)> bytes;
+			array_type bytes;
 		} raw_val;
 
-		byte_array(T t) {
-			raw_val.t = t;
-		}
-
-		byte_array(const std::array<std::uint8_t, sizeof(T)> &bytes) {
-			raw_val.bytes = bytes;
-		}
-
-		byte_array(const std::array<std::uint8_t, sizeof(T)> &&bytes) {
-			raw_val.bytes.swap(bytes);
-		}
-
-		constexpr std::size_t size() const noexcept {
-			return sizeof(T);
-		}
+		byte_array(T t) { raw_val.t = t; }
+		byte_array(const array_type &bytes)  { raw_val.bytes = bytes; }
+		byte_array(array_type &&bytes) { raw_val.bytes.swap(bytes); }
 
 		byte_array &operator=(T t) { raw_val.t = t; }
+		byte_array &operator=(const array_type &bytes)  { raw_val.bytes = bytes; }
+		byte_array &operator=(array_type &&bytes) { raw_val.bytes.swap(bytes); }
+
+		std::uint8_t *data() noexcept { return raw_val.bytes.data(); }
+		const std::uint8_t *data() const noexcept { return raw_val.bytes.data(); }
 
 		operator T&() { return raw_val.t; }
 		const operator T&() const { return raw_val.t; }
-		operator std::array<std::uint8_t, sizeof(T)>&() { return raw_val.bytes; }
-		const operator std::array<std::uint8_t, sizeof(T)>&() const { return raw_val.bytes; }
+		operator array_type&() { return raw_val.bytes; }
+		const operator array_type&() const { return raw_val.bytes; }
 
 		std::uint8_t &operator[](std::size_t index) { return raw_val.bytes[index]; }
 		const std::uint8_t &operator[](std::size_t index) const { return raw_val.bytes[index]; }
@@ -119,20 +113,19 @@ namespace bbb {
 		const std::uint8_t &at(std::size_t index) const { return raw_val.bytes.at(index); }
 
 		std::uint8_t &front() { return raw_val.bytes.front(); }
-		const std::uint8_t &front() const { return raw_val.bytes.front(); }
 		std::uint8_t &back() { return raw_val.bytes.back(); }
+		const std::uint8_t &front() const { return raw_val.bytes.front(); }
 		const std::uint8_t &back() const { return raw_val.bytes.back(); }
 
-		constexpr std::size_t max_size() noexcept { return raw_val.bytes.max_size(); }
+		constexpr std::size_t size() const noexcept { return sizeof(T); }
+		constexpr std::size_t max_size() const noexcept { return raw_val.bytes.max_size(); }
 
-		void swap(std::array<std::uint8_t, sizeof(T)> &arr) noexcept {
-			raw_val.bytes.swap(arr);
-		}
+		void swap(array_type &arr) noexcept { raw_val.bytes.swap(arr); }
 
-		using iterator       = typename std::array<std::uint8_t, sizeof(T)>::iterator;
-		using const_iterator = typename std::array<std::uint8_t, sizeof(T)>::const_iterator;
-		using reverse_iterator       = typename std::array<std::uint8_t, sizeof(T)>::reverse_iterator;
-		using const_reverse_iterator = typename std::array<std::uint8_t, sizeof(T)>::const_reverse_iterator;
+		using iterator       = typename array_type::iterator;
+		using const_iterator = typename array_type::const_iterator;
+		using reverse_iterator       = typename array_type::reverse_iterator;
+		using const_reverse_iterator = typename array_type::const_reverse_iterator;
 
 		iterator begin() noexcept { return raw_val.bytes.begin(); }
 		iterator end() noexcept { return raw_val.bytes.end(); }
