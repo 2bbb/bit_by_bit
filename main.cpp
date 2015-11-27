@@ -166,14 +166,14 @@ void range_test() {
             std::cout << v.index() << ", " << v.value() << std::endl;
         }
     }
-//    std::cout << std::endl;
-//    {
-//        std::vector<const std::string> svec{"a", "hoge", "foo"};
-//        for (const auto &v : bbb::enumerate(svec)) {
-//            std::cout << v.index() << ", " << v.value() << std::endl;
-//        }
-//        for (const auto &v : bbb::enumerate(svec)) {
-//            std::cout << v.index() << ", " << v.value() << std::endl;
-//        }
-//    }
+    std::cout << std::endl;
+    {
+        std::vector<const std::string> svec{"a", "hoge", "foo"};
+        for (const auto &v : bbb::enumerate(svec)) {
+            std::cout << v.index() << ", " << v.value() << std::endl;
+        }
+        for (const auto &v : bbb::enumerate(svec)) {
+            std::cout << v.index() << ", " << v.value() << std::endl;
+        }
+    }
 }
