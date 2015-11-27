@@ -153,21 +153,24 @@ namespace bbb {
 #pragma mark range
 
 	class range {
-		long start, last;
+		const long start, last, offset;
 	public:
-		range(long start, long last)
+		range(long start, long last, long offset)
 		: start(start)
-		, last(last) {}
+		, last(last)
+		, offset(offset) {}
+
+		range(long start, long last)
+		: range(start, last, (0 < last - start) ? 1 : -1) {}
 
 		range(long last)
-		: start(0)
-		, last(last) {}
+		: range(0, last) {}
 
 		class range_iterator : public std::iterator<std::random_access_iterator_tag, long> {
 			long current;
-			const range *body;
+			const range * const body;
 
-			range_iterator(const range *body, long current)
+			range_iterator(const range * const body, long current)
 			: body(body)
 			, current(current) {}
 
@@ -177,36 +180,44 @@ namespace bbb {
 			friend range;
 		public:
 			range_iterator(const range_iterator &it)
-					: range_iterator(it.body, it.current) {}
+			: range_iterator(it.body, it.current) {}
 
 			long operator*() const { return current; }
 			long &operator*() { return current; }
 
 			range_iterator &operator++() {
-				++current;
+				current += body->offset;
+				if(0 < body->offset && body->last < current) current = body->last;
+				else if(body->offset < 0 && current < body->last) current = body->last;
 				return *this;
 			}
 			range_iterator operator++(int) {
 				range_iterator tmp{*this};
-				current++;
+				++(*this);
 				return tmp;
 			}
 			range_iterator &operator+=(long offset) {
-				current += offset;
+				current += offset * body->offset;
+				if(0 < body->offset && body->last < current) current = body->last;
+				else if(body->offset < 0 && current < body->last) current = body->last;
 				return *this;
 			}
 
 			range_iterator &operator--() {
-				--current;
+				current -= body->offset;
+				if(0 < body->offset && current < body->start) current = body->start;
+				else if(0 < body->offset && body->start < current) current = body->start;
 				return *this;
 			}
 			range_iterator operator--(int) {
 				range_iterator tmp{*this};
-				current--;
+				--(*this);
 				return tmp;
 			}
 			range_iterator &operator-=(long offset) {
-				current -= offset;
+				current -= offset * body->offset;
+				if(0 < body->offset && current < body->start) current = body->start;
+				else if(0 < body->offset && body->start < current) current = body->start;
 				return *this;
 			}
 
@@ -219,12 +230,13 @@ namespace bbb {
 		};
 
 		using iterator = range_iterator;
+		using const_iterator = const range_iterator;
 		iterator begin() { return iterator(this, start); }
 		iterator end() { return iterator(this, last); }
-		iterator begin() const { return iterator(this, start); }
-		iterator end() const { return iterator(this, last); }
-		iterator cbegin() const { return iterator(this, start); }
-		iterator cend() const { return iterator(this, last); }
+		const_iterator begin() const { return iterator(this, start); }
+		const_iterator end() const { return iterator(this, last); }
+		const_iterator cbegin() const { return iterator(this, start); }
+		const_iterator cend() const { return iterator(this, last); }
 	};
 
 #pragma mark enumeratable
