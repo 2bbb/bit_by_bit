@@ -82,6 +82,11 @@ namespace bbb {
 		std::for_each(c.begin(), c.end(), f);
 	}
 
+	template <typename Container, typename Function>
+	void for_each(const Container &c, Function f) {
+		std::for_each(c.begin(), c.end(), f);
+	}
+
 	template <typename T>
 	struct byte_array {
 		static_assert(std::is_arithmetic<T>::value, "require: arithmetic type");
