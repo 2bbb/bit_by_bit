@@ -147,9 +147,8 @@ void multithread_test(size_t num) {
 void range_test() {
     {
         std::vector<int> vec;
-        for(auto i : bbb::range(2, 10)) {
-            vec.push_back(i);
-        }
+        bbb::for_each(bbb::range(10, 2), [&vec](int x) { vec.push_back(x); });
+        bbb::for_each(vec, [](int &x) { x *= 2; });
 
         for(auto v : bbb::enumerate(vec)) {
             std::cout << v.index << ", " << v.value << std::endl;
