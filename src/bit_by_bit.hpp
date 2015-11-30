@@ -23,3 +23,4 @@
 #include "thread_utils.hpp"
 #include "math_utils.hpp"
 #include "stop_watch.hpp"
+#include "logger.hpp"
