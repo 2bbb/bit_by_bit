@@ -20,6 +20,7 @@ void reusable_array_test();
 void byte_array_test();
 void multithread_test(size_t num);
 void range_test();
+void logger_test();
 
 int main(int argc, char *argv[]) {
     reusable_array_test();
@@ -174,4 +175,11 @@ void range_test() {
     for(const auto &v : bbb::enumerate(svec)) {
         std::cout << v.index << ", " << v.value << std::endl;
     }
+}
+
+void logger_test() {
+//    bbb::logger::add_file_logger("foo", "/Users/2bit/foo.txt");
+    bbb::logger::trace() << "begin logger_test";
+    bbb::logger::info("foo") << "foo" << "bar";
+    bbb::logger::trace() << "end logger_test";
 }
