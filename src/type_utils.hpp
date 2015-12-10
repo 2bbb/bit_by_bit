@@ -99,10 +99,13 @@ namespace bbb {
 
 		template<typename T>
 		using result_type = typename function_info<T>::result_type;
+
 		template<typename T>
 		using arguments_types_tuple = typename function_info<T>::arguments_types_tuple;
+
 		template<typename T, std::size_t index>
 		using argument_type = typename function_info<T>::template argument_type<index>;
+
 		template<typename T>
 		struct arity {
 			static constexpr std::size_t value = function_info<T>::arity;
