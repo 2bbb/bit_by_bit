@@ -110,6 +110,20 @@ namespace bbb {
 		struct arity {
 			static constexpr std::size_t value = function_info<T>::arity;
 		};
+
+		template <typename patient>
+		struct has_call_operator {
+			template <typename inner_patient, decltype(&inner_patient::operator())> struct checker {};
+			template <typename inner_patient> static std::true_type  check(checker<inner_patient, &inner_patient::operator()> *);
+			template <typename>               static std::false_type check(...);
+			using type = decltype(check<patient>(nullptr));
+			static constexpr bool value = type::value;
+		};
+
+		template <typename patient>
+		constexpr bool is_callable(const patient &) {
+			return std::is_function<patient>::value || has_call_operator<patient>::value;
+		};
 	};
 	using namespace function_traits;
 };
