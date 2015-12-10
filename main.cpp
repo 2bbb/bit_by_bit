@@ -20,12 +20,14 @@ void reusable_array_test();
 void byte_array_test();
 void multithread_test(size_t num);
 void range_test();
+namespace lambda { void test(); };
 
 int main(int argc, char *argv[]) {
     reusable_array_test();
     byte_array_test();
     multithread_test(4);
     range_test();
+    lambda::test();
 }
 
 #pragma mark reusable_array_test
@@ -174,5 +176,26 @@ void range_test() {
     }
     for(const auto &v : bbb::enumerate(svec)) {
         std::cout << v.index << ", " << v.value << std::endl;
+    }
+}
+
+namespace lambda {
+    struct Object {
+        int get() {
+            return 42;
+        }
+    };
+
+    int mult_2(int x) {
+        return 2 * x;
+    }
+
+    void test() {
+        Object o;
+        auto f = bbb::curry::extraction(&o, &Object::get);
+        assert(f == 42 && "lambda: f() == 42");
+
+        auto g = bbb::curry::bind(mult_2, &Object::get, 4);
+        assert(g(&o) == 84 && "lambda: g(&o) == 84");
     }
 }
