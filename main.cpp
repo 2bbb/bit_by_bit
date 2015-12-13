@@ -15,18 +15,27 @@
  * **** **** **** **** **** **** **** **** */
 
 #include "bit_by_bit.hpp"
+#include "simple_test.hpp"
 
+DeclareTest(Test);
 void reusable_array_test();
 void byte_array_test();
 void multithread_test(size_t num);
 void range_test();
 
 int main(int argc, char *argv[]) {
+    CarryOutTest(Test);
     reusable_array_test();
     byte_array_test();
     multithread_test(4);
     range_test();
 }
+
+BeginDefineTest(Test)
+void test() {
+    std::cout << "test" << std::endl;
+}
+EndDefineTest()
 
 #pragma mark reusable_array_test
 
