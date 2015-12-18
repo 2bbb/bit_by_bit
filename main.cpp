@@ -18,14 +18,14 @@
 
 void reusable_array_test();
 void byte_array_test();
-void multithread_test(size_t num);
-void range_test();
+void multithread_test();
+void enumerate_test();
 
 int main(int argc, char *argv[]) {
     reusable_array_test();
     byte_array_test();
-    multithread_test(4);
-    range_test();
+    multithread_test();
+    enumerate_test();
 }
 
 #pragma mark reusable_array_test
@@ -117,12 +117,13 @@ void byte_array_test() {
     }
 };
 
-void multithread_test(size_t num) {
-    size_t sum = 0;
+void multithread_test() {
+    const std::size_t num = 4;
+    std::size_t sum = 0;
     bool is_run = true;
     bbb::stop_watch watch;
     watch.start();
-    bbb::multithread::manager manager(num, [&sum, &is_run](size_t index, std::mutex &mutex) {
+    bbb::multithread::manager manager(num, [&sum, &is_run](std::size_t index, std::mutex &mutex) {
         while(is_run) {
             if(mutex.try_lock()) {
                 sum++;
@@ -144,7 +145,7 @@ void multithread_test(size_t num) {
     std::cout << "time: " << watch.getLastRapMilliseconds() << std::endl;
 }
 
-void range_test() {
+void enumerate_test() {
     {
         std::vector<int> vec;
         for(auto i : bbb::range(2, 10)) {
@@ -169,11 +170,11 @@ void range_test() {
     std::cout << std::endl;
     {
         std::vector<const std::string> svec{"a", "hoge", "foo"};
-        for (const auto &v : bbb::enumerate(svec)) {
-            std::cout << v.index() << ", " << v.value() << std::endl;
-        }
-        for (const auto &v : bbb::enumerate(svec)) {
-            std::cout << v.index() << ", " << v.value() << std::endl;
-        }
+//        for (const auto &v : bbb::enumerate(svec)) {
+//            std::cout << v.index() << ", " << v.value() << std::endl;
+//        }
+//        for (const auto &v : bbb::enumerate(svec)) {
+//            std::cout << v.index() << ", " << v.value() << std::endl;
+//        }
     }
 }
