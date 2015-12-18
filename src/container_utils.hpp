@@ -18,6 +18,7 @@
 
 #include "constants.hpp"
 #include "type_utils.hpp"
+#include "iterator_utils.hpp"
 
 #include <vector>
 #include <memory>
@@ -88,7 +89,7 @@ namespace bbb {
 	}
 
 	template <typename T>
-	struct byte_array {
+	struct byte_array : iterator_delegation<std::array<std::uint8_t, sizeof(T)>> {
 		static_assert(std::is_arithmetic<T>::value, "require: arithmetic type");
 
 		using array_type = std::array<std::uint8_t, sizeof(T)>;
@@ -98,10 +99,17 @@ namespace bbb {
 		} raw_val;
 
 #pragma mark byte_array : constructor & operator=
+        byte_array()
+        : iterator_delegation<std::array<std::uint8_t, sizeof(T)>>(raw_val.bytes) {}
 
-		byte_array(T t) { raw_val.t = t; }
-		byte_array(const array_type &bytes)  { raw_val.bytes = bytes; }
-		byte_array(array_type &&bytes) { raw_val.bytes.swap(bytes); }
+		byte_array(T t)
+        : byte_array() { raw_val.t = t; }
+
+        byte_array(const array_type &bytes)
+        : byte_array() { raw_val.bytes = bytes; }
+
+		byte_array(array_type &&bytes)
+        : byte_array() { raw_val.bytes.swap(bytes); }
 
 		byte_array &operator=(T t) { raw_val.t = t; }
 		byte_array &operator=(const array_type &bytes)  { raw_val.bytes = bytes; }
@@ -133,26 +141,6 @@ namespace bbb {
 		constexpr std::size_t max_size() const noexcept { return raw_val.bytes.max_size(); }
 
 		void swap(array_type &arr) noexcept { raw_val.bytes.swap(arr); }
-
-#pragma mark byte_array : iteator
-
-		using iterator       = typename array_type::iterator;
-		using const_iterator = typename array_type::const_iterator;
-		using reverse_iterator       = typename array_type::reverse_iterator;
-		using const_reverse_iterator = typename array_type::const_reverse_iterator;
-
-		iterator begin() noexcept { return raw_val.bytes.begin(); }
-		iterator end() noexcept { return raw_val.bytes.end(); }
-		const_iterator begin() const noexcept { return raw_val.bytes.cbegin(); }
-		const_iterator end() const noexcept { return raw_val.bytes.cend(); }
-		const_iterator cbegin() const noexcept { return raw_val.bytes.cbegin(); }
-		const_iterator cend() const noexcept { return raw_val.bytes.cend(); }
-		iterator rbegin() noexcept { return raw_val.bytes.begin(); }
-		iterator rend() noexcept { return raw_val.bytes.end(); }
-		const_iterator rbegin() const noexcept { return raw_val.bytes.cbegin(); }
-		const_iterator rend() const noexcept { return raw_val.bytes.cend(); }
-		const_iterator crbegin() const noexcept { return raw_val.bytes.cbegin(); }
-		const_iterator crend() const noexcept { return raw_val.bytes.cend(); }
 	};
 
 #pragma mark range
