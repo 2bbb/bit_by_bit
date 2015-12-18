@@ -79,12 +79,7 @@ namespace bbb {
 	}
 
 	template <typename Container, typename Function>
-	void for_each(Container &c, Function f) {
-		std::for_each(c.begin(), c.end(), f);
-	}
-
-	template <typename Container, typename Function>
-	void for_each(const Container &c, Function f) {
+	void for_each(Container &&c, Function f) {
 		std::for_each(c.begin(), c.end(), f);
 	}
 
@@ -113,7 +108,8 @@ namespace bbb {
 
 		byte_array &operator=(T t) { raw_val.t = t; }
 		byte_array &operator=(const array_type &bytes)  { raw_val.bytes = bytes; }
-		byte_array &operator=(array_type &&bytes) { raw_val.bytes.swap(bytes); }
+		byte_array &operator=(array_type &bytes) { raw_val.bytes.swap(bytes); }
+        byte_array &operator=(array_type &&bytes) { raw_val.bytes.swap(bytes); }
 
 #pragma mark byte_array : cast
 
