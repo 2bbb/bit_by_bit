@@ -251,20 +251,36 @@ vectroid v;
 v.body.push_back(-1);
 v.body.push_back(-2);
 v.body.push_back(-3);
+
 std::vector<int> src{1, 2, 3, 4};
 std::copy(src.begin(), src.end(), std::back_inserter(v));
 std::copy(src.begin(), src.end(), std::inserter(v, v.begin()));
-for (const auto &i : v) {
-    std::cout << i << std::endl;
-}
 
+{
+    auto it = std::begin(v);
+    bbb_assert(*it++ == 1);
+    bbb_assert(*it++ == 2);
+    bbb_assert(*it++ == 3);
+    bbb_assert(*it++ == 4);
+    bbb_assert(*it++ == -1);
+    bbb_assert(*it++ == -2);
+    bbb_assert(*it++ == -3);
+    bbb_assert(*it++ == 1);
+    bbb_assert(*it++ == 2);
+    bbb_assert(*it++ == 3);
+    bbb_assert(*it++ == 4);
+}
 mappoid m;
 m.body.insert(std::make_pair(2, 3));
 m.body.insert(std::make_pair(6, 7));
 m.body.insert(std::make_pair(4, 5));
 m.body.insert(std::make_pair(8, 9));
-for (const auto &p : m) {
-    std::cout << p.first << ", " << p.second << std::endl;
+{
+    auto it = std::begin(m);
+    bbb_assert(it->first == 2 && (it++)->second == 3);
+    bbb_assert(it->first == 4 && (it++)->second == 5);
+    bbb_assert(it->first == 6 && (it++)->second == 7);
+    bbb_assert(it->first == 8 && (it++)->second == 9);
 }
 introid i;
 //	for(auto &it : i) {} // Error: delegated type doesn't provide iterator
