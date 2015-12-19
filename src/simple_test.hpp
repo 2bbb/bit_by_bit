@@ -26,9 +26,18 @@ namespace name##_test {\
     std::size_t total{0};\
     std::size_t success{0};\
     std::size_t failure{0};\
-    void test() {
+    void test() {\
+        std::cout << "**** begin test \"" #name "\"" << std::endl;
 
-#define bbb_test_end_definition()\
+#define bbb_test_end_definition(name)\
+        std::cout\
+            << "**** finish test \"" #name "\"" << std::endl\
+            << "result: " << std::endl\
+            << "  success: " << success << " / " << total << std::endl\
+            << "  failure: " << failure << " / " << total << std::endl;\
+        if(success == total) std::cout << "**** ALL PASSED ****" << std::endl;\
+        else                 std::cout << "!!!! DON'T PASSED " << failure << " TEST(S) !!!!" << std::endl;\
+        std::cout << std::endl;\
    }\
 };
 
@@ -43,9 +52,9 @@ namespace name##_test {
     total++;\
     if(__VA_ARGS__) {\
         success++;\
-        std::cout << "passed     [" << success << "/" << total << "] " << #__VA_ARGS__ << std::endl;\
+        std::cout << "passed   [" << success << "/" << total << "] " << #__VA_ARGS__ << std::endl;\
     } else {\
         failure++;\
-        std::cout << "failure... [" << failure << "/" << total << "] " #__VA_ARGS__ << std::endl;\
+        std::cout << "failure. [" << failure << "/" << total << "] " #__VA_ARGS__ << std::endl;\
     }\
 }

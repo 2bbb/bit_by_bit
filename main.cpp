@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
 
 bbb_test_begin_definition(test)
 bbb_assert(true);
-bbb_test_end_definition()
+bbb_test_end_definition(test)
 
 #pragma mark reusable_array_test
 
