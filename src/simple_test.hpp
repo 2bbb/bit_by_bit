@@ -32,15 +32,20 @@ namespace name##_test {\
    }\
 };
 
+#define bbb_test_begin_prepare(name)\
+namespace name##_test {
+
+#define bbb_test_end_prepare(name) };
+
 #define bbb_test(name) name##_test::test();
 
-#define bbb_assert(statement) {\
+#define bbb_assert(...) {\
     total++;\
-    if(statement) {\
+    if(__VA_ARGS__) {\
         success++;\
-        std::cout << "passed     [" << success << "/" << total << "] " << #statement << std::endl;\
+        std::cout << "passed     [" << success << "/" << total << "] " << #__VA_ARGS__ << std::endl;\
     } else {\
         failure++;\
-        std::cout << "failure... [" << failure << "/" << total << "] " #statement << std::endl;\
+        std::cout << "failure... [" << failure << "/" << total << "] " #__VA_ARGS__ << std::endl;\
     }\
 }
