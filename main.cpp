@@ -15,7 +15,9 @@
  * **** **** **** **** **** **** **** **** */
 
 #include "bit_by_bit.hpp"
+#include "simple_test.hpp"
 
+bbb_test_declaretion(test);
 void reusable_array_test();
 void byte_array_test();
 void multithread_test(size_t num);
@@ -24,12 +26,17 @@ namespace iterator_delegation { void test(); };
 
 
 int main(int argc, char *argv[]) {
+    bbb_test(test);
     reusable_array_test();
     byte_array_test();
     multithread_test(4);
     range_test();
     iterator_delegation::test();
 }
+
+bbb_test_begin_definition(test)
+    bbb_assert(true);
+bbb_test_end_definition()
 
 #pragma mark reusable_array_test
 
