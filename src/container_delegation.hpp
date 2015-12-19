@@ -106,7 +106,7 @@ namespace bbb {
         };
 
         template <typename array_t>
-        using array_delegation = impl::array_delegation<array_t, is_cpp14() && is_array<array_t>::value>;
+        using array_delegation = impl::array_delegation<array_t, is_cpp14() && impl::is_array<array_t>::value>;
 
 #pragma mark container_delegation array interface
 
