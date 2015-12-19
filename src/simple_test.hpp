@@ -18,16 +18,29 @@
 #include <cassert>
 #include <iostream>
 
-#define DeclareTest(name, ...)\
-namespace name {\
-    void test(##__VA_ARGS__);\
-};\
+#define bbb_test_declaretion(name)\
+namespace name##_test { void test(); };
 
-#define BeginDefineTest(name)\
-namespace name {
+#define bbb_test_begin_definition(name)\
+namespace name##_test {\
+    std::size_t total{0};\
+    std::size_t success{0};\
+    std::size_t failure{0};\
+    void test() {
 
-#define EndDefineTest()\
+#define bbb_test_end_definition()\
+   }\
 };
 
-#define CarryOutTest(name)\
-name::test();
+#define bbb_test(name) name##_test::test();
+
+#define bbb_assert(statement) {\
+    total++;\
+    if(statement) {\
+        success++;\
+        std::cout << "passed     [" << success << "/" << total << "] " << #statement << std::endl;\
+    } else {\
+        failure++;\
+        std::cout << "failure... [" << failure << "/" << total << "] " #statement << std::endl;\
+    }\
+}
