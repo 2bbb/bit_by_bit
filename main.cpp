@@ -15,20 +15,28 @@
  * **** **** **** **** **** **** **** **** */
 
 #include "bit_by_bit.hpp"
+#include "simple_test.hpp"
 
+bbb_test_declaretion(test);
 void reusable_array_test();
 void byte_array_test();
 void multithread_test(size_t num);
 void range_test();
-void iterator_test();
+bbb_test_declaretion(iterator_delegation);
+
 
 int main(int argc, char *argv[]) {
+    bbb_test(test);
     reusable_array_test();
     byte_array_test();
     multithread_test(4);
     range_test();
-    iterator_test();
+    bbb_test(iterator_delegation);
 }
+
+bbb_test_begin_definition(test)
+bbb_assert(true);
+bbb_test_end_definition(test)
 
 #pragma mark reusable_array_test
 
@@ -189,71 +197,92 @@ void range_test() {
 #include <map>
 #include <string>
 
+bbb_test_begin_prepare(iterator_delegation)
 struct vectroid
     : bbb::iterator_delegation<std::vector<int>> {
     std::vector<int> body;
-    vectroid() : delegation(body) {};
+
+    vectroid() : delegation(body) { };
 };
 
 struct mappoid : bbb::iterator_delegation<std::map<int, int>> {
     std::map<int, int> body;
-    mappoid() : delegation(body) {};
+
+    mappoid() : delegation(body) { };
 };
 
 struct introid : bbb::iterator_delegation<int> {
     int body;
-    introid() : delegation(body) {};
+
+    introid() : delegation(body) { };
 };
+bbb_test_end_prepare(iterator_delegation)
 
-void iterator_test() {
-    static_assert(bbb::iteratable_class_traits<std::vector<int>>::has_iterator, "vector<int> has iterator");
-    static_assert(bbb::iteratable_class_traits<std::vector<int>>::has_reverse_iterator, "vector<int> has reverse_iterator");
-    std::cout << "std::map<int, int>::iterator " << bbb::iteratable_class_traits<std::map<int, int>>::has_iterator << std::endl;
-    std::cout << "std::string::iterator " << bbb::iteratable_class_traits<std::string>::has_iterator << std::endl;
-    std::cout << "int::iterator " << bbb::iteratable_class_traits<int>::has_iterator << std::endl;
-    std::cout << "bbb::iterator_delegation<std::vector<int>>::iterator " << bbb::iteratable_class_traits<bbb::iterator_delegation<std::vector<int>>>::has_iterator << std::endl;
+bbb_test_begin_definition(iterator_delegation)
 
-    std::cout << std::endl;
+bbb_assert(bbb::iteratable_class_traits<std::vector<int>>::has_iterator);
+bbb_assert(bbb::iteratable_class_traits<std::vector<int>>::has_reverse_iterator);
+bbb_assert(bbb::iteratable_class_traits<std::map<int, int>>::has_iterator);
+bbb_assert(bbb::iteratable_class_traits<std::string>::has_iterator);
+bbb_assert(!bbb::iteratable_class_traits<int>::has_iterator);
+bbb_assert(bbb::iteratable_class_traits<bbb::iterator_delegation<std::vector<int>>>::has_iterator);
 
-    std::cout << "vector has_insert " << bbb::iteratable_class_traits<std::vector<int>>::has_insert << std::endl;
-    std::cout << "vector has_push_back " << bbb::iteratable_class_traits<std::vector<int>>::has_push_back << std::endl;
-    std::cout << "vector has_push_front " << bbb::iteratable_class_traits<std::vector<int>>::has_push_front << std::endl;
+bbb_assert(bbb::iteratable_class_traits<std::vector<int>>::has_insert);
+bbb_assert(bbb::iteratable_class_traits<std::vector<int>>::has_push_back);
+bbb_assert(!bbb::iteratable_class_traits<std::vector<int>>::has_push_front);
 
-    std::cout << "deque has_insert " << bbb::iteratable_class_traits<std::deque<int>>::has_insert << std::endl;
-    std::cout << "deque has_push_back " << bbb::iteratable_class_traits<std::deque<int>>::has_push_back << std::endl;
-    std::cout << "deque has_push_front " << bbb::iteratable_class_traits<std::deque<int>>::has_push_front << std::endl;
+bbb_assert(bbb::iteratable_class_traits<std::deque<int>>::has_insert);
+bbb_assert(bbb::iteratable_class_traits<std::deque<int>>::has_push_back);
+bbb_assert(bbb::iteratable_class_traits<std::deque<int>>::has_push_front);
 
-    std::cout << "list has_insert " << bbb::iteratable_class_traits<std::list<int>>::has_insert << std::endl;
-    std::cout << "list has_push_back " << bbb::iteratable_class_traits<std::list<int>>::has_push_back << std::endl;
-    std::cout << "list has_push_front " << bbb::iteratable_class_traits<std::list<int>>::has_push_front << std::endl;
+bbb_assert(bbb::iteratable_class_traits<std::list<int>>::has_insert);
+bbb_assert(bbb::iteratable_class_traits<std::list<int>>::has_push_back);
+bbb_assert(bbb::iteratable_class_traits<std::list<int>>::has_push_front);
 
-    std::cout << "queue has_insert " << bbb::iteratable_class_traits<std::queue<int>>::has_insert << std::endl;
-    std::cout << "queue has_push_back " << bbb::iteratable_class_traits<std::queue<int>>::has_push_back << std::endl;
-    std::cout << "queue has_push_front " << bbb::iteratable_class_traits<std::queue<int>>::has_push_front << std::endl;
+bbb_assert(!bbb::iteratable_class_traits<std::queue<int>>::has_insert);
+bbb_assert(!bbb::iteratable_class_traits<std::queue<int>>::has_push_back);
+bbb_assert(!bbb::iteratable_class_traits<std::queue<int>>::has_push_front);
 
-    std::cout << "int has_insert " << bbb::iteratable_class_traits<int>::has_insert << std::endl;
-    std::cout << "int has_push_back " << bbb::iteratable_class_traits<int>::has_push_back << std::endl;
-    std::cout << "int has_push_front " << bbb::iteratable_class_traits<int>::has_push_front << std::endl;
+bbb_assert(!bbb::iteratable_class_traits<int>::has_insert);
+bbb_assert(!bbb::iteratable_class_traits<int>::has_push_back);
+bbb_assert(!bbb::iteratable_class_traits<int>::has_push_front);
 
-    vectroid v;
-    v.body.push_back(-1);
-    v.body.push_back(-2);
-    v.body.push_back(-3);
-    std::vector<int> src{1, 2, 3, 4};
-    std::copy(src.begin(), src.end(), std::back_inserter(v));
-    std::copy(src.begin(), src.end(), std::inserter(v, v.begin()));
-    for(const auto &i : v) {
-        std::cout << i << std::endl;
-    }
+vectroid v;
+v.body.push_back(-1);
+v.body.push_back(-2);
+v.body.push_back(-3);
 
-    mappoid m;
-    m.body.insert(std::make_pair(2, 3));
-    m.body.insert(std::make_pair(6, 7));
-    m.body.insert(std::make_pair(4, 5));
-    m.body.insert(std::make_pair(8, 9));
-    for(const auto &p : m) {
-        std::cout << p.first << ", " << p.second << std::endl;
-    }
-    introid i;
-//	for(auto &it : i) {} // Error: delegated type doesn't provide iterator
+std::vector<int> src{1, 2, 3, 4};
+std::copy(src.begin(), src.end(), std::back_inserter(v));
+std::copy(src.begin(), src.end(), std::inserter(v, v.begin()));
+
+{
+    auto it = std::begin(v);
+    bbb_assert(*it++ == 1);
+    bbb_assert(*it++ == 2);
+    bbb_assert(*it++ == 3);
+    bbb_assert(*it++ == 4);
+    bbb_assert(*it++ == -1);
+    bbb_assert(*it++ == -2);
+    bbb_assert(*it++ == -3);
+    bbb_assert(*it++ == 1);
+    bbb_assert(*it++ == 2);
+    bbb_assert(*it++ == 3);
+    bbb_assert(*it++ == 4);
 }
+mappoid m;
+m.body.insert(std::make_pair(2, 3));
+m.body.insert(std::make_pair(6, 7));
+m.body.insert(std::make_pair(4, 5));
+m.body.insert(std::make_pair(8, 9));
+{
+    auto it = std::begin(m);
+    bbb_assert(it->first == 2 && (it++)->second == 3);
+    bbb_assert(it->first == 4 && (it++)->second == 5);
+    bbb_assert(it->first == 6 && (it++)->second == 7);
+    bbb_assert(it->first == 8 && (it++)->second == 9);
+}
+introid i;
+//	for(auto &it : i) {} // Error: delegated type doesn't provide iterator
+
+bbb_test_end_definition(iterator_delegation)
