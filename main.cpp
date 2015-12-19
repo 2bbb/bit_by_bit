@@ -15,23 +15,29 @@
  * **** **** **** **** **** **** **** **** */
 
 #include "bit_by_bit.hpp"
+#include "simple_test.hpp"
 
+bbb_test_declaretion(test);
 void reusable_array_test();
 void byte_array_test();
 void multithread_test(size_t num);
 void range_test();
 void iterator_test();
-void container_delegationr_test();
-namespace container_delegation { void test(); };
+bbb_test_declaretion(container_delegation)
 
 int main(int argc, char *argv[]) {
+    bbb_test(test);
     reusable_array_test();
     byte_array_test();
     multithread_test(4);
     range_test();
     iterator_test();
-    container_delegation::test();
+    bbb_test(container_delegation);
 }
+
+bbb_test_begin_definition(test)
+bbb_assert(true);
+bbb_test_end_definition(test)
 
 #pragma mark reusable_array_test
 
@@ -261,16 +267,16 @@ void iterator_test() {
 //	for(auto &it : i) {} // Error: delegated type doesn't provide iterator
 }
 
-namespace container_delegation {
-    struct int_arrayoid : bbb::container_delegation<std::array<int, 8>> {
-        std::array<int, 8> v;
-        int_arrayoid() : container_delegater(v) {}
-    };
-
-    void test() {
-        int_arrayoid::value_type t;
-        int_arrayoid v;
-        std::cout << v.size();
-        if(v.empty());
-    }
+bbb_test_begin_prepare(container_delegation)
+struct int_arrayoid : bbb::container_delegation<std::array<int, 8>> {
+    std::array<int, 8> v;
+    int_arrayoid() : container_delegater(v) {}
 };
+bbb_test_end_prepare(container_delegation)
+
+bbb_test_begin_definition(container_delegation)
+int_arrayoid::value_type t;
+int_arrayoid v;
+bbb_assert(v.size() == 8);
+bbb_assert(!v.empty());
+bbb_test_end_definition(container_delegation)
