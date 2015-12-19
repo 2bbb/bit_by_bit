@@ -22,7 +22,7 @@ void reusable_array_test();
 void byte_array_test();
 void multithread_test(size_t num);
 void range_test();
-namespace iterator_delegation { void test(); };
+bbb_test_declaretion(iterator_delegation);
 
 
 int main(int argc, char *argv[]) {
@@ -31,7 +31,7 @@ int main(int argc, char *argv[]) {
     byte_array_test();
     multithread_test(4);
     range_test();
-    iterator_delegation::test();
+    bbb_test(iterator_delegation);
 }
 
 bbb_test_begin_definition(test)
@@ -216,56 +216,57 @@ namespace iterator_delegation {
 
         introid() : delegation(body) { };
     };
+}
 
-    void test() {
-        static_assert(bbb::iteratable_class_traits<std::vector<int>>::has_iterator, "vector<int> has iterator");
-        static_assert(bbb::iteratable_class_traits<std::vector<int>>::has_reverse_iterator,
-                      "vector<int> has reverse_iterator");
-        static_assert(bbb::iteratable_class_traits<std::map<int, int>>::has_iterator, "map<int, int> has_iterator");
-        static_assert(bbb::iteratable_class_traits<std::string>::has_iterator);
-        static_assert(!bbb::iteratable_class_traits<int>::has_iterator);
-        static_assert(bbb::iteratable_class_traits<bbb::iterator_delegation<std::vector<int>>>::has_iterator);
+bbb_test_begin_definition(iterator_delegation)
 
-        static_assert(bbb::iteratable_class_traits<std::vector<int>>::has_insert);
-        static_assert(bbb::iteratable_class_traits<std::vector<int>>::has_push_back);
-        static_assert(!bbb::iteratable_class_traits<std::vector<int>>::has_push_front);
+bbb_assert(bbb::iteratable_class_traits<std::vector<int>>::has_iterator);
+bbb_assert(bbb::iteratable_class_traits<std::vector<int>>::has_reverse_iterator);
+bbb_assert(bbb::iteratable_class_traits<std::map<int, int>>::has_iterator);
+bbb_assert(bbb::iteratable_class_traits<std::string>::has_iterator);
+bbb_assert(!bbb::iteratable_class_traits<int>::has_iterator);
+bbb_assert(bbb::iteratable_class_traits<bbb::iterator_delegation<std::vector<int>>>::has_iterator);
 
-        static_assert(bbb::iteratable_class_traits<std::deque<int>>::has_insert);
-        static_assert(bbb::iteratable_class_traits<std::deque<int>>::has_push_back);
-        static_assert(bbb::iteratable_class_traits<std::deque<int>>::has_push_front);
+bbb_assert(bbb::iteratable_class_traits<std::vector<int>>::has_insert);
+bbb_assert(bbb::iteratable_class_traits<std::vector<int>>::has_push_back);
+bbb_assert(!bbb::iteratable_class_traits<std::vector<int>>::has_push_front);
 
-        static_assert(bbb::iteratable_class_traits<std::list<int>>::has_insert);
-        static_assert(bbb::iteratable_class_traits<std::list<int>>::has_push_back);
-        static_assert(bbb::iteratable_class_traits<std::list<int>>::has_push_front);
+bbb_assert(bbb::iteratable_class_traits<std::deque<int>>::has_insert);
+bbb_assert(bbb::iteratable_class_traits<std::deque<int>>::has_push_back);
+bbb_assert(bbb::iteratable_class_traits<std::deque<int>>::has_push_front);
 
-        static_assert(!bbb::iteratable_class_traits<std::queue<int>>::has_insert);
-        static_assert(!bbb::iteratable_class_traits<std::queue<int>>::has_push_back);
-        static_assert(!bbb::iteratable_class_traits<std::queue<int>>::has_push_front);
+bbb_assert(bbb::iteratable_class_traits<std::list<int>>::has_insert);
+bbb_assert(bbb::iteratable_class_traits<std::list<int>>::has_push_back);
+bbb_assert(bbb::iteratable_class_traits<std::list<int>>::has_push_front);
 
-        static_assert(!bbb::iteratable_class_traits<int>::has_insert);
-        static_assert(!bbb::iteratable_class_traits<int>::has_push_back);
-        static_assert(!bbb::iteratable_class_traits<int>::has_push_front);
+bbb_assert(!bbb::iteratable_class_traits<std::queue<int>>::has_insert);
+bbb_assert(!bbb::iteratable_class_traits<std::queue<int>>::has_push_back);
+bbb_assert(!bbb::iteratable_class_traits<std::queue<int>>::has_push_front);
 
-        vectroid v;
-        v.body.push_back(-1);
-        v.body.push_back(-2);
-        v.body.push_back(-3);
-        std::vector<int> src{1, 2, 3, 4};
-        std::copy(src.begin(), src.end(), std::back_inserter(v));
-        std::copy(src.begin(), src.end(), std::inserter(v, v.begin()));
-        for (const auto &i : v) {
-            std::cout << i << std::endl;
-        }
+bbb_assert(!bbb::iteratable_class_traits<int>::has_insert);
+bbb_assert(!bbb::iteratable_class_traits<int>::has_push_back);
+bbb_assert(!bbb::iteratable_class_traits<int>::has_push_front);
 
-        mappoid m;
-        m.body.insert(std::make_pair(2, 3));
-        m.body.insert(std::make_pair(6, 7));
-        m.body.insert(std::make_pair(4, 5));
-        m.body.insert(std::make_pair(8, 9));
-        for (const auto &p : m) {
-            std::cout << p.first << ", " << p.second << std::endl;
-        }
-        introid i;
-        //	for(auto &it : i) {} // Error: delegated type doesn't provide iterator
-    }
-};
+vectroid v;
+v.body.push_back(-1);
+v.body.push_back(-2);
+v.body.push_back(-3);
+std::vector<int> src{1, 2, 3, 4};
+std::copy(src.begin(), src.end(), std::back_inserter(v));
+std::copy(src.begin(), src.end(), std::inserter(v, v.begin()));
+for (const auto &i : v) {
+    std::cout << i << std::endl;
+}
+
+mappoid m;
+m.body.insert(std::make_pair(2, 3));
+m.body.insert(std::make_pair(6, 7));
+m.body.insert(std::make_pair(4, 5));
+m.body.insert(std::make_pair(8, 9));
+for (const auto &p : m) {
+    std::cout << p.first << ", " << p.second << std::endl;
+}
+introid i;
+//	for(auto &it : i) {} // Error: delegated type doesn't provide iterator
+
+bbb_test_end_definition()
