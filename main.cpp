@@ -21,6 +21,8 @@ void byte_array_test();
 void multithread_test(size_t num);
 void range_test();
 void iterator_test();
+void container_delegationr_test();
+namespace container_delegation { void test(); };
 
 int main(int argc, char *argv[]) {
     reusable_array_test();
@@ -28,6 +30,7 @@ int main(int argc, char *argv[]) {
     multithread_test(4);
     range_test();
     iterator_test();
+    container_delegation::test();
 }
 
 #pragma mark reusable_array_test
@@ -257,3 +260,17 @@ void iterator_test() {
     introid i;
 //	for(auto &it : i) {} // Error: delegated type doesn't provide iterator
 }
+
+namespace container_delegation {
+    struct int_arrayoid : bbb::container_delegation<std::array<int, 8>> {
+        std::array<int, 8> v;
+        int_arrayoid() : container_delegater(v) {}
+    };
+
+    void test() {
+        int_arrayoid::value_type t;
+        int_arrayoid v;
+        std::cout << v.size();
+        if(v.empty());
+    }
+};
