@@ -35,7 +35,8 @@ namespace name##_test {\
             << "result: " << std::endl\
             << "  success: " << success << " / " << total << std::endl\
             << "  failure: " << failure << " / " << total << std::endl;\
-        if(success == total) std::cout << "    * * * * ALL PASSED!!!! * * * *" << std::endl;\
+        if(success == total) std::cout << "**** ALL PASSED ****" << std::endl;\
+        else                 std::cout << "!!!! DON'T PASSED " << failure << " TEST(S) !!!!" << std::endl;\
         std::cout << std::endl;\
    }\
 };
