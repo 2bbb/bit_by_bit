@@ -17,7 +17,7 @@
 #pragma once
 
 #if __cplusplus < 201103L
-#   error all you need is C++11
+#   error all you need is C++11 (or later)
 #elif __cplusplus < 201402L
 #   define bbb_is_cpp11 true
 #   define bbb_is_cpp14 false
