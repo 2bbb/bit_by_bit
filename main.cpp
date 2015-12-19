@@ -23,7 +23,8 @@ void byte_array_test();
 void multithread_test(size_t num);
 void range_test();
 bbb_test_declaretion(iterator_delegation);
-
+void iterator_test();
+bbb_test_declaretion(container_delegation)
 
 int main(int argc, char *argv[]) {
     bbb_test(test);
@@ -32,6 +33,7 @@ int main(int argc, char *argv[]) {
     multithread_test(4);
     range_test();
     bbb_test(iterator_delegation);
+    bbb_test(container_delegation);
 }
 
 bbb_test_begin_definition(test)
@@ -286,3 +288,17 @@ introid i;
 //	for(auto &it : i) {} // Error: delegated type doesn't provide iterator
 
 bbb_test_end_definition(iterator_delegation)
+
+bbb_test_begin_prepare(container_delegation)
+struct int_arrayoid : bbb::container_delegation<std::array<int, 8>> {
+    std::array<int, 8> v;
+    int_arrayoid() : container_delegater(v) {}
+};
+bbb_test_end_prepare(container_delegation)
+
+bbb_test_begin_definition(container_delegation)
+int_arrayoid::value_type t;
+int_arrayoid v;
+bbb_assert(v.size() == 8);
+bbb_assert(!v.empty());
+bbb_test_end_definition(container_delegation)

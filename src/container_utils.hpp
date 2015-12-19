@@ -19,6 +19,7 @@
 #include "constants.hpp"
 #include "type_utils.hpp"
 #include "iterator_utils.hpp"
+#include "container_delegation.hpp"
 
 #include <vector>
 #include <memory>
