@@ -36,7 +36,7 @@ int main(int argc, char *argv[]) {
 
 bbb_test_begin_definition(test)
 bbb_assert(true);
-bbb_test_end_definition()
+bbb_test_end_definition(test)
 
 #pragma mark reusable_array_test
 
@@ -197,26 +197,26 @@ void range_test() {
 #include <map>
 #include <string>
 
-namespace iterator_delegation {
-    struct vectroid
-        : bbb::iterator_delegation<std::vector<int>> {
-        std::vector<int> body;
+bbb_test_begin_prepare(iterator_delegation)
+struct vectroid
+    : bbb::iterator_delegation<std::vector<int>> {
+    std::vector<int> body;
 
-        vectroid() : delegation(body) { };
-    };
+    vectroid() : delegation(body) { };
+};
 
-    struct mappoid : bbb::iterator_delegation<std::map<int, int>> {
-        std::map<int, int> body;
+struct mappoid : bbb::iterator_delegation<std::map<int, int>> {
+    std::map<int, int> body;
 
-        mappoid() : delegation(body) { };
-    };
+    mappoid() : delegation(body) { };
+};
 
-    struct introid : bbb::iterator_delegation<int> {
-        int body;
+struct introid : bbb::iterator_delegation<int> {
+    int body;
 
-        introid() : delegation(body) { };
-    };
-}
+    introid() : delegation(body) { };
+};
+bbb_test_end_prepare(iterator_delegation)
 
 bbb_test_begin_definition(iterator_delegation)
 
@@ -269,4 +269,4 @@ for (const auto &p : m) {
 introid i;
 //	for(auto &it : i) {} // Error: delegated type doesn't provide iterator
 
-bbb_test_end_definition()
+bbb_test_end_definition(iterator_delegation)
