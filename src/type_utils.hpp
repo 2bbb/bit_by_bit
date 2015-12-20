@@ -20,6 +20,7 @@
 
 #include <type_traits>
 #include <tuple>
+#include <functional>
 
 namespace bbb {
 	template <typename T>
@@ -27,6 +28,9 @@ namespace bbb {
 
 	template <bool b, typename T = void>
 	using enable_if = get_type<std::enable_if<b, T>>;
+
+    template <bool b, typename T, typename F>
+    using conditional = get_type<std::conditional<b, T, F>>;
 
 	template <typename T>
 	constexpr bool is_const() {
@@ -77,6 +81,7 @@ namespace bbb {
 			using arguments_types_tuple = std::tuple<arguments ...>;
 			template <std::size_t index>
 			using argument_type = get_type<std::tuple_element<index, arguments_types_tuple>>;
+			using function_type = std::function<ret(arguments ...)>;
 		};
 
 		template <typename class_type, typename ret, typename ... arguments>
@@ -86,6 +91,7 @@ namespace bbb {
 			using arguments_types_tuple = std::tuple<arguments ...>;
 			template <std::size_t index>
 			using argument_type = get_type<std::tuple_element<index, arguments_types_tuple>>;
+			using function_type = std::function<ret(arguments ...)>;
 		};
 
 		template <typename ret, typename ... arguments>
@@ -95,6 +101,7 @@ namespace bbb {
 			using arguments_types_tuple = std::tuple<arguments ...>;
 			template <std::size_t index>
 			using argument_type = get_type<std::tuple_element<index, arguments_types_tuple>>;
+			using function_type = std::function<ret(arguments ...)>;
 		};
 
 		template<typename T>
@@ -135,19 +142,20 @@ namespace bbb {
 		};
 
 		namespace impl {
-			template <typename type, type n, type ... ns>
+			template <typename integer_type, integer_type n, integer_type ... ns>
 			struct make_integer_sequence {
-				using type = std::conditional<
+				struct sequence_wrapper { using type = integer_sequence<integer_type, ns ...>; };
+				using type = get_type<conditional<
 					n == 0,
-					integer_sequence<type, 0, ns ...>,
-					get_type<make_integer_sequence<type, n - 1, n - 1, ns ...>>
-				>;
+					sequence_wrapper,
+					impl::make_integer_sequence<integer_type, n - 1, n - 1, ns ...>
+				>>;
 			};
 
 		};
 
 		template <typename type, type n>
-		using make_integer_sequence = get_type<impl::make_integer_sequence<type, n>>;
+		using make_integer_sequence = impl::make_integer_sequence<type, n>;
 
 		template <std::size_t ... ns>
 		using index_sequence = integer_sequence<std::size_t, ns ...>;
@@ -159,4 +167,22 @@ namespace bbb {
 		using index_sequence_for = make_index_sequence<sizeof...(types)>;
 	};
 	using namespace sequences;
+
+	namespace functional_utilities {
+		namespace impl {
+			template <typename return_value_t, typename ... arguments, std::size_t ... indicies>
+			return_value_t apply(std::function<return_value_t(arguments ...)> f, std::tuple<arguments ...> t, index_sequence<indicies ...>) {
+				return f(std::get<indicies>(t) ...);
+			};
+		};
+		template <typename return_value_t, typename ... arguments>
+		return_value_t apply(std::function<return_value_t(arguments ...)> f, std::tuple<arguments ...> t) {
+			return impl::apply(f, t, get_type<index_sequence_for<arguments ...>>());
+		}
+		template <typename function_t, typename ... arguments>
+		typename function_info<function_t>::result_type apply(function_t f, std::tuple<arguments ...> t) {
+			return impl::apply(static_cast<typename function_info<function_t>::function_type>(f), t, get_type<make_index_sequence<function_info<function_t>::arity>>());
+		}
+	};
+	using namespace functional_utilities;
 };

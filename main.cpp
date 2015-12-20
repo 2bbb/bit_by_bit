@@ -191,11 +191,16 @@ namespace lambda {
     }
 
     void test() {
-        Object o;
-        auto f = bbb::curry::extraction(&o, &Object::get);
-        assert(f == 42 && "lambda: f() == 42");
-
-        auto g = bbb::curry::bind(mult_2, &Object::get, 4);
-        assert(g(&o) == 84 && "lambda: g(&o) == 84");
+//        Object o;
+//        auto f = bbb::curry::extraction(&o, &Object::get);
+//        assert(f == 42 && "lambda: f() == 42");
+//
+//        auto g = bbb::curry::bind(mult_2, &Object::get, 4);
+//        assert(g(&o) == 84 && "lambda: g(&o) == 84");
+        bbb::apply([](int x) { std::cout << "apply :" << x << std::endl; }, std::make_tuple(1));
+        std::cout << "apply: " << bbb::apply(
+            [](int x, float y) { return x + y; },
+            std::make_tuple(1, 1.2f)
+        );
     }
 }
