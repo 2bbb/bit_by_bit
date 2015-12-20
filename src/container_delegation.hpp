@@ -18,6 +18,7 @@
 
 #include "constants.hpp"
 #include "type_utils.hpp"
+#include "iterator_utils.hpp"
 
 #include <array>
 #include <vector>
@@ -119,14 +120,15 @@ namespace bbb {
             using array_delegation<container>::body;
 
         protected:
-            using container_delegater = container_delegation<container>;
+            using delegation = container_delegation<container>;
             container_delegation(container &body) : array_delegation<container>(body) {}
         };
 
 #pragma mark container_delegation vector
 
         template <typename value_t, typename allocator_t>
-        struct container_delegation<std::vector<value_t, allocator_t>> {
+        struct container_delegation<std::vector<value_t, allocator_t>>
+        : iterator_delegation<std::vector<value_t, allocator_t>> {
         protected:
             using container = std::vector<value_t, allocator_t>;
 
@@ -167,8 +169,10 @@ namespace bbb {
             void assign(size_type n, const value_type& v) { body.assign(n, v); }
             void assign(std::initializer_list<value_type> &list) { body.assign(list); }
         protected:
-            using container_delegater = container_delegation<container>;
-            container_delegation(container &body) : body(body) {}
+            using delegation = container_delegation<container>;
+            container_delegation(container &body)
+            : iterator_delegation<std::vector<value_t, allocator_t>>(body)
+            , body(body) {}
         };
     };
 
