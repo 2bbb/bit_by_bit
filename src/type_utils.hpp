@@ -109,4 +109,37 @@ namespace bbb {
 		};
 	};
 	using namespace function_traits;
+
+	namespace sequences {
+		template <typename type, type ... ns>
+		struct integer_sequence {
+			using value_type = type;
+			static constexpr std::size_t size() noexcept { return sizeof...(ns); }
+		};
+
+		namespace impl {
+			template <typename type, type n, type ... ns>
+			struct make_integer_sequence {
+				using type = std::conditional<
+					n == 0,
+					integer_sequence<type, 0, ns ...>,
+					get_type<make_integer_sequence<type, n - 1, n - 1, ns ...>>
+				>;
+			};
+
+		};
+
+		template <typename type, type n>
+		using make_integer_sequence = get_type<impl::make_integer_sequence<type, n>>;
+
+		template <std::size_t ... ns>
+		using index_sequence = integer_sequence<std::size_t, ns ...>;
+
+		template <std::size_t n>
+		using make_index_sequence = make_integer_sequence<std::size_t, n>;
+
+		template <typename... types>
+		using index_sequence_for = make_index_sequence<sizeof...(types)>;
+	};
+	using namespace sequences;
 };
