@@ -118,15 +118,14 @@ namespace bbb {
 		};
 
 		namespace impl {
-			template <typename type, type n, type ... ns>
+			template <typename integer_type, integer_type n, integer_type ... ns>
 			struct make_integer_sequence {
 				using type = std::conditional<
 					n == 0,
-					integer_sequence<type, 0, ns ...>,
-					get_type<make_integer_sequence<type, n - 1, n - 1, ns ...>>
+					integer_sequence<integer_type, 0, ns ...>,
+					get_type<make_integer_sequence<integer_type, n - 1, n - 1, ns ...>>
 				>;
 			};
-
 		};
 
 		template <typename type, type n>
