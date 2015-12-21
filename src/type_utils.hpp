@@ -151,7 +151,6 @@ namespace bbb {
 					impl::make_integer_sequence<integer_type, n - 1, n - 1, ns ...>
 				>>;
 			};
-
 		};
 
 		template <typename type, type n>
