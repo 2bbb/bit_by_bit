@@ -25,6 +25,7 @@ void iterator_test();
 bbb_test_declaretion(container_delegation)
 void multithread_test();
 void enumerate_test();
+void logger_test();
 
 int main(int argc, char *argv[]) {
     bbb_test(test);
@@ -327,3 +328,9 @@ bbb_test_begin_definition(container_delegation)
         bbb_assert(v[2] == 3);
     }
 bbb_test_end_definition(container_delegation)
+
+void logger_test() {
+    bbb::logger::trace() << "begin logger_test";
+    bbb::logger::info("foo") << "foo" << "bar";
+    bbb::logger::trace() << "end logger_test";
+}
