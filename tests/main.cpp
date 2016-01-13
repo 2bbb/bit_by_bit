@@ -15,7 +15,9 @@
  * **** **** **** **** **** **** **** **** */
 
 #include "bit_by_bit.hpp"
+#include "simple_test.hpp"
 
+bbb_test_declaretion(test);
 void reusable_array_test();
 void byte_array_test();
 void multithread_test(size_t num);
@@ -23,12 +25,17 @@ void range_test();
 namespace lambda { void test(); };
 
 int main(int argc, char *argv[]) {
+    bbb_test(test);
     reusable_array_test();
     byte_array_test();
     multithread_test(4);
     range_test();
     lambda::test();
 }
+
+bbb_test_begin_definition(test)
+bbb_assert(true);
+bbb_test_end_definition(test)
 
 #pragma mark reusable_array_test
 
@@ -149,9 +156,8 @@ void multithread_test(size_t num) {
 void range_test() {
     {
         std::vector<int> vec;
-        for(auto i : bbb::range(2, 10)) {
-            vec.push_back(i);
-        }
+        bbb::for_each(bbb::range(10, 2), [&vec](int x) { vec.push_back(x); });
+        bbb::for_each(vec, [](int &x) { x *= 2; });
 
         for(auto v : bbb::enumerate(vec)) {
             std::cout << v.index << ", " << v.value << std::endl;

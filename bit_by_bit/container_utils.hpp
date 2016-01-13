@@ -82,51 +82,100 @@ namespace bbb {
 		std::for_each(c.begin(), c.end(), f);
 	}
 
+	template <typename Container, typename Function>
+	void for_each(const Container &c, Function f) {
+		std::for_each(c.begin(), c.end(), f);
+	}
+
 	template <typename T>
 	struct byte_array {
 		static_assert(std::is_arithmetic<T>::value, "require: arithmetic type");
+
+		using array_type = std::array<std::uint8_t, sizeof(T)>;
 		union {
 			T t;
-			std::uint8_t bytes[sizeof(T)];
+			array_type bytes;
 		} raw_val;
 
-		byte_array(T t) {
-			raw_val.t = t;
-		}
+#pragma mark byte_array : constructor & operator=
 
-		std::size_t size() const {
-			return sizeof(T);
-		}
+		byte_array(T t) { raw_val.t = t; }
+		byte_array(const array_type &bytes)  { raw_val.bytes = bytes; }
+		byte_array(array_type &&bytes) { raw_val.bytes.swap(bytes); }
 
-		byte_array &operator=(T t) {
-			raw_val.t = t;
-		}
+		byte_array &operator=(T t) { raw_val.t = t; }
+		byte_array &operator=(const array_type &bytes)  { raw_val.bytes = bytes; }
+		byte_array &operator=(array_type &&bytes) { raw_val.bytes.swap(bytes); }
 
-		std::uint8_t &operator[](std::size_t index) {
-			return raw_val.bytes[index];
-		}
+#pragma mark byte_array : cast
 
-		const std::uint8_t &operator[](std::size_t index) const {
-			return raw_val.bytes[index];
-		}
+		operator T&() { return raw_val.t; }
+		const operator T&() const { return raw_val.t; }
+		operator array_type&() { return raw_val.bytes; }
+		const operator array_type&() const { return raw_val.bytes; }
+
+#pragma mark byte_array : array operatros
+
+		std::uint8_t *data() noexcept { return raw_val.bytes.data(); }
+		const std::uint8_t *data() const noexcept { return raw_val.bytes.data(); }
+
+		std::uint8_t &operator[](std::size_t index) { return raw_val.bytes[index]; }
+		const std::uint8_t &operator[](std::size_t index) const { return raw_val.bytes[index]; }
+		std::uint8_t &at(std::size_t index) { return raw_val.bytes.at(index); }
+		const std::uint8_t &at(std::size_t index) const { return raw_val.bytes.at(index); }
+
+		std::uint8_t &front() { return raw_val.bytes.front(); }
+		std::uint8_t &back() { return raw_val.bytes.back(); }
+		const std::uint8_t &front() const { return raw_val.bytes.front(); }
+		const std::uint8_t &back() const { return raw_val.bytes.back(); }
+
+		constexpr std::size_t size() const noexcept { return sizeof(T); }
+		constexpr std::size_t max_size() const noexcept { return raw_val.bytes.max_size(); }
+
+		void swap(array_type &arr) noexcept { raw_val.bytes.swap(arr); }
+
+#pragma mark byte_array : iteator
+
+		using iterator       = typename array_type::iterator;
+		using const_iterator = typename array_type::const_iterator;
+		using reverse_iterator       = typename array_type::reverse_iterator;
+		using const_reverse_iterator = typename array_type::const_reverse_iterator;
+
+		iterator begin() noexcept { return raw_val.bytes.begin(); }
+		iterator end() noexcept { return raw_val.bytes.end(); }
+		const_iterator begin() const noexcept { return raw_val.bytes.cbegin(); }
+		const_iterator end() const noexcept { return raw_val.bytes.cend(); }
+		const_iterator cbegin() const noexcept { return raw_val.bytes.cbegin(); }
+		const_iterator cend() const noexcept { return raw_val.bytes.cend(); }
+		iterator rbegin() noexcept { return raw_val.bytes.begin(); }
+		iterator rend() noexcept { return raw_val.bytes.end(); }
+		const_iterator rbegin() const noexcept { return raw_val.bytes.cbegin(); }
+		const_iterator rend() const noexcept { return raw_val.bytes.cend(); }
+		const_iterator crbegin() const noexcept { return raw_val.bytes.cbegin(); }
+		const_iterator crend() const noexcept { return raw_val.bytes.cend(); }
 	};
 
+#pragma mark range
+
 	class range {
-		long start, last;
+		const long start, last, offset;
 	public:
-		range(long start, long last)
+		range(long start, long last, long offset)
 		: start(start)
-		, last(last) {}
+		, last(last)
+		, offset(offset) {}
+
+		range(long start, long last)
+		: range(start, last, (0 < last - start) ? 1 : -1) {}
 
 		range(long last)
-		: start(0)
-		, last(last) {}
+		: range(0, last) {}
 
 		class range_iterator : public std::iterator<std::random_access_iterator_tag, long> {
 			long current;
-			const range *body;
+			const range * const body;
 
-			range_iterator(const range *body, long current)
+			range_iterator(const range * const body, long current)
 			: body(body)
 			, current(current) {}
 
@@ -136,36 +185,44 @@ namespace bbb {
 			friend range;
 		public:
 			range_iterator(const range_iterator &it)
-					: range_iterator(it.body, it.current) {}
+			: range_iterator(it.body, it.current) {}
 
 			long operator*() const { return current; }
 			long &operator*() { return current; }
 
 			range_iterator &operator++() {
-				++current;
+				current += body->offset;
+				if(0 < body->offset && body->last < current) current = body->last;
+				else if(body->offset < 0 && current < body->last) current = body->last;
 				return *this;
 			}
 			range_iterator operator++(int) {
 				range_iterator tmp{*this};
-				current++;
+				++(*this);
 				return tmp;
 			}
 			range_iterator &operator+=(long offset) {
-				current += offset;
+				current += offset * body->offset;
+				if(0 < body->offset && body->last < current) current = body->last;
+				else if(body->offset < 0 && current < body->last) current = body->last;
 				return *this;
 			}
 
 			range_iterator &operator--() {
-				--current;
+				current -= body->offset;
+				if(0 < body->offset && current < body->start) current = body->start;
+				else if(0 < body->offset && body->start < current) current = body->start;
 				return *this;
 			}
 			range_iterator operator--(int) {
 				range_iterator tmp{*this};
-				current--;
+				--(*this);
 				return tmp;
 			}
 			range_iterator &operator-=(long offset) {
-				current -= offset;
+				current -= offset * body->offset;
+				if(0 < body->offset && current < body->start) current = body->start;
+				else if(0 < body->offset && body->start < current) current = body->start;
 				return *this;
 			}
 
@@ -178,13 +235,16 @@ namespace bbb {
 		};
 
 		using iterator = range_iterator;
+		using const_iterator = const range_iterator;
 		iterator begin() { return iterator(this, start); }
 		iterator end() { return iterator(this, last); }
-		iterator begin() const { return iterator(this, start); }
-		iterator end() const { return iterator(this, last); }
-		iterator cbegin() const { return iterator(this, start); }
-		iterator cend() const { return iterator(this, last); }
+		const_iterator begin() const { return iterator(this, start); }
+		const_iterator end() const { return iterator(this, last); }
+		const_iterator cbegin() const { return iterator(this, start); }
+		const_iterator cend() const { return iterator(this, last); }
 	};
+
+#pragma mark enumeratable
 
 	namespace enumeratable {
 		template <typename Container>
