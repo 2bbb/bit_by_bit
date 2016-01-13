@@ -18,6 +18,7 @@
 
 #include "constants.hpp"
 #include "type_utils.hpp"
+#include "lambda_utils.hpp"
 #include "container_utils.hpp"
 #include "reusable_array.hpp"
 #include "thread_utils.hpp"
