@@ -16,8 +16,8 @@
 
 #pragma once
 
-#include "constants.hpp"
-#include "type_utils.hpp"
+#include "../core/constants.hpp"
+#include "../core/type_utils.hpp"
 
 #include <iostream>
 #include <fstream>

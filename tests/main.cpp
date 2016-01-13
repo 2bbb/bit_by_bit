@@ -15,7 +15,6 @@
  * **** **** **** **** **** **** **** **** */
 
 #include "bit_by_bit.hpp"
-#include "simple_test.hpp"
 
 bbb_test_declaretion(test);
 void reusable_array_test();

@@ -16,12 +16,13 @@
 
 #pragma once
 
-#include "constants.hpp"
-#include "type_utils.hpp"
-#include "lambda_utils.hpp"
-#include "container_utils.hpp"
-#include "reusable_array.hpp"
-#include "thread_utils.hpp"
-#include "math_utils.hpp"
-#include "stop_watch.hpp"
-#include "logger.hpp"
+#include "core/constants.hpp"
+#include "core/type_utils.hpp"
+#include "function/lambda_utils.hpp"
+#include "container/container_utils.hpp"
+#include "container/reusable_array.hpp"
+#include "thread/thread_utils.hpp"
+#include "math/math_utils.hpp"
+#include "misc/stop_watch.hpp"
+#include "misc/logger.hpp"
+#include "misc/simple_test.hpp"
