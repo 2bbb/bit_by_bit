@@ -20,20 +20,20 @@
 bbb_test_declaretion(test);
 void reusable_array_test();
 void byte_array_test();
-void multithread_test(size_t num);
-void range_test();
 bbb_test_declaretion(iterator_delegation);
 void iterator_test();
 bbb_test_declaretion(container_delegation)
+void multithread_test();
+void enumerate_test();
 
 int main(int argc, char *argv[]) {
     bbb_test(test);
     reusable_array_test();
     byte_array_test();
-    multithread_test(4);
-    range_test();
     bbb_test(iterator_delegation);
     bbb_test(container_delegation);
+    multithread_test();
+    enumerate_test();
 }
 
 bbb_test_begin_definition(test)
@@ -132,12 +132,13 @@ void byte_array_test() {
     }
 };
 
-void multithread_test(size_t num) {
-    size_t sum = 0;
+void multithread_test() {
+    const std::size_t num = 4;
+    std::size_t sum = 0;
     bool is_run = true;
     bbb::stop_watch watch;
     watch.start();
-    bbb::multithread::manager manager(num, [&sum, &is_run](size_t index, std::mutex &mutex) {
+    bbb::multithread::manager manager(num, [&sum, &is_run](std::size_t index, std::mutex &mutex) {
         while(is_run) {
             if(mutex.try_lock()) {
                 sum++;
@@ -159,35 +160,36 @@ void multithread_test(size_t num) {
     std::cout << "time: " << watch.getLastRapMilliseconds() << std::endl;
 }
 
-void range_test() {
+void enumerate_test() {
     {
         std::vector<int> vec;
         bbb::for_each(bbb::range(10, 2), [&vec](int x) { vec.push_back(x); });
         bbb::for_each(vec, [](int &x) { x *= 2; });
 
-        for(auto v : bbb::enumerate(vec)) {
-            std::cout << v.index << ", " << v.value << std::endl;
-            v.value *= 2;
+        for(auto &v : bbb::enumerate(vec)) {
+            std::cout << v.index() << ", " << v.value() << std::endl;
+            v.value() *= 2;
         }
         for(auto v : bbb::enumerate(vec)) {
-            std::cout << v.index << ", " << v.value << std::endl;
-        }
-    }
-
-    {
-        const std::vector<int> cvec{1, 2, 3};
-        for(auto v : bbb::enumerate(cvec)) {
-            std::cout << v.index << ", " << v.value << std::endl;
+            std::cout << v.index() << ", " << v.value() << std::endl;
         }
     }
     std::cout << std::endl;
-
-    std::vector<std::string> svec{"a", "hoge", "foo"};
-    for(auto &v : bbb::enumerate(svec)) {
-        std::cout << v.index << ", " << v.value << std::endl;
+    {
+        std::vector<int> cvec{1, 2, 3};
+        for(auto v : bbb::enumerate(cvec)) {
+            std::cout << v.index() << ", " << v.value() << std::endl;
+        }
     }
-    for(const auto &v : bbb::enumerate(svec)) {
-        std::cout << v.index << ", " << v.value << std::endl;
+    std::cout << std::endl;
+    {
+        std::vector<const std::string> svec{"a", "hoge", "foo"};
+//        for (const auto &v : bbb::enumerate(svec)) {
+//            std::cout << v.index() << ", " << v.value() << std::endl;
+//        }
+//        for (const auto &v : bbb::enumerate(svec)) {
+//            std::cout << v.index() << ", " << v.value() << std::endl;
+//        }
     }
 }
 
