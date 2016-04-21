@@ -32,6 +32,9 @@ namespace bbb {
     template <bool b, typename T, typename F>
     using conditional = get_type<std::conditional<b, T, F>>;
 
+	template <typename T, typename U>
+	constexpr bool is_same() { return std::is_same<T, U>::value; };
+
 	template <typename T>
 	constexpr bool is_const() {
 		return std::is_const<T>::value;
