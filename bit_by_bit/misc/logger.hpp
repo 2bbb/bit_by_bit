@@ -32,68 +32,120 @@
 namespace bbb {
     namespace logger {
         namespace style {
+            enum class header {
+                plain = 0,
+                timestamp = 1 << 1
+            };
+            using header_underlying_type = std::underlying_type_t<header>;
+
             enum class separater {
                 plain = 0,
                 csv = 1 << 0,
                 space = 1 << 1
             };
             using separater_underlying_type = std::underlying_type_t<separater>;
-
-            enum class header {
-                plain = 0,
-                timestamp = 1 << 1
-            };
-            using header_underlying_type = std::underlying_type_t<header>;
         }
-        inline style::separater_underlying_type operator&(style::separater lhs, style::separater rhs) { return static_cast<style::separater_underlying_type>(lhs) & static_cast<style::separater_underlying_type>(rhs); }
-        inline style::separater_underlying_type operator|(style::separater lhs, style::separater rhs) { return static_cast<style::separater_underlying_type>(lhs) | static_cast<style::separater_underlying_type>(rhs); }
 
-        inline style::header_underlying_type operator&(style::header lhs, style::header rhs) { return static_cast<style::header_underlying_type>(lhs) & static_cast<style::header_underlying_type>(rhs); }
-        inline style::header_underlying_type operator|(style::header lhs, style::header rhs) { return static_cast<style::header_underlying_type>(lhs) | static_cast<style::header_underlying_type>(rhs); }
+        inline style::separater operator&(style::separater lhs, style::separater rhs) { return static_cast<style::separater>(static_cast<style::separater_underlying_type>(lhs) & static_cast<style::separater_underlying_type>(rhs)); }
+        inline style::separater operator|(style::separater lhs, style::separater rhs) { return static_cast<style::separater>(static_cast<style::separater_underlying_type>(lhs) | static_cast<style::separater_underlying_type>(rhs)); }
+
+        inline style::header operator&(style::header lhs, style::header rhs) { return static_cast<style::header>(static_cast<style::header_underlying_type>(lhs) & static_cast<style::header_underlying_type>(rhs)); }
+        inline style::header operator|(style::header lhs, style::header rhs) { return static_cast<style::header>(static_cast<style::header_underlying_type>(lhs) | static_cast<style::header_underlying_type>(rhs)); }
+
+        struct logger_separate_module;
+
+        struct logger_header_module {
+            logger_header_module(std::ostream *os, logger_separate_module &separate_module, style::header header_style)
+            : os(os)
+            , separate_module(separate_module)
+            , header_style(header_style) {}
+
+            template <typename T>
+            get_type<std::enable_if<!std::is_same<T, std::ostream &(*)(std::ostream &)>::value, logger_separate_module>> &operator<<(const T &t)
+            {
+                header() << t;
+                return separate_module;
+            }
+
+            logger_separate_module &operator<<(std::ostream &(*f)(std::ostream &)) {
+                f(*os);
+                return separate_module;
+            }
+
+            inline std::ostream &header() {
+                timestamp();
+                return *os;
+            }
+
+            inline std::ostream &timestamp() {
+                if((header_style & style::header::timestamp) == style::header::timestamp) {
+                    std::time_t t = std::time(NULL);
+                    std::tm tm = *std::localtime(&t);
+                    *os << std::put_time(&tm, "[%Y/%m/%d %T] ");
+                }
+                return *os;
+            }
+
+        private:
+            logger_separate_module &separate_module;
+            std::ostream *os;
+            style::header header_style;
+        };
+
+        struct logger_separate_module {
+            logger_separate_module(std::ostream *os, style::separater separate_style)
+            : os(os)
+            , separate_style(separate_style) {}
+
+            template <typename T>
+            get_type<std::enable_if<!std::is_same<T, std::ostream &(*)(std::ostream &)>::value, logger_separate_module>> &operator<<(const T &t) {
+                separater() << t;
+                return *this;
+            }
+
+            logger_separate_module &operator<<(std::ostream &(*f)(std::ostream &)) {
+                f(*os);
+                return *this;
+            }
+
+            inline std::ostream &separater() {
+                return *os << (((separate_style & style::separater::csv) == style::separater::csv) ? "," : "") << (((separate_style & style::separater::space) == style::separater::space) ? " " : "");
+            }
+
+            inline void clean() { *os << std::endl; }
+        private:
+            std::ostream *os;
+            style::separater separate_style;
+        };
 
         struct logger_module {
             style::separater separate_style;
             style::header header_style;
             logger_module(std::ostream *os, style::separater separate_style = style::separater::plain, style::header header_style = style::header::plain)
             : os(os)
-            , separate_style(separate_style)
-            , header_style(header_style) {}
+            , separater(os, separate_style)
+            , header(os, separater, header_style) {}
 
             ~logger_module() { if(os != &std::cout) delete os; }
 
             template <typename T>
-            get_type<std::enable_if<!std::is_same<T, std::ostream &(*)(std::ostream &)>::value, logger_module>> &operator<<(const T &t) {
-                *os << t;
-                return *this;
+            logger_separate_module &operator<<(const T &t) {
+                return separater << t;
             }
 
-            logger_module &operator<<(std::ostream &(*f)(std::ostream &)) {
-                f(*os);
+            inline logger_module &head(const std::string &str) {
+                header << str;
                 return *this;
             }
-
-            logger_module *header(const std::string log_level) {
-                timestamp() << log_level << ": ";
-                return this;
-            }
-            logger_module *header(const std::string log_level, const std::string name) {
-                timestamp() << log_level << "[" << name << "]: ";
-                return this;
-            }
-            void cleaning() {
-                *os << "  " << std::endl;
+            inline void clean() {
+                separater.clean();
             }
 
         private:
+            // don't change declare order. initialization order is same to declaration order
             std::ostream *os;
-            inline std::ostream &timestamp() {
-                if(header_style & style::header::timestamp) {
-                    std::time_t t = std::time(NULL);
-                    std::tm tm = *std::localtime(&t);
-                    *os << std::put_time(&tm, "%Y/%m/%d %T ");
-                }
-                return *os;
-            }
+            logger_separate_module separater;
+            logger_header_module header;
         };
 
         class manager {
@@ -123,15 +175,20 @@ namespace bbb {
                 return *(it->second);
             }
 
-            static void add_logger(const std::string &name, std::ostream *os = &std::cout) {
+            static void add_logger(const std::string &name,
+                                   std::ostream *os = &std::cout,
+                                   style::separater separater = get_default_separater_style(),
+                                   style::header header = get_default_header_style())
+            {
                 logger_module_map_t::iterator it = logger_map().find(name);
                 if(it != logger_map().end()) {
                     delete it->second;
-                    it->second = new logger_module(os);
+                    it->second = new logger_module(os, separater, header);
                 } else {
-                    logger_map()[name] = new logger_module(os);
+                    logger_map()[name] = new logger_module(os, separater, header);
                 }
             }
+
             static void remove_logger(const std::string &name) {
                 logger_module_map_t::iterator it = logger_map().find(name);
                 if(it != logger_map().end()) {
@@ -139,31 +196,43 @@ namespace bbb {
                     logger_map().erase(name);
                 }
             }
+
+            static style::header &get_default_header_style() {
+                static style::header head = style::header::plain;
+                return head;
+            }
+
+            static void set_default_header_style(style::header header) {
+                get_default_header_style() = header;
+            }
+
+            static style::separater &get_default_separater_style() {
+                static style::separater sep = style::separater::plain;
+                return sep;
+            }
+
+            static void set_default_separater_style(style::separater separater) {
+                get_default_separater_style() = separater;
+            }
         };
 
         struct base_logger {
             base_logger() = delete;
             base_logger(const std::string &level)
-            : module(manager::default_logger_module().header(level)) {}
+            : module(manager::default_logger_module().head(level + ": ")) {}
             base_logger(const std::string &level, const std::string &name)
-            : module(manager::get_logger_module(name).header(level, name)) {}
+            : module(manager::get_logger_module(name).head(level + "[" + name + "]: ")) {}
             base_logger(const base_logger &logger)
             : module(logger.module) {}
-            virtual ~base_logger() { module->cleaning(); }
+            virtual ~base_logger() { module.clean(); }
 
             template <typename T>
-            base_logger &operator<<(const T &t) {
-                *module << t;
-                return *this;
+            logger_separate_module &operator<<(const T &t) {
+                return module << t;
             };
 
-            base_logger &operator<<(std::ostream &(*f)(std::ostream &)) {
-                module->operator<<(f);
-                return *this;
-            }
-
         private:
-            logger_module *module;
+            logger_module &module;
         };
 
         void add_stdout_logger(const std::string &name) {
@@ -200,3 +269,4 @@ namespace bbb {
     };
     using namespace logger;
 };
+
