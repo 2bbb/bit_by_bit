@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * reusable_array.hpp
+ * tests/container/reusable_array.hpp
  *
  * author: ISHII 2bit
  * mail:   2bit@backspace.tokyo
@@ -16,11 +16,12 @@
 
 #pragma once
 
-#include "container/reusable_array.hpp"
-#include "misc/simple_test.hpp"
+#include <bbb/misc/simple_test.hpp>
 
 #include <cassert>
 #include <iostream>
+
+#include <bbb/container/reusable_array.hpp>
 
 bbb_test_begin_prepare(reusable_array)
 	struct particle {

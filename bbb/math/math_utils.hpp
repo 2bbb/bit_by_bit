@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * math_utils.hpp
+ * bbb/math/math_utils.hpp
  *
  * author: ISHII 2bit
  * mail:   2bit@backspace.tokyo
@@ -16,11 +16,11 @@
 
 #pragma once
 
-#include "../core/constants.hpp"
-#include "../core/type_utils.hpp"
-
 #include <random>
 #include <algorithm>
+
+#include <bbb/core/constants.hpp>
+#include <bbb/core/type_utils.hpp>
 
 namespace bbb {
     namespace random {

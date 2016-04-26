@@ -16,13 +16,13 @@
 
 #pragma once
 
-#include "../core/constants.hpp"
-#include "../core/type_utils.hpp"
-
-#include "./container_utils.hpp"
-#include "./functional_base.hpp"
-
 #include <initializer_list>
+
+#include <bbb/core/constants.hpp>
+#include <bbb/core/type_utils.hpp>
+
+#include <bbb/container/container_utils.hpp>
+#include <bbb/container/functional_base.hpp>
 
 namespace bbb {
     template <typename value_type, typename allocator = std::allocator<value_type>>

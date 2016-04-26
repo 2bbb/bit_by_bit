@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit test
- * container_delegation.hpp
+ * tests/container/container_delegation.hpp
  *
  * author: ISHII 2bit
  * mail:   2bit@backspace.tokyo
@@ -16,8 +16,9 @@
 
 #pragma once
 
-#include "container/container_delegation.hpp"
-#include "misc/simple_test.hpp"
+#include <bbb/misc/simple_test.hpp>
+
+#include <bbb/container/container_delegation.hpp>
 
 bbb_test_declaretion(container_delegation)
 

@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * simple_test.hpp
+ * tests/misc/simple_test.hpp
  *
  * author: ISHII 2bit
  * mail:   2bit@backspace.tokyo
@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include "misc/simple_test.hpp"
+#include <bbb/misc/simple_test.hpp>
 
 bbb_test_begin_definition(test)
         bbb_assert(true);

@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * constants.hpp
+ * bbb/core/constants.hpp
  *
  * author: ISHII 2bit
  * mail:   2bit@backspace.tokyo

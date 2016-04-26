@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * reusable_array.hpp
+ * bbb/container/reusable_array.hpp
  *
  * author: ISHII 2bit
  * mail:   2bit@backspace.tokyo
@@ -16,8 +16,8 @@
 
 #pragma once
 
-#include "../core/constants.hpp"
-#include "../core/type_utils.hpp"
+#include <bbb/core/constants.hpp>
+#include <bbb/core/type_utils.hpp>
 
 #include <memory>
 #include <array>

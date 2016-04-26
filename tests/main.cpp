@@ -14,7 +14,7 @@
  *
  * **** **** **** **** **** **** **** **** */
 
-#include "bit_by_bit.hpp"
+#include <bbb/bit_by_bit.hpp>
 
 #include "./core/constants.hpp"
 #include "./core/type_utils.hpp"
@@ -31,7 +31,7 @@
 
 #include "./math/math_utils.hpp"
 
-#include "./misc/dirty.hpp"
+#include "./dirty/reference.hpp"
 #include "./misc/stop_watch.hpp"
 #include "./misc/logger.hpp"
 #include "./misc/simple_test.hpp"

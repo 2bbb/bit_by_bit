@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * lambda_utils.hpp
+ * tests/function/lambda_utils.hpp
  *
  * author: ISHII 2bit
  * mail:   2bit@backspace.tokyo
@@ -16,9 +16,9 @@
 
 #pragma once
 
-#include "function/lambda_utils.hpp"
-#include "misc/simple_test.hpp"
-#include <iostream>
+#include <bbb/misc/simple_test.hpp>
+
+#include <bbb/function/lambda_utils.hpp>
 
 bbb_test_begin_prepare(lambda)
     struct Object {

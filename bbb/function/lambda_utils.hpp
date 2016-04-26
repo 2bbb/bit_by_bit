@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * lambda_utils.hpp
+ * bbb/function/lambda_utils.hpp
  *
  * author: ISHII 2bit
  * mail:   2bit@backspace.tokyo
@@ -16,10 +16,10 @@
 
 #pragma once
 
-#include "../core/constants.hpp"
-#include "../core/type_utils.hpp"
-
 #include <functional>
+
+#include <bbb/core/constants.hpp>
+#include <bbb/core/type_utils.hpp>
 
 namespace bbb {
     namespace curry {

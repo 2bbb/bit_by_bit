@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * functional_base.hpp
+ * bbb/container/functional_base.hpp
  *
  * author: ISHII 2bit
  * mail:   2bit@backspace.tokyo
@@ -16,11 +16,11 @@
 
 #pragma once
 
-#include "../core/constants.hpp"
-#include "../core/type_utils.hpp"
+#include <bbb/core/constants.hpp>
+#include <bbb/core/type_utils.hpp>
 
-#include "./container_utils.hpp"
-#include "./iterator_utils.hpp"
+#include <bbb/container/container_utils.hpp>
+#include <bbb/container/iterator_utils.hpp>
 
 namespace bbb {
     template <typename container_type, typename inner_container_t>

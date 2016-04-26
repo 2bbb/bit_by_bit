@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * iterator_utils.hpp
+ * tests/container/iterator_utils.hpp
  *
  * author: ISHII 2bit
  * mail:   2bit@backspace.tokyo
@@ -16,8 +16,7 @@
 
 #pragma once
 
-#include "container/iterator_utils.hpp"
-#include "misc/simple_test.hpp"
+#include <bbb/misc/simple_test.hpp>
 
 #include <iostream>
 #include <vector>
@@ -26,6 +25,8 @@
 #include <list>
 #include <map>
 #include <string>
+
+#include <bbb/container/iterator_utils.hpp>
 
 bbb_test_begin_prepare(iterator_delegation)
     struct vectroid

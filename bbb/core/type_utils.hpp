@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * type_utils.hpp
+ * bbb/core/type_utils.hpp
  *
  * author: ISHII 2bit
  * mail:   2bit@backspace.tokyo
@@ -16,11 +16,11 @@
 
 #pragma once
 
-#include "constants.hpp"
-
 #include <type_traits>
 #include <tuple>
 #include <functional>
+
+#include <bbb/core/constants.hpp>
 
 namespace bbb {
 	template <typename T>

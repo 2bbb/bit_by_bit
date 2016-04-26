@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * logger.hpp
+ * tests/misc/logger.hpp
  *
  * author: ISHII 2bit
  * mail:   2bit@backspace.tokyo
@@ -16,8 +16,9 @@
 
 #pragma once
 
-#include "misc/logger.hpp"
-#include "misc/simple_test.hpp"
+#include <bbb/misc/simple_test.hpp>
+
+#include <bbb/misc/logger.hpp>
 
 bbb_test_begin_definition(logger)
         bbb::logger::trace() << "begin logger_test";

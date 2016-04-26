@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * container_utils.hpp
+ * tests/container/container_utils.hpp
  *
  * author: ISHII 2bit
  * mail:   2bit@backspace.tokyo
@@ -16,7 +16,9 @@
 
 #pragma once
 
-#include "container/container_utils.hpp"
+#include <bbb/misc/simple_test.hpp>
+
+#include <bbb/container/container_utils.hpp>
 
 bbb_test_begin_definition(byte_array)
 

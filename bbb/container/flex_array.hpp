@@ -1,11 +1,23 @@
-//
-// Created by ISHII 2bit on 2016/01/14.
-//
+/* **** **** **** **** **** **** **** **** *
+ *
+ *         _/        _/        _/
+ *        _/_/_/    _/_/_/    _/_/_/
+ *       _/    _/  _/    _/  _/    _/
+ *      _/    _/  _/    _/  _/    _/
+ *     _/_/_/    _/_/_/    _/_/_/
+ *
+ * bit by bit
+ * bbb/container/flex_array.hpp
+ *
+ * author: ISHII 2bit
+ * mail:   2bit@backspace.tokyo
+ *
+ * **** **** **** **** **** **** **** **** */
 
 #pragma once
 
-#include "../core/constants.hpp"
-#include "../core/type_utils.hpp"
+#include <bbb/core/constants.hpp>
+#include <bbb/core/type_utils.hpp>
 
 namespace bbb {
     template <std::size_t size, std::size_t ... sizes>

@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * thread_utils.hpp
+ * bbb/thread/thread_utils.hpp
  *
  * author: ISHII 2bit
  * mail:   2bit@backspace.tokyo
@@ -16,9 +16,6 @@
 
 #pragma once
 
-#include "../core/constants.hpp"
-#include "../core/type_utils.hpp"
-
 #include <thread>
 #include <mutex>
 
@@ -26,6 +23,9 @@
 #include <functional>
 
 #include <vector>
+
+#include <bbb/core/constants.hpp>
+#include <bbb/core/type_utils.hpp>
 
 namespace bbb {
     void sleep_seconds(double sec) {

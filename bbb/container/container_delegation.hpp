@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * container_delegation.hpp
+ * bbb/container/container_delegation.hpp
  *
  * author: ISHII 2bit
  * mail:   2bit@backspace.tokyo
@@ -16,14 +16,14 @@
 
 #pragma once
 
-#include "../core/constants.hpp"
-#include "../core/type_utils.hpp"
-#include "iterator_utils.hpp"
-
 #include <array>
 #include <vector>
 #include <memory>
 #include <algorithm>
+
+#include <bbb/core/constants.hpp>
+#include <bbb/core/type_utils.hpp>
+#include <bbb/container/iterator_utils.hpp>
 
 namespace bbb {
     namespace container_delegate {
