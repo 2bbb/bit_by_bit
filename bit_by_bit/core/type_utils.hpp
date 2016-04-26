@@ -73,39 +73,44 @@ namespace bbb {
 		T
 	>>;
 
+	template <std::size_t index, typename ... arguments>
+	using type_at = get_type<std::tuple_element<index, std::tuple<arguments ...>>>;
+
 	namespace function_traits {
+		namespace detail {
+			template <typename ret, typename ... arguments>
+			struct function_info {
+				static constexpr std::size_t arity = sizeof...(arguments);
+				using result_type = ret;
+				using arguments_types_tuple = std::tuple<arguments ...>;
+				template <std::size_t index>
+				using argument_type = type_at<index, arguments ...>;
+				using function_type = std::function<ret(arguments ...)>;
+			};
+		};
+
 		template <typename T>
 		struct function_info : public function_info<decltype(&T::operator())> {};
 
 		template <typename class_type, typename ret, typename ... arguments>
-		struct function_info<ret(class_type::*)(arguments ...) const> {
-			static constexpr std::size_t arity = sizeof...(arguments);
-			using result_type = ret;
-			using arguments_types_tuple = std::tuple<arguments ...>;
-			template <std::size_t index>
-			using argument_type = get_type<std::tuple_element<index, arguments_types_tuple>>;
-			using function_type = std::function<ret(arguments ...)>;
-		};
+		struct function_info<ret(class_type::*)(arguments ...) const>
+		: detail::function_info<ret, arguments ...> {};
 
 		template <typename class_type, typename ret, typename ... arguments>
-		struct function_info<ret(class_type::*)(arguments ...)> {
-			static constexpr std::size_t arity = sizeof...(arguments);
-			using result_type = ret;
-			using arguments_types_tuple = std::tuple<arguments ...>;
-			template <std::size_t index>
-			using argument_type = get_type<std::tuple_element<index, arguments_types_tuple>>;
-			using function_type = std::function<ret(arguments ...)>;
-		};
+		struct function_info<ret(class_type::*)(arguments ...)>
+		: detail::function_info<ret, arguments ...> {};
 
 		template <typename ret, typename ... arguments>
-		struct function_info<ret(*)(arguments ...)> {
-			static constexpr std::size_t arity = sizeof...(arguments);
-			using result_type = ret;
-			using arguments_types_tuple = std::tuple<arguments ...>;
-			template <std::size_t index>
-			using argument_type = get_type<std::tuple_element<index, arguments_types_tuple>>;
-			using function_type = std::function<ret(arguments ...)>;
-		};
+		struct function_info<ret(*)(arguments ...)>
+		: detail::function_info<ret, arguments ...> {};
+
+		template <typename ret, typename ... arguments>
+		struct function_info<ret(arguments ...)>
+		: detail::function_info<ret, arguments ...> {};
+
+		template <typename ret, typename ... arguments>
+		struct function_info<std::function<ret(arguments ...)>>
+		: detail::function_info<ret, arguments ...> {};
 
 		template<typename T>
 		using result_type = typename function_info<T>::result_type;
