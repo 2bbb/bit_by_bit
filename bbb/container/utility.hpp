@@ -16,14 +16,14 @@
 
 #pragma once
 
-#include "../core/constants.hpp"
-#include "../core/type_utils.hpp"
-#include "iterator_utils.hpp"
-#include "container_delegation.hpp"
-
 #include <vector>
 #include <memory>
 #include <algorithm>
+
+#include <bbb/core/constants.hpp>
+#include <bbb/core/type_utils.hpp>
+#include <bbb/container/iterator_utils.hpp>
+#include <bbb/container/delegation.hpp>
 
 namespace bbb {
 	template <typename T>

@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * bbb/container/container_delegation.hpp
+ * bbb/container/delegation.hpp
  *
  * author: ISHII 2bit
  * mail:   2bit@backspace.tokyo

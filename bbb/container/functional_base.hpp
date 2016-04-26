@@ -19,7 +19,7 @@
 #include <bbb/core/constants.hpp>
 #include <bbb/core/type_utils.hpp>
 
-#include <bbb/container/container_utils.hpp>
+#include <bbb/container/utility.hpp>
 #include <bbb/container/iterator_utils.hpp>
 
 namespace bbb {

@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * main.cpp
+ * tests/main.cpp
  *
  * author: ISHII 2bit
  * mail:   2bit@backspace.tokyo
@@ -19,8 +19,8 @@
 #include "./core/constants.hpp"
 #include "./core/type_utils.hpp"
 
-#include "./container/container_utils.hpp"
-#include "./container/container_delegation.hpp"
+#include "./container/utility.hpp"
+#include "./container/delegation.hpp"
 #include "./container/iterator_utils.hpp"
 #include "./container/reusable_array.hpp"
 #include "./container/array.hpp"

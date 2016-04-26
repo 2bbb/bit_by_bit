@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * tests/container/container_utils.hpp
+ * tests/container/utility.hpp
  *
  * author: ISHII 2bit
  * mail:   2bit@backspace.tokyo
@@ -18,7 +18,7 @@
 
 #include <bbb/misc/simple_test.hpp>
 
-#include <bbb/container/container_utils.hpp>
+#include <bbb/container/utility.hpp>
 
 bbb_test_begin_definition(byte_array)
 
