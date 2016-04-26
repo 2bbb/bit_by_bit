@@ -75,4 +75,10 @@ namespace bbb {
 
     template <std::size_t index, typename ... arguments>
     using type_at = get_type<std::tuple_element<index, std::tuple<arguments ...>>>;
+
+    template <bool condition, template <typename ...> class t, template <typename ...> class f>
+    struct template_conditional {
+        template <typename ... arguments>
+        using type = get_type<std::conditional<condition, t<arguments ...>, f<arguments ...>>>;
+    };
 };

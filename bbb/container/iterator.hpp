@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * bbb/container/container.hpp
+ * bbb/container/iterator.hpp
  *
  * author: ISHII 2bit
  * mail:   2bit@backspace.tokyo
@@ -16,15 +16,14 @@
 
 #pragma once
 
-#include <bbb/container/utility.hpp>
-#include <bbb/container/delegation.hpp>
-#include <bbb/container/functional_base.hpp>
-#include <bbb/container/iterator.hpp>
-#include <bbb/container/array.hpp>
-#include <bbb/container/flex_array.hpp>
-#include <bbb/container/byte_array.hpp>
-#include <bbb/container/reusable_array.hpp>
+#include <bbb/container/iterator/traits.hpp>
+#include <bbb/container/iterator/providers.hpp>
+#include <bbb/container/iterator/value_type_provider.hpp>
+#include <bbb/container/iterator/inserter_provider.hpp>
+#include <bbb/container/iterator/delegation.hpp>
 
 namespace bbb {
-    using namespace container;
+    namespace container {
+        using namespace iterator;
+    };
 };

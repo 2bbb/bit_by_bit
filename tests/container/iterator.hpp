@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * tests/container/iterator_utils.hpp
+ * tests/container/iterator.hpp
  *
  * author: ISHII 2bit
  * mail:   2bit@backspace.tokyo
@@ -26,7 +26,7 @@
 #include <map>
 #include <string>
 
-#include <bbb/container/iterator_utils.hpp>
+#include <bbb/container/iterator.hpp>
 
 bbb_test_begin_prepare(iterator_delegation)
     struct vectroid

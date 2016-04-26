@@ -22,10 +22,10 @@
 #include <algorithm>
 
 #include <bbb/core.hpp>
-#include <bbb/container/iterator_utils.hpp>
+#include <bbb/container/iterator.hpp>
 
 namespace bbb {
-    namespace container_delegate {
+    namespace container {
         template <typename container>
         struct container_delegation;
 
@@ -174,6 +174,4 @@ namespace bbb {
             , body(body) {}
         };
     };
-
-    using namespace container_delegate;
 };
