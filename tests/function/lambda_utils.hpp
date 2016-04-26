@@ -16,6 +16,10 @@
 
 #pragma once
 
+#include "function/lambda_utils.hpp"
+#include "misc/simple_test.hpp"
+#include <iostream>
+
 bbb_test_begin_prepare(lambda)
     struct Object {
         int get() {
@@ -40,5 +44,4 @@ bbb_test_begin_definition(lambda)
             [](int x, float y) { return x + y; },
             std::make_tuple(1, 1.2f)
         );
-    }
 bbb_test_end_definition(lambda)
