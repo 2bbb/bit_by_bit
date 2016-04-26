@@ -26,8 +26,7 @@
 #include <ctime>
 #include <iomanip>
 
-#include <bbb/core/constants.hpp>
-#include <bbb/core/type_utils.hpp>
+#include <bbb/core.hpp>
 
 namespace bbb {
     namespace logger {

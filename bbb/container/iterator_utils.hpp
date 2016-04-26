@@ -18,8 +18,7 @@
 
 #include <iterator>
 
-#include <bbb/core/constants.hpp>
-#include <bbb/core/type_utils.hpp>
+#include <bbb/core.hpp>
 
 namespace bbb {
 #pragma mark iterator_utils

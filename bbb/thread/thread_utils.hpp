@@ -24,8 +24,7 @@
 
 #include <vector>
 
-#include <bbb/core/constants.hpp>
-#include <bbb/core/type_utils.hpp>
+#include <bbb/core.hpp>
 
 namespace bbb {
     void sleep_seconds(double sec) {

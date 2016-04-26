@@ -21,8 +21,7 @@
 #include <memory>
 #include <algorithm>
 
-#include <bbb/core/constants.hpp>
-#include <bbb/core/type_utils.hpp>
+#include <bbb/core.hpp>
 #include <bbb/container/iterator_utils.hpp>
 
 namespace bbb {

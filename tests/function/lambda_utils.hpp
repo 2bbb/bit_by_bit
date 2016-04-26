@@ -18,6 +18,7 @@
 
 #include <bbb/misc/simple_test.hpp>
 
+#include <bbb/function/utility.hpp>
 #include <bbb/function/lambda_utils.hpp>
 
 bbb_test_begin_prepare(lambda)

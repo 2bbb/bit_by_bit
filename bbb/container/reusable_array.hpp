@@ -16,12 +16,11 @@
 
 #pragma once
 
-#include <bbb/core/constants.hpp>
-#include <bbb/core/type_utils.hpp>
-
 #include <memory>
 #include <array>
 #include <iterator>
+
+#include <bbb/core.hpp>
 
 namespace bbb {
 	template <typename T, std::size_t s>

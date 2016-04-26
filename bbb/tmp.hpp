@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * bbb/core.hpp
+ * bbb/tmp.hpp
  *
  * author: ISHII 2bit
  * mail:   2bit@backspace.tokyo
@@ -16,5 +16,9 @@
 
 #pragma once
 
-#include <bbb/core/constants.hpp>
-#include <bbb/core/type.hpp>
+#include <bbb/tmp/function_info.hpp>
+#include <bbb/tmp/sequence.hpp>
+
+namespace bbb {
+    using namespace tmp;
+}

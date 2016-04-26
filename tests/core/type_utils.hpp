@@ -18,4 +18,4 @@
 
 #include <bbb/misc/simple_test.hpp>
 
-#include <bbb/core/type_utils.hpp>
+#include <bbb/core/type.hpp>

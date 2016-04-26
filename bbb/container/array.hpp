@@ -18,8 +18,7 @@
 
 #include <initializer_list>
 
-#include <bbb/core/constants.hpp>
-#include <bbb/core/type_utils.hpp>
+#include <bbb/core.hpp>
 
 #include <bbb/container/utility.hpp>
 #include <bbb/container/functional_base.hpp>
