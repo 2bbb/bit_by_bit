@@ -294,8 +294,9 @@ namespace bbb {
         , front_inserter_provider<container>
         , back_inserter_provider<container>
         , value_type_provider<container> {
-        protected:
             using delegation = iterator_delegation<container>;
+        protected:
+            iterator_delegation() = delete;
             iterator_delegation(container &body)
             : iterator_providers<container>::forward_iterator_provider(body)
             , iterator_providers<container>::reverse_iterator_provider(body)
