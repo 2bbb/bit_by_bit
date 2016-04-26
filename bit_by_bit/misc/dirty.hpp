@@ -1,3 +1,19 @@
+/* **** **** **** **** **** **** **** **** *
+ *
+ *         _/        _/        _/
+ *        _/_/_/    _/_/_/    _/_/_/
+ *       _/    _/  _/    _/  _/    _/
+ *      _/    _/  _/    _/  _/    _/
+ *     _/_/_/    _/_/_/    _/_/_/
+ *
+ * bit by bit
+ * dirty.hpp
+ *
+ * author: ISHII 2bit
+ * mail:   2bit@backspace.tokyo
+ *
+ * **** **** **** **** **** **** **** **** */
+
 namespace bbb {
     namespace dirty_reference {
         template<typename type>

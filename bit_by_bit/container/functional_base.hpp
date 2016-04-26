@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * iterator_utils.hpp
+ * functional_base.hpp
  *
  * author: ISHII 2bit
  * mail:   2bit@backspace.tokyo
