@@ -20,18 +20,6 @@
 
 #include <bbb/container/utility.hpp>
 
-bbb_test_begin_definition(byte_array)
-
-    bbb::byte_array<int> barr{0x7FFFFFFF};
-    for(auto i = 0; i < barr.size(); i++) {
-        std::cout << (int)barr[i] << std::endl;
-    }
-    for(auto &b : barr) {
-        std::cout << (int)b << std::endl;
-    }
-
-bbb_test_end_definition(byte_array)
-
 bbb_test_begin_definition(enumerate)
     {
         std::vector<int> vec;

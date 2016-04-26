@@ -22,8 +22,9 @@
 #include "./container/utility.hpp"
 #include "./container/delegation.hpp"
 #include "./container/iterator_utils.hpp"
-#include "./container/reusable_array.hpp"
 #include "./container/array.hpp"
+#include "./container/reusable_array.hpp"
+#include "./container/byte_array.hpp"
 
 #include "./function/lambda_utils.hpp"
 
