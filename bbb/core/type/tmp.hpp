@@ -16,8 +16,8 @@
 
 #pragma once
 
-#include <bbb/tmp/function_info.hpp>
-#include <bbb/tmp/sequence.hpp>
+#include <bbb/core/type/tmp/function_info.hpp>
+#include <bbb/core/type/tmp/sequence.hpp>
 
 namespace bbb {
     using namespace tmp;

@@ -33,6 +33,7 @@ namespace bbb {
             } raw_val;
 
 #pragma mark byte_array : constructor & operator=
+
             byte_array()
                 : iterator_delegation<std::array<std::uint8_t, sizeof(T)>>(raw_val.bytes) {}
 
