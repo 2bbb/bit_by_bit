@@ -19,38 +19,33 @@ namespace bbb {
         namespace reference {
             template<typename type>
             struct quasi_reference {
-                using value_type = type;
-                value_type default_value;
+                using value_t = type;
+                value_t default_value;
 
                 quasi_reference()
                     : default_value() { clear(); }
 
-                quasi_reference(value_type &value)
+                quasi_reference(value_t &value)
                     : v(new ref(value)), default_value() { }
 
-                quasi_reference(value_type &value, const value_type &default_value)
+                quasi_reference(value_t &value, const value_t &default_value)
                     : v(new ref(value)), default_value(default_value) { }
 
-                quasi_reference &operator=(value_type &value) {
+                quasi_reference &operator=(value_t &value) {
                     v = std::make_shared<ref>(value);
                     return *this;
                 }
 
-                operator value_type &() { return v->get(); }
-
-                operator const value_type &() const { return v->get(); }
-
+                operator value_t &() { return v->get(); }
+                operator const value_t &() const { return v->get(); }
                 inline void clear() { *this = default_value; }
 
             private:
                 struct ref {
-                    value_type &v;
-
-                    ref(value_type &v) : v(v) { }
-
-                    value_type &get() { return v; }
-
-                    const value_type &get() const { return v; }
+                    value_t &v;
+                    ref(value_t &v) : v(v) { }
+                    value_t &get() { return v; }
+                    const value_t &get() const { return v; }
                 };
 
                 std::shared_ptr <ref> v;
