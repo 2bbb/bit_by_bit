@@ -32,7 +32,7 @@ namespace bbb {
         protected:
             using functional = functional_base;
             functional_base(inner_container_t &body)
-                : iterator_delegation<typename container_type<value_type, others ...>::inner_container_t>(body) {};
+                : iterator_delegation<inner_container_t>(body) {};
         public:
             using value_t = value_type;
             using container_t = container_type<value_t, others ...>;
