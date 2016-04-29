@@ -134,7 +134,7 @@ namespace bbb {
             }
 
             template<typename lambda>
-            auto destructive_eacheach(lambda &f) const
+            auto destructive_each(lambda &f) const
             -> enable_if<has_call_operator<lambda>::value> {
                 destructive_eacheach(static_cast<typename function_info<lambda>::function_type>(f));
             }
