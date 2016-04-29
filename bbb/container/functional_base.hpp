@@ -84,7 +84,7 @@ namespace bbb {
             template<typename lambda>
             auto filter(lambda &f) const
             -> enable_if<has_call_operator<lambda>::value, container_t> {
-                filter(static_cast<typename function_info<lambda>::function_type>(f));
+                filter(static_cast<typename function_traits<lambda>::function_type>(f));
             }
 
 #pragma mark each
@@ -110,7 +110,7 @@ namespace bbb {
             template<typename lambda>
             auto each(lambda &f) const
             -> enable_if<has_call_operator<lambda>::value> {
-                each(static_cast<typename function_info<lambda>::function_type>(f));
+                each(static_cast<typename function_traits<lambda>::function_type>(f));
             }
 
 #pragma mark destructive_each
@@ -136,7 +136,7 @@ namespace bbb {
             template<typename lambda>
             auto destructive_each(lambda &f) const
             -> enable_if<has_call_operator<lambda>::value> {
-                destructive_eacheach(static_cast<typename function_info<lambda>::function_type>(f));
+                destructive_eacheach(static_cast<typename function_traits<lambda>::function_type>(f));
             }
 
 #pragma mark map
@@ -175,9 +175,9 @@ namespace bbb {
 
             template<typename lambda>
             auto map(lambda f) const
-            -> decltype(map(static_cast<typename function_info<lambda>::function_type>(f)))
+            -> decltype(map(static_cast<typename function_traits<lambda>::function_type>(f)))
             {
-                return map(static_cast<typename function_info<lambda>::function_type>(f));
+                return map(static_cast<typename function_traits<lambda>::function_type>(f));
             }
 
 #pragma mark reduce (foldl)
@@ -254,10 +254,10 @@ namespace bbb {
                 return result;
             }
 
-            template<typename lambda, typename result_t = typename function_info<lambda>::result_type>
+            template<typename lambda, typename result_t = typename function_traits<lambda>::result_type>
             result_t reduce(lambda f, result_t &&initial_value = result_t()) const
             {
-                return reduce(static_cast<typename function_info<lambda>::function_type>(f), std::move(initial_value));
+                return reduce(static_cast<typename function_traits<lambda>::function_type>(f), std::move(initial_value));
             }
 
 #pragma mark foldr
@@ -324,13 +324,13 @@ namespace bbb {
             template<typename result_t, typename lambda>
             result_t foldr(lambda f, result_t &&initial_value = result_t()) const
             {
-                return foldr(static_cast<typename function_info<lambda>::function_type>(f), std::move(initial_value));
+                return foldr(static_cast<typename function_traits<lambda>::function_type>(f), std::move(initial_value));
             }
 
-            template<typename lambda, typename result_t = typename function_info<lambda>::result_type>
+            template<typename lambda, typename result_t = typename function_traits<lambda>::result_type>
             result_t foldr(lambda f, result_t initial_value = result_t()) const
             {
-                return foldr(static_cast<typename function_info<lambda>::function_type>(f), std::move(initial_value));
+                return foldr(static_cast<typename function_traits<lambda>::function_type>(f), std::move(initial_value));
             }
         };
     };

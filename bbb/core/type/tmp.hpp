@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include <bbb/core/type/tmp/function_info.hpp>
+#include <bbb/core/type/tmp/function_traits.hpp>
 #include <bbb/core/type/tmp/sequence.hpp>
 
 namespace bbb {

@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * bbb/tmp/function_info.hpp
+ * bbb/tmp/function_traits.hpp
  *
  * author: ISHII 2bit
  * mail:   2bit@backspace.tokyo
@@ -24,10 +24,10 @@
 
 namespace bbb {
     namespace tmp {
-        namespace function_traits {
+        namespace function_info {
             namespace detail {
                 template <typename ret, typename ... arguments>
-                struct function_info {
+                struct function_traits {
                     static constexpr std::size_t arity = sizeof...(arguments);
                     using result_type = ret;
                     using arguments_types_tuple = std::tuple<arguments ...>;
@@ -38,40 +38,40 @@ namespace bbb {
             };
 
             template <typename T>
-            struct function_info : public function_info<decltype(&T::operator())> {};
+            struct function_traits : public function_traits<decltype(&T::operator())> {};
 
             template <typename class_type, typename ret, typename ... arguments>
-            struct function_info<ret(class_type::*)(arguments ...) const>
-                : detail::function_info<ret, arguments ...> {};
+            struct function_traits<ret(class_type::*)(arguments ...) const>
+                : detail::function_traits<ret, arguments ...> {};
 
             template <typename class_type, typename ret, typename ... arguments>
-            struct function_info<ret(class_type::*)(arguments ...)>
-                : detail::function_info<ret, arguments ...> {};
+            struct function_traits<ret(class_type::*)(arguments ...)>
+                : detail::function_traits<ret, arguments ...> {};
 
             template <typename ret, typename ... arguments>
-            struct function_info<ret(*)(arguments ...)>
-                : detail::function_info<ret, arguments ...> {};
+            struct function_traits<ret(*)(arguments ...)>
+                : detail::function_traits<ret, arguments ...> {};
 
             template <typename ret, typename ... arguments>
-            struct function_info<ret(arguments ...)>
-                : detail::function_info<ret, arguments ...> {};
+            struct function_traits<ret(arguments ...)>
+                : detail::function_traits<ret, arguments ...> {};
 
             template <typename ret, typename ... arguments>
-            struct function_info<std::function<ret(arguments ...)>>
-                : detail::function_info<ret, arguments ...> {};
+            struct function_traits<std::function<ret(arguments ...)>>
+                : detail::function_traits<ret, arguments ...> {};
 
             template<typename T>
-            using result_type = typename function_info<T>::result_type;
+            using result_type = typename function_traits<T>::result_type;
 
             template<typename T>
-            using arguments_types_tuple = typename function_info<T>::arguments_types_tuple;
+            using arguments_types_tuple = typename function_traits<T>::arguments_types_tuple;
 
             template<typename T, std::size_t index>
-            using argument_type = typename function_info<T>::template argument_type<index>;
+            using argument_type = typename function_traits<T>::template argument_type<index>;
 
             template<typename T>
             struct arity {
-                static constexpr std::size_t value = function_info<T>::arity;
+                static constexpr std::size_t value = function_traits<T>::arity;
             };
 
             template <typename patient>
@@ -88,6 +88,6 @@ namespace bbb {
                 return std::is_function<patient>::value || has_call_operator<patient>::value;
             };
         };
-        using namespace function_traits;
+        using namespace function_info;
     };
 };
