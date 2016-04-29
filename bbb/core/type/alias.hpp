@@ -19,7 +19,7 @@
 #include <bbb/core/type/utility.hpp>
 
 namespace bbb {
-    namespace tmp {
+    namespace aliases {
         template <typename> struct alias;
 
         namespace detail {

@@ -17,4 +17,6 @@
 #pragma once
 
 #include <bbb/core/type/utility.hpp>
-#include <bbb/core/type/tmp.hpp>
+#include <bbb/core/type/alias.hpp>
+#include <bbb/core/type/sequence.hpp>
+#include <bbb/core/type/function_traits.hpp>
