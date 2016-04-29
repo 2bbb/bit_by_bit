@@ -20,7 +20,7 @@
 #include <tuple>
 #include <functional>
 
-#include <bbb/core/type.hpp>
+#include <bbb/core/type/utility.hpp>
 
 namespace bbb {
     namespace tmp {

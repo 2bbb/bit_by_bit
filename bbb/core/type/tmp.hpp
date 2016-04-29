@@ -16,9 +16,10 @@
 
 #pragma once
 
+#include <bbb/core/type/tmp/alias.hpp>
 #include <bbb/core/type/tmp/function_traits.hpp>
 #include <bbb/core/type/tmp/sequence.hpp>
 
 namespace bbb {
     using namespace tmp;
-}
+};
