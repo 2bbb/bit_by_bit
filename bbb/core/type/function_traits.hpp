@@ -33,6 +33,10 @@ namespace bbb {
                 template <std::size_t index>
                 using argument_type = type_at<index, arguments ...>;
                 using function_type = std::function<ret(arguments ...)>;
+                template <typename function_t>
+                static constexpr function_type cast(function_t f) {
+                    return static_cast<function_type>(f);
+                }
             };
         };
 

@@ -34,7 +34,7 @@ namespace bbb {
             }
             template <typename function_t, typename ... arguments>
             typename function_traits<function_t>::result_type apply(function_t f, std::tuple<arguments ...> t) {
-                return detail::apply(static_cast<typename function_traits<function_t>::function_type>(f), t, get_type<make_index_sequence<function_traits<function_t>::arity>>());
+                return detail::apply(function_traits<function_t>::cast(f), t, get_type<make_index_sequence<function_traits<function_t>::arity>>());
             }
         };
         using namespace utility;
