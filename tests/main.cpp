@@ -26,7 +26,7 @@
 #include "./container/reusable_array.hpp"
 #include "./container/byte_array.hpp"
 
-#include "./function/lambda_utils.hpp"
+#include "./function/lambda_symbol.hpp"
 
 #include "./thread/thread_utils.hpp"
 
@@ -51,5 +51,5 @@ int main(int argc, char *argv[]) {
     bbb_test(enumerate);
 
     bbb_test(multithread);
-    bbb_test(lambda);
+    bbb_test(lambda_symbol);
 }

@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * bbb/function/utility.hpp
+ * bbb/function/function.hpp
  *
  * author: ISHII 2bit
  * mail:   2bit@backspace.tokyo
@@ -16,10 +16,11 @@
 
 #pragma once
 
-#include <bbb/function/utility/apply.hpp>
+#include <bbb/core.hpp>
+
+#include <bbb/function/utility.hpp>
+#include <bbb/function/lambda_symbol.hpp>
 
 namespace bbb {
-    namespace function {
-        using namespace utility;
-    };
+    using namespace function;
 };

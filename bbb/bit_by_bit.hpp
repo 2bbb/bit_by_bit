@@ -19,7 +19,7 @@
 #include <bbb/core.hpp>
 #include <bbb/container.hpp>
 
-#include <bbb/function/lambda_utils.hpp>
+#include <bbb/function/function.hpp>
 
 #include <bbb/thread/thread_utils.hpp>
 
