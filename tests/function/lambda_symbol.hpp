@@ -34,22 +34,27 @@ bbb_test_end_prepare(lambda_symbol)
 bbb_test_begin_definition(lambda_symbol)
     bbb_use_lambda_symbol(_);
 
+    bbb_assert(g(2 + _) == 6);
+    bbb_assert((2 << _)(3) == 2 << 3);
+    bbb_assert((2 + _)(2) == 4);
+    bbb_assert((_ == 2)(2));
+    bbb_assert(!(_ == 2)(3));
+    bbb_assert((_ == "x")("x"));
+    bbb_assert(!(_ == "x")("y"));
+
     std::function<bool(int)> f = (2 == _);
-    std::cout << g(2 + _) << std::endl;
-    std::cout << (2 << _)(3) << std::endl;
-    std::cout << (2 + _)(2) << std::endl;
-    std::cout << (_ == 2)(2) << std::endl;
-    std::cout << (_ == "x")("x") << std::endl;
+    bbb_assert(f(2));
 
     std::vector<int> vec = {{1, 2, 3, 4}};
-    std::cout << (_[vec])(0) << std::endl;
-    std::cout << (_([](int x) { return x; }))(4) << std::endl;
+    bbb_assert((_[vec])(0) == 1);
+    bbb_assert((_([](int x) { return x + 1; }))(4) == 5);
 
     int sum = 0;
     std::for_each(vec.begin(), vec.end(), sum += _);
-    std::cout << sum << std::endl;
+    bbb_assert(sum == 10);
 
     std::vector<int> filtered;
     std::copy_if(vec.begin(), vec.end(), std::back_inserter(filtered), 2 < _);
-    std::for_each(filtered.begin(), filtered.end(), [](int x) { std::cout << x << std::endl; });
+    bbb_assert(filtered[0] == 3);
+    bbb_assert(filtered[1] == 4);
 bbb_test_end_definition(lambda_symbol)
