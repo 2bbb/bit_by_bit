@@ -27,6 +27,7 @@
 #include "./container/byte_array.hpp"
 
 #include "./function/lambda_symbol.hpp"
+#include "./function/direct_lambda.hpp"
 
 #include "./thread/thread_utils.hpp"
 
@@ -51,5 +52,7 @@ int main(int argc, char *argv[]) {
     bbb_test(enumerate);
 
     bbb_test(multithread);
+
     bbb_test(lambda_symbol);
+    bbb_test(direct_lambda);
 }
