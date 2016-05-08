@@ -76,6 +76,11 @@ namespace bbb {
     template <std::size_t index, typename ... arguments>
     using type_at = get_type<std::tuple_element<index, std::tuple<arguments ...>>>;
 
+    template <std::size_t index, typename ... arguments>
+    type_at<index, arguments ...> value_at(arguments && ... args) {
+        return std::get<index>(std::tuple<arguments ...>(std::forward<arguments>(args) ...));
+    };
+
     template <bool condition, template <typename ...> class t, template <typename ...> class f>
     struct template_conditional {
         template <typename ... arguments>
