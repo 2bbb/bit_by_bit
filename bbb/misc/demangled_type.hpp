@@ -20,9 +20,9 @@
 #include <string>
 
 #ifdef __GNUG__
-#include <cstdlib>
-#include <memory>
-#include <cxxabi.h>
+#   include <cstdlib>
+#   include <memory>
+#   include <cxxabi.h>
 #endif
 
 namespace bbb {
@@ -40,9 +40,7 @@ namespace bbb {
 #endif
         }
     };
-};
 
-namespace bbb {
     template <class type>
-    std::string demangled_type(const T &t) { return detail::demangle(typeid(t).name()); }
+    std::string demangled_type(const type &t) { return bbb::detail::demangle(typeid(t).name()); }
 };
