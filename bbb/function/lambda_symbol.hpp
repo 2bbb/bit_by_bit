@@ -147,7 +147,7 @@ namespace bbb {
             def_op(<<, lshift);
             def_op(>>, rshift);
 
-#undef de_op
+#undef def_op
 #undef def_left_op
 #undef def_right_op
 

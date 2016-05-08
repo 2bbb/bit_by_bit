@@ -66,6 +66,9 @@ namespace bbb {
             def_op(&, band);
             def_op(|, bor);
             def_op(^, bxor);
+#undef def_op
+#undef def_bin_op
+#undef def_eval
         };
     };
 };
