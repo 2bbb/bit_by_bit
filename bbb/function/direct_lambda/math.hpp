@@ -22,6 +22,7 @@
 #include <bbb/function/direct_lambda/constants.hpp>
 #include <bbb/function/direct_lambda/utility.hpp>
 #include <bbb/function/direct_lambda/base_class.hpp>
+#include <bbb/function/direct_lambda/function.hpp>
 #include <bbb/function/direct_lambda/value_holder.hpp>
 #include <bbb/function/direct_lambda/placeholder.hpp>
 #include <bbb/function/direct_lambda/type_traits.hpp>

@@ -24,18 +24,6 @@ namespace bbb {
             template <op_type op, typename ... holders>
             struct eval;
 
-            template <op_type op, typename ... holders>
-            struct function {
-                std::tuple<holders ...> holder;
-
-                template <typename ... arguments>
-                constexpr auto operator()(arguments && ... args) const
-                    -> decltype((eval<op, holders ...>()).evaluate(holder, std::forward<arguments>(args) ...))
-                {
-                    return (eval<op, holders ...>()).evaluate(holder, std::forward<arguments>(args) ...);
-                }
-            };
-
             struct null_value {};
         };
     };
