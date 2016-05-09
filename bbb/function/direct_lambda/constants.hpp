@@ -25,6 +25,7 @@ namespace bbb {
             using too_long = unsigned long long;
 
             enum class op_type : std::uint_fast32_t {
+            enum class op_type : std::uint_fast8_t {
                 placeholder, value_holder, const_value_holder,
                 eq, neq,
                 lt, lte, gt, gte,
