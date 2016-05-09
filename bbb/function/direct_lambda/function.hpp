@@ -42,6 +42,8 @@ namespace bbb {
                 def_unary_op(~, unary_bit_not);
                 def_unary_op(+, unary_plus);
                 def_unary_op(-, unary_minus);
+                def_unary_op(&, address);
+                def_unary_op(*, dereference);
 
 #undef def_unary_op
                 template <typename index_t>
@@ -74,6 +76,15 @@ namespace bbb {
             #define f_unary_minus(arg) -arg
             def_unary_op_eval(f_unary_minus, unary_minus);
             #undef f_unary_minus
+
+            #define f_address(arg) &arg
+            def_unary_op_eval(f_address, address);
+            #undef f_address
+
+            #define f_dereference(arg) (*arg)
+            def_unary_op_eval(f_dereference, dereference);
+            #undef f_dereference
+
 #undef def_unary_op_eval
 
 #define def_unary_function_eval(f, name)\
@@ -88,6 +99,7 @@ namespace bbb {
             #define f_subscript(f, x) f[x]
             def_unary_function_eval(f_subscript, subscript);
             #undef f_subscript
+#undef def_unary_function_eval
         };
     };
 };

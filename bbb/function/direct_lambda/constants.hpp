@@ -27,6 +27,7 @@ namespace bbb {
             enum class op_type : std::uint_fast8_t {
                 placeholder, value_holder, const_value_holder,
                 unary_not, unary_bit_not, unary_plus, unary_minus,
+                address, dereference,
                 subscript,
                 eq, neq,
                 lt, lte, gt, gte,
