@@ -29,6 +29,7 @@ namespace bbb {
                 unary_not, unary_bit_not, unary_plus, unary_minus,
                 address, dereference,
                 subscript,
+                member_pointer, // TODO implement member pointer
                 eq, neq,
                 lt, lte, gt, gte,
                 add, sub, mul, div, mod,

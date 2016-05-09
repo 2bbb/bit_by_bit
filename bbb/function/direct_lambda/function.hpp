@@ -50,6 +50,12 @@ namespace bbb {
                 constexpr auto operator[](const index_t &index) const
                 -> function<op_type::subscript, function, index_t>
                 { return {std::tuple<function, index_t>(*this, index)}; }
+
+                // TODO implement member pointer
+//                template <typename index_t>
+//                constexpr auto operator->*(const index_t &index) const
+//                -> function<op_type::member_pointer, function, index_t>
+//                { return {std::tuple<function, index_t>(*this, index)}; }
             };
 
 #define def_unary_op_eval(f, name)\
@@ -99,6 +105,12 @@ namespace bbb {
             #define f_subscript(f, x) f[x]
             def_unary_function_eval(f_subscript, subscript);
             #undef f_subscript
+
+            // TODO implement member pointer
+            #define f_member_pointer(f, x) (f->*x)
+            def_unary_function_eval(f_member_pointer, member_pointer);
+            #undef f_member_pointer
+
 #undef def_unary_function_eval
         };
     };
