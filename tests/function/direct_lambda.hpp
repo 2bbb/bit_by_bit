@@ -17,18 +17,17 @@
 #pragma once
 
 #include <bbb/misc/simple_test.hpp>
-#include <bbb/misc/demangled_type.hpp>
-
-#include <bbb/function/direct_lambda.hpp>
 
 #include <vector>
 
-//bbb_test_begin_prepare(direct_lambda)
+#include <bbb/function/direct_lambda.hpp>
+
+bbb_test_begin_prepare(direct_lambda)
     struct simple_struct {
         int get_int() const { return 4; }
         float get_float() const { return 4.0f; }
     };
-//bbb_test_end_preprare(direct_lambda)
+bbb_test_end_prepare(direct_lambda);
 
 bbb_test_begin_definition(direct_lambda)
     bbb_assert((2 * (1_ * 1_) - (2_ / 3_))(1, 2, 3) == 2 * 1 * 1 - 2 / 3);
