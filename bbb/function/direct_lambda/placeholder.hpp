@@ -23,13 +23,21 @@
 namespace bbb {
     namespace function {
         namespace direct_lambda {
+            namespace detail {
+                template<too_long n> struct index_type {
+                    static constexpr too_long value = n;
+                };
+            };
+
             template <too_long n>
-            struct placeholder {
+            using placeholder = function<op_type::placeholder, detail::index_type<n>>;
+
+            template <too_long n>
+            struct eval<op_type::placeholder, detail::index_type<n>> {
                 template <typename ... arguments>
-                constexpr type_at<n - 1, arguments ...> operator()(arguments && ... args) const
-                {
-                    return value_at<n - 1, arguments ...>(std::forward<arguments>(args) ...);
-                }
+                constexpr auto evaluate(const std::tuple<detail::index_type<n>> &, arguments && ... args) const
+                -> type_at<n - 1, arguments ...>
+                { return value_at<n - 1, arguments ...>(std::forward<arguments>(args) ...); }
             };
 
             template <char ... chars>
