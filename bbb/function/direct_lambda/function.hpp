@@ -33,22 +33,17 @@ namespace bbb {
                     return (eval<op, holders ...>()).evaluate(holder, std::forward<arguments>(args) ...);
                 }
 
-                constexpr auto operator!() const
-                -> function<op_type::unary_not, function>
+#define def_unary_op(op, name)\
+                constexpr auto operator op() const\
+                -> function<op_type::name, function>\
                 { return {*this}; }
 
-                constexpr auto operator~() const
-                -> function<op_type::unary_bit_not, function>
-                { return {*this}; }
+                def_unary_op(!, unary_not);
+                def_unary_op(~, unary_bit_not);
+                def_unary_op(+, unary_plus);
+                def_unary_op(-, unary_minus);
 
-                constexpr auto operator+() const
-                -> function<op_type::unary_plus, function>
-                { return {*this}; }
-
-                constexpr auto operator-() const
-                -> function<op_type::unary_minus, function>
-                { return {*this}; }
-
+#undef def_unary_op
                 template <typename index_t>
                 constexpr auto operator[](const index_t &index) const
                 -> function<op_type::subscript, function, index_t>
