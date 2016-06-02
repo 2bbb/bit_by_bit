@@ -26,7 +26,8 @@ namespace bbb {
     namespace function {
         namespace direct_lambda {
             namespace detail {
-                template<too_long n> struct index_type {
+                template <too_long n>
+                struct index_type {
                     static constexpr too_long value = n;
                 };
             };
@@ -46,6 +47,16 @@ namespace bbb {
             constexpr placeholder<detail::to_number<chars ...>::value> operator""_() {
                 static_assert(0 < detail::to_number<chars ...>::value, "0_ is not allowed");
                 return {};
+            };
+
+            template <typename type>
+            struct is_placeholder {
+                static constexpr too_long value = std::is_placeholder<type>::value;
+            };
+
+            template <too_long n>
+            struct is_placeholder<placeholder<n>> {
+                static constexpr too_long value = n;
             };
         };
     };
