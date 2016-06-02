@@ -31,7 +31,7 @@ namespace bbb {
 
             template <typename value_type>
             struct wrap_value_type {
-                using type = bbb::conditional<
+                using type = bbb::conditional_t<
                     is_function<value_type>::value,
                     value_type,
                     value_holder<value_type>
@@ -40,7 +40,7 @@ namespace bbb {
 
             template <typename value_type>
             struct wrap_const_value_type {
-                using type = bbb::conditional<
+                using type = bbb::conditional_t<
                     is_function<value_type>::value,
                     value_type,
                     const_value_holder<value_type>

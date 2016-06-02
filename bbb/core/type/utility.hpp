@@ -27,10 +27,10 @@ namespace bbb {
     using get_type = typename T::type;
 
     template <bool b, typename T = void>
-    using enable_if = get_type<std::enable_if<b, T>>;
+    using enable_if_t = get_type<std::enable_if<b, T>>;
 
     template <bool b, typename T, typename F>
-    using conditional = get_type<std::conditional<b, T, F>>;
+    using conditional_t = get_type<std::conditional<b, T, F>>;
 
     template <typename T, typename U>
     constexpr bool is_same() { return std::is_same<T, U>::value; };

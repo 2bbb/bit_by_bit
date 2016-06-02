@@ -83,7 +83,7 @@ namespace bbb {
 
             template<typename lambda>
             auto filter(lambda &f) const
-            -> enable_if<has_call_operator<lambda>::value, container_t> {
+            -> enable_if_t<has_call_operator<lambda>::value, container_t> {
                 filter(static_cast<typename function_traits<lambda>::function_type>(f));
             }
 
@@ -109,7 +109,7 @@ namespace bbb {
 
             template<typename lambda>
             auto each(lambda &f) const
-            -> enable_if<has_call_operator<lambda>::value> {
+            -> enable_if_t<has_call_operator<lambda>::value> {
                 each(static_cast<typename function_traits<lambda>::function_type>(f));
             }
 
@@ -135,7 +135,7 @@ namespace bbb {
 
             template<typename lambda>
             auto destructive_each(lambda &f) const
-            -> enable_if<has_call_operator<lambda>::value> {
+            -> enable_if_t<has_call_operator<lambda>::value> {
                 destructive_eacheach(static_cast<typename function_traits<lambda>::function_type>(f));
             }
 

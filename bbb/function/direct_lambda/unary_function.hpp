@@ -48,7 +48,7 @@ namespace bbb {
                     constexpr result_t<type> operator()(const type &x) const { return std::name(x); }\
                 };\
             };\
-            template <typename argument_type, typename _ = bbb::enable_if<is_function<argument_type>::value>>\
+            template <typename argument_type, typename _ = bbb::enable_if_t<is_function<argument_type>::value>>\
             function<op_type::unary_func_apply, detail::name##_function, argument_type> name(const argument_type &arg) {\
                 return {std::tuple<detail::name##_function, argument_type>({}, arg)};\
             }

@@ -30,7 +30,7 @@ namespace bbb {
             template <typename integer_type, integer_type n, integer_type ... ns>
             struct make_integer_sequence {
                 struct sequence_wrapper { using type = integer_sequence<integer_type, ns ...>; };
-                using type = get_type<conditional<
+                using type = get_type<conditional_t<
                     n == 0,
                     sequence_wrapper,
                     detail::make_integer_sequence<integer_type, n - 1, n - 1, ns ...>
