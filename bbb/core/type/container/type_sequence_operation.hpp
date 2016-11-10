@@ -297,6 +297,28 @@ namespace bbb {
             using type = map_t<function, types ...>;
         };
 
+#if BBB_EXEC_UNIT_TEST
+        namespace map_test {
+            template <typename type> using and_true = and_type<std::true_type, type>;
+            using test1 = unit_test::assert<
+                map_t<and_true, std::true_type, std::false_type>,
+                type_sequence<std::true_type, std::false_type>
+            >;
+
+            template <typename type> using and_false = and_type<std::false_type, type>;
+            using test2 = unit_test::assert<
+                map_t<and_false, std::true_type, std::false_type>,
+                type_sequence<std::false_type, std::false_type>
+            >;
+
+            template <typename type> using or_true = or_type<std::true_type, type>;
+            using test3 = unit_test::assert<
+                map_t<or_true, std::true_type, std::false_type>,
+                type_sequence<std::true_type, std::true_type>
+            >;
+        };
+#endif
+
         template <template <typename, typename> class function, typename initial, typename ... types>
         struct reduce;
 
