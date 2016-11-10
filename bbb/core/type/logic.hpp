@@ -20,6 +20,21 @@
 
 namespace bbb {
     namespace logic {
+        template <bool b>
+        using bool_type = conditional_t<b, std::true_type, std::false_type>;
+
+        template <typename x, typename y>
+        using not_type = bool_type<!x::value>;
+
+        template <typename x, typename y>
+        using and_type = bool_type<x::value && y::value>;
+
+        template <typename x, typename y>
+        using or_type = bool_type<x::value || y::value>;
+
+        template <typename x, typename y>
+        using xor_type = bool_type<x::value != y::value>;
+
         namespace detail {
             template <template <typename> class pred, typename ... arguments>
             struct all;
