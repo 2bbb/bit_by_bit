@@ -27,3 +27,4 @@
 #include <bbb/core/type/range.hpp>
 
 #include <bbb/core/type/type_holder.hpp>
+#include <bbb/core/type/type_set.hpp>
