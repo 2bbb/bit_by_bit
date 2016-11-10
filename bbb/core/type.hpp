@@ -25,3 +25,5 @@
 #include <bbb/core/type/sequence.hpp>
 #include <bbb/core/type/sequence_utils.hpp>
 #include <bbb/core/type/range.hpp>
+
+#include <bbb/core/type/type_holder.hpp>
