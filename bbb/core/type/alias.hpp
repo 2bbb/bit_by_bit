@@ -58,4 +58,6 @@ namespace bbb {
             return is_same<remove_aliases<lhs>, remove_aliases<rhs>>();
         };
     };
+
+    using namespace aliases;
 };
