@@ -60,6 +60,17 @@ namespace bbb {
         };
 #endif
 
+        template <typename s, typename t>
+        struct concat_sequence;
+
+        template <typename s, typename t>
+        using concat_sequence_t = get_type<concat_sequence<s, t>>;
+
+        template <typename ... ss, typename ... ts>
+        struct concat_sequence<type_sequence<ss ...>, type_sequence<ts ...>> {
+            using type = type_sequence<ss ..., ts ...>;
+        };
+
         namespace detail {
             template <typename sequence, typename ... types>
             struct slice;
