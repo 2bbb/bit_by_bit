@@ -31,10 +31,6 @@ namespace bbb {
                     std::false_type
                 >::type;
             };
-            template <template <typename> class pred, typename argument>
-            struct all<pred, argument> {
-                using type = pred<argument>;
-            };
             template <template <typename> class pred>
             struct all<pred> {
                 using type = std::true_type;
@@ -50,21 +46,49 @@ namespace bbb {
                     typename any<pred, arguments ...>::type
                 >::type;
             };
-            template <template <typename> class pred, typename argument>
-            struct any<pred, argument> {
-                using type = pred<argument>;
-            };
             template <template <typename> class pred>
             struct any<pred> {
-                using type = std::true_type;
+                using type = std::false_type;
             };
         };
 
         template <template <typename> class pred, typename ... arguments>
-        using all_t = typename detail::all<pred, arguments ...>::type;
+        using all = detail::all<pred, arguments ...>;
+        template <template <typename> class pred, typename ... arguments>
+        using all_t = get_type<all<pred, arguments ...>>;
 
         template <template <typename> class pred, typename ... arguments>
-        using any_t = typename detail::any<pred, arguments ...>::type;
+        using any = detail::any<pred, arguments ...>;
+        template <template <typename> class pred, typename ... arguments>
+        using any_t = get_type<any<pred, arguments ...>>;
+
+#if BBB_EXEC_UNIT_TEST
+        namespace logic_test {
+            template <typename rhs>
+            using eq = std::is_same<int, rhs>;
+
+            using test1 = unit_test::assert<
+                all_t<eq, int, float>,
+                std::false_type
+            >;
+            using test2 = unit_test::assert<
+                all_t<eq, int, int>,
+                std::true_type
+            >;
+            using test3 = unit_test::assert<
+                any_t<eq, int, int>,
+                std::true_type
+            >;
+            using test4 = unit_test::assert<
+                any_t<eq, int, float>,
+                std::true_type
+            >;
+            using test5 = unit_test::assert<
+                any_t<eq, char, float>,
+                std::false_type
+            >;
+        }
+#endif
     };
 
     using namespace logic;
