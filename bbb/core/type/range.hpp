@@ -24,14 +24,14 @@ namespace bbb {
         namespace detail {
             template <typename integer_type, integer_type from, integer_type to, integer_type offset = 1>
             struct integer_range {
-                using back = integer_range<integer_type, from + offset, to, offset>;
+                using back_sequence = integer_range<integer_type, from + offset, to, offset>;
                 struct wrapper {
-                    using type = sequence_prepend<integer_type, back, from>;
+                    using type = sequence_prepend<integer_type, get_type<back_sequence>, from>;
                 };
                 using type = get_type<conditional_t<
                     from + offset <= to,
                     wrapper,
-                    back
+                    back_sequence
                 >>;
             };
 
@@ -42,7 +42,7 @@ namespace bbb {
         };
 
         template <typename integer_type, integer_type from, integer_type to, integer_type offset = 1>
-        using integer_range = typename detail::integer_range<integer_type, from, to, offset>::type;
+        using integer_range = get_type<detail::integer_range<integer_type, from, to, offset>>;
 
         template <std::size_t from, std::size_t to, std::size_t offset = 1>
         using index_range = integer_range<std::size_t, from, to, offset>;
