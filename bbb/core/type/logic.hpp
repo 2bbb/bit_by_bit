@@ -35,6 +35,10 @@ namespace bbb {
             struct all<pred, argument> {
                 using type = pred<argument>;
             };
+            template <template <typename> class pred>
+            struct all<pred> {
+                using type = std::true_type;
+            };
 
             template <template <typename> class pred, typename ... arguments>
             struct any;
@@ -49,6 +53,10 @@ namespace bbb {
             template <template <typename> class pred, typename argument>
             struct any<pred, argument> {
                 using type = pred<argument>;
+            };
+            template <template <typename> class pred>
+            struct any<pred> {
+                using type = std::true_type;
             };
         };
 
