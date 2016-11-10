@@ -80,26 +80,26 @@ namespace bbb {
 #if BBB_EXEC_UNIT_TEST
         namespace logic_test {
             template <typename rhs>
-            using eq = std::is_same<int, rhs>;
+            using eq_int = std::is_same<int, rhs>;
 
             using test1 = unit_test::assert<
-                all_t<eq, int, float>,
+                all_t<eq_int, int, float>,
                 std::false_type
             >;
             using test2 = unit_test::assert<
-                all_t<eq, int, int>,
+                all_t<eq_int, int, int>,
                 std::true_type
             >;
             using test3 = unit_test::assert<
-                any_t<eq, int, int>,
+                any_t<eq_int, int, int>,
                 std::true_type
             >;
             using test4 = unit_test::assert<
-                any_t<eq, int, float>,
+                any_t<eq_int, int, float>,
                 std::true_type
             >;
             using test5 = unit_test::assert<
-                any_t<eq, char, float>,
+                any_t<eq_int, char, float>,
                 std::false_type
             >;
         }
