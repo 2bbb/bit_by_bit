@@ -19,4 +19,5 @@
 #include <bbb/core/type/container/type_sequence.hpp>
 #include <bbb/core/type/container/type_sequence_operation.hpp>
 #include <bbb/core/type/container/type_set.hpp>
+#include <bbb/core/type/container/type_set_operation.hpp>
 #include <bbb/core/type/container/type_combination.hpp>
