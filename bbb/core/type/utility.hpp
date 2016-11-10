@@ -90,4 +90,13 @@ namespace bbb {
         template <typename ... arguments>
         using type = get_type<std::conditional<condition, t<arguments ...>, f<arguments ...>>>;
     };
+
+    namespace unit_test {
+        template <typename expr, typename require>
+        using assert = typename std::enable_if<
+            std::is_same<expr, require>::value,
+            expr
+        >::type;
+    };
 };
+
