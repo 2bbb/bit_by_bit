@@ -17,7 +17,6 @@
 #pragma once
 
 #include <bbb/core/type/utility.hpp>
-#include <bbb/core/type/logic.hpp>
 #include <bbb/core/type/integer_sequence/integer_range.hpp>
 
 #include <bbb/core/type/container/type_sequence.hpp>
@@ -41,7 +40,7 @@ namespace bbb {
             >;
             using test2 = unit_test::assert<
                 type_set_t<int, char, int>,
-                type_set_t<char, int, char, char>
+                type_set_t<int, char, char>
             >;
         };
 #endif
