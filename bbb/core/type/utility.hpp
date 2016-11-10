@@ -36,6 +36,21 @@ namespace bbb {
     template <bool b, typename T, typename F>
     using conditional_t = get_type<conditional<b, T, F>>;
 
+    template <bool b>
+    using bool_type = conditional_t<b, std::true_type, std::false_type>;
+
+    template <typename x, typename y>
+    using not_type = bool_type<!x::value>;
+
+    template <typename x, typename y>
+    using and_type = bool_type<x::value && y::value>;
+
+    template <typename x, typename y>
+    using or_type = bool_type<x::value || y::value>;
+
+    template <typename x, typename y>
+    using xor_type = bool_type<x::value != y::value>;
+
     template <typename T, typename U>
     constexpr bool is_same() { return std::is_same<T, U>::value; };
 
