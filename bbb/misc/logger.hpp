@@ -35,14 +35,14 @@ namespace bbb {
                 plain = 0,
                 timestamp = 1 << 1
             };
-            using header_underlying_type = std::underlying_type_t<header>;
+            using header_underlying_type = typename std::underlying_type<header>::type;
 
             enum class separater {
                 plain = 0,
                 csv = 1 << 0,
                 space = 1 << 1
             };
-            using separater_underlying_type = std::underlying_type_t<separater>;
+            using separater_underlying_type = typename std::underlying_type<separater>::type;
         }
 
         inline style::separater operator&(style::separater lhs, style::separater rhs) { return static_cast<style::separater>(static_cast<style::separater_underlying_type>(lhs) & static_cast<style::separater_underlying_type>(rhs)); }
