@@ -31,7 +31,7 @@ namespace bbb {
     template <bool b, typename T = void>
     using enable_if_t = get_type<enable_if<b, T>>;
 
-    using std::conditonal;
+    using std::conditional;
 
     template <bool b, typename T, typename F>
     using conditional_t = get_type<conditional<b, T, F>>;
