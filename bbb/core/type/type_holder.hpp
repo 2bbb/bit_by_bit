@@ -69,7 +69,22 @@ namespace bbb {
         };
 
         template <typename ... types>
-        using make_unique = get_type<detail::make_unique<type_holder<>, types ...>>;
+        using make_unique = detail::make_unique<type_holder<>, types ...>;
+        template <typename ... types>
+        using make_unique_t = get_type<make_unique<types ...>>;
+
+#if BBB_EXEC_UNIT_TEST
+        namespace make_unique_test {
+            using test1 = unit_test::assert<
+                make_unique_t<int, int>,
+                type_holder<int>
+            >;
+            using test2 = unit_test::assert<
+                make_unique_t<int, char, int>,
+                type_holder<int, char>
+            >;
+        }
+#endif
     };
 
     using namespace type_holders;
