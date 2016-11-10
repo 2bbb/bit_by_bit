@@ -277,6 +277,25 @@ namespace bbb {
 
         template <typename sequence>
         using make_sequence_unique_t = get_type<make_sequence_unique<sequence>>;
+
+        template <template <typename> class function, typename ... types>
+        struct map {
+            using type = type_sequence<function<types> ...>;
+        };
+
+        template <template <typename> class function, typename ... types>
+        using map_t = get_type<map<function, types ...>>;
+
+        template <template <typename> class function, typename sequence>
+        struct map_sequence;
+
+        template <template <typename> class function, typename sequence>
+        using map_sequence_t = get_type<map_sequence<function, sequence>>;
+
+        template <template <typename> class function, typename ... types>
+        struct map_sequence<function, type_sequence<types ...>> {
+            using type = map_t<function, types ...>;
+        };
     };
 
     using namespace type_sequence_operations;
