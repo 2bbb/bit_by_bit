@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * bbb/core/type/range.hpp
+ * bbb/core/type/sequence/integer_range.hpp
  *
  * author: ISHII 2bit
  * mail:   2bit@backspace.tokyo
@@ -16,8 +16,9 @@
 
 #pragma once
 
-#include <bbb/core/type/sequence.hpp>
-#include <bbb/core/type/sequence_utils.hpp>
+#include <bbb/core/type/utility.hpp>
+#include <bbb/core/type/integer_sequence/integer_sequence.hpp>
+#include <bbb/core/type/integer_sequence/sequence_operation.hpp>
 
 namespace bbb {
     namespace sequence_range {

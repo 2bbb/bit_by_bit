@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * bbb/tmp/sequence.hpp
+ * bbb/core/type/sequence/integer_sequence.hpp
  *
  * author: ISHII 2bit
  * mail:   2bit@backspace.tokyo
