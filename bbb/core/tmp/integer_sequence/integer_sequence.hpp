@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include <bbb/core/type/utility.hpp>
+#include <bbb/core/tmp/utility.hpp>
 
 namespace bbb {
     namespace sequences {

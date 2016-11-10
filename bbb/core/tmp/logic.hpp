@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include <bbb/core.hpp>
+#include <bbb/core/tmp/utility.hpp>
 
 namespace bbb {
     namespace logic {

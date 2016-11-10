@@ -16,10 +16,10 @@
 
 #pragma once
 
-#include <bbb/core/type/utility.hpp>
-#include <bbb/core/type/integer_sequence/integer_range.hpp>
+#include <bbb/core/tmp/utility.hpp>
+#include <bbb/core/tmp/integer_sequence/integer_range.hpp>
 
-#include <bbb/core/type/container/type_set.hpp>
+#include <bbb/core/tmp/container/type_set.hpp>
 
 namespace bbb {
     namespace type_set_operations {

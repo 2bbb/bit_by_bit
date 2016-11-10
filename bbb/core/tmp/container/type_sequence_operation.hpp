@@ -16,8 +16,8 @@
 
 #pragma once
 
-#include <bbb/core/type/utility.hpp>
-#include <bbb/core/type/container/type_sequence.hpp>
+#include <bbb/core/tmp/utility.hpp>
+#include <bbb/core/tmp/container/type_sequence.hpp>
 
 namespace bbb {
     namespace type_sequence_operations {
@@ -372,6 +372,7 @@ namespace bbb {
             >;
         };
 #endif
+
         template <typename t, typename u>
         struct make_direct_product;
 

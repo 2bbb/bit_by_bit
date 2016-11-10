@@ -100,3 +100,4 @@ namespace bbb {
     };
 };
 
+#define BBB_EXEC_UNIT_TEST 1
