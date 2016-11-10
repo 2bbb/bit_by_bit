@@ -296,6 +296,44 @@ namespace bbb {
         struct map_sequence<function, type_sequence<types ...>> {
             using type = map_t<function, types ...>;
         };
+
+        template <template <typename, typename> class function, typename initial, typename ... types>
+        struct reduce;
+
+        template <template <typename, typename> class function, typename initial, typename ... types>
+        using reduce_t = get_type<reduce<function, initial, types ...>>;
+
+        template <template <typename, typename> class function, typename t, typename s, typename ... types>
+        struct reduce<function, t, s, types ...> {
+            using type = reduce_t<function, function<t, s>, types ...>;
+        };
+
+        template <template <typename, typename> class function, typename t>
+        struct reduce<function, t> {
+            using type = t;
+        };
+
+        template <template <typename, typename> class function, typename sequence>
+        struct reduce_sequence;
+
+        template <template <typename, typename> class function, typename sequence>
+        using reduce_sequence_t = get_type<reduce_sequence<function, sequence>>;
+
+        template <template <typename, typename> class function, typename t, typename ... types>
+        struct reduce_sequence<function, type_sequence<t, types ...>> {
+            using type = reduce_t<function, t, types ...>;
+        };
+
+#if BBB_EXEC_UNIT_TEST
+        namespace reduce_test {
+            template <typename seq, typename type>
+            using f = push_back_t<type, seq>;
+            using test1 = unit_test::assert<
+                reduce_t<f, type_sequence<>, int, char, float>,
+                type_sequence<int, char, float>
+            >;
+        };
+#endif
     };
 
     using namespace type_sequence_operations;
