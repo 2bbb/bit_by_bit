@@ -332,6 +332,22 @@ namespace bbb {
                 reduce_t<f, type_sequence<>, int, char, float>,
                 type_sequence<int, char, float>
             >;
+            using test2 = unit_test::assert<
+                reduce_t<or_type, std::true_type, std::false_type, std::false_type>,
+                std::true_type
+            >;
+            using test3 = unit_test::assert<
+                reduce_t<or_type, std::false_type, std::false_type, std::false_type>,
+                std::false_type
+            >;
+            using test4 = unit_test::assert<
+                reduce_t<and_type, std::true_type, std::false_type, std::false_type>,
+                std::false_type
+            >;
+            using test5 = unit_test::assert<
+                reduce_t<and_type, std::true_type, std::true_type, std::true_type>,
+                std::true_type
+            >;
         };
 #endif
     };
