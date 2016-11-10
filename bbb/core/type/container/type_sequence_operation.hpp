@@ -53,6 +53,10 @@ namespace bbb {
                 push_back_t<char, type_sequence<int, float>>,
                 type_sequence<int, float, char>
             >;
+            using test3 = unit_test::assert<
+                push_front_t<int, type_sequence<float, char>>,
+                push_back_t<char, type_sequence<int, float>>
+            >;
         };
 #endif
 
@@ -109,6 +113,110 @@ namespace bbb {
         };
 #endif
 
+        template <typename t, typename sequence>
+        struct remove;
+
+        template <typename t, typename sequence>
+        using remove_t = get_type<remove<t, sequence>>;
+
+        template <typename t, typename u, typename ... types>
+        struct remove<t, type_sequence<u, types ...>> {
+            using type = conditional_t<
+                is_same<t, u>(),
+                type_sequence<types ...>,
+                push_front_t<u, remove_t<t, type_sequence<types ...>>>
+            >;
+        };
+
+        template <typename t>
+        struct remove<t, type_sequence<>> {
+            using type = type_sequence<>;
+        };
+
+#if BBB_EXEC_UNIT_TEST
+        namespace remove_test {
+            using test1 = unit_test::assert<
+                remove_t<int, type_sequence<int, int, char>>,
+                type_sequence<int, char>
+            >;
+            using test2 = unit_test::assert<
+                remove_t<char, type_sequence<int, int, char>>,
+                type_sequence<int, int>
+            >;
+            using test3 = unit_test::assert<
+                remove_t<char, type_sequence<float, int, char, double>>,
+                type_sequence<float, int, double>
+            >;
+            using test3 = unit_test::assert<
+                remove_t<char, type_sequence<float, int, double>>,
+                type_sequence<float, int, double>
+            >;
+        };
+#endif
+
+        template <typename t, typename sequence>
+        struct remove_all;
+
+        template <typename t, typename sequence>
+        using remove_all_t = get_type<remove_all<t, sequence>>;
+
+        template <typename t, typename u, typename ... types>
+        struct remove_all<t, type_sequence<u, types ...>> {
+            using type = conditional_t<
+                is_same<t, u>(),
+                remove_all_t<t, type_sequence<types ...>>,
+                push_front_t<u, remove_all_t<t, type_sequence<types ...>>>
+            >;
+        };
+
+        template <typename t>
+        struct remove_all<t, type_sequence<>> {
+            using type = type_sequence<>;
+        };
+
+#if BBB_EXEC_UNIT_TEST
+        namespace remove_all_test {
+            using test1 = unit_test::assert<
+                remove_all_t<int, type_sequence<int, int, char>>,
+                type_sequence<char>
+            >;
+            using test2 = unit_test::assert<
+                remove_all_t<char, type_sequence<int, int, char>>,
+                type_sequence<int, int>
+            >;
+            using test3 = unit_test::assert<
+                remove_all_t<char, type_sequence<float, int, char, double>>,
+                type_sequence<float, int, double>
+            >;
+        };
+#endif
+
+        template <typename s, typename t>
+        struct difference_sequence;
+
+        template <typename s, typename t>
+        using difference_sequence_t = get_type<difference_sequence<s, t>>;
+
+        template <typename s, typename t, typename ... ts>
+        struct difference_sequence<s, type_sequence<t, ts ...>> {
+            using type = difference_sequence_t<remove_t<t, s>, type_sequence<ts ...>>;
+        };
+
+        template <typename s>
+        struct difference_sequence<s, type_sequence<>> {
+            using type = s;
+        };
+
+#if BBB_EXEC_UNIT_TEST
+        namespace difference_sequence_test {
+            using test1 = unit_test::assert<
+                difference_sequence_t<type_sequence<int, int, char>, type_sequence<int>>,
+                type_sequence<int, char>
+            >;
+        };
+#endif
+
+
         namespace detail {
             template <typename holder, typename ... types>
             struct make_unique;
@@ -147,6 +255,17 @@ namespace bbb {
             >;
         }
 #endif
+
+        template <typename sequence>
+        struct make_sequence_unique;
+
+        template <typename ... types>
+        struct make_sequence_unique<type_sequence<types ...>> {
+            using type = make_unique_t<types ...>;
+        };
+
+        template <typename sequence>
+        using make_sequence_unique_t = get_type<make_sequence_unique<sequence>>;
     };
 
     using namespace type_sequence_operations;
