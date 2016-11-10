@@ -16,14 +16,12 @@
 
 #pragma once
 
-#ifndef BBB_TYPE_SET_HPP
-#define BBB_TYPE_SET_HPP
-
 #include <bbb/core/type/utility.hpp>
 #include <bbb/core/type/logic.hpp>
 #include <bbb/core/type/integer_sequence/integer_range.hpp>
 
-#include <bbb/core/type/type_holder.hpp>
+#include <bbb/core/type/container/type_sequence.hpp>
+#include <bbb/core/type/container/type_sequence_operation.hpp>
 
 namespace bbb {
     namespace type_sets {
@@ -36,14 +34,18 @@ namespace bbb {
         using type_set_t = get_type<type_set<types ...>>;
 
 #if BBB_EXEC_UNIT_TEST
-        using type_set_test = unit_test::assert<
-            type_set_t<int, char, int>,
-            type_holder<int, char>
-        >;
+        namespace type_set_test {
+            using test1 = unit_test::assert<
+                type_set_t<int, char, int>,
+                type_sequence<int, char>
+            >;
+            using test2 = unit_test::assert<
+                type_set_t<int, char, int>,
+                type_set_t<char, int, char, char>
+            >;
+        };
 #endif
     };
 
     using namespace type_sets;
 };
-
-#endif //BBB_TYPE_SET_HPP
