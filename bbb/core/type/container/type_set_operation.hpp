@@ -51,6 +51,11 @@ namespace bbb {
 
         };
 #endif
+
+        template <typename s, typename t>
+        using difference_set = difference_sequence<make_type_set_t<s>, make_type_set_t<t>>;
+        template <typename s, typename t>
+        using difference_set_t = get_type<difference_set<s, t>>;
     };
 
     using namespace type_set_operations;
