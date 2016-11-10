@@ -20,7 +20,7 @@
 #include <tuple>
 #include <functional>
 
-#include <bbb/core/tmp/utility.hpp>
+#include <bbb/core/tmp/traits.hpp>
 
 namespace bbb {
     namespace function_info {

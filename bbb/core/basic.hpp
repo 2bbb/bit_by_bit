@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * bbb/core/tmp.hpp
+ * bbb/core/basic.hpp.hpp
  *
  * author: ISHII 2bit
  * mail:   2bit@backspace.tokyo
@@ -16,8 +16,17 @@
 
 #pragma once
 
-#include <bbb/core/tmp/traits.hpp>
-#include <bbb/core/tmp/logic.hpp>
-#include <bbb/core/tmp/integer_sequence.hpp>
-#include <bbb/core/tmp/container.hpp>
-#include <bbb/core/tmp/alias.hpp>
+#include <type_traits>
+
+namespace bbb {
+    template <typename T>
+    using get_type = typename T::type;
+
+    namespace unit_test {
+        template <typename expr, typename require>
+        using assert = get_type<std::enable_if<
+            std::is_same<expr, require>::value,
+            expr
+        >>;
+    };
+};

@@ -30,3 +30,5 @@ namespace bbb {
     constexpr bool is_cpp11() { return bbb_is_cpp11; }
     constexpr bool is_cpp14() { return bbb_is_cpp14; }
 }
+
+#define BBB_EXEC_UNIT_TEST 1

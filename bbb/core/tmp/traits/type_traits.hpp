@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * bbb/core/type/utility.hpp
+ * bbb/type_traits.hpp.hpp
  *
  * author: ISHII 2bit
  * mail:   2bit@backspace.tokyo
@@ -16,16 +16,14 @@
 
 #pragma once
 
+#include <bbb/core/constants.hpp>
+#include <bbb/core/basic.hpp>
+
 #include <type_traits>
 #include <tuple>
 #include <functional>
 
-#include <bbb/core/constants.hpp>
-
 namespace bbb {
-    template <typename T>
-    using get_type = typename T::type;
-
     using std::enable_if;
 
     template <bool b, typename T = void>
@@ -90,14 +88,4 @@ namespace bbb {
         template <typename ... arguments>
         using type = get_type<std::conditional<condition, t<arguments ...>, f<arguments ...>>>;
     };
-
-    namespace unit_test {
-        template <typename expr, typename require>
-        using assert = typename std::enable_if<
-            std::is_same<expr, require>::value,
-            expr
-        >::type;
-    };
 };
-
-#define BBB_EXEC_UNIT_TEST 1

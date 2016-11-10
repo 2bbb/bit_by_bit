@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include <bbb/core/tmp/utility.hpp>
+#include <bbb/core/tmp/traits.hpp>
 #include <bbb/core/tmp/integer_sequence/integer_range.hpp>
 
 #include <bbb/core/tmp/container/type_set.hpp>
