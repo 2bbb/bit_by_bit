@@ -18,15 +18,13 @@
 
 #include <bbb/core/tmp/traits.hpp>
 #include <bbb/core/tmp/integer_sequence/integer_range.hpp>
-
 #include <bbb/core/tmp/type_container/type_sequence.hpp>
-#include <bbb/core/tmp/type_container/type_sequence_operation.hpp>
 
 namespace bbb {
     namespace type_sets {
         template <typename ... types>
         struct type_set {
-            using type = make_unique_t<types ...>;
+            using type = make_variadic_unique_t<types ...>;
         };
 
         template <typename ... types>
