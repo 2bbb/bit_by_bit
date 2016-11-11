@@ -20,7 +20,6 @@
 #include <bbb/type.hpp>
 #include <bbb/container.hpp>
 
-#include <bbb/function/function.hpp>
 
 #include <bbb/thread/thread_utils.hpp>
 
@@ -30,3 +29,4 @@
 #include <bbb/misc/stop_watch.hpp>
 #include <bbb/misc/logger.hpp>
 #include <bbb/misc/simple_test.hpp>
+#include <bbb/function.hpp>
