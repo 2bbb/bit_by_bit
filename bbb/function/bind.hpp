@@ -22,12 +22,12 @@
 namespace bbb {
     namespace binder {
 
-        template <typename object, typename result, typename ... arguments, typename bind_arguments>
-        auto bind(result(object::*meth)(arguments ...), object obj, bind_arguments ...)
-        -> std::function<result(arguments ...)>
-        {
-            return std::bind(meth, obj, )
-        };
+//        template <typename object, typename result, typename ... arguments, typename bind_arguments>
+//        auto bind(result(object::*meth)(arguments ...), object obj, bind_arguments ...)
+//        -> std::function<result(arguments ...)>
+//        {
+//            return std::bind(meth, obj, )
+//        };
 
     };
     using namespace binder;
