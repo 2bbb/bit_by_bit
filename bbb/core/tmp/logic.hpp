@@ -21,19 +21,29 @@
 namespace bbb {
     namespace logic {
         template <bool b>
-        using bool_type = conditional_t<b, std::true_type, std::false_type>;
+        using make_bool_type = conditional<b, std::true_type, std::false_type>;
+        template <bool b>
+        using make_bool_type_t = get_type<make_bool_type<b>>;
+
+        template <typename x>
+        using not_type = make_bool_type<!x::value>;
+        template <typename x>
+        using not_type_t = get_type<not_type<x>>;
 
         template <typename x, typename y>
-        using not_type = bool_type<!x::value>;
+        using and_type = make_bool_type<x::value && y::value>;
+        template <typename x, typename y>
+        using and_type_t = get_type<and_type<x, y>>;
 
         template <typename x, typename y>
-        using and_type = bool_type<x::value && y::value>;
+        using or_type = make_bool_type<x::value || y::value>;
+        template <typename x, typename y>
+        using or_type_t = get_type<or_type<x, y>>;
 
         template <typename x, typename y>
-        using or_type = bool_type<x::value || y::value>;
-
+        using xor_type = make_bool_type<x::value != y::value>;
         template <typename x, typename y>
-        using xor_type = bool_type<x::value != y::value>;
+        using xor_type_t = get_type<xor_type<x, y>>;
 
         namespace detail {
             template <template <typename> class pred, typename ... arguments>

@@ -299,19 +299,19 @@ namespace bbb {
 
 #if BBB_EXEC_UNIT_TEST
         namespace map_test {
-            template <typename type> using and_true = and_type<std::true_type, type>;
+            template <typename type> using and_true = and_type_t<std::true_type, type>;
             using test1 = unit_test::assert<
                 map_t<and_true, std::true_type, std::false_type>,
                 type_sequence<std::true_type, std::false_type>
             >;
 
-            template <typename type> using and_false = and_type<std::false_type, type>;
+            template <typename type> using and_false = and_type_t<std::false_type, type>;
             using test2 = unit_test::assert<
                 map_t<and_false, std::true_type, std::false_type>,
                 type_sequence<std::false_type, std::false_type>
             >;
 
-            template <typename type> using or_true = or_type<std::true_type, type>;
+            template <typename type> using or_true = or_type_t<std::true_type, type>;
             using test3 = unit_test::assert<
                 map_t<or_true, std::true_type, std::false_type>,
                 type_sequence<std::true_type, std::true_type>
@@ -355,19 +355,19 @@ namespace bbb {
                 type_sequence<int, char, float>
             >;
             using test2 = unit_test::assert<
-                reduce_t<or_type, std::true_type, std::false_type, std::false_type>,
+                reduce_t<or_type_t, std::true_type, std::false_type, std::false_type>,
                 std::true_type
             >;
             using test3 = unit_test::assert<
-                reduce_t<or_type, std::false_type, std::false_type, std::false_type>,
+                reduce_t<or_type_t, std::false_type, std::false_type, std::false_type>,
                 std::false_type
             >;
             using test4 = unit_test::assert<
-                reduce_t<and_type, std::true_type, std::false_type, std::false_type>,
+                reduce_t<and_type_t, std::true_type, std::false_type, std::false_type>,
                 std::false_type
             >;
             using test5 = unit_test::assert<
-                reduce_t<and_type, std::true_type, std::true_type, std::true_type>,
+                reduce_t<and_type_t, std::true_type, std::true_type, std::true_type>,
                 std::true_type
             >;
         };
