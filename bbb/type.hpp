@@ -16,4 +16,4 @@
 
 #pragma once
 
-#include <bbb/core/type/explicit_types.hpp>
+#include <bbb/type/explicit_types.hpp>
