@@ -17,7 +17,9 @@
 #pragma once
 
 #include <bbb/function/utility.hpp>
-#include <bbb/function/lambda_utils.hpp>
+#include <bbb/function/bind.hpp>
+#include <bbb/function/lambda_symbols.hpp>
+#include <bbb/function/direct_lambda.hpp>
 
 namespace bbb {
     using namespace function;
