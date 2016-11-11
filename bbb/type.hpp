@@ -17,3 +17,4 @@
 #pragma once
 
 #include <bbb/type/explicit_types.hpp>
+#include <bbb/type/notifier.hpp>
