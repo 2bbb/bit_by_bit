@@ -10,7 +10,7 @@
  * bbb/function/direct_lambda/base_class.hpp
  *
  * author: ISHII 2bit
- * mail:   2bit@backspace.tokyo
+ * mail:   bit_by_bit@2bit.jp
  *
  * **** **** **** **** **** **** **** **** */
 
