@@ -19,14 +19,8 @@
 #include <bbb/core.hpp>
 #include <bbb/type.hpp>
 #include <bbb/container.hpp>
-
-
-#include <bbb/thread/thread_utils.hpp>
-
-#include <bbb/math/math_utils.hpp>
-
-#include <bbb/dirty/reference.hpp>
-#include <bbb/misc/stop_watch.hpp>
-#include <bbb/misc/logger.hpp>
-#include <bbb/misc/simple_test.hpp>
 #include <bbb/function.hpp>
+#include <bbb/thread.hpp>
+#include <bbb/math.hpp>
+#include <bbb/misc.hpp>
+#include <bbb/dirty.hpp>
