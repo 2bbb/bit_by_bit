@@ -17,5 +17,4 @@
 #pragma once
 
 #include <bbb/misc/simple_test.hpp>
-
-#include <bbb/core/type.hpp>
+#include <bbb/type.hpp>
