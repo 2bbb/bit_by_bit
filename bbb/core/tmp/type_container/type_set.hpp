@@ -19,8 +19,8 @@
 #include <bbb/core/tmp/traits.hpp>
 #include <bbb/core/tmp/integer_sequence/integer_range.hpp>
 
-#include <bbb/core/tmp/container/type_sequence.hpp>
-#include <bbb/core/tmp/container/type_sequence_operation.hpp>
+#include <bbb/core/tmp/type_container/type_sequence.hpp>
+#include <bbb/core/tmp/type_container/type_sequence_operation.hpp>
 
 namespace bbb {
     namespace type_sets {

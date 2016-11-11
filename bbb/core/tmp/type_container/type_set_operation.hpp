@@ -19,7 +19,7 @@
 #include <bbb/core/tmp/traits.hpp>
 #include <bbb/core/tmp/integer_sequence/integer_range.hpp>
 
-#include <bbb/core/tmp/container/type_set.hpp>
+#include <bbb/core/tmp/type_container/type_set.hpp>
 
 namespace bbb {
     namespace type_set_operations {
