@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include <bbb/core/tmp/traits.hpp>
+#include <bbb/core/traits.hpp>
 
 namespace bbb {
     namespace explicit_types {

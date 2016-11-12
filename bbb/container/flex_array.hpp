@@ -17,6 +17,7 @@
 #pragma once
 
 #include <bbb/core.hpp>
+#include <bbb/tmp/type_container.hpp>
 
 namespace bbb {
     template <std::size_t size, std::size_t ... sizes>
