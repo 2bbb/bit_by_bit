@@ -66,7 +66,7 @@ namespace bbb {
         template <typename... types>
         using index_sequence_for_t = get_type<index_sequence_for<types ...>>;
 
-#ifdef BBB_EXEC_UNIT_TEST
+#if BBB_EXEC_UNIT_TEST
         namespace integer_sequence_test {
             using test1 = unit_test::assert<
                 make_index_sequence_t<4>,

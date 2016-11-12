@@ -49,7 +49,7 @@ namespace bbb {
         template <std::size_t from, std::size_t to, std::size_t offset = 1>
         using index_range_t = get_type<index_range<from, to, offset>>;
 
-#ifdef BBB_EXEC_UNIT_TEST
+#if BBB_EXEC_UNIT_TEST
         namespace integer_range_test {
             using test1 = unit_test::assert<
                 index_range_t<0, 4>,
