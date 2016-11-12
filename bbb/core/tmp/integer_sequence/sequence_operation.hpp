@@ -44,8 +44,10 @@ namespace bbb {
         };
         
         template <typename ... sequences>
-        using sequence_cat = get_type<detail::sequence_cat<sequences ...>>;
-        
+        using sequence_cat = detail::sequence_cat<sequences ...>;
+        template <typename ... sequences>
+        using sequence_cat_t = get_type<sequence_cat<sequences ...>>;
+
         namespace detail {
             template <typename integer_type, typename sequence, integer_type ... fronts>
             struct sequence_prepend;
@@ -57,8 +59,10 @@ namespace bbb {
         };
         
         template <typename integer_type, typename sequence, integer_type ... fronts>
-        using sequence_prepend = get_type<detail::sequence_prepend<integer_type, sequence, fronts ...>>;
-        
+        using sequence_prepend = detail::sequence_prepend<integer_type, sequence, fronts ...>;
+        template <typename integer_type, typename sequence, integer_type ... fronts>
+        using sequence_prepend_t = get_type<sequence_prepend<integer_type, sequence, fronts ...>>;
+
         namespace detail {
             template <typename integer_type, typename sequence, integer_type ... backs>
             struct sequence_append;
@@ -70,7 +74,9 @@ namespace bbb {
         };
         
         template <typename integer_type, typename sequence, integer_type ... backs>
-        using sequence_append = get_type<detail::sequence_append<integer_type, sequence, backs ...>>;
+        using sequence_append = detail::sequence_append<integer_type, sequence, backs ...>;
+        template <typename integer_type, typename sequence, integer_type ... backs>
+        using sequence_append_t = get_type<sequence_append<integer_type, sequence, backs ...>>;
     };
     using namespace sequence_utils;
 };
