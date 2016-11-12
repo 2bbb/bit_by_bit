@@ -19,7 +19,7 @@
 #include <bbb/core/tmp/traits.hpp>
 #include <bbb/core/tmp/utility.hpp>
 #include <bbb/core/tmp/integer_sequence/integer_sequence.hpp>
-#include <bbb/core/tmp/integer_sequence/sequence_operation.hpp>
+#include <bbb/core/tmp/integer_sequence/operation.hpp>
 
 namespace bbb {
     namespace sequence_range {
