@@ -26,7 +26,7 @@ namespace bbb {
         namespace detail {
             template <typename integer_type, typename sequence, integer_type val>
             struct deferred_prepend {
-                using type = sequence_prepend_t<integer_type, get_type<sequence>, val>;
+                using type = integer_sequence_operations::push_front_t<integer_type, get_type<sequence>, val>;
             };
 
             template <typename integer_type, integer_type from, integer_type to, integer_type offset = 1>

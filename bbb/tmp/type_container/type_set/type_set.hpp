@@ -24,7 +24,7 @@ namespace bbb {
     namespace type_sets {
         template <typename ... types>
         struct type_set {
-            using type = make_variadic_unique_t<types ...>;
+            using type = ts_op::make_variadic_unique_t<types ...>;
         };
 
         template <typename ... types>
