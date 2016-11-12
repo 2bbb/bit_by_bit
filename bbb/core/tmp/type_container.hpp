@@ -19,4 +19,3 @@
 #include <bbb/core/tmp/type_container/type_sequence.hpp>
 #include <bbb/core/tmp/type_container/type_set.hpp>
 #include <bbb/core/tmp/type_container/type_set_operation.hpp>
-#include <bbb/core/tmp/type_container/type_combination.hpp>

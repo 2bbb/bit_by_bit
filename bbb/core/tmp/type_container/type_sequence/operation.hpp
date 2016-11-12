@@ -26,10 +26,8 @@
 #include <bbb/core/tmp/type_container/type_sequence/operation/reduce.hpp>
 #include <bbb/core/tmp/type_container/type_sequence/operation/make_unique.hpp>
 #include <bbb/core/tmp/type_container/type_sequence/operation/make_direct_product.hpp>
+#include <bbb/core/tmp/type_container/type_sequence/operation/make_combination.hpp>
 
 namespace bbb {
-    namespace type_sequence_operations {
-    };
-
     using namespace type_sequence_operations;
 };
