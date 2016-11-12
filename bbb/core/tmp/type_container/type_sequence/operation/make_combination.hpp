@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * bbb/make_combination.hpp
+ * bbb/core/tmp/type_container/type_sequence/make_combination.hpp
  *
  * author: ISHII 2bit
  * mail:   bit_by_bit@2bit.jp
