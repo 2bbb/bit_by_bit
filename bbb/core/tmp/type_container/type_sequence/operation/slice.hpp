@@ -32,7 +32,7 @@ namespace bbb {
         };
 
         template <std::size_t from, std::size_t length, typename ... types>
-        using slice_variadic = detail::slice_variadic<index_range_t<from, from + length>, types ...>;
+        using slice_variadic = detail::slice_variadic<make_index_range_t<from, from + length>, types ...>;
 
         template <std::size_t from, std::size_t length, typename ... types>
         using slice_variadic_t = get_type<slice_variadic<from, length, types ...>>;

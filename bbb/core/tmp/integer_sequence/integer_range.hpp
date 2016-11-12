@@ -30,45 +30,45 @@ namespace bbb {
             };
 
             template <typename integer_type, integer_type from, integer_type to, integer_type offset = 1>
-            struct integer_range {
+            struct make_integer_range {
                 using type = resolve_t<conditional_t<
                     from + offset < to,
-                    deferred_prepend<integer_type, integer_range<integer_type, from + offset, to, offset>, from>,
+                    deferred_prepend<integer_type, make_integer_range<integer_type, from + offset, to, offset>, from>,
                     defer<integer_sequence<integer_type, from>>
                 >>;
             };
         };
 
         template <typename integer_type, integer_type from, integer_type to, integer_type offset = 1>
-        using integer_range = detail::integer_range<integer_type, from, to, offset>;
+        using make_integer_range = detail::make_integer_range<integer_type, from, to, offset>;
         template <typename integer_type, integer_type from, integer_type to, integer_type offset = 1>
-        using integer_range_t = get_type<integer_range<integer_type, from, to, offset>>;
+        using make_integer_range_t = get_type<make_integer_range<integer_type, from, to, offset>>;
 
         template <std::size_t from, std::size_t to, std::size_t offset = 1>
-        using index_range = integer_range<std::size_t, from, to, offset>;
+        using make_index_range = make_integer_range<std::size_t, from, to, offset>;
         template <std::size_t from, std::size_t to, std::size_t offset = 1>
-        using index_range_t = get_type<index_range<from, to, offset>>;
+        using make_index_range_t = get_type<make_index_range<from, to, offset>>;
 
 #if BBB_EXEC_UNIT_TEST
         namespace integer_range_test {
             using test1 = unit_test::assert<
-                index_range_t<0, 4>,
+                make_index_range_t<0, 4>,
                 index_sequence<0, 1, 2, 3>
             >;
             using test2 = unit_test::assert<
-                index_range_t<0, 4, 2>,
+                make_index_range_t<0, 4, 2>,
                 index_sequence<0, 2>
             >;
             using test3 = unit_test::assert<
-                index_range_t<0, 4, 3>,
+                make_index_range_t<0, 4, 3>,
                 index_sequence<0, 3>
             >;
             using test4 = unit_test::assert<
-                index_range_t<0, 4, 4>,
+                make_index_range_t<0, 4, 4>,
                 index_sequence<0>
             >;
             using test5 = unit_test::assert<
-                index_range_t<1, 4>,
+                make_index_range_t<1, 4>,
                 index_sequence<1, 2, 3>
             >;
         };
