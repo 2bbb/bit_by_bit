@@ -18,10 +18,13 @@
 
 #include <type_traits>
 
+#include <bbb/core/constants.hpp>
+
 namespace bbb {
     template <typename T>
     using get_type = typename T::type;
 
+#if BBB_EXEC_UNIT_TEST
     namespace unit_test {
         template <typename expr, typename require>
         using assert = get_type<std::enable_if<
@@ -29,4 +32,5 @@ namespace bbb {
             expr
         >>;
     };
+#endif
 };

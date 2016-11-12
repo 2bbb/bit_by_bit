@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * bbb/tmp/function_traits.hpp
+ * bbb/core/traits/function_traits.hpp
  *
  * author: ISHII 2bit
  * mail:   bit_by_bit@2bit.jp
