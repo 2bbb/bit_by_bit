@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * bbb/tmp/alias.hpp
+ * bbb/tmp/utility/alias.hpp
  *
  * author: ISHII 2bit
  * mail:   bit_by_bit@2bit.jp
@@ -20,7 +20,10 @@
 
 namespace bbb {
     namespace aliases {
-        template <typename> struct alias;
+        template <typename t>
+        struct alias {
+            using type = t;
+        };
 
         namespace detail {
             template<typename type_, std::size_t depth>
@@ -57,6 +60,19 @@ namespace bbb {
         constexpr bool is_same_alias() {
             return is_same<remove_aliases<lhs>, remove_aliases<rhs>>();
         };
+
+#if BBB_EXEC_UNIT_TEST
+        namespace alias_test {
+            using test1 = unit_test::assert<
+                enable_if_t<is_same_alias<alias<int>, alias<alias<int>>>()>,
+                void
+            >;
+            using test1 = unit_test::assert<
+                enable_if_t<!is_same_alias<alias<int>, alias<char>>()>,
+                void
+            >;
+        };
+#endif
     };
 
     using namespace aliases;
