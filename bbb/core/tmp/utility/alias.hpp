@@ -52,13 +52,17 @@ namespace bbb {
         };
 
         template <typename type>
-        using remove_alias = get_type<detail::remove_alias<type>>;
+        using remove_alias = detail::remove_alias<type>;
         template <typename type>
-        using remove_aliases = get_type<detail::remove_aliases<type>>;
+        using remove_alias_t = get_type<remove_alias<type>>;
+        template <typename type>
+        using remove_aliases = detail::remove_aliases<type>;
+        template <typename type>
+        using remove_aliases_t = get_type<remove_aliases<type>>;
 
         template <typename lhs, typename rhs>
         constexpr bool is_same_alias() {
-            return is_same<remove_aliases<lhs>, remove_aliases<rhs>>();
+            return is_same<remove_aliases_t<lhs>, remove_aliases_t<rhs>>();
         };
 
 #if BBB_EXEC_UNIT_TEST
