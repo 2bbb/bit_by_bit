@@ -37,7 +37,7 @@ namespace bbb {
 #define BBB_VERSION_MINOR 0
 #define BBB_VERSION_PATCH 1
 
-#define BBB_MAKE_VERSION(MAJOR, MINOR, PATCH) (((MAJOR * 1000UL + MINOR) * 1000UL + PATCH)
+#define BBB_MAKE_VERSION(MAJOR, MINOR, PATCH) ((MAJOR * 1000UL + MINOR) * 1000UL + PATCH)
 #define BBB_VERSION BBB_MAKE_VERSION(BBB_VERSION_MAJOR, BBB_VERSION_MINOR, BBB_VERSION_PATCH)
 
 #define BBB_IS_VERSION_SAME(MAJOR, MINOR, PATCH) (BBB_MAKE_VERSION(MAJOR, MINOR, PATCH) == BBB_VERSION)
@@ -46,11 +46,13 @@ namespace bbb {
 #define BBB_IS_VERSION_OLDER_THAN(MAJOR, MINOR, PATCH) (!BBB_IS_VERSION_NEWER_THAN_EQ(MAJOR, MINOR, PATCH))
 #define BBB_IS_VERSION_OLDER_THAN_EQ(MAJOR, MINOR, PATCH) (!BBB_IS_VERSION_NEWER_THAN(MAJOR, MINOR, PATCH))
 
+#include <cstdint>
+
 namespace bbb {
-    using version_major_t = uint16_t;
-    using version_minor_t = uint16_t;
-    using version_patch_t = uint16_t;
-    using version_t = uint64_t;
+    using version_major_t = std::uint16_t;
+    using version_minor_t = std::uint16_t;
+    using version_patch_t = std::uint16_t;
+    using version_t = std::uint64_t;
 
     constexpr version_major_t major() { return BBB_VERSION_MAJOR; };
     constexpr version_minor_t minor() { return BBB_VERSION_MINOR; };
