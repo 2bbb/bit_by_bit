@@ -24,19 +24,18 @@
 namespace bbb {
     namespace sequence_range {
         namespace detail {
-            template <typename integer_type, integer_type from, integer_type to, integer_type offset = 1>
-            struct integer_range {
-                using back_sequence = integer_range<integer_type, from + offset, to, offset>;
-                using type = resolve_t<conditional_t<
-                    from + offset <= to,
-                    defer<sequence_prepend<integer_type, get_type<back_sequence>, from>>,
-                    back_sequence
-                >>;
+            template <typename integer_type, typename sequence, integer_type val>
+            struct deferred_prepend {
+                using type = sequence_prepend_t<integer_type, get_type<sequence>, val>;
             };
 
-            template <typename integer_type, integer_type n, integer_type offset>
-            struct integer_range<integer_type, n, n, offset> {
-                using type = integer_sequence<integer_type>;
+            template <typename integer_type, integer_type from, integer_type to, integer_type offset = 1>
+            struct integer_range {
+                using type = resolve_t<conditional_t<
+                    from + offset < to,
+                    deferred_prepend<integer_type, integer_range<integer_type, from + offset, to, offset>, from>,
+                    defer<integer_sequence<integer_type, from>>
+                >>;
             };
         };
 
@@ -55,6 +54,22 @@ namespace bbb {
             using test1 = unit_test::assert<
                 index_range_t<0, 4>,
                 index_sequence<0, 1, 2, 3>
+            >;
+            using test2 = unit_test::assert<
+                index_range_t<0, 4, 2>,
+                index_sequence<0, 2>
+            >;
+            using test3 = unit_test::assert<
+                index_range_t<0, 4, 3>,
+                index_sequence<0, 3>
+            >;
+            using test4 = unit_test::assert<
+                index_range_t<0, 4, 4>,
+                index_sequence<0>
+            >;
+            using test5 = unit_test::assert<
+                index_range_t<1, 4>,
+                index_sequence<1, 2, 3>
             >;
         };
 #endif
