@@ -21,9 +21,20 @@
 
 namespace bbb {
     namespace type_sequence_operations {
+        /// @struct difference_sequence
+        /// calculate difference of sequences
+        /// @tparam s: type_sequence
+        /// @tparam t: type_sequence
+        /// s \ t
+        /// ex. {a, b, b, c} \ {a, b, c} == {b}
+        ///      {a, b, c} \ {a, b, b, c} == {}
+        ///      {c, b, a} \ {a, b, c} == {}
+        ///
         template <typename s, typename t>
         struct difference_sequence;
 
+        /// @struct difference_sequence_t
+        /// alias of get_type<diference_sequence<s, t>>
         template <typename s, typename t>
         using difference_sequence_t = get_type<difference_sequence<s, t>>;
 
