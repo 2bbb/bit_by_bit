@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * bbb/core/type/container/type_set_operation.hpp
+ * bbb/core/tmp/type_container/type_set/operation.hpp
  *
  * author: ISHII 2bit
  * mail:   bit_by_bit@2bit.jp
@@ -19,7 +19,7 @@
 #include <bbb/core/tmp/traits.hpp>
 #include <bbb/core/tmp/integer_sequence/integer_range.hpp>
 
-#include <bbb/core/tmp/type_container/type_set.hpp>
+#include <bbb/core/tmp/type_container/type_set/type_set.hpp>
 
 namespace bbb {
     namespace type_set_operations {
