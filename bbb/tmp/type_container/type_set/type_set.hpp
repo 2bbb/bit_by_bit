@@ -45,15 +45,10 @@ namespace bbb {
 #endif
 
         template <typename sequence>
-        struct make_type_set;
+        using make_type_set = tseq_op::make_unique<sequence>;
 
         template <typename sequence>
         using make_type_set_t = get_type<make_type_set<sequence>>;
-
-        template <typename ... types>
-        struct make_type_set<type_sequence<types ...>> {
-            using type = type_set_t<types ...>;
-        };
     };
 
     using namespace type_sets;
