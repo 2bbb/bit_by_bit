@@ -29,5 +29,5 @@
 #include <bbb/tmp/type_container/type_sequence/operation/make_combination.hpp>
 
 namespace bbb {
-    namespace ts_op = type_sequence_operations;
+    namespace tseq_op = type_sequence_operations;
 };

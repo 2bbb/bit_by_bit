@@ -25,15 +25,15 @@ namespace bbb {
     namespace type_set_operations {
         template <typename s, typename t>
         using is_same_as_set = conditional_t<
-            (ts_op::make_sequence_unique_t<s>::size == ts_op::make_sequence_unique_t<t>::size)
-            && (ts_op::make_difference_t<ts_op::make_sequence_unique_t<s>, ts_op::make_sequence_unique_t<t>>::size == 0),
+            (tseq_op::make_sequence_unique_t<s>::size == tseq_op::make_sequence_unique_t<t>::size)
+            && (tseq_op::make_difference_t<tseq_op::make_sequence_unique_t<s>, tseq_op::make_sequence_unique_t<t>>::size == 0),
             std::true_type,
             std::false_type
         >;
 
 #if BBB_EXEC_UNIT_TEST
         namespace is_same_as_set_test {
-            static_assert(ts_op::make_sequence_unique_t<type_sequence<int, int, char>>::size == 2, "test");
+            static_assert(tseq_op::make_sequence_unique_t<type_sequence<int, int, char>>::size == 2, "test");
             using test1 = unit_test::assert<
                 is_same_as_set<
                     type_sequence<int, int, char>,
@@ -53,7 +53,7 @@ namespace bbb {
 #endif
 
         template <typename s, typename t>
-        using make_difference_set = ts_op::make_difference<make_type_set_t<s>, make_type_set_t<t>>;
+        using make_difference_set = tseq_op::make_difference<make_type_set_t<s>, make_type_set_t<t>>;
         template <typename s, typename t>
         using make_difference_set_t = get_type<make_difference_set<s, t>>;
     };
