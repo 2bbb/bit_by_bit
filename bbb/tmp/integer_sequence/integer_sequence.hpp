@@ -20,7 +20,7 @@
 #include <bbb/tmp/utility.hpp>
 
 namespace bbb {
-    namespace sequences {
+    namespace integer_sequences {
 
 #if bbb_is_cpp14
         template <typename type, type ... ns>
@@ -79,5 +79,5 @@ namespace bbb {
         };
 #endif
     };
-    using namespace sequences;
+    using namespace integer_sequences;
 };

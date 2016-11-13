@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include <bbb/core/traits.hpp>
+#include <bbb/core.hpp>
 #include <bbb/tmp/type_container/type_sequence/type_sequence.hpp>
 #include <bbb/tmp/type_container/type_sequence/operation/map.hpp>
 #include <bbb/tmp/type_container/type_sequence/operation/make_unique.hpp>
@@ -29,12 +29,12 @@ namespace bbb {
         template <typename t, typename u>
         using make_direct_product_t = get_type<make_direct_product<t, u>>;
 
-        template <typename ... ts, typename ... us>
-        struct make_direct_product<type_sequence<ts ...>, type_sequence<us ...>> {
-            template <typename t>
-            using make_pair = type_sequence<type_sequence<t, us> ...>;
+        template <typename t, typename ... us>
+        struct make_direct_product<t, type_sequence<us ...>> {
+            template <typename x>
+            using make_pair = type_sequence<type_sequence<x, us> ...>;
 
-            using type = reduce_sequence_t<concat_sequence_t, map_variadic_t<make_pair, ts ...>>;
+            using type = reduce_t<concat_t, type_sequence<>, map_t<make_pair, t>>;
         };
 
 #if BBB_EXEC_UNIT_TEST
@@ -49,7 +49,7 @@ namespace bbb {
             using p = seq<int, int, int, int>;
             using q = seq<char, char, char, char>;
             static_assert(make_direct_product_t<p, q>::size == p::size * q::size, "");
-            static_assert(make_sequence_unique_t<make_direct_product_t<p, q>>::size == make_sequence_unique_t<p>::size * make_sequence_unique_t<q>::size, "");
+            static_assert(make_unique_t<make_direct_product_t<p, q>>::size == make_unique_t<p>::size * make_unique_t<q>::size, "");
         };
 #endif
     };

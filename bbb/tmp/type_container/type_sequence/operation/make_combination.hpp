@@ -16,7 +16,9 @@
 
 #pragma once
 
-#include <bbb/tmp/type_container/type_sequence.hpp>
+#include <bbb/tmp/type_container/type_sequence/type_sequence.hpp>
+#include <bbb/tmp/type_container/type_sequence/operation/push.hpp>
+#include <bbb/tmp/type_container/type_sequence/operation/map.hpp>
 
 namespace bbb {
     namespace type_sequence_operations {
@@ -26,7 +28,7 @@ namespace bbb {
                 template <typename sequence>
                 using push_t = push_front_t<t, sequence>;
 
-                using type = map_sequence_t<push_t, meta_sequence>;
+                using type = map_t<push_t, meta_sequence>;
             };
 
             template <typename t, typename meta_sequence>
@@ -41,7 +43,7 @@ namespace bbb {
 
         template <typename t, typename ... ts>
         struct make_combination<t, ts ...> {
-            using type = concat_sequence_t<
+            using type = concat_t<
                 detail::map_push_front_t<t, make_combination_t<ts ...>>,
                 make_combination_t<ts ...>
             >;

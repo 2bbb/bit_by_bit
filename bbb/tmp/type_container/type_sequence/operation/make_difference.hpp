@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include <bbb/core/traits.hpp>
+#include <bbb/core.hpp>
 #include <bbb/tmp/type_container/type_sequence/type_sequence.hpp>
 
 namespace bbb {
@@ -31,27 +31,27 @@ namespace bbb {
         ///      {c, b, a} \ {a, b, c} == {}
         ///
         template <typename s, typename t>
-        struct difference_sequence;
+        struct make_difference;
 
         /// @struct difference_sequence_t
         /// alias of get_type<diference_sequence<s, t>>
         template <typename s, typename t>
-        using difference_sequence_t = get_type<difference_sequence<s, t>>;
+        using make_difference_t = get_type<make_difference<s, t>>;
 
         template <typename s, typename t, typename ... ts>
-        struct difference_sequence<s, type_sequence<t, ts ...>> {
-            using type = difference_sequence_t<remove_t<t, s>, type_sequence<ts ...>>;
+        struct make_difference<s, type_sequence<t, ts ...>> {
+            using type = make_difference_t<remove_t<t, s>, type_sequence<ts ...>>;
         };
 
         template <typename s>
-        struct difference_sequence<s, type_sequence<>> {
+        struct make_difference<s, type_sequence<>> {
             using type = s;
         };
 
 #if BBB_EXEC_UNIT_TEST
         namespace difference_sequence_test {
             using test1 = unit_test::assert<
-                difference_sequence_t<type_sequence<int, int, char>, type_sequence<int>>,
+                make_difference_t<type_sequence<int, int, char>, type_sequence<int>>,
                 type_sequence<int, char>
             >;
         };

@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * bbb/tmp/type_sequence/integer_range.hpp
+ * bbb/tmp/integer_sequence/operation/make_integer_range.hpp
  *
  * author: ISHII 2bit
  * mail:   bit_by_bit@2bit.jp
@@ -19,14 +19,14 @@
 #include <bbb/core/traits.hpp>
 #include <bbb/tmp/utility.hpp>
 #include <bbb/tmp/integer_sequence/integer_sequence.hpp>
-#include <bbb/tmp/integer_sequence/operation.hpp>
+#include <bbb/tmp/integer_sequence/operation/push.hpp>
 
 namespace bbb {
-    namespace sequence_range {
+    namespace integer_sequence_operations {
         namespace detail {
             template <typename integer_type, typename sequence, integer_type val>
             struct deferred_prepend {
-                using type = sequence_prepend_t<integer_type, get_type<sequence>, val>;
+                using type = push_front_t<integer_type, get_type<sequence>, val>;
             };
 
             template <typename integer_type, integer_type from, integer_type to, integer_type offset = 1>
@@ -74,6 +74,4 @@ namespace bbb {
         };
 #endif
     };
-
-    using namespace sequence_range;
 };
