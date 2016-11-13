@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * bbb/insert.hpp
+ * bbb/tmp/variadic/operation/insert.hpp
  *
  * author: ISHII 2bit
  * mail:   bit_by_bit@2bit.jp
@@ -17,7 +17,6 @@
 #pragma once
 
 #include <bbb/core.hpp>
-#include <bbb/tmp/utility.hpp>
 #include <bbb/tmp/type_container/type_sequence/type_sequence.hpp>
 #include <bbb/tmp/type_container/type_sequence/operation/push.hpp>
 
