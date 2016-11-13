@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * misc/demangled_type.hpp
+ * bbb/misc/demangled_type.hpp
  *
  * author: ISHII 2bit
  * mail:   bit_by_bit@2bit.jp
@@ -42,5 +42,5 @@ namespace bbb {
     };
 
     template <class type>
-    std::string demangled_type(const type &t) { return bbb::detail::demangle(typeid(t).name()); }
+    std::string demangled_type(const type &t) { return detail::demangle(typeid(t).name()); }
 };
