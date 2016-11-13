@@ -16,12 +16,11 @@
 
 #pragma once
 
-#include <bbb/core/constants.hpp>
-#include <bbb/core/basic.hpp>
-
 #include <type_traits>
 #include <tuple>
-#include <functional>
+
+#include <bbb/core/constants.hpp>
+#include <bbb/core/basic.hpp>
 
 namespace bbb {
     using std::enable_if;
