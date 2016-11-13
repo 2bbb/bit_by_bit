@@ -22,20 +22,20 @@ namespace bbb {
     namespace integer_sequence_operations {
         namespace detail {
             template <typename sequence1, typename sequence2, typename ... sequences>
-            struct concat_sequence;
+            struct concat;
 
             template <typename integer_type, integer_type ... indices1, integer_type ... indices2, typename sequence, typename ... sequences>
-            struct concat_sequence<
+            struct concat<
                 integer_sequence<integer_type, indices1 ...>,
                 integer_sequence<integer_type, indices2 ...>,
                 sequence,
                 sequences ...
             > {
-                using type = get_type<concat_sequence<integer_sequence<integer_type, indices1 ..., indices2 ...>, sequence, sequences ...>>;
+                using type = get_type<concat<integer_sequence<integer_type, indices1 ..., indices2 ...>, sequence, sequences ...>>;
             };
 
             template <typename integer_type, integer_type ... indices1, integer_type ... indices2>
-            struct concat_sequence<
+            struct concat<
                 integer_sequence<integer_type, indices1 ...>,
                 integer_sequence<integer_type, indices2 ...>
             > {
@@ -44,8 +44,8 @@ namespace bbb {
         };
 
         template <typename ... sequences>
-        using concat_sequence = detail::concat_sequence<sequences ...>;
+        using concat = detail::concat<sequences ...>;
         template <typename ... sequences>
-        using concat_sequence_t = get_type<concat_sequence<sequences ...>>;
+        using concat_t = get_type<concat<sequences ...>>;
     };
 };

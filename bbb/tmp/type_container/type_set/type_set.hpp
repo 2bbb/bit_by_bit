@@ -17,14 +17,15 @@
 #pragma once
 
 #include <bbb/core/traits.hpp>
-#include <bbb/tmp/integer_sequence/integer_range.hpp>
+#include <bbb/tmp/integer_sequence/operation.hpp>
+#include <bbb/tmp/variadic.hpp>
 #include <bbb/tmp/type_container/type_sequence.hpp>
 
 namespace bbb {
     namespace type_sets {
         template <typename ... types>
         struct type_set {
-            using type = tseq_op::make_variadic_unique_t<types ...>;
+            using type = va_op::make_unique_t<types ...>;
         };
 
         template <typename ... types>

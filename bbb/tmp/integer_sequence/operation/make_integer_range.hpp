@@ -74,6 +74,4 @@ namespace bbb {
         };
 #endif
     };
-
-    using namespace sequence_range;
 };

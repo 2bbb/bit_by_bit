@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * bbb/tmp/integer_sequence/operation.hpp
+ * bbb/operation.hpp
  *
  * author: ISHII 2bit
  * mail:   bit_by_bit@2bit.jp
@@ -16,10 +16,11 @@
 
 #pragma once
 
-#include <bbb/tmp/integer_sequence/operation/concat.hpp>
-#include <bbb/tmp/integer_sequence/operation/push.hpp>
-#include <bbb/tmp/integer_sequence/operation/make_integer_range.hpp>
+#include <bbb/tmp/variadic/operation/map.hpp>
+#include <bbb/tmp/variadic/operation/reduce.hpp>
+#include <bbb/tmp/variadic/operation/slice.hpp>
+#include <bbb/tmp/variadic/operation/make_unique.hpp>
 
 namespace bbb {
-    namespace is_op = integer_sequence_operations;
+    namespace va_op = variadic_operations;
 };

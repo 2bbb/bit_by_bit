@@ -17,7 +17,6 @@
 #pragma once
 
 #include <bbb/core/traits.hpp>
-#include <bbb/tmp/integer_sequence/integer_range.hpp>
 #include <bbb/tmp/logic.hpp>
 
 namespace bbb {

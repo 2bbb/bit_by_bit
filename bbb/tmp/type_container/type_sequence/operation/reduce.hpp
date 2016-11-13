@@ -17,60 +17,48 @@
 #pragma once
 
 #include <bbb/core/traits.hpp>
+#include <bbb/tmp/variadic.hpp>
 #include <bbb/tmp/type_container/type_sequence/type_sequence.hpp>
 #include <bbb/tmp/type_container/type_sequence/operation/push.hpp>
 
 namespace bbb {
     namespace type_sequence_operations {
-        template <template <typename, typename> class function, typename initial, typename ... types>
-        struct reduce_variadic;
+        template <template <typename, typename> class function, typename initial, typename sequence>
+        struct reduce;
+
+        template <template <typename, typename> class function, typename initial, typename sequence>
+        using reduce_t = get_type<reduce<function, initial, sequence>>;
 
         template <template <typename, typename> class function, typename initial, typename ... types>
-        using reduce_variadic_t = get_type<reduce_variadic<function, initial, types ...>>;
-
-        template <template <typename, typename> class function, typename t, typename s, typename ... types>
-        struct reduce_variadic<function, t, s, types ...> {
-            using type = reduce_variadic_t<function, function<t, s>, types ...>;
-        };
-
-        template <template <typename, typename> class function, typename t>
-        struct reduce_variadic<function, t> {
-            using type = t;
-        };
-
-        template <template <typename, typename> class function, typename sequence>
-        struct reduce_sequence;
-
-        template <template <typename, typename> class function, typename sequence>
-        using reduce_sequence_t = get_type<reduce_sequence<function, sequence>>;
-
-        template <template <typename, typename> class function, typename t, typename ... types>
-        struct reduce_sequence<function, type_sequence<t, types ...>> {
-            using type = reduce_variadic_t<function, t, types ...>;
+        struct reduce<function, initial, type_sequence<types ...>> {
+            using type = va_op::reduce_t<function, initial, types ...>;
         };
 
 #if BBB_EXEC_UNIT_TEST
-        namespace reduce_test {
+        namespace sequence_reduce_test {
+            template <typename ... ts>
+            using seq = type_sequence<ts ...>;
+
             template <typename seq, typename type>
             using f = push_back_t<type, seq>;
             using test1 = unit_test::assert<
-                reduce_variadic_t<f, type_sequence<>, int, char, float>,
+                reduce_t<f, type_sequence<>, seq<int, char, float>>,
                 type_sequence<int, char, float>
             >;
             using test2 = unit_test::assert<
-                reduce_variadic_t<or_type_t, std::true_type, std::false_type, std::false_type>,
+                reduce_t<or_type_t, std::true_type, seq<std::false_type, std::false_type>>,
                 std::true_type
             >;
             using test3 = unit_test::assert<
-                reduce_variadic_t<or_type_t, std::false_type, std::false_type, std::false_type>,
+                reduce_t<or_type_t, std::false_type, seq<std::false_type, std::false_type>>,
                 std::false_type
             >;
             using test4 = unit_test::assert<
-                reduce_variadic_t<and_type_t, std::true_type, std::false_type, std::false_type>,
+                reduce_t<and_type_t, std::true_type, seq<std::false_type, std::false_type>>,
                 std::false_type
             >;
             using test5 = unit_test::assert<
-                reduce_variadic_t<and_type_t, std::true_type, std::true_type, std::true_type>,
+                reduce_t<and_type_t, std::true_type, seq<std::true_type, std::true_type>>,
                 std::true_type
             >;
         };
