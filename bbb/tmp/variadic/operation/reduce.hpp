@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * bbb/reduce.hpp
+ * bbb/tmp/variadic/operation/reduce.hpp
  *
  * author: ISHII 2bit
  * mail:   bit_by_bit@2bit.jp

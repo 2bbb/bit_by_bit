@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * bbb/make_unique.hpp
+ * bbb/tmp/variadic/operation/make_unique.hpp
  *
  * author: ISHII 2bit
  * mail:   bit_by_bit@2bit.jp

@@ -17,9 +17,12 @@
 #pragma once
 
 #include <bbb/core.hpp>
-#include <bbb/tmp/logic.hpp>
 #include <bbb/tmp/variadic.hpp>
 #include <bbb/tmp/type_container/type_sequence/type_sequence.hpp>
+
+#if BBB_EXEC_UNIT_TEST
+#   include <bbb/tmp/logic.hpp>
+#endif
 
 namespace bbb {
     namespace type_sequence_operations {

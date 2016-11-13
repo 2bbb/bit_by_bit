@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * bbb/operation.hpp
+ * bbb/tmp/variadic/operation.hpp
  *
  * author: ISHII 2bit
  * mail:   bit_by_bit@2bit.jp

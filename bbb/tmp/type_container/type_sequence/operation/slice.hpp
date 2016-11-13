@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include <bbb/core/traits.hpp>
+#include <bbb/core.hpp>
 #include <bbb/tmp/variadic.hpp>
 #include <bbb/tmp/type_container/type_sequence/type_sequence.hpp>
 

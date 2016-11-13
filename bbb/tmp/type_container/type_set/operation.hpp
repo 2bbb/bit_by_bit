@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include <bbb/core/traits.hpp>
+#include <bbb/core.hpp>
 
 #include <bbb/tmp/integer_sequence/operation.hpp>
 #include <bbb/tmp/type_container/type_set/type_set.hpp>
@@ -48,7 +48,6 @@ namespace bbb {
                 >,
                 std::false_type
             >;
-
         };
 #endif
 
