@@ -17,6 +17,7 @@
 #pragma once
 
 #include <bbb/core.hpp>
+#include <bbb/tmp/variadic.hpp>
 #include <bbb/tmp/type_container/type_sequence/type_sequence.hpp>
 
 namespace bbb {
@@ -27,18 +28,9 @@ namespace bbb {
         template <typename t, typename sequence>
         using remove_t = get_type<remove<t, sequence>>;
 
-        template <typename t, typename u, typename ... types>
-        struct remove<t, type_sequence<u, types ...>> {
-            using type = conditional_t<
-                is_same<t, u>(),
-                type_sequence<types ...>,
-                push_front_t<u, remove_t<t, type_sequence<types ...>>>
-            >;
-        };
-
-        template <typename t>
-        struct remove<t, type_sequence<>> {
-            using type = type_sequence<>;
+        template <typename t, typename ... types>
+        struct remove<t, type_sequence<types ...>> {
+            using type = va_op::remove_t<t, types ...>;
         };
 
 #if BBB_EXEC_UNIT_TEST
@@ -68,18 +60,9 @@ namespace bbb {
         template <typename t, typename sequence>
         using remove_all_t = get_type<remove_all<t, sequence>>;
 
-        template <typename t, typename u, typename ... types>
-        struct remove_all<t, type_sequence<u, types ...>> {
-            using type = conditional_t<
-                is_same<t, u>(),
-                remove_all_t<t, type_sequence<types ...>>,
-                push_front_t<u, remove_all_t<t, type_sequence<types ...>>>
-            >;
-        };
-
-        template <typename t>
-        struct remove_all<t, type_sequence<>> {
-            using type = type_sequence<>;
+        template <typename t, typename ... types>
+        struct remove_all<t, type_sequence<types ...>> {
+            using type = va_op::remove_all_t<t, types ...>;
         };
 
 #if BBB_EXEC_UNIT_TEST
