@@ -49,7 +49,7 @@ namespace bbb {
             using delegation::crbegin;
             using delegation::crend;
 
-            using arg_value_t = add_const_reference_if_not_number<value_t>;
+            using arg_value_t = add_const_reference_if_not_number_t<value_t>;
             virtual std::size_t size() const = 0;
 
             virtual void push(const value_t &value) = 0;

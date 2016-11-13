@@ -39,7 +39,7 @@ namespace bbb {
             struct eval<op_type::placeholder, detail::index_type<n>> {
                 template <typename ... arguments>
                 constexpr auto evaluate(const std::tuple<detail::index_type<n>> &, arguments && ... args) const
-                -> type_at<n - 1, arguments ...>
+                -> type_at_t<n - 1, arguments ...>
                 { return value_at<n - 1, arguments ...>(std::forward<arguments>(args) ...); }
             };
 

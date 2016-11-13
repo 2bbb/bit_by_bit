@@ -28,7 +28,7 @@ namespace bbb {
 
             template <std::size_t ... indices, typename ... types>
             struct slice<index_sequence<indices ...>, types ...> {
-                using type = type_sequence<type_at<indices, types ...> ...>;
+                using type = type_sequence<type_at_t<indices, types ...> ...>;
             };
         };
 

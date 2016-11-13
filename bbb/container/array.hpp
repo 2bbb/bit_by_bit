@@ -29,7 +29,7 @@ namespace bbb {
         struct array : functional_base<array<value_type, allocator>, std::vector<value_type, allocator>>
         {
             using value_t = value_type;
-            using arg_value_t = add_const_reference_if_not_number<value_t>;
+            using arg_value_t = add_const_reference_if_not_number_t<value_t>;
             using inner_container_t = std::vector<value_type, allocator>;
 
             using functional = functional_base<array<value_type, allocator>, inner_container_t>;
