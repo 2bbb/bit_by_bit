@@ -26,21 +26,24 @@
 #endif
 
 namespace bbb {
-    namespace detail {
-        std::string demangle(const char *name) {
+    namespace demangled {
+        namespace detail {
+            std::string demangle(const char *name) {
 #ifdef __GNUG__
-            int status = -4;
-            std::unique_ptr<char, void (*)(void *)> res{
-                abi::__cxa_demangle(name, NULL, NULL, &status),
-                std::free
-            };
-            return (status == 0) ? res.get() : name;
+                int status = -4;
+                std::unique_ptr<char, void (*)(void *)> res{
+                    abi::__cxa_demangle(name, NULL, NULL, &status),
+                    std::free
+                };
+                return (status == 0) ? res.get() : name;
 #else
-            return name;
+                return name;
 #endif
-        }
-    };
+            };
+        };
 
-    template <class type>
-    std::string demangled_type(const type &t) { return detail::demangle(typeid(t).name()); }
+        template <class type>
+        std::string demangled_type(const type &t) { return detail::demangle(typeid(t).name()); }
+    };
+    using namespace demangled;
 };

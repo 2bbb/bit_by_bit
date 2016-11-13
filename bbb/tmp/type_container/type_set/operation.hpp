@@ -22,5 +22,7 @@
 #include <bbb/tmp/type_container/type_set/operation/is_same.hpp>
 
 namespace bbb {
-    namespace tset_op = type_set_operations;
+    namespace tmp {
+        namespace tset_op = type_set_operations;
+    };
 };

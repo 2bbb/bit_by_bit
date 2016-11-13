@@ -21,5 +21,7 @@
 #include <bbb/tmp/integer_sequence/operation/make_integer_range.hpp>
 
 namespace bbb {
-    namespace is_op = integer_sequence_operations;
+    namespace tmp {
+        namespace is_op = integer_sequence_operations;
+    };
 };

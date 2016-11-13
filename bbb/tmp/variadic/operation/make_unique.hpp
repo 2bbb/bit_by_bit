@@ -24,45 +24,47 @@
 #endif
 
 namespace bbb {
-    namespace variadic_operations {
-        namespace detail {
-            template <typename holder, typename ... types>
-            struct make_unique;
+    namespace tmp {
+        namespace variadic_operations {
+            namespace detail {
+                template <typename holder, typename ... types>
+                struct make_unique;
 
-            template <typename ... holded_types, typename first, typename ... types>
-            struct make_unique<type_sequence<holded_types ...>, first, types ...> {
-                template <typename rhs>
-                using eq = std::is_same<first, rhs>;
+                template <typename ... holded_types, typename first, typename ... types>
+                struct make_unique<type_sequence<holded_types ...>, first, types ...> {
+                    template <typename rhs>
+                    using eq = std::is_same<first, rhs>;
 
-                using type = get_type<conditional_t<
-                    any_t<eq, holded_types ...>::value,
-                    make_unique<type_sequence<holded_types ...>, types ...>,
-                    make_unique<type_sequence<holded_types ..., first>, types ...>
-                >>;
+                    using type = get_type<conditional_t<
+                        any_t<eq, holded_types ...>::value,
+                        make_unique<type_sequence<holded_types ...>, types ...>,
+                        make_unique<type_sequence<holded_types ..., first>, types ...>
+                    >>;
+                };
+
+                template <typename ... holded_types>
+                struct make_unique<type_sequence<holded_types ...>> {
+                    using type = type_sequence<holded_types ...>;
+                };
             };
 
-            template <typename ... holded_types>
-            struct make_unique<type_sequence<holded_types ...>> {
-                using type = type_sequence<holded_types ...>;
-            };
-        };
-
-        template <typename ... types>
-        using make_unique = detail::make_unique<type_sequence<>, types ...>;
-        template <typename ... types>
-        using make_unique_t = get_type<make_unique<types ...>>;
+            template <typename ... types>
+            using make_unique = detail::make_unique<type_sequence<>, types ...>;
+            template <typename ... types>
+            using make_unique_t = get_type<make_unique<types ...>>;
 
 #if BBB_EXEC_UNIT_TEST
-        namespace variadic_make_unique_test {
-            using test1 = unit_test::assert<
-                make_unique_t<int, int>,
-                type_sequence<int>
-            >;
-            using test2 = unit_test::assert<
-                make_unique_t<int, char, int>,
-                type_sequence<int, char>
-            >;
-        }
+            namespace variadic_make_unique_test {
+                using test1 = unit_test::assert<
+                  make_unique_t<int, int>,
+                    type_sequence<int>
+                >;
+                using test2 = unit_test::assert<
+                    make_unique_t<int, char, int>,
+                    type_sequence<int, char>
+                >;
+            };
 #endif
+        };
     };
 };

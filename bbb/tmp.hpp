@@ -19,3 +19,7 @@
 #include <bbb/tmp/logic.hpp>
 #include <bbb/tmp/integer_sequence.hpp>
 #include <bbb/tmp/type_container.hpp>
+
+namespace bbb {
+    using namespace tmp;
+};

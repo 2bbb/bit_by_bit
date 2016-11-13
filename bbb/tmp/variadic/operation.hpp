@@ -24,5 +24,7 @@
 #include <bbb/tmp/variadic/operation/make_unique.hpp>
 
 namespace bbb {
-    namespace va_op = variadic_operations;
+    namespace tmp {
+        namespace va_op = variadic_operations;
+    };
 };

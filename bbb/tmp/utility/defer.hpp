@@ -19,14 +19,18 @@
 #include <bbb/core.hpp>
 
 namespace bbb {
-    template <typename t>
-    struct defer {
-        using type = t;
+    namespace tmp {
+        namespace utility {
+            template <typename t>
+            struct defer {
+                using type = t;
+            };
+
+            template <bool b, typename t, typename f>
+            using defered_conditional = conditional_t<b, defer<t>, defer<f>>;
+
+            template <typename t>
+            using resolve_t = get_type<t>;
+        };
     };
-
-    template <bool b, typename t, typename f>
-    using defered_conditional = conditional_t<b, defer<t>, defer<f>>;
-
-    template <typename t>
-    using resolve_t = get_type<t>;
 };

@@ -18,3 +18,9 @@
 
 #include <bbb/tmp/utility/defer.hpp>
 #include <bbb/tmp/utility/alias.hpp>
+
+namespace bbb {
+    namespace tmp {
+        using namespace utility;
+    };
+};

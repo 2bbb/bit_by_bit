@@ -21,15 +21,17 @@
 #include <bbb/tmp/type_container/type_sequence/type_sequence.hpp>
 
 namespace bbb {
-    namespace type_sequence_operations {
-        template <typename sequence>
-        struct make_unique;
-        template <typename sequence>
-        using make_unique_t = get_type<make_unique<sequence>>;
+    namespace tmp {
+        namespace type_sequence_operations {
+            template <typename sequence>
+            struct make_unique;
+            template <typename sequence>
+            using make_unique_t = get_type<make_unique<sequence>>;
 
-        template <typename ... types>
-        struct make_unique<type_sequence<types ...>> {
-            using type = va_op::make_unique_t<types ...>;
+            template <typename ... types>
+            struct make_unique<type_sequence<types ...>> {
+                using type = va_op::make_unique_t<types ...>;
+            };
         };
     };
 };

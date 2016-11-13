@@ -20,15 +20,17 @@
 #include <bbb/tmp/type_container/type_sequence/type_sequence.hpp>
 
 namespace bbb {
-    namespace type_sequence_operations {
-        template <template <typename ...> class func, typename sequence, typename ... other_args>
-        struct apply;
-        template <template <typename ...> class func, typename sequence, typename ... other_args>
-        using apply_t = get_type<apply<func, sequence>>;
+    namespace tmp {
+        namespace type_sequence_operations {
+            template <template <typename ...> class func, typename sequence, typename ... other_args>
+            struct apply;
+            template <template <typename ...> class func, typename sequence, typename ... other_args>
+            using apply_t = get_type<apply<func, sequence>>;
 
-        template <template <typename ...> class func, typename ... ts, typename ... other_args>
-        struct apply<func, type_sequence<ts ...>, other_args ...> {
-            using type = func<other_args ..., ts ...>;
+            template <template <typename ...> class func, typename ... ts, typename ... other_args>
+            struct apply<func, type_sequence<ts ...>, other_args ...> {
+                using type = func<other_args ..., ts ...>;
+            };
         };
     };
 };

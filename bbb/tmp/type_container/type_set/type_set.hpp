@@ -22,34 +22,36 @@
 #include <bbb/tmp/type_container/type_sequence.hpp>
 
 namespace bbb {
-    namespace type_sets {
-        template <typename ... types>
-        struct type_set {
-            using type = va_op::make_unique_t<types ...>;
-        };
+    namespace tmp {
+        namespace type_sets {
+            template <typename ... types>
+            struct type_set {
+                using type = va_op::make_unique_t<types ...>;
+            };
 
-        template <typename ... types>
-        using type_set_t = get_type<type_set<types ...>>;
+            template <typename ... types>
+            using type_set_t = get_type<type_set<types ...>>;
 
 #if BBB_EXEC_UNIT_TEST
-        namespace type_set_test {
-            using test1 = unit_test::assert<
-                type_set_t<int, char, int>,
-                type_sequence<int, char>
-            >;
-            using test2 = unit_test::assert<
-                type_set_t<int, char, int>,
-                type_set_t<int, char, char>
-            >;
-        };
+            namespace type_set_test {
+                using test1 = unit_test::assert<
+                    type_set_t<int, char, int>,
+                    type_sequence<int, char>
+                >;
+                using test2 = unit_test::assert<
+                    type_set_t<int, char, int>,
+                    type_set_t<int, char, char>
+                >;
+            };
 #endif
 
-        template <typename sequence>
-        using make_type_set = tseq_op::make_unique<sequence>;
+            template <typename sequence>
+            using make_type_set = tseq_op::make_unique<sequence>;
 
-        template <typename sequence>
-        using make_type_set_t = get_type<make_type_set<sequence>>;
+            template <typename sequence>
+            using make_type_set_t = get_type<make_type_set<sequence>>;
+        };
+
+        using namespace type_sets;
     };
-
-    using namespace type_sets;
 };
