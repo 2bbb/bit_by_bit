@@ -16,7 +16,7 @@
 
 #pragma once
 
-#include <bbb/core/traits/type_traits.hpp>
+#include <bbb/core.hpp>
 
 namespace bbb {
     template <typename t>
