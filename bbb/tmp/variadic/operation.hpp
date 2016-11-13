@@ -17,6 +17,7 @@
 #pragma once
 
 #include <bbb/tmp/variadic/operation/insert.hpp>
+#include <bbb/tmp/variadic/operation/remove.hpp>
 #include <bbb/tmp/variadic/operation/slice.hpp>
 #include <bbb/tmp/variadic/operation/map.hpp>
 #include <bbb/tmp/variadic/operation/reduce.hpp>
