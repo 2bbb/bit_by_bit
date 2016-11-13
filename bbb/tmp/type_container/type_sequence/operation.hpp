@@ -16,6 +16,7 @@
 
 #pragma once
 
+#include <bbb/tmp/type_container/type_sequence/operation/apply.hpp>
 #include <bbb/tmp/type_container/type_sequence/operation/push.hpp>
 #include <bbb/tmp/type_container/type_sequence/operation/insert.hpp>
 #include <bbb/tmp/type_container/type_sequence/operation/concat.hpp>
