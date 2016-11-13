@@ -21,20 +21,21 @@
 
 namespace bbb {
     namespace type_sequence_operations {
-        /// @struct difference_sequence
-        /// calculate difference of sequences
-        /// @tparam s: type_sequence
-        /// @tparam t: type_sequence
-        /// s \ t
-        /// ex. {a, b, b, c} \ {a, b, c} == {b}
-        ///      {a, b, c} \ {a, b, b, c} == {}
-        ///      {c, b, a} \ {a, b, c} == {}
-        ///
+        /*! @struct make_difference
+         *  @brief calculate difference of sequences "s \ t"
+         *  @details ex:
+         *  - {a, b, b, c} \ {a, b, c} == {b}
+         *  - {a, b, c} \ {a, b, b, c} == {}
+         *  - {c, b, a} \ {a, b, c} == {}
+         *  @tparam s: type_sequence
+         *  @tparam t: type_sequence
+         *  @return s \ t
+         */
         template <typename s, typename t>
         struct make_difference;
 
-        /// @struct difference_sequence_t
-        /// alias of get_type<diference_sequence<s, t>>
+        /// @struct make_difference_t
+        /// @brief alias of get_type<diference_sequence<s, t>>
         template <typename s, typename t>
         using make_difference_t = get_type<make_difference<s, t>>;
 
@@ -50,7 +51,7 @@ namespace bbb {
 
 #if BBB_EXEC_UNIT_TEST
         namespace difference_sequence_test {
-            using test1 = unit_test::assert<
+            using test1 = unit_test::assert< 
                 make_difference_t<type_sequence<int, int, char>, type_sequence<int>>,
                 type_sequence<int, char>
             >;
