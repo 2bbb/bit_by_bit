@@ -18,6 +18,7 @@
 
 #include <bbb/tmp/integer_sequence/operation/concat_sequence.hpp>
 #include <bbb/tmp/integer_sequence/operation/push.hpp>
+#include <bbb/tmp/integer_sequence/operation/make_integer_range.hpp>
 
 namespace bbb {
     namespace is_op = integer_sequence_operations;
