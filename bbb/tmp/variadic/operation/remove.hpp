@@ -30,7 +30,7 @@ namespace bbb {
         template <typename t, typename u, typename ... ts>
         struct remove<t, u, ts ...> {
             using type = conditional_t<
-                is_same<t, u>(),
+                is_same_f<t, u>(),
                 type_sequence<ts ...>,
                 type_sequence_operations::push_front_t<u, remove_t<t, ts ...>>
             >;
@@ -67,7 +67,7 @@ namespace bbb {
         template <typename t, typename u, typename ... ts>
         struct remove_all<t, u, ts ...> {
             using type = conditional_t<
-                is_same<t, u>(),
+                is_same_f<t, u>(),
                 remove_all_t<t, ts ...>,
                 type_sequence_operations::push_front_t<u, remove_all_t<t, ts ...>>
             >;

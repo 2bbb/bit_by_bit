@@ -32,7 +32,7 @@ namespace bbb {
             struct notifier;
 
             template <typename type_>
-            struct notifier<type_, enable_if_t<is_number<type_>()>> {
+            struct notifier<type_, enable_if_t<is_number_f<type_>()>> {
                 using type = arithmetic_notifier<type_>;
             };
 

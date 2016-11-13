@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * bbb/core/type/logic.hpp
+ * bbb/tmp/logic.hpp
  *
  * author: ISHII 2bit
  * mail:   bit_by_bit@2bit.jp
@@ -90,7 +90,7 @@ namespace bbb {
 #if BBB_EXEC_UNIT_TEST
         namespace logic_test {
             template <typename rhs>
-            using eq_int = std::is_same<int, rhs>;
+            using eq_int = is_same<int, rhs>;
 
             using test1 = unit_test::assert<
                 all_t<eq_int, int, float>,

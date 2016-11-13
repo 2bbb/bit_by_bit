@@ -34,32 +34,70 @@ namespace bbb {
     template <bool b, typename T, typename F>
     using conditional_t = get_type<conditional<b, T, F>>;
 
+    using std::is_same;
+
+#if bbb_is_cpp14
     template <typename T, typename U>
-    constexpr bool is_same() { return std::is_same<T, U>::value; };
+    constexpr bool is_same_v = is_same<T, U>::value;
+#endif
+
+    template <typename T, typename U>
+    constexpr bool is_same_f() { return is_same<T, U>::value; };
+
+    using std::is_const;
+
+#if bbb_is_cpp14
+    template <typename T>
+    constexpr bool is_const_v = is_const<T>::value;
+#endif
 
     template <typename T>
-    constexpr bool is_const() {
-        return std::is_const<T>::value;
+    constexpr bool is_const_f() {
+        return is_const<T>::value;
     }
 
     template <typename T>
-    constexpr bool is_number() {
-        return std::is_arithmetic<T>::value;
+    using is_number = std::is_arithmetic<T>;
+
+#if bbb_is_cpp14
+    template <typename T>
+    constexpr bool is_numver_v = is_number<T>::value;
+#endif
+
+    template <typename T>
+    constexpr bool is_number_f() {
+        return is_number<T>::value;
     }
 
     template <typename T>
-    constexpr bool is_integer() {
-        return std::is_integral<T>::value;
+    using is_integer = std::is_integral<T>;
+
+#if bbb_is_cpp14
+    template <typename T>
+    constexpr bool is_integer_v = is_integer<T>::value;
+#endif
+
+    template <typename T>
+    constexpr bool is_integer_f() {
+        return is_integer<T>::value;
     }
 
     template <typename T>
-    constexpr bool is_float() {
-        return std::is_floating_point<T>::value;
+    using is_float = std::is_floating_point<T>;
+
+#if bbb_is_cpp14
+    template <typename T>
+    constexpr bool is_float_v = is_float<T>::value;
+#endif
+
+    template <typename T>
+    constexpr bool is_float_f() {
+        return is_float<T>::value;
     }
 
     template <typename T>
     using remove_const_reference_if_number = get_type<std::conditional<
-        is_number<T>(),
+        is_number_f<T>(),
         get_type<std::remove_reference<
             get_type<std::remove_const<T>>
         >>,
@@ -68,7 +106,7 @@ namespace bbb {
 
     template <typename T>
     using add_const_reference_if_not_number = get_type<std::conditional<
-        !is_number<T>(),
+        !is_number_f<T>(),
         get_type<std::add_const<
             get_type<std::add_lvalue_reference<T>>
         >>,
