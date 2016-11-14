@@ -55,10 +55,10 @@ namespace bbb {
             template <typename type, type n>
 #else
             using std::integer_sequence;
-        using std::make_integer_sequence;
-        using std::index_sequence;
-        using std::make_index_sequence;
-        using std::index_sequence_for;
+            using std::make_integer_sequence;
+            using std::index_sequence;
+            using std::make_index_sequence;
+            using std::index_sequence_for;
 #endif
 
             using make_integer_sequence_t = get_type<make_integer_sequence<type, n>>;
