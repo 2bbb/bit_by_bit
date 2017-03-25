@@ -17,6 +17,5 @@
 #pragma once
 
 #include <bbb/misc/stop_watch.hpp>
-#include <bbb/misc/logger.hpp>
 #include <bbb/misc/simple_test.hpp>
 #include <bbb/misc/demangled_type.hpp>
