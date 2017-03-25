@@ -17,7 +17,7 @@
 #pragma once
 
 #include <bbb/core.hpp>
-#include <bbb/tmp.hpp>
+#include <bbb/tmp/type_container/type_sequence.hpp>
 
 namespace bbb {
     namespace tmp {
