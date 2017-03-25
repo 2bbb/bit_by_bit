@@ -24,6 +24,12 @@ namespace bbb {
         namespace integer_sequences {
 
 #if bbb_is_cpp14
+            using std::integer_sequence;
+            using std::make_integer_sequence;
+            using std::index_sequence;
+            using std::make_index_sequence;
+            using std::index_sequence_for;
+#else
             template <typename type, type ... ns>
             struct integer_sequence {
                 using value_type = type;
@@ -53,12 +59,6 @@ namespace bbb {
             template <typename... types>
             using index_sequence_for = make_index_sequence<sizeof...(types)>;
             template <typename type, type n>
-#else
-            using std::integer_sequence;
-            using std::make_integer_sequence;
-            using std::index_sequence;
-            using std::make_index_sequence;
-            using std::index_sequence_for;
 #endif
 
             using make_integer_sequence_t = get_type<make_integer_sequence<type, n>>;
