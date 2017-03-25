@@ -23,5 +23,6 @@
 #include <bbb/function.hpp>
 #include <bbb/thread.hpp>
 #include <bbb/math.hpp>
+#include <bbb/logger.hpp>
 #include <bbb/misc.hpp>
 #include <bbb/dirty.hpp>
