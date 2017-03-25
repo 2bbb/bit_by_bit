@@ -35,14 +35,12 @@
 
 #include "./dirty/reference.hpp"
 #include "./misc/stop_watch.hpp"
-#include "./misc/logger.hpp"
 #include "./misc/simple_test.hpp"
 
 #include "thread/thread_utils.hpp"
 
 int main(int argc, char *argv[]) {
     bbb_test(test);
-    bbb_test(logger);
 
     bbb_test(reusable_array)
     bbb_test(byte_array);
