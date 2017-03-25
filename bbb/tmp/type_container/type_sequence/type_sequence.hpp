@@ -35,23 +35,26 @@ namespace bbb {
                 using head = type;
                 using tails = type_sequence<types ...>;
                 static constexpr std::size_t size = sizeof...(types) + 1;
+
+                template <std::size_t index>
+                using at = type_at_t<index, types ...>;
             };
 
-            namespace detail {
-                template <typename sequence>
-                struct is_sequence : std::false_type {};
+            template <typename sequence>
+            struct is_sequence : std::false_type {};
+            template <typename sequence>
+            using is_sequence_t = get_type<is_sequence<sequence>>;
 
-                template <typename ... types>
-                struct is_sequence<type_sequence<types ...>> : std::true_type {};
-            }
+            template <typename ... types>
+            struct is_sequence<type_sequence<types ...>> : std::true_type {};
 
             template <typename sequence>
-            constexpr bool is_sequence() {
-                return detail::is_sequence<sequence>::value;
+            constexpr bool is_sequence_f() {
+                return is_sequence_t<sequence>::value;
             }
 
-            template <typename sequence, typename std::enable_if<is_sequence<sequence>()>::type * = nullptr>
-            constexpr bool is_null() {
+            template <typename sequence, enable_if_t<is_sequence<sequence>::value> * = nullptr>
+            constexpr bool is_null_f() {
                 return sequence::size == 0;
             }
 
