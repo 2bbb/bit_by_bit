@@ -88,6 +88,17 @@ namespace bbb {
             template <template <typename> class pred, typename ... arguments>
             using any_t = get_type<any<pred, arguments ...>>;
 
+			template <typename type, typename ... types>
+			struct is_in;
+
+			template <typename needle, typename type, typename ... types>
+			struct is_in<needle, type, types ...> {
+				static constexpr bool value = is_same<needle, type>::value || is_in<needle, types ...>::value;
+			};
+			
+			template <typename needle>
+			struct is_in<needle> : std::false_type {};
+
 #if BBB_EXEC_UNIT_TEST
             namespace logic_test {
                 template <typename rhs>
