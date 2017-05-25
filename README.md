@@ -9,6 +9,8 @@
  
 ```
 
+[doxygen](https://2bbb.github.io/bit_by_bit)
+
 ## type utilities
 
 ### get type syntax sugar
