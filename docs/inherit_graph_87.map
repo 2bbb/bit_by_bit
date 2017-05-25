@@ -1,0 +1,8 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$d5/dd4/structbbb_1_1loggers_1_1stream.html" title="bbb::loggers::stream" alt="" coords="5,137,148,163"/>
+<area shape="rect" id="node2" href="$d7/dd2/structbbb_1_1loggers_1_1console__stream.html" title="bbb::loggers::console\l_stream" alt="" coords="196,5,344,44"/>
+<area shape="rect" id="node3" href="$df/d02/structbbb_1_1loggers_1_1error__stream.html" title="bbb::loggers::error\l_stream" alt="" coords="205,68,335,107"/>
+<area shape="rect" id="node4" href="$dc/d1f/structbbb_1_1loggers_1_1file__stream.html" title="bbb::loggers::file\l_stream" alt="" coords="211,131,330,169"/>
+<area shape="rect" id="node5" href="$d7/d04/structbbb_1_1loggers_1_1null__stream.html" title="bbb::loggers::null\l_stream" alt="" coords="209,193,332,232"/>
+<area shape="rect" id="node6" href="$d7/d24/structbbb_1_1loggers_1_1string__stream.html" title="bbb::loggers::string\l_stream" alt="" coords="203,256,338,295"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="bbb::random::set_seed" name="bbb::random::set_seed">
+<area shape="rect" id="node2" href="$d6/d44/namespacebbb_1_1random.html#a7bedd12bf62b36c0f2b54f984f420e14" title="bbb::random::set_seed_fast" alt="" coords="215,5,402,31"/>
+<area shape="rect" id="node3" href="$d6/d44/namespacebbb_1_1random.html#a638a8ccad69e70b97f58708b4f93541a" title="bbb::random::set_seed_mt" alt="" coords="218,55,398,80"/>
+<area shape="rect" id="node4" href="$d6/d44/namespacebbb_1_1random.html#ab56d3d55316b9eb97bdab9cd6b1bafe3" title="bbb::random::set_seed_mt64" alt="" coords="211,104,406,129"/>
+</map>

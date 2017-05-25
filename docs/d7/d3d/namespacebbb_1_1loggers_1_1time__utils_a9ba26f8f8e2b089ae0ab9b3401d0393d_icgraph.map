@@ -1,0 +1,10 @@
+<map id="bbb::loggers::time_utils::now" name="bbb::loggers::time_utils::now">
+<area shape="rect" id="node2" href="$d7/d3d/namespacebbb_1_1loggers_1_1time__utils.html#acea8a9495582b3ddf83fd209b7b5c239" title="bbb::loggers::time\l_utils::get_elapsed_time" alt="" coords="181,65,346,104"/>
+<area shape="rect" id="node5" href="$d7/d3d/namespacebbb_1_1loggers_1_1time__utils.html#a89d82d264918cc70bb906ed3420940bd" title="bbb::loggers::time\l_utils::get_current\l_date_string" alt="" coords="200,128,327,180"/>
+<area shape="rect" id="node8" href="$dd/d0e/structbbb_1_1stop__watch.html#a282f3a7c451309c73f4ebeca3b759e0b" title="bbb::stop_watch::start" alt="" coords="187,204,339,229"/>
+<area shape="rect" id="node9" href="$dd/d0e/structbbb_1_1stop__watch.html#a3e1d6e788a4fa0d313cb43432e890659" title="bbb::stop_watch::rap" alt="" coords="191,253,336,279"/>
+<area shape="rect" id="node3" href="$d3/dff/structbbb_1_1loggers_1_1elapsed__time__footer.html#abdf3b88b748400d00a6cdd1d7fa7d85f" title="bbb::loggers::elapsed\l_time_footer::foot" alt="" coords="394,5,543,44"/>
+<area shape="rect" id="node4" href="$d0/d34/structbbb_1_1loggers_1_1elapsed__time__header.html#adbd30c87b7faeac97065bef4921677f5" title="bbb::loggers::elapsed\l_time_header::head" alt="" coords="394,68,543,107"/>
+<area shape="rect" id="node6" href="$d0/d36/structbbb_1_1loggers_1_1time__footer.html#af8965505336216311b1257fa8ef54a6f" title="bbb::loggers::time\l_footer::foot" alt="" coords="405,132,532,171"/>
+<area shape="rect" id="node7" href="$d2/d43/structbbb_1_1loggers_1_1time__header.html#a4bb68300a94ce3d06242fd8f76cd8e1a" title="bbb::loggers::time\l_header::head" alt="" coords="405,195,532,233"/>
+</map>

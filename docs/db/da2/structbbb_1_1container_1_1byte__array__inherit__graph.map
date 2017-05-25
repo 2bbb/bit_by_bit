@@ -1,0 +1,4 @@
+<map id="bbb::container::byte_array&lt; T &gt;" name="bbb::container::byte_array&lt; T &gt;">
+<area shape="rect" id="node2" href="$d1/d94/structbbb_1_1container_1_1iterator_1_1iterator__delegation.html" title="bbb::container::iterator\l::iterator_delegation\&lt;\l std::array\&lt; std::uint8\l_t, sizeof(T)\&gt; \&gt;" alt="" coords="210,5,365,71"/>
+<area shape="rect" id="node3" href="$dc/dd5/structbbb_1_1container_1_1iterator_1_1value__type__provider.html" title="bbb::container::iterator\l::value_type_provider\&lt;\l std::array\&lt; std::uint8\l_t, sizeof(T)\&gt; \&gt;" alt="" coords="5,5,162,71"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="bbb::notifiers::string_notifier&lt; std::basic_string&lt; character_type, traits, alloc &gt; &gt;::iterator::operator*" name="bbb::notifiers::string_notifier&lt; std::basic_string&lt; character_type, traits, alloc &gt; &gt;::iterator::operator*">
+<area shape="rect" id="node2" href="$dd/d31/structbbb_1_1notifiers_1_1referenced__arithmetic__notifier.html#a00220eb5b44e2062fd18736d428be8b6" title="bbb::notifiers::referenced\l_arithmetic_notifier::value\l_will_change" alt="" coords="218,5,391,57"/>
+<area shape="rect" id="node3" href="$dd/d31/structbbb_1_1notifiers_1_1referenced__arithmetic__notifier.html#a394d2dd0b10ec0572407e256d4121df9" title="bbb::notifiers::referenced\l_arithmetic_notifier::value\l_did_change" alt="" coords="218,81,391,133"/>
+</map>

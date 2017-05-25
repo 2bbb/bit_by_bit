@@ -1,0 +1,6 @@
+<map id="bbb::loggers::elapsed_time_footer::foot" name="bbb::loggers::elapsed_time_footer::foot">
+<area shape="rect" id="node2" href="$d1/d48/namespacebbb_1_1loggers.html#a1973869c38df6d021aa22f265776f580" title="bbb::loggers::to_string" alt="" coords="208,5,361,31"/>
+<area shape="rect" id="node3" href="$d7/d3d/namespacebbb_1_1loggers_1_1time__utils.html#acea8a9495582b3ddf83fd209b7b5c239" title="bbb::loggers::time\l_utils::get_elapsed_time" alt="" coords="202,55,367,93"/>
+<area shape="rect" id="node4" href="$d7/d3d/namespacebbb_1_1loggers_1_1time__utils.html#a9ba26f8f8e2b089ae0ab9b3401d0393d" title="bbb::loggers::time\l_utils::now" alt="" coords="415,23,543,61"/>
+<area shape="rect" id="node5" href="$d7/d3d/namespacebbb_1_1loggers_1_1time__utils.html#ab36610904bfa9f3bec6d0cf81853db2d" title="bbb::loggers::time\l_utils::start_time" alt="" coords="415,85,543,124"/>
+</map>

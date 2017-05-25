@@ -1,0 +1,8 @@
+<map id="bbb::loggers::custom_logger::log" name="bbb::loggers::custom_logger::log">
+<area shape="rect" id="node2" href="$d2/dbf/structbbb_1_1loggers_1_1custom__logger.html#a36693b0e3abce6a6c9cb3927f5c21fd2" title="bbb::loggers::custom\l_logger::operator()" alt="" coords="198,5,344,44"/>
+<area shape="rect" id="node3" href="$d2/dbf/structbbb_1_1loggers_1_1custom__logger.html#a72a1e719c752677c3c22327298682e69" title="bbb::loggers::custom\l_logger::verbose" alt="" coords="198,68,344,107"/>
+<area shape="rect" id="node4" href="$d2/dbf/structbbb_1_1loggers_1_1custom__logger.html#a3ffc554ce72ecd670f36d94b2b49faa9" title="bbb::loggers::custom\l_logger::info" alt="" coords="198,131,344,169"/>
+<area shape="rect" id="node5" href="$d2/dbf/structbbb_1_1loggers_1_1custom__logger.html#a41f30c6b77a597a174e3099dafc799b5" title="bbb::loggers::custom\l_logger::warning" alt="" coords="198,193,344,232"/>
+<area shape="rect" id="node6" href="$d2/dbf/structbbb_1_1loggers_1_1custom__logger.html#aef5191313a947ab37d190757308c16cc" title="bbb::loggers::custom\l_logger::error" alt="" coords="198,256,344,295"/>
+<area shape="rect" id="node7" href="$d2/dbf/structbbb_1_1loggers_1_1custom__logger.html#a9824d134a47fd4bb4497791098d4c63b" title="bbb::loggers::custom\l_logger::fatal" alt="" coords="198,319,344,357"/>
+</map>

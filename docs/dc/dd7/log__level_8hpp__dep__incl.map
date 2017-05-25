@@ -1,0 +1,17 @@
+<map id="bbb/logger/log_level.hpp" name="bbb/logger/log_level.hpp">
+<area shape="rect" id="node2" href="$d6/da3/logger_8hpp.html" title="bbb/logger.hpp" alt="" coords="368,512,477,537"/>
+<area shape="rect" id="node4" href="$d9/d2e/log__level__manager_8hpp.html" title="bbb/logger/log_level\l_manager.hpp" alt="" coords="83,339,224,377"/>
+<area shape="rect" id="node5" href="$d9/d0f/stream_8hpp.html" title="bbb/logger/modules\l/stream.hpp" alt="" coords="235,79,373,117"/>
+<area shape="rect" id="node10" href="$d6/d7e/streams_8hpp.html" title="bbb/logger/builtin\l_modules/streams.hpp" alt="" coords="194,165,350,204"/>
+<area shape="rect" id="node12" href="$da/daf/header_8hpp.html" title="bbb/logger/modules\l/header.hpp" alt="" coords="560,79,699,117"/>
+<area shape="rect" id="node13" href="$dc/d30/headers_8hpp.html" title="bbb/logger/builtin\l_modules/headers.hpp" alt="" coords="736,165,893,204"/>
+<area shape="rect" id="node14" href="$d7/dad/footer_8hpp.html" title="bbb/logger/modules\l/footer.hpp" alt="" coords="397,79,536,117"/>
+<area shape="rect" id="node15" href="$d7/dca/footers_8hpp.html" title="bbb/logger/builtin\l_modules/footers.hpp" alt="" coords="563,165,712,204"/>
+<area shape="rect" id="node16" href="$d0/d60/logger__stream_8hpp.html" title="bbb/logger/detail/logger\l_stream.hpp" alt="" coords="93,252,254,291"/>
+<area shape="rect" id="node3" href="$d6/d13/bit__by__bit_8hpp.html" title="bbb/bit_by_bit.hpp" alt="" coords="358,585,488,611"/>
+<area shape="rect" id="node6" href="$d3/d9e/modules_8hpp.html" title="bbb/logger/modules.hpp" alt="" coords="374,172,538,197"/>
+<area shape="rect" id="node7" href="$dd/d49/logger__utils_8hpp.html" title="bbb/logger/detail/logger\l_utils.hpp" alt="" coords="328,252,488,291"/>
+<area shape="rect" id="node8" href="$d1/d68/custom__logger_8hpp.html" title="bbb/logger/custom_logger.hpp" alt="" coords="288,345,488,371"/>
+<area shape="rect" id="node9" href="$de/d3b/builtin__loggers_8hpp.html" title="bbb/logger/builtin\l_loggers.hpp" alt="" coords="491,425,613,464"/>
+<area shape="rect" id="node11" href="$dc/d3c/builtin__modules_8hpp.html" title="bbb/logger/builtin\l_modules.hpp" alt="" coords="576,252,699,291"/>
+</map>
