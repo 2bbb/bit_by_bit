@@ -58,9 +58,9 @@ namespace bbb {
 
             template <typename... types>
             using index_sequence_for = make_index_sequence<sizeof...(types)>;
-            template <typename type, type n>
 #endif
 
+            template <typename type, type n>
             using make_integer_sequence_t = get_type<make_integer_sequence<type, n>>;
             template <std::size_t n>
             using make_index_sequence_t = get_type<make_index_sequence<n>>;
