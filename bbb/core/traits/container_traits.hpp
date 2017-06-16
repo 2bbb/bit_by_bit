@@ -260,4 +260,5 @@ namespace bbb {
             using substitute = get_type<substitute<container, new_type>>;
         };
     };
+    using namespace container_info;
 };
