@@ -208,7 +208,7 @@ namespace bbb {
         struct is_initializer_list<std::initializer_list<type>> : std::true_type {};
         
         template <typename type>
-        struct is_kind_of_map : meta_disjunction<
+        struct is_kind_of_map : template_disjunction<
             is_map,
             is_multimap,
             is_unordered_map,
@@ -216,7 +216,7 @@ namespace bbb {
         >::template eval<type> {};
         
         template <typename type>
-        struct is_kind_of_set : meta_disjunction<
+        struct is_kind_of_set : template_disjunction<
             is_set,
             is_multiset,
             is_unordered_set,
@@ -224,7 +224,7 @@ namespace bbb {
         >::template eval<type> {};
 
         template <typename type>
-        struct is_container : meta_disjunction<
+        struct is_container : template_disjunction<
             is_bitset,
             is_array,
             is_vector,
