@@ -18,7 +18,7 @@ var searchData=
   ['inserter_5fprovider',['inserter_provider',['../d8/d67/namespacebbb_1_1container_1_1iterator.html#a6ff362ec919dd313d59e3643f0e87b5f',1,'bbb::container::iterator']]],
   ['is_5ffloat',['is_float',['../dc/d34/namespacebbb.html#a427c01b23884b5e51a9b99321044ab95',1,'bbb']]],
   ['is_5finteger',['is_integer',['../dc/d34/namespacebbb.html#aedfbc2cee5c031a3bb71b5e08917a73b',1,'bbb']]],
-  ['is_5fnull_5fpointer',['is_null_pointer',['../dc/d34/namespacebbb.html#aed1b6b68e4e5596bf5383dc72e78cc3f',1,'bbb']]],
+  ['is_5fnull_5fpointer_5ft',['is_null_pointer_t',['../dc/d34/namespacebbb.html#a591507654bc9532137040c9e36684115',1,'bbb']]],
   ['is_5fnumber',['is_number',['../dc/d34/namespacebbb.html#ae7631a894a5b3b2bd1a385ac64abc26b',1,'bbb']]],
   ['is_5fsame_5fas_5fset',['is_same_as_set',['../d9/de0/namespacebbb_1_1tmp_1_1type__set__operations.html#a5d57067ad68cb7f87f79c46298fa0417',1,'bbb::tmp::type_set_operations']]],
   ['is_5fsequence_5ft',['is_sequence_t',['../d0/da0/namespacebbb_1_1tmp_1_1type__sequences.html#a4873c45852aaa1d641336d55dd2de547',1,'bbb::tmp::type_sequences']]],

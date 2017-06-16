@@ -5,5 +5,6 @@ var searchData=
   ['version_5fmajor_5ft',['version_major_t',['../dc/d34/namespacebbb.html#a6500dca4edf1a47e21b381bd2988b0c2',1,'bbb']]],
   ['version_5fminor_5ft',['version_minor_t',['../dc/d34/namespacebbb.html#ad14922d62c80f1b99b041edec0ef3fa8',1,'bbb']]],
   ['version_5fpatch_5ft',['version_patch_t',['../dc/d34/namespacebbb.html#a3a676cd08e6274e79b175060a275f17d',1,'bbb']]],
-  ['version_5ft',['version_t',['../dc/d34/namespacebbb.html#ab706b9e8ca6f7701ad631182df1e20ee',1,'bbb']]]
+  ['version_5ft',['version_t',['../dc/d34/namespacebbb.html#ab706b9e8ca6f7701ad631182df1e20ee',1,'bbb']]],
+  ['void_5ft',['void_t',['../dc/d34/namespacebbb.html#afd6e4a4693e42bd20e3bcca82be53386',1,'bbb']]]
 ];
