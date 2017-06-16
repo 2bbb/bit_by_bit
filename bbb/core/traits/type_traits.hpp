@@ -42,14 +42,26 @@ namespace bbb {
     /**
      * is_null_pointer
      */
+#if bbb_is_cpp14
+    using std::is_null_pointer;
+    using std::is_null_pointer_t;
+#else
     template <typename type>
     struct is_null_pointer : std::false_type {};
     template <typename type>
-    using is_null_pointer_t : get_type<is_null_pointer<type>>;
-    
+    using is_null_pointer_t = get_type<is_null_pointer<type>>;
+
     template <>
     struct is_null_pointer<std::nullptr_t> : std::true_type {};
-    
+#endif
+
+#if bbb_is_cpp17
+    using std::void_t;
+    using std::bool_constant;
+    using std::negation;
+    using std::conjunction;
+    using std::disjunction;
+#else
     /**
      * void_t
      */
@@ -60,7 +72,7 @@ namespace bbb {
      * bool_constant
      */
     template <bool b>
-    using bool_constant = std::_integral_constant<bool, b>;
+    using bool_constant = std::integral_constant<bool, b>;
 
     /**
      * negation
@@ -78,7 +90,7 @@ namespace bbb {
     struct conjunction<cond> : cond {};
     
     template <typename cond, typename ... conditions>
-    struct conjunction<cond, conditions ...> : condtional_t<bool(cond::value), conjunction<conditions ...>, cond> {};
+    struct conjunction<cond, conditions ...> : conditional_t<bool(cond::value), conjunction<conditions ...>, cond> {};
 
     /**
      * disjunction
@@ -90,7 +102,8 @@ namespace bbb {
     struct disjunction<cond> : cond {};
     
     template <typename cond, typename ... conditions>
-    struct disjunction<cond, conditions ...> : condtional_t<bool(cond::value), cond, disjunction<conditions ...>> {};
+    struct disjunction<cond, conditions ...> : conditional_t<bool(cond::value), cond, disjunction<conditions ...>> {};
+#endif
 
     /**
      * is_same
@@ -104,20 +117,6 @@ namespace bbb {
 
     template <typename T, typename U>
     constexpr bool is_same_f() { return is_same<T, U>::value; };
-
-    /**
-     * is_null_pointer
-     */
-    template <typename T>
-    using is_null_pointer = is_same<T, std::nullptr_t>;
-
-#if bbb_is_cpp14
-    template <typename T>
-    constexpr bool is_null_pointer_v = is_null_pointer<T>::value;
-#endif
-
-    template <typename T>
-    constexpr bool is_null_pointer_f() { return is_null_pointer<T>::value; };
 
     /**
      * is_const
@@ -238,11 +237,11 @@ namespace bbb {
     struct meta_enable_if : enable_if<cond::value, type> {};
 
     template <typename cond, typename type = void>
-    using meta_enable_if_t : enable_if_t<cond::value, type> {};
+    using meta_enable_if_t = enable_if_t<cond::value, type>;
 
     template <typename cond, typename true_t, typename false_t>
     struct meta_conditional : conditional<cond::value, true_t, false_t> {};
     
     template <typename cond, typename true_t, typename false_t>
-    struct meta_conditional_t : conditional_t<cond::value, true_t, false_t> {};
+    using meta_conditional_t = conditional_t<cond::value, true_t, false_t>;
 };
