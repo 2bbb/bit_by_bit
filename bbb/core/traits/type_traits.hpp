@@ -31,10 +31,66 @@ namespace bbb {
     template <bool b, typename T = void>
     using enable_if_t = get_type<enable_if<b, T>>;
 
+    /**
+     * conditional
+     */
     using std::conditional;
 
     template <bool b, typename T, typename F>
     using conditional_t = get_type<conditional<b, T, F>>;
+
+    /**
+     * is_null_pointer
+     */
+    template <typename type>
+    struct is_null_pointer : std::false_type {};
+    template <typename type>
+    using is_null_pointer_t : get_type<is_null_pointer<type>>;
+    
+    template <>
+    struct is_null_pointer<std::nullptr_t> : std::true_type {};
+    
+    /**
+     * void_t
+     */
+    template <typename ...>
+    using void_t = void;
+    
+    /**
+     * bool_constant
+     */
+    template <bool b>
+    using bool_constant = std::_integral_constant<bool, b>;
+
+    /**
+     * negation
+     */
+    template <typename cond>
+    struct negation : bool_constant<!bool(cond::value)> {};
+
+    /**
+     * conjunction
+     */
+    template <typename ... conditions>
+    struct conjunction : std::true_type {};
+
+    template <typename cond>
+    struct conjunction<cond> : cond {};
+    
+    template <typename cond, typename ... conditions>
+    struct conjunction<cond, conditions ...> : condtional_t<bool(cond::value), conjunction<conditions ...>, cond> {};
+
+    /**
+     * disjunction
+     */
+    template <typename ... conditions>
+    struct disjunction : std::false_type {};
+
+    template <typename cond>
+    struct disjunction<cond> : cond {};
+    
+    template <typename cond, typename ... conditions>
+    struct disjunction<cond, conditions ...> : condtional_t<bool(cond::value), cond, disjunction<conditions ...>> {};
 
     /**
      * is_same
@@ -177,4 +233,16 @@ namespace bbb {
         template <typename ... arguments>
         using type = get_type<std::conditional<condition, t<arguments ...>, f<arguments ...>>>;
     };
+
+    template <typename cond, typename type = void>
+    struct meta_enable_if : enable_if<cond::value, type> {};
+
+    template <typename cond, typename type = void>
+    using meta_enable_if_t : enable_if_t<cond::value, type> {};
+
+    template <typename cond, typename true_t, typename false_t>
+    struct meta_conditional : conditional<cond::value, true_t, false_t> {};
+    
+    template <typename cond, typename true_t, typename false_t>
+    struct meta_conditional_t : conditional_t<cond::value, true_t, false_t> {};
 };
