@@ -1,8 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$d6/d85/structbbb_1_1function__info_1_1detail_1_1function__traits.html" title="bbb::function_info\l::detail::function_traits\l\&lt; ret, arguments ... \&gt;" alt="" coords="5,164,156,216"/>
-<area shape="rect" id="node2" href="$dd/d9f/structbbb_1_1function__info_1_1function__traits_3_01ret_07_5_08_07arguments_01_8_8_8_08_4.html" title="bbb::function_info\l::function_traits\&lt; ret\l(*)(arguments ...)\&gt;" alt="" coords="235,5,374,57"/>
-<area shape="rect" id="node3" href="$db/dbe/structbbb_1_1function__info_1_1function__traits_3_01ret_07arguments_01_8_8_8_08_4.html" title="bbb::function_info\l::function_traits\&lt; ret\l(arguments ...)\&gt;" alt="" coords="235,81,374,133"/>
-<area shape="rect" id="node4" href="$db/d7c/structbbb_1_1function__info_1_1function__traits_3_01ret_07class__type_1_1_5_08_07arguments_01_8_8_8_08_01const_01_4.html" title="bbb::function_info\l::function_traits\&lt; ret\l(class_type::*)(arguments\l ...) const \&gt;" alt="" coords="218,157,391,223"/>
-<area shape="rect" id="node5" href="$de/dde/structbbb_1_1function__info_1_1function__traits_3_01ret_07class__type_1_1_5_08_07arguments_01_8_8_8_08_4.html" title="bbb::function_info\l::function_traits\&lt; ret\l(class_type::*)(arguments ...)\&gt;" alt="" coords="204,247,405,299"/>
-<area shape="rect" id="node6" href="$d4/dd3/structbbb_1_1function__info_1_1function__traits_3_01std_1_1function_3_01ret_07arguments_01_8_8_8_08_4_01_4.html" title="bbb::function_info\l::function_traits\&lt; std\l::function\&lt; ret(arguments\l ...)\&gt; \&gt;" alt="" coords="220,323,389,388"/>
+<area shape="rect" id="node1" href="$d1/d7e/structbbb_1_1function_1_1direct__lambda_1_1function.html" title="bbb::function::direct\l_lambda::function\&lt; op\l_type::value_holder, value_t &amp;\&gt;" alt="" coords="5,5,213,57"/>
+<area shape="rect" id="node2" href="$d4/d4b/structbbb_1_1function_1_1direct__lambda_1_1value__holder.html" title="bbb::function::direct\l_lambda::value_holder\l\&lt; value_t \&gt;" alt="" coords="261,5,417,57"/>
 </map>

@@ -1,9 +1,10 @@
 <map id="bbb/container/iterator/value_type_provider.hpp" name="bbb/container/iterator/value_type_provider.hpp">
 <area shape="rect" id="node3" href="$da/d47/core_8hpp.html" title="bbb/core.hpp" alt="" coords="99,179,199,204"/>
-<area shape="rect" id="node13" href="$d8/df4/container_2iterator_2traits_8hpp.html" title="bbb/container/iterator\l/traits.hpp" alt="" coords="22,92,169,131"/>
-<area shape="rect" id="node4" href="$d6/df4/core_2constants_8hpp.html" title="bbb/core/constants.hpp" alt="" coords="108,572,268,597"/>
-<area shape="rect" id="node6" href="$d2/d24/basic_8hpp.html" title="bbb/core/basic.hpp" alt="" coords="121,499,255,524"/>
-<area shape="rect" id="node8" href="$d3/db7/core_2traits_8hpp.html" title="bbb/core/traits.hpp" alt="" coords="228,252,360,277"/>
-<area shape="rect" id="node9" href="$d5/dc1/core_2traits_2type__traits_8hpp.html" title="bbb/core/traits/type\l_traits.hpp" alt="" coords="238,412,372,451"/>
-<area shape="rect" id="node11" href="$d0/d52/function__traits_8hpp.html" title="bbb/core/traits/function\l_traits.hpp" alt="" coords="332,325,488,364"/>
+<area shape="rect" id="node25" href="$d8/df4/container_2iterator_2traits_8hpp.html" title="bbb/container/iterator\l/traits.hpp" alt="" coords="22,92,169,131"/>
+<area shape="rect" id="node4" href="$d6/df4/core_2constants_8hpp.html" title="bbb/core/constants.hpp" alt="" coords="1164,572,1324,597"/>
+<area shape="rect" id="node6" href="$d2/d24/basic_8hpp.html" title="bbb/core/basic.hpp" alt="" coords="1177,499,1311,524"/>
+<area shape="rect" id="node8" href="$d3/db7/core_2traits_8hpp.html" title="bbb/core/traits.hpp" alt="" coords="870,252,1001,277"/>
+<area shape="rect" id="node9" href="$d5/dc1/core_2traits_2type__traits_8hpp.html" title="bbb/core/traits/type\l_traits.hpp" alt="" coords="1307,412,1442,451"/>
+<area shape="rect" id="node11" href="$dc/da2/container__traits_8hpp.html" title="bbb/core/traits/container\l_traits.hpp" alt="" coords="645,325,810,364"/>
+<area shape="rect" id="node23" href="$d0/d52/function__traits_8hpp.html" title="bbb/core/traits/function\l_traits.hpp" alt="" coords="1361,325,1518,364"/>
 </map>

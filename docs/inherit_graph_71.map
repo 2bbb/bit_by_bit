@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$da/db8/structbbb_1_1function__info_1_1arity.html" title="bbb::function_info\l::arity\&lt; T \&gt;" alt="" coords="5,5,132,44"/>
+<area shape="rect" id="node1" href="$d1/d7e/structbbb_1_1function_1_1direct__lambda_1_1function.html" title="bbb::function::direct\l_lambda::function\&lt; op\l_type::const_value_holder,\l const value_t &amp;\&gt;" alt="" coords="5,5,185,71"/>
+<area shape="rect" id="node2" href="$d7/d6a/structbbb_1_1function_1_1direct__lambda_1_1const__value__holder.html" title="bbb::function::direct\l_lambda::const_value\l_holder\&lt; value_t \&gt;" alt="" coords="233,12,384,64"/>
 </map>

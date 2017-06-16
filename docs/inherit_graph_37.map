@@ -1,3 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$da/d7a/classbbb_1_1enumeratable_1_1enumeratable__wrapper_3_01const_01Container_01_4.html" title="bbb::enumeratable::\lenumeratable_wrapper\l\&lt; const Container \&gt;" alt="" coords="5,5,164,57"/>
+<area shape="rect" id="node2" href="$d9/dbc/structbbb_1_1container__info_1_1is__container.html" title="bbb::container_info\l::is_container\&lt; type \&gt;" alt="" coords="154,5,303,44"/>
+<area shape="rect" id="node3" href="$dd/de1/structbbb_1_1container__info_1_1is__kind__of__map.html" title="bbb::container_info\l::is_kind_of_map\&lt; type \&gt;" alt="" coords="144,68,314,107"/>
+<area shape="rect" id="node4" href="$d9/d65/structbbb_1_1container__info_1_1is__kind__of__set.html" title="bbb::container_info\l::is_kind_of_set\&lt; type \&gt;" alt="" coords="148,131,310,169"/>
 </map>

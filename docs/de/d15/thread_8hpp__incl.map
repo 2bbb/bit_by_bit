@@ -1,9 +1,10 @@
 <map id="bbb/thread.hpp" name="bbb/thread.hpp">
-<area shape="rect" id="node2" href="$d6/d94/thread__utils_8hpp.html" title="bbb/thread/thread_utils.hpp" alt="" coords="162,79,345,104"/>
-<area shape="rect" id="node8" href="$da/d47/core_8hpp.html" title="bbb/core.hpp" alt="" coords="256,152,355,177"/>
-<area shape="rect" id="node9" href="$d6/df4/core_2constants_8hpp.html" title="bbb/core/constants.hpp" alt="" coords="54,545,214,571"/>
-<area shape="rect" id="node11" href="$d2/d24/basic_8hpp.html" title="bbb/core/basic.hpp" alt="" coords="67,472,201,497"/>
-<area shape="rect" id="node13" href="$d3/db7/core_2traits_8hpp.html" title="bbb/core/traits.hpp" alt="" coords="240,225,371,251"/>
-<area shape="rect" id="node14" href="$d5/dc1/core_2traits_2type__traits_8hpp.html" title="bbb/core/traits/type\l_traits.hpp" alt="" coords="190,385,325,424"/>
-<area shape="rect" id="node16" href="$d0/d52/function__traits_8hpp.html" title="bbb/core/traits/function\l_traits.hpp" alt="" coords="285,299,441,337"/>
+<area shape="rect" id="node2" href="$d6/d94/thread__utils_8hpp.html" title="bbb/thread/thread_utils.hpp" alt="" coords="143,79,327,104"/>
+<area shape="rect" id="node8" href="$da/d47/core_8hpp.html" title="bbb/core.hpp" alt="" coords="1125,152,1224,177"/>
+<area shape="rect" id="node9" href="$d6/df4/core_2constants_8hpp.html" title="bbb/core/constants.hpp" alt="" coords="492,545,652,571"/>
+<area shape="rect" id="node11" href="$d2/d24/basic_8hpp.html" title="bbb/core/basic.hpp" alt="" coords="505,472,639,497"/>
+<area shape="rect" id="node13" href="$d3/db7/core_2traits_8hpp.html" title="bbb/core/traits.hpp" alt="" coords="436,225,567,251"/>
+<area shape="rect" id="node14" href="$d5/dc1/core_2traits_2type__traits_8hpp.html" title="bbb/core/traits/type\l_traits.hpp" alt="" coords="365,385,500,424"/>
+<area shape="rect" id="node16" href="$dc/da2/container__traits_8hpp.html" title="bbb/core/traits/container\l_traits.hpp" alt="" coords="905,299,1069,337"/>
+<area shape="rect" id="node27" href="$d0/d52/function__traits_8hpp.html" title="bbb/core/traits/function\l_traits.hpp" alt="" coords="307,299,464,337"/>
 </map>
