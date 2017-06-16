@@ -38,13 +38,12 @@ namespace bbb {
 
             namespace detail {
                 template <typename integer_type, integer_type n, integer_type ... ns>
-                struct make_integer_sequence {
-                    using type = resolve_t<conditional_t<
-                        n == 0,
-                        defer<integer_sequence<integer_type, ns ...>>,
-                        detail::make_integer_sequence<integer_type, n - 1, n - 1, ns ...>
-                    >>;
-                };
+                struct make_integer_sequence
+                : embedding<resolve_t<conditional_t<
+                    n == 0,
+                    defer<integer_sequence<integer_type, ns ...>>,
+                    detail::make_integer_sequence<integer_type, n - 1, n - 1, ns ...>
+                >>> {};
             };
 
             template <typename type, type n>

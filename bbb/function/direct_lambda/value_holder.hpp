@@ -23,9 +23,9 @@ namespace bbb {
     namespace function {
         namespace direct_lambda {
             template <typename value_t>
-            struct value_holder : function<op_type::value_holder, value_t &> {
+            struct value_holder : direct_function<op_type::value_holder, value_t &> {
                 value_holder(value_t &v)
-                    : function<op_type::value_holder, value_t &>({v}) {};
+                    : direct_function<op_type::value_holder, value_t &>({v}) {};
             };
 
             template <typename value_t>
@@ -37,9 +37,9 @@ namespace bbb {
             };
 
             template <typename value_t>
-            struct const_value_holder : function<op_type::const_value_holder, const value_t &> {
+            struct const_value_holder : direct_function<op_type::const_value_holder, const value_t &> {
                 const_value_holder(const value_t &v)
-                    : function<op_type::const_value_holder, const value_t &>({v}) {};
+                    : direct_function<op_type::const_value_holder, const value_t &>({v}) {};
             };
 
             template <typename value_t>

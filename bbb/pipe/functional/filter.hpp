@@ -66,7 +66,7 @@ namespace bbb {
         static inline auto filter(callback_type callback)
         -> enable_if_t<
             is_callable<callback_type>(callback)
-            && is_same<typename function_traits<callback_type>::result_type, bool>(),
+            && is_same<typename function_traits<callback_type>::result_type, bool>::value,
             command::filter<
                 typename function_traits<callback_type>::template argument_type<0>
             >

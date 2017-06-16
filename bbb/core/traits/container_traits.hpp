@@ -32,6 +32,8 @@
 
 #include <initializer_list>
 
+#include <string>
+
 #include <bbb/core/basic.hpp>
 #include <bbb/core/traits/type_traits.hpp>
 
@@ -57,6 +59,8 @@ namespace bbb {
             multiset,
             unordered_set,
             unordered_multiset,
+            initializer_list,
+            basic_string,
             unknown,
             not_container,
         };
@@ -78,9 +82,8 @@ namespace bbb {
         struct is_array<std::array<type, size>> : std::true_type {};
         
         template <typename value_type, std::size_t size, typename new_type>
-        struct substitute<std::array<value_type, size>, new_type> {
-            using type = std::array<new_type, size>;
-        };
+        struct substitute<std::array<value_type, size>, new_type>
+            : embedding<std::array<new_type, size>> {};
         
         template <typename type>
         struct is_vector : std::false_type {};
@@ -88,9 +91,8 @@ namespace bbb {
         struct is_vector<std::vector<type, alloc>> : std::true_type {};
         
         template <typename value_type, typename alloc, typename new_type>
-        struct substitute<std::vector<value_type, alloc>, new_type> {
-            using type = std::vector<new_type>;
-        };
+        struct substitute<std::vector<value_type, alloc>, new_type>
+            : embedding<std::vector<new_type>> {};
         
         template <typename type>
         struct is_deque : std::false_type {};
@@ -98,9 +100,8 @@ namespace bbb {
         struct is_deque<std::deque<type, alloc>> : std::true_type {};
         
         template <typename value_type, typename alloc, typename new_type>
-        struct substitute<std::deque<value_type, alloc>, new_type> {
-            using type = std::deque<new_type>;
-        };
+        struct substitute<std::deque<value_type, alloc>, new_type>
+            : embedding<std::deque<new_type>> {};
 
         template <typename type>
         struct is_forward_list : std::false_type {};
@@ -108,9 +109,8 @@ namespace bbb {
         struct is_forward_list<std::forward_list<type, alloc>> : std::true_type {};
         
         template <typename value_type, typename alloc, typename new_type>
-        struct substitute<std::forward_list<value_type, alloc>, new_type> {
-            using type = std::forward_list<new_type>;
-        };
+        struct substitute<std::forward_list<value_type, alloc>, new_type>
+            : embedding<std::forward_list<new_type>> {};
 
         template <typename type>
         struct is_list : std::false_type {};
@@ -118,9 +118,17 @@ namespace bbb {
         struct is_list<std::list<type, alloc>> : std::true_type {};
         
         template <typename value_type, typename alloc, typename new_type>
-        struct substitute<std::list<value_type, alloc>, new_type> {
-            using type = std::list<new_type>;
-        };
+        struct substitute<std::list<value_type, alloc>, new_type>
+            : embedding<std::list<new_type>> {};
+
+        template <typename type>
+        struct is_initializer_list : std::false_type {};
+        template <typename type>
+        struct is_initializer_list<std::initializer_list<type>> : std::true_type {};
+
+        template <typename value_type, typename new_type>
+        struct substitute<std::initializer_list<value_type>, new_type>
+            : embedding<std::initializer_list<new_type>> {};
 
         template <typename type>
         struct is_map : std::false_type {};
@@ -128,9 +136,8 @@ namespace bbb {
         struct is_map<std::map<key, value, compare, alloc>> : std::true_type {};
         
         template <typename key, typename value, typename compare, typename alloc, typename new_type>
-        struct substitute<std::map<key, value, compare, alloc>, new_type> {
-            using type = std::map<key, new_type>;
-        };
+        struct substitute<std::map<key, value, compare, alloc>, new_type>
+            : embedding<std::map<key, new_type>> {};
 
         template <typename type>
         struct is_multimap : std::false_type {};
@@ -138,9 +145,8 @@ namespace bbb {
         struct is_multimap<std::multimap<key, value, compare, alloc>> : std::true_type {};
         
         template <typename key, typename value, typename compare, typename alloc, typename new_type>
-        struct substitute<std::multimap<key, value, compare, alloc>, new_type> {
-            using type = std::multimap<key, new_type>;
-        };
+        struct substitute<std::multimap<key, value, compare, alloc>, new_type>
+            : embedding<std::multimap<key, new_type>> {};
 
         template <typename type>
         struct is_unordered_map : std::false_type {};
@@ -148,9 +154,8 @@ namespace bbb {
         struct is_unordered_map<std::unordered_map<key, value, hash, pred, alloc>> : std::true_type {};
         
         template <typename key, typename value, typename hash, typename pred, typename alloc, typename new_type>
-        struct substitute<std::unordered_map<key, value, hash, pred, alloc>, new_type> {
-            using type = std::unordered_map<key, new_type>;
-        };
+        struct substitute<std::unordered_map<key, value, hash, pred, alloc>, new_type>
+            : embedding<std::unordered_map<key, new_type>> {};
         
         template <typename type>
         struct is_unordered_multimap : std::false_type {};
@@ -158,9 +163,8 @@ namespace bbb {
         struct is_unordered_multimap<std::unordered_multimap<key, value, hash, pred, alloc>> : std::true_type {};
         
         template <typename key, typename value, typename hash, typename pred, typename alloc, typename new_type>
-        struct substitute<std::unordered_multimap<key, value, hash, pred, alloc>, new_type> {
-            using type = std::unordered_multimap<key, new_type>;
-        };
+        struct substitute<std::unordered_multimap<key, value, hash, pred, alloc>, new_type>
+            : embedding<std::unordered_multimap<key, new_type>> {};
         
         template <typename type>
         struct is_set : std::false_type {};
@@ -168,9 +172,8 @@ namespace bbb {
         struct is_set<std::set<key, compare, alloc>> : std::true_type {};
         
         template <typename key, typename compare, typename alloc, typename new_type>
-        struct substitute<std::set<key, compare, alloc>, new_type> {
-            using type = std::set<new_type>;
-        };
+        struct substitute<std::set<key, compare, alloc>, new_type>
+            : embedding<std::set<new_type>> {};
 
         template <typename type>
         struct is_multiset : std::false_type {};
@@ -178,9 +181,8 @@ namespace bbb {
         struct is_multiset<std::multiset<key, compare, alloc>> : std::true_type {};
         
         template <typename key, typename compare, typename alloc, typename new_type>
-        struct substitute<std::multiset<key, compare, alloc>, new_type> {
-            using type = std::multiset<new_type>;
-        };
+        struct substitute<std::multiset<key, compare, alloc>, new_type>
+            : embedding<std::multiset<new_type>> {};
 
         template <typename type>
         struct is_unordered_set : std::false_type {};
@@ -188,9 +190,8 @@ namespace bbb {
         struct is_unordered_set<std::unordered_set<key, hash, pred, alloc>> : std::true_type {};
         
         template <typename key, typename hash, typename pred, typename alloc, typename new_type>
-        struct substitute<std::unordered_set<key, hash, pred, alloc>, new_type> {
-            using type = std::unordered_set<new_type>;
-        };
+        struct substitute<std::unordered_set<key, hash, pred, alloc>, new_type>
+            : embedding<std::unordered_set<new_type>> {};
         
         template <typename type>
         struct is_unordered_multiset : std::false_type {};
@@ -198,43 +199,47 @@ namespace bbb {
         struct is_unordered_multiset<std::unordered_multiset<key, hash, pred, alloc>> : std::true_type {};
         
         template <typename key, typename hash, typename pred, typename alloc, typename new_type>
-        struct substitute<std::unordered_multiset<key, hash, pred, alloc>, new_type> {
-            using type = std::unordered_multiset<new_type>;
-        };
+        struct substitute<std::unordered_multiset<key, hash, pred, alloc>, new_type>
+            : embedding<std::unordered_multiset<new_type>> {};
         
         template <typename type>
-        struct is_initializer_list : std::false_type {};
-        template <typename type>
-        struct is_initializer_list<std::initializer_list<type>> : std::true_type {};
-        
-        template <typename type>
-        struct is_kind_of_map : bool_type_t<
-            is_map<type>::value
-            || is_multimap<type>::value
-            || is_unordered_map<type>::value
-            || is_unordered_multimap<type>::value
-        > {};
-        
-        template <typename type>
-        struct is_kind_of_set : bool_type_t<
-            is_set<type>::value
-            || is_multiset<type>::value
-            || is_unordered_set<type>::value
-            || is_unordered_multiset<type>::value
-        > {};
+        struct is_basic_string : std::false_type {};
+        template <typename char_type, typename char_traits, typename alloc>
+        struct is_basic_string<std::basic_string<char_type, char_traits, alloc>> : std::true_type {};
+
+        template <typename char_type, typename char_traits, typename alloc, typename new_char_type>
+        struct substitute<std::basic_string<char_type, char_traits, alloc>, new_char_type>
+            : embedding<std::basic_string<new_char_type>> {};
 
         template <typename type>
-        struct is_container : bool_type_t<
-            is_bitset<type>::value
-            || is_array<type>::value
-            || is_vector<type>::value
-            || is_deque<type>::value
-            || is_forward_list<type>::value
-            || is_list<type>::value
-            || is_kind_of_map<type>::value
-            || is_kind_of_set<type>::value
-            || is_initializer_list<type>::value
-        > {};
+        struct is_kind_of_map : template_disjunction<
+            is_map,
+            is_multimap,
+            is_unordered_map,
+            is_unordered_multimap
+        >::template eval<type> {};
+        
+        template <typename type>
+        struct is_kind_of_set : template_disjunction<
+            is_set,
+            is_multiset,
+            is_unordered_set,
+            is_unordered_multiset
+        >::template eval<type> {};
+
+        template <typename type>
+        struct is_container : template_disjunction<
+            is_bitset,
+            is_array,
+            is_vector,
+            is_deque,
+            is_forward_list,
+            is_list,
+            is_initializer_list,
+            is_kind_of_map,
+            is_kind_of_set,
+            is_basic_string
+        >::template eval<type> {};
 
         template <typename container>
         struct container_traits {
@@ -246,6 +251,7 @@ namespace bbb {
                 : is_deque<container>::value              ? tag::deque
                 : is_forward_list<container>::value       ? tag::forward_list
                 : is_list<container>::value               ? tag::list
+                : is_initializer_list<container>::value   ? tag::initializer_list
                 : is_map<container>::value                ? tag::map
                 : is_multimap<container>::value           ? tag::multimap
                 : is_unordered_map<container>::value      ? tag::unordered_map
@@ -254,6 +260,7 @@ namespace bbb {
                 : is_multiset<container>::value           ? tag::multiset
                 : is_unordered_set<container>::value      ? tag::unordered_set
                 : is_unordered_multiset<container>::value ? tag::unordered_multiset
+                : is_basic_string<container>::value       ? tag::basic_string
                 : tag::not_container;
             
             template <typename new_type>
