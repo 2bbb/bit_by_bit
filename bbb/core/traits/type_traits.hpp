@@ -256,4 +256,9 @@ namespace bbb {
         template <typename ... args>
         using eval = disjunction<meta_conditions<args ...> ...>;
     };
+
+    template <typename embedding_type>
+    struct embedding {
+        using type = embedding_type;
+    };
 };
