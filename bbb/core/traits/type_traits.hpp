@@ -244,4 +244,16 @@ namespace bbb {
     
     template <typename cond, typename true_t, typename false_t>
     using meta_conditional_t = conditional_t<cond::value, true_t, false_t>;
+
+    template <template <typename ...> class ... meta_conditions>
+    struct meta_conjunction {
+        template <typename ... args>
+        using eval = conjunction<meta_conditions<args ...> ...>;
+    };
+
+    template <template <typename ...> class ... meta_conditions>
+    struct meta_disjunction {
+        template <typename ... args>
+        using eval = disjunction<meta_conditions<args ...> ...>;
+    };
 };
