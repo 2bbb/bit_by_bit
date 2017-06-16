@@ -32,7 +32,7 @@ namespace bbb {
                 using result_type = ret;
                 using arguments_types_tuple = std::tuple<arguments ...>;
                 template <std::size_t index>
-                using argument_type = type_at<index, arguments ...>;
+                using argument_type = type_at_t<index, arguments ...>;
                 using function_type = std::function<ret(arguments ...)>;
                 template <typename function_t>
                 static constexpr function_type cast(function_t f) {
