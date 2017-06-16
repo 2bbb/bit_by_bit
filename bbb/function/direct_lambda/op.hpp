@@ -28,21 +28,28 @@
 namespace bbb {
     namespace function {
         namespace direct_lambda {
-#define def_eval(op, name)	\
-            template <typename lhs, typename rhs> \
-            struct eval<op_type::name, lhs, rhs> { \
-                template <typename ... arguments> \
-                constexpr auto evaluate(const std::tuple<lhs, rhs> &holder, arguments && ... args) const \
-                -> decltype((std::get<0>(holder))(args ...) op (std::get<1>(holder))(args ...)) \
-                { return (std::get<0>(holder))(args ...) op (std::get<1>(holder))(args ...); } \
+#define def_eval(op, name)\
+            template <typename lhs, typename rhs>\
+            struct eval<op_type::name, lhs, rhs> {\
+                template <typename ... arguments>\
+                constexpr auto evaluate(const std::tuple<lhs, rhs> &holder, arguments && ... args) const\
+                -> decltype((std::get<0>(holder))(args ...) op (std::get<1>(holder))(args ...))\
+                { return (std::get<0>(holder))(args ...) op (std::get<1>(holder))(args ...); }\
             };
 
 #define def_bin_op(op, name)\
             template <typename lhs, typename rhs>\
             auto operator op(const lhs &l, const rhs &r)\
-            -> function<op_type::name, typename wrap_const_value_type<lhs>::type, typename wrap_const_value_type<rhs>::type> {\
-                return {std::tuple<typename wrap_const_value_type<lhs>::type, typename wrap_const_value_type<rhs>::type>(l, r)};\
-            }
+            -> type_enable_if_t<\
+                conjunction<is_direct_lambdable<lhs>, is_direct_lambdable<rhs>>,\
+                direct_function<\
+                    op_type::name,\
+                    get_type<wrap_const_value_type<lhs>>,\
+                    get_type<wrap_const_value_type<rhs>>\
+                >\
+            > {\
+                return {std::tuple<get_type<wrap_const_value_type<lhs>>, get_type<wrap_const_value_type<rhs>>>(l, r)};\
+            };
 
 #define def_op(op, name)\
             def_eval(op, name)\
