@@ -234,25 +234,25 @@ namespace bbb {
     };
 
     template <typename cond, typename type = void>
-    struct meta_enable_if : enable_if<cond::value, type> {};
+    struct type_enable_if : enable_if<cond::value, type> {};
 
     template <typename cond, typename type = void>
-    using meta_enable_if_t = enable_if_t<cond::value, type>;
+    using type_enable_if_t = enable_if_t<cond::value, type>;
 
     template <typename cond, typename true_t, typename false_t>
-    struct meta_conditional : conditional<cond::value, true_t, false_t> {};
+    struct type_conditional : conditional<cond::value, true_t, false_t> {};
     
     template <typename cond, typename true_t, typename false_t>
-    using meta_conditional_t = conditional_t<cond::value, true_t, false_t>;
+    using type_conditional_t = conditional_t<cond::value, true_t, false_t>;
 
     template <template <typename ...> class ... meta_conditions>
-    struct meta_conjunction {
+    struct template_conjunction {
         template <typename ... args>
         using eval = conjunction<meta_conditions<args ...> ...>;
     };
 
     template <template <typename ...> class ... meta_conditions>
-    struct meta_disjunction {
+    struct template_disjunction {
         template <typename ... args>
         using eval = disjunction<meta_conditions<args ...> ...>;
     };
