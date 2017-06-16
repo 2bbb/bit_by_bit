@@ -17,4 +17,5 @@
 #pragma once
 
 #include <bbb/core/traits/type_traits.hpp>
+#include <bbb/core/traits/container_traits.hpp>
 #include <bbb/core/traits/function_traits.hpp>
