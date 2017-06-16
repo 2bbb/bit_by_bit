@@ -30,22 +30,20 @@ namespace bbb {
             struct is_function<function<op, holders ...>> { static constexpr bool value = true; };
 
             template <typename value_type>
-            struct wrap_value_type {
-                using type = conditional_t<
-                    is_function<value_type>::value,
-                    value_type,
-                    value_holder<value_type>
-                >;
-            };
+            struct wrap_value_type
+            : type_conditional_t<
+                is_function<value_type>,
+                value_type,
+                value_holder<value_type>
+            > {};
 
             template <typename value_type>
-            struct wrap_const_value_type {
-                using type = conditional_t<
-                    is_function<value_type>::value,
-                    value_type,
-                    const_value_holder<value_type>
-                >;
-            };
+            struct wrap_const_value_type
+            : type_conditional_t<
+                is_function<value_type>,
+                value_type,
+                const_value_holder<value_type>
+            > {};
         };
     };
 };
