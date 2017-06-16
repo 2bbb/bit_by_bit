@@ -32,6 +32,8 @@
 
 #include <initializer_list>
 
+#include <string>
+
 #include <bbb/core/basic.hpp>
 #include <bbb/core/traits/type_traits.hpp>
 
@@ -57,6 +59,8 @@ namespace bbb {
             multiset,
             unordered_set,
             unordered_multiset,
+            initializer_list,
+            basic_string,
             unknown,
             not_container,
         };
@@ -120,6 +124,16 @@ namespace bbb {
         template <typename value_type, typename alloc, typename new_type>
         struct substitute<std::list<value_type, alloc>, new_type> {
             using type = std::list<new_type>;
+        };
+
+        template <typename type>
+        struct is_initializer_list : std::false_type {};
+        template <typename type>
+        struct is_initializer_list<std::initializer_list<type>> : std::true_type {};
+
+        template <typename value_type, typename new_type>
+        struct substitute<std::initializer_list<value_type>, new_type> {
+            using type = std::initializer_list<new_type>;
         };
 
         template <typename type>
@@ -203,10 +217,15 @@ namespace bbb {
         };
         
         template <typename type>
-        struct is_initializer_list : std::false_type {};
-        template <typename type>
-        struct is_initializer_list<std::initializer_list<type>> : std::true_type {};
-        
+        struct is_basic_string : std::false_type {};
+        template <typename char_type, typename char_traits, typename alloc>
+        struct is_basic_string<std::basic_string<char_type, char_traits, alloc>> : std::true_type {};
+
+        template <typename char_type, typename char_traits, typename alloc, typename new_char_type>
+        struct substitute<std::basic_string<char_type, char_traits, alloc>, new_char_type> {
+            using type = std::basic_string<new_char_type>;
+        };
+
         template <typename type>
         struct is_kind_of_map : template_disjunction<
             is_map,
@@ -231,9 +250,10 @@ namespace bbb {
             is_deque,
             is_forward_list,
             is_list,
+            is_initializer_list,
             is_kind_of_map,
             is_kind_of_set,
-            is_initializer_list
+            is_basic_string
         >::template eval<type> {};
 
         template <typename container>
@@ -246,6 +266,7 @@ namespace bbb {
                 : is_deque<container>::value              ? tag::deque
                 : is_forward_list<container>::value       ? tag::forward_list
                 : is_list<container>::value               ? tag::list
+                : is_initializer_list<container>::value   ? tag::initializer_list
                 : is_map<container>::value                ? tag::map
                 : is_multimap<container>::value           ? tag::multimap
                 : is_unordered_map<container>::value      ? tag::unordered_map
@@ -254,6 +275,7 @@ namespace bbb {
                 : is_multiset<container>::value           ? tag::multiset
                 : is_unordered_set<container>::value      ? tag::unordered_set
                 : is_unordered_multiset<container>::value ? tag::unordered_multiset
+                : is_basic_string<container>::value       ? tag::basic_string
                 : tag::not_container;
             
             template <typename new_type>
