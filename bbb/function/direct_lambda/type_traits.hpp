@@ -25,27 +25,32 @@ namespace bbb {
     namespace function {
         namespace direct_lambda {
             template <typename>
-            struct is_function { static constexpr bool value = false; };
+            struct is_direct_function
+            : std::false_type {};
             template <op_type op, typename ... holders>
-            struct is_function<function<op, holders ...>> { static constexpr bool value = true; };
+            struct is_direct_function<direct_function<op, holders ...>>
+            : std::true_type {};
 
             template <typename value_type>
             struct wrap_value_type {
                 using type = conditional_t<
-                    is_function<value_type>::value,
+                    is_direct_function<value_type>::value,
                     value_type,
                     value_holder<value_type>
                 >;
             };
-
             template <typename value_type>
             struct wrap_const_value_type {
                 using type = conditional_t<
-                    is_function<value_type>::value,
+                    is_direct_function<value_type>::value,
                     value_type,
                     const_value_holder<value_type>
                 >;
             };
+
+            template <typename type>
+            struct is_direct_lambdable
+            : disjunction<is_direct_function<type>, is_placeholder<type>> {};
         };
     };
 };

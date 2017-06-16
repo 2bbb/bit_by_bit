@@ -33,9 +33,8 @@ namespace bbb {
             };
             
             template <>
-            struct multiple_inheritance_impl<type_sequence<>> {
-                using types = type_sequence<>;
-            };
+            struct multiple_inheritance_impl<type_sequence<>>
+            : embedding<type_sequence<>> {};
 
             template <typename ... types>
             using multiple_inheritance = multiple_inheritance_impl<tseq_op::make_unique_t<tseq_op::flatten_t<types ...>>>;
@@ -46,17 +45,15 @@ namespace bbb {
             using search_inherited_type_t = get_type<search_inherited_type<base_type, default_type, configs ...>>;
             
             template <typename base_type, typename default_type, typename config, typename ... configs>
-            struct search_inherited_type<base_type, default_type, config, configs ...> {
-                using type = conditional_t<
-                    std::is_base_of<base_type, config>::value,
-                    config,
-                    search_inherited_type_t<base_type, default_type, configs ...>
-                >;
-            };
+            struct search_inherited_type<base_type, default_type, config, configs ...> 
+            : type_conditional<
+                std::is_base_of<base_type, config>,
+                config,
+                search_inherited_type_t<base_type, default_type, configs ...>
+            > {};
             template <typename base_type, typename default_type>
-            struct search_inherited_type<base_type, default_type> {
-                using type = base_type;
-            };
+            struct search_inherited_type<base_type, default_type>
+            : embedding<base_type> {};
 
             template <typename base_type, typename default_type, typename ... configs>
             struct search_inherited_types_impl;
@@ -66,17 +63,16 @@ namespace bbb {
             template <typename base_type, typename default_type, typename config, typename ... configs>
             struct search_inherited_types_impl<base_type, default_type, config, configs ...> {
                 using others = search_inherited_types_impl_t<base_type, default_type, configs ...>;
-                using type = conditional_t<
-                    std::is_base_of<base_type, config>::value,
+                using type = type_conditional_t<
+                    std::is_base_of<base_type, config>,
                     tseq_op::push_front_t<config, others>,
                     others
                 >;
             };
 
             template <typename base_type, typename default_type>
-            struct search_inherited_types_impl<base_type, default_type> {
-                using type = type_sequence<>;
-            };
+            struct search_inherited_types_impl<base_type, default_type> 
+            : embedding<type_sequence<>> {};
 
             template <typename base_type, typename default_type, typename ... configs>
             struct search_inherited_types {
