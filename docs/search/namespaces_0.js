@@ -2,7 +2,9 @@ var searchData=
 [
   ['bbb',['bbb',['../dc/d34/namespacebbb.html',1,'']]],
   ['binder',['binder',['../d4/d0c/namespacebbb_1_1binder.html',1,'bbb']]],
+  ['command',['command',['../da/d4c/namespacebbb_1_1pipe_1_1command.html',1,'bbb::pipe']]],
   ['container',['container',['../d3/d3c/namespacebbb_1_1container.html',1,'bbb']]],
+  ['container_5finfo',['container_info',['../d8/db2/namespacebbb_1_1container__info.html',1,'bbb']]],
   ['demangled',['demangled',['../d1/de0/namespacebbb_1_1demangled.html',1,'bbb']]],
   ['detail',['detail',['../d1/dea/namespacebbb_1_1container_1_1iterator_1_1detail.html',1,'bbb::container::iterator::detail'],['../d9/d1e/namespacebbb_1_1demangled_1_1detail.html',1,'bbb::demangled::detail'],['../d3/d6e/namespacebbb_1_1function_1_1direct__lambda_1_1detail.html',1,'bbb::function::direct_lambda::detail'],['../d2/d60/namespacebbb_1_1function_1_1lambda__symbol_1_1detail.html',1,'bbb::function::lambda_symbol::detail'],['../d5/d54/namespacebbb_1_1function_1_1utility_1_1detail.html',1,'bbb::function::utility::detail'],['../da/d88/namespacebbb_1_1function__info_1_1detail.html',1,'bbb::function_info::detail'],['../df/d58/namespacebbb_1_1loggers_1_1detail.html',1,'bbb::loggers::detail'],['../db/dc1/namespacebbb_1_1notifiers_1_1detail.html',1,'bbb::notifiers::detail'],['../de/d70/namespacebbb_1_1tmp_1_1integer__sequence__operations_1_1detail.html',1,'bbb::tmp::integer_sequence_operations::detail'],['../dc/d27/namespacebbb_1_1tmp_1_1integer__sequences_1_1detail.html',1,'bbb::tmp::integer_sequences::detail'],['../de/dfc/namespacebbb_1_1tmp_1_1logic_1_1detail.html',1,'bbb::tmp::logic::detail'],['../dc/d6c/namespacebbb_1_1tmp_1_1type__sequence__operations_1_1detail.html',1,'bbb::tmp::type_sequence_operations::detail'],['../d9/d36/namespacebbb_1_1tmp_1_1utility_1_1detail.html',1,'bbb::tmp::utility::detail'],['../d6/d04/namespacebbb_1_1tmp_1_1variadic__operations_1_1detail.html',1,'bbb::tmp::variadic_operations::detail']]],
   ['direct_5flambda',['direct_lambda',['../d3/d4d/namespacebbb_1_1function_1_1direct__lambda.html',1,'bbb::function']]],
@@ -21,6 +23,7 @@ var searchData=
   ['logic',['logic',['../de/d8e/namespacebbb_1_1tmp_1_1logic.html',1,'bbb::tmp']]],
   ['multithread',['multithread',['../dc/db8/namespacebbb_1_1multithread.html',1,'bbb']]],
   ['notifiers',['notifiers',['../d5/d4d/namespacebbb_1_1notifiers.html',1,'bbb']]],
+  ['pipe',['pipe',['../d9/d37/namespacebbb_1_1pipe.html',1,'bbb']]],
   ['random',['random',['../d6/d44/namespacebbb_1_1random.html',1,'bbb']]],
   ['reference',['reference',['../da/d71/namespacebbb_1_1dirty_1_1reference.html',1,'bbb::dirty']]],
   ['time_5futils',['time_utils',['../d7/d3d/namespacebbb_1_1loggers_1_1time__utils.html',1,'bbb::loggers']]],

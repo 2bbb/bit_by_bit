@@ -1,3 +1,5 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node2" href="$da/d59/structbbb_1_1notifiers_1_1string__notifier_3_01std_1_1basic__string_3_01character__type_00_01tra6a3c647c9bb32302af07691694e071c9.html" title="bbb::notifiers::string\l_notifier\&lt; std::basic\l_string\&lt; character_type,\l traits, alloc \&gt; \&gt;::iterator" alt="" coords="153,5,318,71"/>
+<area shape="rect" id="node1" href="$d3/dd4/structbbb_1_1loggers_1_1footer.html" title="bbb::loggers::footer" alt="" coords="5,44,142,69"/>
+<area shape="rect" id="node2" href="$d3/dff/structbbb_1_1loggers_1_1elapsed__time__footer.html" title="bbb::loggers::elapsed\l_time_footer" alt="" coords="190,5,338,44"/>
+<area shape="rect" id="node3" href="$d0/d36/structbbb_1_1loggers_1_1time__footer.html" title="bbb::loggers::time\l_footer" alt="" coords="200,68,328,107"/>
 </map>

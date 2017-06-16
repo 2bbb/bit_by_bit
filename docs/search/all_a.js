@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['join',['join',['../de/dc1/classbbb_1_1multithread_1_1manager.html#ae25ca5a4b6986ace4e89323536456e5a',1,'bbb::multithread::manager']]]
+  ['join',['join',['../d5/dd3/structbbb_1_1pipe_1_1command_1_1join.html',1,'bbb::pipe::command::join&lt; char_type, traits, alloc &gt;'],['../d5/dd3/structbbb_1_1pipe_1_1command_1_1join.html#a92fcc04a1a40c0bbf190db7089a33e17',1,'bbb::pipe::command::join::join(const string_type &amp;glue)'],['../d5/dd3/structbbb_1_1pipe_1_1command_1_1join.html#a4fb0a487dc5d0770fff2743d7d7617dd',1,'bbb::pipe::command::join::join(string_type &amp;&amp;glue)'],['../de/dc1/classbbb_1_1multithread_1_1manager.html#ae25ca5a4b6986ace4e89323536456e5a',1,'bbb::multithread::manager::join()'],['../d9/d37/namespacebbb_1_1pipe.html#a5face6537ec6356f3785caff99abe742',1,'bbb::pipe::join(const std::basic_string&lt; char_type, traits, alloc &gt; &amp;str) -&gt; command::join&lt; char_type, traits, alloc &gt;'],['../d9/d37/namespacebbb_1_1pipe.html#ac518b6a905702e13b3ba6858cb1084a1',1,'bbb::pipe::join(const char *const str=&quot;&quot;) -&gt; command::join&lt; char &gt;']]],
+  ['join_2ehpp',['join.hpp',['../d6/de7/join_8hpp.html',1,'']]]
 ];

@@ -1,7 +1,8 @@
 <map id="bbb/core.hpp" name="bbb/core.hpp">
-<area shape="rect" id="node2" href="$d6/df4/core_2constants_8hpp.html" title="bbb/core/constants.hpp" alt="" coords="29,399,189,424"/>
-<area shape="rect" id="node4" href="$d2/d24/basic_8hpp.html" title="bbb/core/basic.hpp" alt="" coords="42,325,176,351"/>
-<area shape="rect" id="node6" href="$d3/db7/core_2traits_8hpp.html" title="bbb/core/traits.hpp" alt="" coords="150,79,282,104"/>
-<area shape="rect" id="node7" href="$d5/dc1/core_2traits_2type__traits_8hpp.html" title="bbb/core/traits/type\l_traits.hpp" alt="" coords="159,239,294,277"/>
-<area shape="rect" id="node9" href="$d0/d52/function__traits_8hpp.html" title="bbb/core/traits/function\l_traits.hpp" alt="" coords="254,152,410,191"/>
+<area shape="rect" id="node2" href="$d6/df4/core_2constants_8hpp.html" title="bbb/core/constants.hpp" alt="" coords="1071,399,1231,424"/>
+<area shape="rect" id="node4" href="$d2/d24/basic_8hpp.html" title="bbb/core/basic.hpp" alt="" coords="1084,325,1218,351"/>
+<area shape="rect" id="node6" href="$d3/db7/core_2traits_8hpp.html" title="bbb/core/traits.hpp" alt="" coords="777,79,909,104"/>
+<area shape="rect" id="node7" href="$d5/dc1/core_2traits_2type__traits_8hpp.html" title="bbb/core/traits/type\l_traits.hpp" alt="" coords="1214,239,1349,277"/>
+<area shape="rect" id="node9" href="$dc/da2/container__traits_8hpp.html" title="bbb/core/traits/container\l_traits.hpp" alt="" coords="552,152,717,191"/>
+<area shape="rect" id="node21" href="$d0/d52/function__traits_8hpp.html" title="bbb/core/traits/function\l_traits.hpp" alt="" coords="1269,152,1425,191"/>
 </map>

@@ -17,5 +17,6 @@ var searchData=
   ['container_5fdelegation',['container_delegation',['../d0/d8f/structbbb_1_1container_1_1container__delegation.html',1,'bbb::container']]],
   ['container_5fdelegation_3c_20std_3a_3aarray_3c_20value_5ft_2c_20size_20_3e_20_3e',['container_delegation&lt; std::array&lt; value_t, size &gt; &gt;',['../d4/d5a/structbbb_1_1container_1_1container__delegation_3_01std_1_1array_3_01value__t_00_01size_01_4_01_4.html',1,'bbb::container']]],
   ['container_5fdelegation_3c_20std_3a_3avector_3c_20value_5ft_2c_20allocator_5ft_20_3e_20_3e',['container_delegation&lt; std::vector&lt; value_t, allocator_t &gt; &gt;',['../de/da8/structbbb_1_1container_1_1container__delegation_3_01std_1_1vector_3_01value__t_00_01allocator__t_01_4_01_4.html',1,'bbb::container']]],
+  ['container_5ftraits',['container_traits',['../d7/d22/structbbb_1_1container__info_1_1container__traits.html',1,'bbb::container_info']]],
   ['custom_5flogger',['custom_logger',['../d2/dbf/structbbb_1_1loggers_1_1custom__logger.html',1,'bbb::loggers']]]
 ];

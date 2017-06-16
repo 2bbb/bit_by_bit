@@ -1,0 +1,18 @@
+<map id="bbb/pipe.hpp" name="bbb/pipe.hpp">
+<area shape="rect" id="node2" href="$da/d02/pipe_2container_8hpp.html" title="bbb/pipe/container.hpp" alt="" coords="86,79,242,104"/>
+<area shape="rect" id="node27" href="$d4/da0/string_8hpp.html" title="bbb/pipe/string.hpp" alt="" coords="359,79,494,104"/>
+<area shape="rect" id="node33" href="$d2/db4/functional_8hpp.html" title="bbb/pipe/functional.hpp" alt="" coords="723,79,882,104"/>
+<area shape="rect" id="node3" href="$df/d74/reverse_8hpp.html" title="bbb/pipe/container\l/reverse.hpp" alt="" coords="5,152,136,191"/>
+<area shape="rect" id="node5" href="$da/d47/core_8hpp.html" title="bbb/core.hpp" alt="" coords="500,239,599,264"/>
+<area shape="rect" id="node6" href="$d6/df4/core_2constants_8hpp.html" title="bbb/core/constants.hpp" alt="" coords="1564,632,1724,657"/>
+<area shape="rect" id="node8" href="$d2/d24/basic_8hpp.html" title="bbb/core/basic.hpp" alt="" coords="1577,559,1711,584"/>
+<area shape="rect" id="node10" href="$d3/db7/core_2traits_8hpp.html" title="bbb/core/traits.hpp" alt="" coords="1270,312,1402,337"/>
+<area shape="rect" id="node11" href="$d5/dc1/core_2traits_2type__traits_8hpp.html" title="bbb/core/traits/type\l_traits.hpp" alt="" coords="1707,472,1842,511"/>
+<area shape="rect" id="node13" href="$dc/da2/container__traits_8hpp.html" title="bbb/core/traits/container\l_traits.hpp" alt="" coords="1046,385,1210,424"/>
+<area shape="rect" id="node25" href="$d0/d52/function__traits_8hpp.html" title="bbb/core/traits/function\l_traits.hpp" alt="" coords="1762,385,1918,424"/>
+<area shape="rect" id="node28" href="$d1/d2d/replace_8hpp.html" title="bbb/pipe/string/replace.hpp" alt="" coords="530,159,713,184"/>
+<area shape="rect" id="node29" href="$d4/d24/split_8hpp.html" title="bbb/pipe/string/split.hpp" alt="" coords="160,159,323,184"/>
+<area shape="rect" id="node32" href="$d6/de7/join_8hpp.html" title="bbb/pipe/string/join.hpp" alt="" coords="347,159,506,184"/>
+<area shape="rect" id="node34" href="$db/d10/pipe_2functional_2map_8hpp.html" title="bbb/pipe/functional\l/map.hpp" alt="" coords="894,152,1027,191"/>
+<area shape="rect" id="node36" href="$d1/dd2/filter_8hpp.html" title="bbb/pipe/functional\l/filter.hpp" alt="" coords="736,152,869,191"/>
+</map>
