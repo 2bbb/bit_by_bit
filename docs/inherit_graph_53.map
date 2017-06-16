@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$da/d96/structbbb_1_1dirty_1_1reference_1_1quasi__reference_1_1ref.html" title="bbb::dirty::reference\l::quasi_reference\&lt; type\l \&gt;::ref" alt="" coords="5,5,166,57"/>
+<area shape="rect" id="node1" href="$d0/dd4/structbbb_1_1embedding.html" title="bbb::embedding\&lt; std\l::multimap\&lt; key, new\l_type \&gt; \&gt;" alt="" coords="5,12,152,64"/>
+<area shape="rect" id="node2" href="$d1/d52/structbbb_1_1container__info_1_1substitute_3_01std_1_1multimap_3_01key_00_01value_00_01compare_04640aaa618badbe0bd25e0aba5e0ea88.html" title="bbb::container_info\l::substitute\&lt; std::multimap\l\&lt; key, value, compare, alloc\l \&gt;, new_type \&gt;" alt="" coords="200,5,386,71"/>
 </map>

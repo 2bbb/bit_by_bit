@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$d2/dfe/structbbb_1_1container_1_1functional__base.html" title="bbb::container::functional\l_base\&lt; container_type, inner\l_container_t \&gt;" alt="" coords="5,5,199,57"/>
+<area shape="rect" id="node1" href="$d2/d17/classbbb_1_1const__reversed__range.html" title="bbb::const_reversed\l_range\&lt; Container \&gt;" alt="" coords="5,5,149,44"/>
+<area shape="rect" id="node2" href="$d3/d24/classbbb_1_1reversed__range.html" title="bbb::reversed_range\l\&lt; Container \&gt;" alt="" coords="197,5,341,44"/>
 </map>

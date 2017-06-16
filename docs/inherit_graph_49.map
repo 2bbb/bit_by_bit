@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$d7/da6/structbbb_1_1container__info_1_1substitute_3_01std_1_1unordered__multiset_3_01key_00_01hash_00_070cb6a8b235d208faaf3ff2ff613cf90.html" title="bbb::container_info\l::substitute\&lt; std::unordered\l_multiset\&lt; key, hash, pred,\l alloc \&gt;, new_type \&gt;" alt="" coords="5,5,189,71"/>
+<area shape="rect" id="node1" href="$d0/dd4/structbbb_1_1embedding.html" title="bbb::embedding\&lt; std\l::forward_list\&lt; new\l_type \&gt; \&gt;" alt="" coords="5,12,152,64"/>
+<area shape="rect" id="node2" href="$dc/dca/structbbb_1_1container__info_1_1substitute_3_01std_1_1forward__list_3_01value__type_00_01alloc_01_4_00_01new__type_01_4.html" title="bbb::container_info\l::substitute\&lt; std::forward\l_list\&lt; value_type, alloc\l \&gt;, new_type \&gt;" alt="" coords="200,5,367,71"/>
 </map>

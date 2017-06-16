@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$de/dfb/structbbb_1_1container__info_1_1substitute_3_01std_1_1map_3_01key_00_01value_00_01compare_00_01alloc_01_4_00_01new__type_01_4.html" title="bbb::container_info\l::substitute\&lt; std::map\l\&lt; key, value, compare,\l alloc \&gt;, new_type \&gt;" alt="" coords="5,5,160,71"/>
+<area shape="rect" id="node1" href="$d0/dd4/structbbb_1_1embedding.html" title="bbb::embedding\&lt; base\l_type \&gt;" alt="" coords="5,12,163,51"/>
+<area shape="rect" id="node2" href="$d4/d83/structbbb_1_1tmp_1_1inheritance_1_1search__inherited__type_3_01base__type_00_01default__type_01_4.html" title="bbb::tmp::inheritance\l::search_inherited_type\l\&lt; base_type, default_type \&gt;" alt="" coords="211,5,397,57"/>
 </map>

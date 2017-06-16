@@ -1,14 +1,14 @@
 <map id="bbb/function/direct_lambda/type_traits.hpp" name="bbb/function/direct_lambda/type_traits.hpp">
-<area shape="rect" id="node2" href="$da/d47/core_8hpp.html" title="bbb/core.hpp" alt="" coords="402,352,502,377"/>
-<area shape="rect" id="node24" href="$d0/d67/base__class_8hpp.html" title="bbb/function/direct\l_lambda/base_class.hpp" alt="" coords="241,265,410,304"/>
-<area shape="rect" id="node25" href="$d5/d5f/function_2direct__lambda_2function_8hpp.html" title="bbb/function/direct\l_lambda/function.hpp" alt="" coords="112,179,261,217"/>
-<area shape="rect" id="node26" href="$d3/d85/placeholder_8hpp.html" title="bbb/function/direct\l_lambda/placeholder.hpp" alt="" coords="352,92,523,131"/>
-<area shape="rect" id="node3" href="$d6/df4/core_2constants_8hpp.html" title="bbb/core/constants.hpp" alt="" coords="1071,745,1231,771"/>
-<area shape="rect" id="node5" href="$d2/d24/basic_8hpp.html" title="bbb/core/basic.hpp" alt="" coords="1084,672,1218,697"/>
-<area shape="rect" id="node7" href="$d3/db7/core_2traits_8hpp.html" title="bbb/core/traits.hpp" alt="" coords="843,425,975,451"/>
-<area shape="rect" id="node8" href="$d5/dc1/core_2traits_2type__traits_8hpp.html" title="bbb/core/traits/type\l_traits.hpp" alt="" coords="1214,585,1349,624"/>
-<area shape="rect" id="node10" href="$dc/da2/container__traits_8hpp.html" title="bbb/core/traits/container\l_traits.hpp" alt="" coords="544,499,709,537"/>
-<area shape="rect" id="node22" href="$d0/d52/function__traits_8hpp.html" title="bbb/core/traits/function\l_traits.hpp" alt="" coords="1265,499,1421,537"/>
-<area shape="rect" id="node27" href="$da/df5/function_2direct__lambda_2constants_8hpp.html" title="bbb/function/direct\l_lambda/constants.hpp" alt="" coords="643,265,802,304"/>
-<area shape="rect" id="node28" href="$d0/d42/function_2direct__lambda_2utility_8hpp.html" title="bbb/function/direct\l_lambda/utility.hpp" alt="" coords="386,179,518,217"/>
+<area shape="rect" id="node2" href="$da/d47/core_8hpp.html" title="bbb/core.hpp" alt="" coords="378,352,478,377"/>
+<area shape="rect" id="node25" href="$d0/d67/base__class_8hpp.html" title="bbb/function/direct\l_lambda/base_class.hpp" alt="" coords="217,265,386,304"/>
+<area shape="rect" id="node26" href="$d5/d5f/function_2direct__lambda_2function_8hpp.html" title="bbb/function/direct\l_lambda/function.hpp" alt="" coords="88,179,237,217"/>
+<area shape="rect" id="node27" href="$d3/d85/placeholder_8hpp.html" title="bbb/function/direct\l_lambda/placeholder.hpp" alt="" coords="328,92,499,131"/>
+<area shape="rect" id="node3" href="$d6/df4/core_2constants_8hpp.html" title="bbb/core/constants.hpp" alt="" coords="1147,745,1307,771"/>
+<area shape="rect" id="node5" href="$d2/d24/basic_8hpp.html" title="bbb/core/basic.hpp" alt="" coords="1160,672,1294,697"/>
+<area shape="rect" id="node7" href="$d3/db7/core_2traits_8hpp.html" title="bbb/core/traits.hpp" alt="" coords="786,425,918,451"/>
+<area shape="rect" id="node8" href="$d5/dc1/core_2traits_2type__traits_8hpp.html" title="bbb/core/traits/type\l_traits.hpp" alt="" coords="1293,585,1427,624"/>
+<area shape="rect" id="node10" href="$dc/da2/container__traits_8hpp.html" title="bbb/core/traits/container\l_traits.hpp" alt="" coords="632,499,797,537"/>
+<area shape="rect" id="node23" href="$d0/d52/function__traits_8hpp.html" title="bbb/core/traits/function\l_traits.hpp" alt="" coords="1335,499,1491,537"/>
+<area shape="rect" id="node28" href="$da/df5/function_2direct__lambda_2constants_8hpp.html" title="bbb/function/direct\l_lambda/constants.hpp" alt="" coords="619,265,778,304"/>
+<area shape="rect" id="node29" href="$d0/d42/function_2direct__lambda_2utility_8hpp.html" title="bbb/function/direct\l_lambda/utility.hpp" alt="" coords="362,179,494,217"/>
 </map>

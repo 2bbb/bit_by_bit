@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$d9/d02/structbbb_1_1loggers_1_1detail_1_1stream__adaptor_3_01tmp_1_1type__sequence_3_4_01_4.html" title="bbb::loggers::detail\l::stream_adaptor\&lt; tmp\l::type_sequence\&lt;\&gt; \&gt;" alt="" coords="5,5,161,57"/>
+<area shape="rect" id="node1" href="$d7/d0e/structbbb_1_1function__info_1_1function__traits.html" title="bbb::function_info\l::function_traits\&lt; decltype\l(&amp;T::operator())\&gt;" alt="" coords="5,5,178,57"/>
+<area shape="rect" id="node2" href="$d7/d0e/structbbb_1_1function__info_1_1function__traits.html" title="bbb::function_info\l::function_traits\&lt; T \&gt;" alt="" coords="226,12,369,51"/>
 </map>

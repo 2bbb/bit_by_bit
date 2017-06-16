@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$d2/d0b/structbbb_1_1container__info_1_1substitute_3_01std_1_1multiset_3_01key_00_01compare_00_01alloc_01_4_00_01new__type_01_4.html" title="bbb::container_info\l::substitute\&lt; std::multiset\l\&lt; key, compare, alloc \&gt;,\l new_type \&gt;" alt="" coords="5,5,174,71"/>
+<area shape="rect" id="node1" href="$d0/dd4/structbbb_1_1embedding.html" title="bbb::embedding\&lt; resolve\l_t\&lt; conditional_t\&lt; n=\l=0, defer\&lt; integer_sequence\l\&lt; integer_type, ns ... \&gt; \&gt;\l, detail::make_integer_sequence\l\&lt; integer_type, n &#45; 1, n &#45; 1,\l ns ... \&gt; \&gt; \&gt; \&gt;" alt="" coords="5,5,219,111"/>
+<area shape="rect" id="node2" href="$dc/d98/structbbb_1_1tmp_1_1integer__sequences_1_1detail_1_1make__integer__sequence.html" title="bbb::tmp::integer_sequences\l::detail::make_integer_sequence\l\&lt; integer_type, n, ns \&gt;" alt="" coords="267,32,481,84"/>
 </map>
