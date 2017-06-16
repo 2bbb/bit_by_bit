@@ -21,14 +21,17 @@
 #elif __cplusplus < 201402L
 #   define bbb_is_cpp11 true
 #   define bbb_is_cpp14 false
+#   define bbb_is_cpp17 false
 #else
 #   define bbb_is_cpp11 true
 #   define bbb_is_cpp14 true
+#   define bbb_is_cpp17 false
 #endif
 
 namespace bbb {
     constexpr bool is_cpp11() { return bbb_is_cpp11; }
     constexpr bool is_cpp14() { return bbb_is_cpp14; }
+    constexpr bool is_cpp17() { return bbb_is_cpp17; }
 }
 
 #define BBB_EXEC_UNIT_TEST 1
