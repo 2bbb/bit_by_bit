@@ -208,33 +208,33 @@ namespace bbb {
         struct is_initializer_list<std::initializer_list<type>> : std::true_type {};
         
         template <typename type>
-        struct is_kind_of_map : disjunction<
-            is_map<type>,
-            is_multimap<type>,
-            is_unordered_map<type>,
-            is_unordered_multimap<type>
-        > {};
+        struct is_kind_of_map : meta_disjunction<
+            is_map,
+            is_multimap,
+            is_unordered_map,
+            is_unordered_multimap
+        >::template eval<type> {};
         
         template <typename type>
-        struct is_kind_of_set : disjunction<
-            is_set<type>,
-            is_multiset<type>,
-            is_unordered_set<type>,
-            is_unordered_multiset<type>
-        > {};
+        struct is_kind_of_set : meta_disjunction<
+            is_set,
+            is_multiset,
+            is_unordered_set,
+            is_unordered_multiset
+        >::template eval<type> {};
 
         template <typename type>
-        struct is_container : disjunction<
-            is_bitset<type>,
-            is_array<type>,
-            is_vector<type>,
-            is_deque<type>,
-            is_forward_list<type>,
-            is_list<type>,
-            is_kind_of_map<type>,
-            is_kind_of_set<type>,
-            is_initializer_list<type>
-        > {};
+        struct is_container : meta_disjunction<
+            is_bitset,
+            is_array,
+            is_vector,
+            is_deque,
+            is_forward_list,
+            is_list,
+            is_kind_of_map,
+            is_kind_of_set,
+            is_initializer_list
+        >::template eval<type> {};
 
         template <typename container>
         struct container_traits {
