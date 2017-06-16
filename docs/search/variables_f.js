@@ -1,10 +1,10 @@
 var searchData=
 [
-  ['size',['size',['../de/dc1/classbbb_1_1multithread_1_1manager.html#a1037d6b8619327783d3730e96b20ae42',1,'bbb::multithread::manager::size()'],['../dd/db1/structbbb_1_1tmp_1_1type__sequences_1_1type__sequence_3_4.html#a15311a6bfad8325c35c6a0e6e024a8d1',1,'bbb::tmp::type_sequences::type_sequence&lt;&gt;::size()'],['../d6/dc4/structbbb_1_1tmp_1_1type__sequences_1_1type__sequence_3_01type_00_01types_01_8_8_8_01_4.html#a9f77d326c4078a4ad514139c3bfa9372',1,'bbb::tmp::type_sequences::type_sequence&lt; type, types ... &gt;::size()']]],
-  ['slog',['slog',['../d1/d48/namespacebbb_1_1loggers.html#a8a0eb0dfb61d9f6ee25f50d221dfc47a',1,'bbb::loggers']]],
-  ['ss',['ss',['../d7/d24/structbbb_1_1loggers_1_1string__stream.html#ac4a6332d0ac183f1122e2a5d28238816',1,'bbb::loggers::string_stream']]],
-  ['start',['start',['../d0/dcf/classbbb_1_1range.html#a17c85ca3c4fc0545b8902904d9777090',1,'bbb::range::start()'],['../d7/d3d/namespacebbb_1_1loggers_1_1time__utils.html#a80dda53bd014d648e6fc234cab5e0947',1,'bbb::loggers::time_utils::start()']]],
-  ['start_5f',['start_',['../dd/d0e/structbbb_1_1stop__watch.html#a32344ee1cbcfe427945d114335c6582c',1,'bbb::stop_watch']]],
-  ['streambuf',['streambuf',['../d1/d72/structbbb_1_1loggers_1_1null__ostream.html#ae94b71639bb462da210038a4d1fcb975',1,'bbb::loggers::null_ostream']]],
-  ['string_5fnotifier',['string_notifier',['../da/d59/structbbb_1_1notifiers_1_1string__notifier_3_01std_1_1basic__string_3_01character__type_00_01tra6a3c647c9bb32302af07691694e071c9.html#a862355293ef415e99fc43be4d5a05588',1,'bbb::notifiers::string_notifier&lt; std::basic_string&lt; character_type, traits, alloc &gt; &gt;::iterator']]]
+  ['range',['range',['../d0/d97/classbbb_1_1range_1_1range__iterator.html#a340290ac48cf42e8987edef20d1a491d',1,'bbb::range::range_iterator']]],
+  ['rap_5f',['rap_',['../dd/d0e/structbbb_1_1stop__watch.html#ae324e6a5be47366567f9211aefe72d15',1,'bbb::stop_watch']]],
+  ['raw_5fval',['raw_val',['../d5/d3c/structbbb_1_1container_1_1byte__array.html#a20870411130261e64ed2a0b408dd4296',1,'bbb::container::byte_array']]],
+  ['reusable_5farray_5fiterator_3c_20const_20t_2c_20s_20_3e',['reusable_array_iterator&lt; const T, s &gt;',['../da/d8a/classbbb_1_1reusable__array.html#ab5bf5c56f172331522e2496a5654caa2',1,'bbb::reusable_array']]],
+  ['reusable_5farray_5fiterator_3c_20t_2c_20s_20_3e',['reusable_array_iterator&lt; T, s &gt;',['../da/d8a/classbbb_1_1reusable__array.html#a72d709491d0caef12570b4a57cd3391a',1,'bbb::reusable_array']]],
+  ['reusable_5farray_5freverse_5fiterator_3c_20const_20t_2c_20s_20_3e',['reusable_array_reverse_iterator&lt; const T, s &gt;',['../da/d8a/classbbb_1_1reusable__array.html#adb14a49aee9217fddf297fcc2fd71bc9',1,'bbb::reusable_array']]],
+  ['reusable_5farray_5freverse_5fiterator_3c_20t_2c_20s_20_3e',['reusable_array_reverse_iterator&lt; T, s &gt;',['../da/d8a/classbbb_1_1reusable__array.html#ad787ff68005f593df647b86659aa9757',1,'bbb::reusable_array']]]
 ];
