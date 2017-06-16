@@ -1,6 +1,7 @@
 var searchData=
 [
   ['file_5fstream',['file_stream',['../dc/d1f/structbbb_1_1loggers_1_1file__stream.html',1,'bbb::loggers']]],
+  ['filter',['filter',['../d6/dd6/structbbb_1_1pipe_1_1command_1_1filter.html',1,'bbb::pipe::command']]],
   ['flatten',['flatten',['../d3/d57/structbbb_1_1tmp_1_1type__sequence__operations_1_1flatten.html',1,'bbb::tmp::type_sequence_operations']]],
   ['flatten_3c_20holder_2c_20holders_20_2e_2e_2e_20_3e',['flatten&lt; holder, holders ... &gt;',['../d0/d5d/structbbb_1_1tmp_1_1type__sequence__operations_1_1flatten_3_01holder_00_01holders_01_8_8_8_01_4.html',1,'bbb::tmp::type_sequence_operations']]],
   ['flatten_3c_20non_5fholded_20_3e',['flatten&lt; non_holded &gt;',['../d9/d91/structbbb_1_1tmp_1_1type__sequence__operations_1_1flatten_3_01non__holded_01_4.html',1,'bbb::tmp::type_sequence_operations']]],
