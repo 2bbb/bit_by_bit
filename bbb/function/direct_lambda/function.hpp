@@ -23,7 +23,7 @@ namespace bbb {
     namespace function {
         namespace direct_lambda {
             template <op_type op, typename ... holders>
-            struct function {
+            struct direct_function {
                 std::tuple<holders ...> holder;
 
                 template <typename ... arguments>
@@ -35,7 +35,7 @@ namespace bbb {
 
 #define def_unary_op(op, name)\
                 constexpr auto operator op() const\
-                -> function<op_type::name, function>\
+                -> direct_function<op_type::name, direct_function>\
                 { return {*this}; }
 
                 def_unary_op(!, unary_not);
@@ -48,14 +48,14 @@ namespace bbb {
 #undef def_unary_op
                 template <typename index_t>
                 constexpr auto operator[](const index_t &index) const
-                -> function<op_type::subscript, function, index_t>
-                { return {std::tuple<function, index_t>(*this, index)}; }
+                -> direct_function<op_type::subscript, direct_function, index_t>
+                { return {std::tuple<direct_function, index_t>(*this, index)}; }
 
                 // TODO implement member pointer
 //                template <typename index_t>
 //                constexpr auto operator->*(const index_t &index) const
-//                -> function<op_type::member_pointer, function, index_t>
-//                { return {std::tuple<function, index_t>(*this, index)}; }
+//                -> function<op_type::member_pointer, direct_function, index_t>
+//                { return {std::tuple<direct_function, index_t>(*this, index)}; }
             };
 
 #define def_unary_op_eval(f, name)\

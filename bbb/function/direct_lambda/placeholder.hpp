@@ -33,7 +33,7 @@ namespace bbb {
             };
 
             template <too_long n>
-            using placeholder = function<op_type::placeholder, detail::index_type<n>>;
+            using placeholder = direct_function<op_type::placeholder, detail::index_type<n>>;
 
             template <too_long n>
             struct eval<op_type::placeholder, detail::index_type<n>> {
