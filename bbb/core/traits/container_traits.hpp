@@ -208,32 +208,32 @@ namespace bbb {
         struct is_initializer_list<std::initializer_list<type>> : std::true_type {};
         
         template <typename type>
-        struct is_kind_of_map : bool_type_t<
-            is_map<type>::value
-            || is_multimap<type>::value
-            || is_unordered_map<type>::value
-            || is_unordered_multimap<type>::value
+        struct is_kind_of_map : disjunction<
+            is_map<type>,
+            is_multimap<type>,
+            is_unordered_map<type>,
+            is_unordered_multimap<type>
         > {};
         
         template <typename type>
-        struct is_kind_of_set : bool_type_t<
-            is_set<type>::value
-            || is_multiset<type>::value
-            || is_unordered_set<type>::value
-            || is_unordered_multiset<type>::value
+        struct is_kind_of_set : disjunction<
+            is_set<type>,
+            is_multiset<type>,
+            is_unordered_set<type>,
+            is_unordered_multiset<type>
         > {};
 
         template <typename type>
-        struct is_container : bool_type_t<
-            is_bitset<type>::value
-            || is_array<type>::value
-            || is_vector<type>::value
-            || is_deque<type>::value
-            || is_forward_list<type>::value
-            || is_list<type>::value
-            || is_kind_of_map<type>::value
-            || is_kind_of_set<type>::value
-            || is_initializer_list<type>::value
+        struct is_container : disjunction<
+            is_bitset<type>,
+            is_array<type>,
+            is_vector<type>,
+            is_deque<type>,
+            is_forward_list<type>,
+            is_list<type>,
+            is_kind_of_map<type>,
+            is_kind_of_set<type>,
+            is_initializer_list<type>
         > {};
 
         template <typename container>
