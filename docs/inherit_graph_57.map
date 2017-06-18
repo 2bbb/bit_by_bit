@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$de/d13/classbbb_1_1enumeratable_1_1enumerating__value_3_01const_01value__type_01_4.html" title="bbb::enumeratable::\lenumerating_value\&lt; const\l value_type \&gt;" alt="" coords="5,5,183,57"/>
+<area shape="rect" id="node1" href="$d0/dd4/structbbb_1_1embedding.html" title="bbb::embedding\&lt; std\l::unordered_multimap\l\&lt; key, new_type \&gt; \&gt;" alt="" coords="5,12,156,64"/>
+<area shape="rect" id="node2" href="$d0/df4/structbbb_1_1container__info_1_1substitute_3_01std_1_1unordered__multimap_3_01key_00_01value_00_929f76e4a39c390feb025214663d30f6.html" title="bbb::container_info\l::substitute\&lt; std::unordered\l_multimap\&lt; key, value, hash,\l pred, alloc \&gt;, new_type \&gt;" alt="" coords="204,5,398,71"/>
 </map>

@@ -1,5 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$d4/d10/structbbb_1_1container_1_1impl_1_1array__delegation__base.html" title="bbb::container::impl\l::array_delegation_base\l\&lt; array_t \&gt;" alt="" coords="5,44,170,96"/>
-<area shape="rect" id="node2" href="$d1/d2d/structbbb_1_1container_1_1impl_1_1array__delegation_3_01array__t_00_01false_01_4.html" title="bbb::container::impl\l::array_delegation\&lt; array\l_t, false \&gt;" alt="" coords="218,5,388,57"/>
-<area shape="rect" id="node3" href="$d3/d90/structbbb_1_1container_1_1impl_1_1array__delegation_3_01array__t_00_01true_01_4.html" title="bbb::container::impl\l::array_delegation\&lt; array\l_t, true \&gt;" alt="" coords="218,81,388,133"/>
+<area shape="rect" id="node1" href="$d2/dfe/structbbb_1_1container_1_1functional__base.html" title="bbb::container::functional\l_base\&lt; array\&lt; value_type,\l allocator \&gt;, std::vector\l\&lt; value_type, allocator \&gt; \&gt;" alt="" coords="5,5,185,71"/>
+<area shape="rect" id="node2" href="$d9/d12/structbbb_1_1container_1_1array.html" title="bbb::container::array\l\&lt; value_type, allocator \&gt;" alt="" coords="233,19,399,57"/>
 </map>

@@ -3,7 +3,7 @@ var searchData=
   ['add',['add',['../d3/d4d/namespacebbb_1_1function_1_1direct__lambda.html#ac0e6ddec93a461b94a38fce232feee40a34ec78fcc91ffb1e54cd85e4a0924332',1,'bbb::function::direct_lambda']]],
   ['add_5fconst_5freference_5fif_5fnot_5fnumber',['add_const_reference_if_not_number',['../dc/d34/namespacebbb.html#a1ff74858cb639d8ab201122cc8d23c51',1,'bbb']]],
   ['add_5fconst_5freference_5fif_5fnot_5fnumber_5ft',['add_const_reference_if_not_number_t',['../dc/d34/namespacebbb.html#ac51301d774273aa28e9743131839cc3a',1,'bbb']]],
-  ['address',['address',['../d1/d7e/structbbb_1_1function_1_1direct__lambda_1_1function.html#ab8e5184c2d61f3718654892f9931be2d',1,'bbb::function::direct_lambda::function::address()'],['../d3/d4d/namespacebbb_1_1function_1_1direct__lambda.html#ac0e6ddec93a461b94a38fce232feee40a884d9804999fc47a3c2694e49ad2536a',1,'bbb::function::direct_lambda::address()']]],
+  ['address',['address',['../d4/d12/structbbb_1_1function_1_1direct__lambda_1_1direct__function.html#a0764ef42d4d81a9053b345aeb49e20f6',1,'bbb::function::direct_lambda::direct_function::address()'],['../d3/d4d/namespacebbb_1_1function_1_1direct__lambda.html#ac0e6ddec93a461b94a38fce232feee40a884d9804999fc47a3c2694e49ad2536a',1,'bbb::function::direct_lambda::address()']]],
   ['alias',['alias',['../d7/dfd/structbbb_1_1tmp_1_1utility_1_1alias.html',1,'bbb::tmp::utility']]],
   ['alias_2ehpp',['alias.hpp',['../d4/ddc/alias_8hpp.html',1,'']]],
   ['all',['all',['../d6/d16/structbbb_1_1tmp_1_1logic_1_1detail_1_1all.html',1,'bbb::tmp::logic::detail::all&lt; pred, arguments &gt;'],['../de/d8e/namespacebbb_1_1tmp_1_1logic.html#ad1ad840cb5c1729f45b05e9caf9e0ef7',1,'bbb::tmp::logic::all()']]],

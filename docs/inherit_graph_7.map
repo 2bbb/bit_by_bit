@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$d1/da9/structbbb_1_1container_1_1impl_1_1is__array.html" title="bbb::container::impl\l::is_array\&lt; typename \&gt;" alt="" coords="5,5,163,44"/>
+<area shape="rect" id="node1" href="$d7/d2c/structbbb_1_1container_1_1impl_1_1array__delegation.html" title="bbb::container::impl\l::array_delegation\&lt; array\l_t, is_constexpressionable \&gt;" alt="" coords="5,5,195,57"/>
+<area shape="rect" id="node2" href="$d4/d5a/structbbb_1_1container_1_1container__delegation_3_01std_1_1array_3_01value__t_00_01size_01_4_01_4.html" title="bbb::container::container\l_delegation\&lt; std::array\l\&lt; value_t, size \&gt; \&gt;" alt="" coords="243,5,411,57"/>
 </map>

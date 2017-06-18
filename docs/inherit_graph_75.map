@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$d7/dfc/structbbb_1_1function_1_1direct__lambda_1_1is__placeholder_3_01placeholder_3_01n_01_4_01_4.html" title="bbb::function::direct\l_lambda::is_placeholder\l\&lt; placeholder\&lt; n \&gt; \&gt;" alt="" coords="5,5,171,57"/>
+<area shape="rect" id="node1" href="$d4/d12/structbbb_1_1function_1_1direct__lambda_1_1direct__function.html" title="bbb::function::direct\l_lambda::direct_function\l\&lt; op_type::value_holder,\l value_t &amp;\&gt;" alt="" coords="5,5,172,71"/>
+<area shape="rect" id="node2" href="$d4/d4b/structbbb_1_1function_1_1direct__lambda_1_1value__holder.html" title="bbb::function::direct\l_lambda::value_holder\l\&lt; value_t \&gt;" alt="" coords="220,12,377,64"/>
 </map>
