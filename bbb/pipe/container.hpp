@@ -19,3 +19,4 @@
 #include <bbb/pipe/container/reverse.hpp>
 #include <bbb/pipe/container/keys.hpp>
 #include <bbb/pipe/container/values.hpp>
+#include <bbb/pipe/container/sort.hpp>
