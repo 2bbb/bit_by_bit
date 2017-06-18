@@ -7,5 +7,5 @@ var searchData=
   ['has_5fpush_5fback',['has_push_back',['../d2/dfb/structbbb_1_1container_1_1iterator_1_1iteratable__class__traits.html#ae372f0f3fa232626e921e4dc8cdc93ab',1,'bbb::container::iterator::iteratable_class_traits']]],
   ['has_5fpush_5ffront',['has_push_front',['../d2/dfb/structbbb_1_1container_1_1iterator_1_1iteratable__class__traits.html#a90389f00adecb86bc4e94445a7cc08f3',1,'bbb::container::iterator::iteratable_class_traits']]],
   ['has_5freverse_5fiterator',['has_reverse_iterator',['../d2/dfb/structbbb_1_1container_1_1iterator_1_1iteratable__class__traits.html#a51677448599729f8a31fe065d3681f54',1,'bbb::container::iterator::iteratable_class_traits']]],
-  ['holder',['holder',['../d1/d7e/structbbb_1_1function_1_1direct__lambda_1_1function.html#a58f42b9591288ce7a423a51b6c386b39',1,'bbb::function::direct_lambda::function']]]
+  ['holder',['holder',['../d4/d12/structbbb_1_1function_1_1direct__lambda_1_1direct__function.html#ab5648884a511a3dcc6f451882b181426',1,'bbb::function::direct_lambda::direct_function']]]
 ];

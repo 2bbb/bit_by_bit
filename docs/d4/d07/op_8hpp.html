@@ -85,20 +85,20 @@ Include dependency graph for op.hpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../d5/d71/op_8hpp__incl.png" border="0" usemap="#bbb_2function_2direct__lambda_2op_8hpp" alt=""/></div>
 <map name="bbb_2function_2direct__lambda_2op_8hpp" id="bbb_2function_2direct__lambda_2op_8hpp">
-<area shape="rect" id="node2" href="../../da/d47/core_8hpp.html" title="bbb/core.hpp" alt="" coords="1137,439,1236,464"/>
-<area shape="rect" id="node24" href="../../da/df5/function_2direct__lambda_2constants_8hpp.html" title="bbb/function/direct\l_lambda/constants.hpp" alt="" coords="618,352,777,391"/>
-<area shape="rect" id="node25" href="../../d0/d42/function_2direct__lambda_2utility_8hpp.html" title="bbb/function/direct\l_lambda/utility.hpp" alt="" coords="713,265,844,304"/>
-<area shape="rect" id="node26" href="../../d0/d67/base__class_8hpp.html" title="bbb/function/direct\l_lambda/base_class.hpp" alt="" coords="1102,352,1271,391"/>
-<area shape="rect" id="node27" href="../../d5/d5f/function_2direct__lambda_2function_8hpp.html" title="bbb/function/direct\l_lambda/function.hpp" alt="" coords="1020,265,1169,304"/>
-<area shape="rect" id="node28" href="../../d9/da8/value__holder_8hpp.html" title="bbb/function/direct\l_lambda/value_holder.hpp" alt="" coords="1263,179,1441,217"/>
-<area shape="rect" id="node29" href="../../d3/d85/placeholder_8hpp.html" title="bbb/function/direct\l_lambda/placeholder.hpp" alt="" coords="853,179,1024,217"/>
-<area shape="rect" id="node30" href="../../d3/d39/function_2direct__lambda_2type__traits_8hpp.html" title="bbb/function/direct\l_lambda/type_traits.hpp" alt="" coords="1098,92,1262,131"/>
+<area shape="rect" id="node2" href="../../da/d47/core_8hpp.html" title="bbb/core.hpp" alt="" coords="1197,439,1296,464"/>
+<area shape="rect" id="node25" href="../../da/df5/function_2direct__lambda_2constants_8hpp.html" title="bbb/function/direct\l_lambda/constants.hpp" alt="" coords="678,352,837,391"/>
+<area shape="rect" id="node26" href="../../d0/d42/function_2direct__lambda_2utility_8hpp.html" title="bbb/function/direct\l_lambda/utility.hpp" alt="" coords="773,265,904,304"/>
+<area shape="rect" id="node27" href="../../d0/d67/base__class_8hpp.html" title="bbb/function/direct\l_lambda/base_class.hpp" alt="" coords="1162,352,1331,391"/>
+<area shape="rect" id="node28" href="../../d5/d5f/function_2direct__lambda_2function_8hpp.html" title="bbb/function/direct\l_lambda/function.hpp" alt="" coords="1080,265,1229,304"/>
+<area shape="rect" id="node29" href="../../d9/da8/value__holder_8hpp.html" title="bbb/function/direct\l_lambda/value_holder.hpp" alt="" coords="1322,179,1500,217"/>
+<area shape="rect" id="node30" href="../../d3/d85/placeholder_8hpp.html" title="bbb/function/direct\l_lambda/placeholder.hpp" alt="" coords="911,179,1081,217"/>
+<area shape="rect" id="node31" href="../../d3/d39/function_2direct__lambda_2type__traits_8hpp.html" title="bbb/function/direct\l_lambda/type_traits.hpp" alt="" coords="1156,92,1319,131"/>
 <area shape="rect" id="node3" href="../../d6/df4/core_2constants_8hpp.html" title="bbb/core/constants.hpp" alt="" coords="363,832,523,857"/>
 <area shape="rect" id="node5" href="../../d2/d24/basic_8hpp.html" title="bbb/core/basic.hpp" alt="" coords="376,759,510,784"/>
-<area shape="rect" id="node7" href="../../d3/db7/core_2traits_8hpp.html" title="bbb/core/traits.hpp" alt="" coords="661,512,793,537"/>
+<area shape="rect" id="node7" href="../../d3/db7/core_2traits_8hpp.html" title="bbb/core/traits.hpp" alt="" coords="691,512,823,537"/>
 <area shape="rect" id="node8" href="../../d5/dc1/core_2traits_2type__traits_8hpp.html" title="bbb/core/traits/type\l_traits.hpp" alt="" coords="246,672,381,711"/>
-<area shape="rect" id="node10" href="../../dc/da2/container__traits_8hpp.html" title="bbb/core/traits/container\l_traits.hpp" alt="" coords="755,585,920,624"/>
-<area shape="rect" id="node22" href="../../d0/d52/function__traits_8hpp.html" title="bbb/core/traits/function\l_traits.hpp" alt="" coords="170,585,326,624"/>
+<area shape="rect" id="node10" href="../../dc/da2/container__traits_8hpp.html" title="bbb/core/traits/container\l_traits.hpp" alt="" coords="796,585,961,624"/>
+<area shape="rect" id="node23" href="../../d0/d52/function__traits_8hpp.html" title="bbb/core/traits/function\l_traits.hpp" alt="" coords="170,585,326,624"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -197,7 +197,8 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> lhs, <span class="keyword">typename</span> rhs&gt;\</div><div class="line">            auto <span class="keyword">operator</span> op(<span class="keyword">const</span> lhs &amp;l, <span class="keyword">const</span> rhs &amp;r)\</div><div class="line">            -&gt; function&lt;op_type::name, typename wrap_const_value_type&lt;lhs&gt;::type, <span class="keyword">typename</span> wrap_const_value_type&lt;rhs&gt;::type&gt; {\</div><div class="line">                return {std::tuple&lt;typename wrap_const_value_type&lt;lhs&gt;::type, <span class="keyword">typename</span> wrap_const_value_type&lt;rhs&gt;::type&gt;(l, r)};\</div><div class="line">            }</div></div><!-- fragment -->
+<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> lhs, <span class="keyword">typename</span> rhs&gt;\</div><div class="line">            auto <span class="keyword">operator</span> op(<span class="keyword">const</span> lhs &amp;l, <span class="keyword">const</span> rhs &amp;r)\</div><div class="line">            -&gt; <a class="code" href="../../dc/d34/namespacebbb.html#abea115a994a5523e464bb43a0e0d24c3">type_enable_if_t</a>&lt;\</div><div class="line">                conjunction&lt;is_direct_lambdable&lt;lhs&gt;, is_direct_lambdable&lt;rhs&gt;&gt;,\</div><div class="line">                direct_function&lt;\</div><div class="line">                    op_type::name,\</div><div class="line">                    get_type&lt;wrap_const_value_type&lt;lhs&gt;&gt;,\</div><div class="line">                    get_type&lt;wrap_const_value_type&lt;rhs&gt;&gt;\</div><div class="line">                &gt;\</div><div class="line">            &gt; {\</div><div class="line">                return {std::tuple&lt;get_type&lt;wrap_const_value_type&lt;lhs&gt;&gt;, get_type&lt;wrap_const_value_type&lt;rhs&gt;&gt;&gt;(l, r)};\</div><div class="line">            };</div><div class="ttc" id="namespacebbb_html_abea115a994a5523e464bb43a0e0d24c3"><div class="ttname"><a href="../../dc/d34/namespacebbb.html#abea115a994a5523e464bb43a0e0d24c3">bbb::type_enable_if_t</a></div><div class="ttdeci">enable_if_t&lt; cond::value, type &gt; type_enable_if_t</div><div class="ttdef"><b>Definition:</b> type_traits.hpp:240</div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a id="acc7e7839d2ed95c3eb785fb882861a08"></a>
@@ -225,7 +226,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> lhs, <span class="keyword">typename</span> rhs&gt; \</div><div class="line">            struct eval&lt;op_type::name, lhs, rhs&gt; { \</div><div class="line">                template &lt;<span class="keyword">typename</span> ... arguments&gt; \</div><div class="line">                constexpr <span class="keyword">auto</span> evaluate(<span class="keyword">const</span> std::tuple&lt;lhs, rhs&gt; &amp;holder, arguments &amp;&amp; ... args) <span class="keyword">const</span> \</div><div class="line">                -&gt; decltype((std::get&lt;0&gt;(holder))(args ...) op (std::get&lt;1&gt;(holder))(args ...)) \</div><div class="line">                { <span class="keywordflow">return</span> (std::get&lt;0&gt;(holder))(args ...) op (std::get&lt;1&gt;(holder))(args ...); } \</div><div class="line">            };</div></div><!-- fragment -->
+<b>Value:</b><div class="fragment"><div class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> lhs, <span class="keyword">typename</span> rhs&gt;\</div><div class="line">            struct eval&lt;op_type::name, lhs, rhs&gt; {\</div><div class="line">                template &lt;<span class="keyword">typename</span> ... arguments&gt;\</div><div class="line">                constexpr <span class="keyword">auto</span> evaluate(<span class="keyword">const</span> std::tuple&lt;lhs, rhs&gt; &amp;holder, arguments &amp;&amp; ... args) <span class="keyword">const</span>\</div><div class="line">                -&gt; decltype((std::get&lt;0&gt;(holder))(args ...) op (std::get&lt;1&gt;(holder))(args ...))\</div><div class="line">                { <span class="keywordflow">return</span> (std::get&lt;0&gt;(holder))(args ...) op (std::get&lt;1&gt;(holder))(args ...); }\</div><div class="line">            };</div></div><!-- fragment -->
 </div>
 </div>
 <a id="a6fe21e3a5816b9407517ffc656a2455e"></a>

@@ -20,3 +20,6 @@
 #include <bbb/pipe/string/split.hpp>
 #include <bbb/pipe/string/join.hpp>
 
+#include <bbb/pipe/string/upper.hpp>
+#include <bbb/pipe/string/lower.hpp>
+#include <bbb/pipe/string/camelize.hpp>
