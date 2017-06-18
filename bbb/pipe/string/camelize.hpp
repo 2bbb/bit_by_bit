@@ -63,5 +63,7 @@ namespace bbb {
             };
         };
         command::camelize camelize(bool upper_camel = false) { return {upper_camel}; }
+        command::camelize upper_camelize() { return {true}; }
+        command::camelize lower_camelize() { return {false}; }
     };
 };
