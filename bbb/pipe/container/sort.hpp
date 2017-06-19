@@ -36,6 +36,8 @@ namespace bbb {
                         container_type &
                     >
                 {
+                    using std::begin;
+                    using std::end;
                     if(_.desc) {
                         std::sort(begin(cont), end(cont),
                                   std::greater<typename container_type::value_type>());
@@ -80,6 +82,8 @@ namespace bbb {
                         container_type &
                     >
                 {
+                    using std::begin;
+                    using std::end;
                     if(_.use_stable) {
                         std::stable_sort(begin(cont), end(cont), _.callback);
                     } else {
@@ -103,6 +107,8 @@ namespace bbb {
                     >
                 {
                     using type = typename container_type::value_type;
+                    using std::begin;
+                    using std::end;
                     if(_.use_stable) {
                         std::stable_sort(
                             begin(cont),

@@ -39,6 +39,10 @@ namespace bbb {
                     return result;
                 }
                 
+                friend inline string_type operator|(const char_type * const str, const replace &pair) {
+                    return string_type(str) | pair;
+                }
+
                 friend inline string_type &operator|=(string_type &str, const replace &pair) {
                     typename string_type::size_type pos;
                     while((pos = str.find(pair.from)) != string_type::npos) {

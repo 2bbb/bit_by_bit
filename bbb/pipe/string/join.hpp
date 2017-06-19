@@ -66,7 +66,7 @@ namespace bbb {
                     }
                     return joined.str();
                 }
-
+                
             private:
                 string_type glue;
             };
