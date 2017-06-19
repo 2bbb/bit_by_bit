@@ -39,7 +39,9 @@ namespace bbb {
                     return result;
                 }
                 
-                friend inline string_type operator|(const char_type * const str, const replace &pair) {
+                friend inline auto operator|(const char_type * const str, const replace &pair)
+                    -> type_enable_if_t<is_character<char_type>, string_type>
+                {
                     return string_type(str) | pair;
                 }
 
