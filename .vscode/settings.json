@@ -64,5 +64,6 @@
         "__bit_reference": "cpp",
         "__functional_03": "cpp",
         "ios": "cpp"
-    }
+    },
+    "editor.multiCursorModifier": "ctrlCmd"
 }
