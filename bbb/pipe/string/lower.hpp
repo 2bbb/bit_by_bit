@@ -47,6 +47,13 @@ namespace bbb {
                 {
                     return str |= _;
                 }
+
+                template <typename char_type>
+                friend inline auto operator|(const char_type * const str, lower _)
+                    -> std::basic_string<char_type>
+                {
+                    return std::basic_string<char_type>(str) | _;
+                }
             };
         };
         command::lower lower() { return {}; }
