@@ -34,6 +34,17 @@ namespace bbb {
     constexpr bool is_cpp17() { return bbb_is_cpp17; }
 }
 
+#if bbb_is_cpp11
+#   define bbb_constexpr_14 
+#   define bbb_constexpr_17 
+#elif bbb_is_cpp14
+#   define bbb_constexpr_14 constepxr 
+#   define bbb_constexpr_17 
+#elif bbb_is_cpp17
+#   define bbb_constexpr_14 constepxr 
+#   define bbb_constexpr_17 constexpr 
+#endif
+
 #define BBB_EXEC_UNIT_TEST 1
 
 #define BBB_VERSION_MAJOR 0
