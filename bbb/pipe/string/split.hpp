@@ -50,10 +50,12 @@ namespace bbb {
                     return splitted;
                 }
                 
-                friend inline std::vector<string_type> operator|(const char * const str, const split &delimitter) {
+                friend inline auto operator|(const char_type * const str, const split &delimitter)
+                    -> type_enable_if_t<is_character<char_type>, std::vector<string_type>>
+                {
                     return string_type(str) | delimitter;
                 }
-                
+
             private:
                 string_type delimiter;
             };
