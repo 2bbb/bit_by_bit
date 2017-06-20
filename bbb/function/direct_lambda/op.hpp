@@ -20,7 +20,7 @@
 #include <bbb/function/direct_lambda/constants.hpp>
 #include <bbb/function/direct_lambda/utility.hpp>
 #include <bbb/function/direct_lambda/base_class.hpp>
-#include <bbb/function/direct_lambda/function.hpp>
+#include <bbb/function/direct_lambda/direct_function.hpp>
 #include <bbb/function/direct_lambda/value_holder.hpp>
 #include <bbb/function/direct_lambda/placeholder.hpp>
 #include <bbb/function/direct_lambda/type_traits.hpp>
@@ -41,7 +41,7 @@ namespace bbb {
             template <typename lhs, typename rhs>\
             auto operator op(const lhs &l, const rhs &r)\
             -> type_enable_if_t<\
-                conjunction<is_direct_lambdable<lhs>, is_direct_lambdable<rhs>>,\
+                disjunction<is_direct_lambdable<lhs>, is_direct_lambdable<rhs>>,\
                 direct_function<\
                     op_type::name,\
                     get_type<wrap_const_value_type<lhs>>,\
