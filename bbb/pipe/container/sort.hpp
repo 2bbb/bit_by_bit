@@ -32,7 +32,11 @@ namespace bbb {
                 template <typename container_type>
                 friend inline auto operator|=(container_type &cont, sort _)
                     -> type_enable_if_t<
-                        is_container<container_type>,
+                        conjunction<
+                            is_container<container_type>,
+                            negation<is_kind_of_map<container_type>>,
+                            negation<is_kind_of_set<container_type>>
+                        >,
                         container_type &
                     >
                 {
@@ -51,7 +55,11 @@ namespace bbb {
                 template <typename container_type>
                 friend inline auto operator|(container_type cont, sort _)
                     -> type_enable_if_t<
-                        is_container<container_type>,
+                        conjunction<
+                            is_container<container_type>,
+                            negation<is_kind_of_map<container_type>>,
+                            negation<is_kind_of_set<container_type>>
+                        >,
                         container_type
                     >
                 { return std::move(cont |= _); }
