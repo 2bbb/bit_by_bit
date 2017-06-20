@@ -50,7 +50,7 @@ namespace bbb {
 
                 template <typename char_type>
                 friend inline auto operator|(const char_type * const str, lower _)
-                    -> std::basic_string<char_type>
+                    -> type_enable_if_t<is_character<char_type>, std::basic_string<char_type>>
                 {
                     return std::basic_string<char_type>(str) | _;
                 }

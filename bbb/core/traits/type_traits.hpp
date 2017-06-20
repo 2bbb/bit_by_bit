@@ -155,6 +155,24 @@ namespace bbb {
     template <typename T>
     using is_integer = std::is_integral<T>;
 
+    /**
+     * is_character
+     */
+    template <typename T>
+    struct is_character : std::false_type {};
+
+    template <>
+    struct is_character<char> : std::true_type {};
+
+    template <>
+    struct is_character<wchar_t> : std::true_type {};
+
+    template <>
+    struct is_character<char16_t> : std::true_type {};
+
+    template <>
+    struct is_character<char32_t> : std::true_type {};
+
 #if bbb_is_cpp14
     template <typename T>
     constexpr bool is_integer_v = is_integer<T>::value;
