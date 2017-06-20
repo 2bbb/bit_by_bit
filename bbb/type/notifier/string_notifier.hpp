@@ -331,8 +331,8 @@ namespace bbb {
             void value_did_change(std::function<void(const type &)> callback) { did_change = callback; }
 
         private:
-            std::function<void(const type &)> will_change = [](const type &){};
-            std::function<void(const type &)> did_change  = [](const type &){};
+            std::function<void(const type &)> will_change{[](const type &){}};
+            std::function<void(const type &)> did_change{[](const type &){}};
         };
     };
 };

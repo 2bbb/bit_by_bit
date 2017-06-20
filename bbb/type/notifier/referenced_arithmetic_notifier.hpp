@@ -113,8 +113,8 @@ namespace bbb {
             }
         private:
             type &value;
-            std::function<void(type)> will_change = [](type){};
-            std::function<void(type)> did_change  = [](type){};
+            std::function<void(type)> will_change{[](type){}};
+            std::function<void(type)> did_change{[](type){}};
         };
     }; // namespace notifiers
 };
