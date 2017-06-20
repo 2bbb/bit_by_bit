@@ -31,9 +31,12 @@ namespace bbb {
                 
                 template <typename container>
                 friend inline auto operator|(const container &cont, const map &f)
-                -> enable_if_t<
-                    is_container<container>::value
-                    && !is_kind_of_map<container>::value,
+                -> type_enable_if_t<
+                    conjunction<
+                        is_container<container>,
+                        negation<is_kind_of_map<container>>,
+                        negation<is_array<container>>
+                    >,
                     typename container_traits<container>::template substitute<result_type>
                 >
                 {
@@ -48,9 +51,23 @@ namespace bbb {
                 
                 template <typename container>
                 friend inline auto operator|(const container &cont, const map &f)
-                -> enable_if_t<
-                    is_container<container>::value
-                    && is_kind_of_map<container>::value,
+                -> type_enable_if_t<
+                    is_array<container>,
+                    typename container_traits<container>::template substitute<result_type>
+                >
+                {
+                    using result_container = typename container_traits<container>::template substitute<result_type>;
+                    result_container results;
+                    for(std::size_t i = 0; i < cont.size(); ++i) {
+                        results[i] = f.callback(cont[i]);
+                    }
+                    return results;
+                }
+                
+                template <typename container>
+                friend inline auto operator|(const container &cont, const map &f)
+                -> type_enable_if_t<
+                    is_kind_of_map<container>,
                     typename container_traits<container>::template substitute<result_type>
                 >
                 {
