@@ -58,6 +58,14 @@ namespace bbb {
                 {
                     return str |= _;
                 }
+
+                template <typename char_type>
+                friend inline auto operator|(const char_type * const str, camelize _)
+                    -> type_enable_if_t<is_character<char_type>, std::basic_string<char_type>>
+                {
+                    return std::basic_string<char_type>(str) | _;
+                }
+
             private:
                 const bool upper_camel;
             };

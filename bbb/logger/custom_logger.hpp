@@ -32,7 +32,9 @@ namespace bbb {
 			using logger_stream = detail::logger_stream<custom_logger>;
 			using stream_adaptor = detail::stream_adaptor<stream_types>;
 
-			custom_logger() {}
+			custom_logger() {
+				set_log_level(default_log_level);
+			}
 			
 			logger_stream log() {
 				return logger_stream(default_tag, default_log_level, *this);;
@@ -63,7 +65,7 @@ namespace bbb {
 
 			inline void enable() { set_enable(true); }
 			inline void disable() { set_enable(false); }
-			inline void set_enable(bool enable) { this->enabled = enabled; }
+			inline void set_enable(bool enable) { this->enabled = enable; }
 			inline bool is_enabled() const { return enabled; }
 
 			inline void set_default_tag(const std::string &tag) { default_tag = tag; }
