@@ -91,13 +91,13 @@ namespace bbb {
 
 			template <typename type>
 			void print(const type &v, log_level level) {
-				if(log_level_manager::is_enabled(level)) {
+				if(enabled && log_level_manager::is_enabled(level)) {
 					stream_adaptor::print(*this, v, level);
 				}
 			}
 
 			void print(std::ostream& (*f)(std::ostream&), log_level level) {
-				if(log_level_manager::is_enabled(level)) {
+				if(enabled && log_level_manager::is_enabled(level)) {
 					stream_adaptor::print(*this, f, level);
 				}
 			}
