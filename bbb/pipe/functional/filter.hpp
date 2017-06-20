@@ -23,17 +23,21 @@
 namespace bbb {
     namespace pipe {
         namespace command {
-            template <typename argument_type>
+            template <typename callback_type_>
             struct filter {
-                using callback_type = std::function<bool(argument_type)>;
+                using callback_type = callback_type_;
+
                 filter(callback_type callback)
                 : callback(callback) {};
                 
                 template <typename container_type>
                 friend inline auto operator|(const container_type &cont, const filter &cond)
-                -> enable_if_t<
-                    is_container<container_type>::value
-                    && !is_kind_of_map<container_type>::value,
+                -> type_enable_if_t<
+                    conjunction<
+                        is_container<container_type>,
+                        negation<is_kind_of_map<container_type>>,
+                        negation<is_array<container_type>>
+                    >,
                     container_type
                 >
                 {
@@ -45,9 +49,8 @@ namespace bbb {
                 
                 template <typename container_type>
                 friend inline auto operator|(const container_type &cont, const filter &cond)
-                -> enable_if_t<
-                    is_container<container_type>::value
-                    && is_kind_of_map<container_type>::value,
+                -> type_enable_if_t<
+                    is_kind_of_map<container_type>,
                     container_type
                 >
                 {
@@ -63,14 +66,7 @@ namespace bbb {
         };
         
         template <typename callback_type>
-        static inline auto filter(callback_type callback)
-        -> enable_if_t<
-            is_callable<callback_type>(callback)
-            && is_same<typename function_traits<callback_type>::result_type, bool>::value,
-            command::filter<
-                typename function_traits<callback_type>::template argument_type<0>
-            >
-        >
+        static inline command::filter<callback_type> filter(callback_type callback)
         { return {callback}; }
     };
 };
