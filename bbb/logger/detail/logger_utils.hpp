@@ -60,7 +60,6 @@ namespace bbb {
 				template <typename printer>
 				static void set_log_level(printer &p, log_level level) {
 					p.type::set_log_level(level);
-					stream_adaptor<tmp::type_sequence<types ...>>::print(p, level);
 				}
 			};
 
