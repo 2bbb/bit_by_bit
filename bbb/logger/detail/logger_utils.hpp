@@ -47,13 +47,13 @@ namespace bbb {
 			struct stream_adaptor<tmp::type_sequence<type, types ...>> {
 				template <typename printer, typename value_type>
 				static void print(printer &p, const value_type &v, log_level level) {
-					if(level <= p.type::get_log_level()) p.type::os(level) << v;
+					if(p.type::get_log_level() <= level) p.type::os(level) << v;
 					stream_adaptor<tmp::type_sequence<types ...>>::print(p, v, level);
 				}
 
 				template <typename printer>
 				static void print(printer &p, std::ostream& (*f)(std::ostream&), log_level level) {
-					if(level <= p.type::get_log_level()) f(p.type::os(level));
+					if(p.type::get_log_level() <= level) f(p.type::os(level));
 					stream_adaptor<tmp::type_sequence<types ...>>::print(p, f, level);
 				}
 

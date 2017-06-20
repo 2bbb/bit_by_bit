@@ -91,6 +91,11 @@ namespace bbb {
         constexpr bool is_callable(const patient &) {
             return std::is_function<patient>::value || has_call_operator<patient>::value;
         };
+
+        template <typename callback_type, typename ... arg_types>
+        struct detect_result_type {
+            using type = decltype(std::declval<callback_type>()(std::declval<arg_types>() ...));
+        };
     };
     using namespace function_info;
 };

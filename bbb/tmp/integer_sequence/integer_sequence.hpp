@@ -47,7 +47,7 @@ namespace bbb {
             };
 
             template <typename type, type n>
-            using make_integer_sequence = detail::make_integer_sequence<type, n>;
+            using make_integer_sequence = get_type<detail::make_integer_sequence<type, n>>;
 
             template <std::size_t ... ns>
             using index_sequence = integer_sequence<std::size_t, ns ...>;
@@ -59,21 +59,14 @@ namespace bbb {
             using index_sequence_for = make_index_sequence<sizeof...(types)>;
 #endif
 
-            template <typename type, type n>
-            using make_integer_sequence_t = get_type<make_integer_sequence<type, n>>;
-            template <std::size_t n>
-            using make_index_sequence_t = get_type<make_index_sequence<n>>;
-            template <typename... types>
-            using index_sequence_for_t = get_type<index_sequence_for<types ...>>;
-
 #if BBB_EXEC_UNIT_TEST
             namespace integer_sequence_test {
                 using test1 = unit_test::assert<
-                    make_index_sequence_t<4>,
+                    make_index_sequence<4>,
                     index_sequence<0, 1, 2, 3>
                 >;
                 using test2 = unit_test::assert<
-                    index_sequence_for_t<int, int>,
+                    index_sequence_for<int, int>,
                     index_sequence<0, 1>
                 >;
             };
