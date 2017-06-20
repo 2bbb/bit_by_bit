@@ -32,7 +32,9 @@ namespace bbb {
 			using logger_stream = detail::logger_stream<custom_logger>;
 			using stream_adaptor = detail::stream_adaptor<stream_types>;
 
-			custom_logger() {}
+			custom_logger() {
+				set_log_level(default_log_level);
+			}
 			
 			logger_stream log() {
 				return logger_stream(default_tag, default_log_level, *this);;
