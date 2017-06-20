@@ -59,5 +59,7 @@ namespace bbb {
                 static constexpr too_long value = n;
             };
         };
+
+        using direct_lambda::operator""_;
     };
 };
