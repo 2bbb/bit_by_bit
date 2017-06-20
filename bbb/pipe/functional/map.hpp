@@ -23,9 +23,14 @@
 namespace bbb {
     namespace pipe {
         namespace command {
-            template <typename result_type, typename argument_type>
+            template <typename callback_type_>
             struct map {
-                using callback_type = std::function<result_type(argument_type)>;
+                using callback_type = callback_type_;
+                template <typename container, typename map>
+                using result_container_type = typename container_traits<container>::template substitute<
+                    get_type<detect_result_type<typename map::callback_type, typename container::value_type>>
+                >;
+
                 map(callback_type callback)
                 : callback(callback) {};
                 
@@ -37,10 +42,10 @@ namespace bbb {
                         negation<is_kind_of_map<container>>,
                         negation<is_array<container>>
                     >,
-                    typename container_traits<container>::template substitute<result_type>
+                    result_container_type<container, map>
                 >
                 {
-                    using result_container = typename container_traits<container>::template substitute<result_type>;
+                    using result_container = result_container_type<container, map>;
                     result_container results;
                     std::back_insert_iterator<result_container> inserter{results};
                     for(const auto &v : cont) {
@@ -53,10 +58,10 @@ namespace bbb {
                 friend inline auto operator|(const container &cont, const map &f)
                 -> type_enable_if_t<
                     is_array<container>,
-                    typename container_traits<container>::template substitute<result_type>
+                    result_container_type<container, map>
                 >
                 {
-                    using result_container = typename container_traits<container>::template substitute<result_type>;
+                    using result_container = result_container_type<container, map>;
                     result_container results;
                     for(std::size_t i = 0; i < cont.size(); ++i) {
                         results[i] = f.callback(cont[i]);
@@ -68,10 +73,10 @@ namespace bbb {
                 friend inline auto operator|(const container &cont, const map &f)
                 -> type_enable_if_t<
                     is_kind_of_map<container>,
-                    typename container_traits<container>::template substitute<result_type>
+                    result_container_type<container, map>
                 >
                 {
-                    using result_container = typename container_traits<container>::template substitute<result_type>;
+                    using result_container = result_container_type<container, map>;
                     result_container results;
                     std::back_insert_iterator<result_container> inserter{results};
                     for(const auto &v : cont) {
@@ -86,14 +91,7 @@ namespace bbb {
         };
         
         template <typename callback_type>
-        static inline auto map(callback_type callback)
-        -> enable_if_t<
-            is_callable<callback_type>(callback),
-            command::map<
-                typename function_traits<callback_type>::result_type,
-                typename function_traits<callback_type>::template argument_type<0>
-            >
-        >
+        static inline command::map<callback_type> map(callback_type callback)
         { return {callback}; }
     };
 };

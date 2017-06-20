@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * bbb/function/direct_lambda/function.hpp
+ * bbb/function/direct_lambda/direct_function.hpp
  *
  * author: ISHII 2bit
  * mail:   bit_by_bit@2bit.jp
