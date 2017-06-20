@@ -40,44 +40,45 @@ namespace bbb {
         struct string_notifier;
 
         template <typename character_type, typename traits, typename alloc>
-        struct string_notifier<std::basic_string<character_type, traits, alloc>> : public std::basic_string<character_type, traits, alloc> {
+        struct string_notifier<std::basic_string<character_type, traits, alloc>>
+            : public std::basic_string<character_type, traits, alloc>
+        {
             using type = std::basic_string<character_type>;
+            using callback_type = std::function<void(const type &)>;
             using size_type = typename type::size_type;
             static constexpr size_type npos = type::npos;
 
-            string_notifier()
-                : type("") {}
-
+            string_notifier() : type() {}
             string_notifier(const string_notifier &) = default;
-
-            template <typename T>
-            string_notifier(const T &value)
-                : type(value) {}
-
             string_notifier(string_notifier &&) = default;
 
             template <typename T>
             string_notifier(T &&value)
-                : type(std::move(value)) {}
+                : type(std::forward<T>(value)) {}
 
-            string_notifier &operator=(const string_notifier &str) = default;
+            template <typename T>
+            string_notifier(T &&value, callback_type will_change, callback_type did_change)
+                : type(std::forward<T>(value))
+                , will_change(will_change)
+                , did_change(did_change)
+            {}
+
+            string_notifier(callback_type will_change, callback_type did_change)
+                : type()
+                , will_change(will_change)
+                , did_change(did_change)
+            {}
+
+            string_notifier &operator=(const string_notifier &str) {
+                return *this = str.value;
+            };
+            string_notifier &operator=(string_notifier &&str) {
+                return *this = std::forward<type>(str.value);
+            };
 
             template <typename T>
             string_notifier &operator=(const T &str) {
-                will_change(*this);
-                this->type::operator=(str);
-                did_change(*this);
-                return *this;
-            }
-
-            string_notifier &operator=(string_notifier &&str) = default;
-
-            template <typename T>
-            string_notifier &operator=(T &&str) {
-                will_change(*this);
-                this->type::operator=(std::move(str));
-                did_change(*this);
-                return *this;
+                return *this = std::forward<T>(str);
             }
 
             const character_type &operator[](typename type::size_type pos) const noexcept {
@@ -327,12 +328,12 @@ namespace bbb {
 
             inline void notify_will_change() { will_change(*this); }
             inline void notify_did_change() { did_change(*this); }
-            void value_will_change(std::function<void(const type &)> callback) { will_change = callback; }
-            void value_did_change(std::function<void(const type &)> callback) { did_change = callback; }
+            void value_will_change(callback_type callback) { will_change = callback; }
+            void value_did_change(callback_type callback) { did_change = callback; }
 
         private:
-            std::function<void(const type &)> will_change{[](const type &){}};
-            std::function<void(const type &)> did_change{[](const type &){}};
+            callback_type will_change{[](const type &){}};
+            callback_type did_change{[](const type &){}};
         };
     };
 };
