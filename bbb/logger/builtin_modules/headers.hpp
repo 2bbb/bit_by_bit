@@ -26,6 +26,18 @@
 
 namespace bbb {
 	namespace loggers {
+        struct null_header : header {
+            std::string head(std::string tag, log_level level) const {
+                return "";
+            }
+        };
+        
+        struct simple_header : header {
+            std::string head(std::string tag, log_level level) const {
+                return ((tag == "") ? "" : (tag + ": "));
+            }
+        };
+
         struct time_header : header {
             std::string head(std::string tag, log_level level) const {
                 return time_utils::get_current_date_string(format) + " [" + to_string(level) + "] " + ((tag == "") ? "" : (tag + ": "));
