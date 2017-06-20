@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * bbb/core/basic.hpp.hpp
+ * bbb/core/basic.hpp
  *
  * author: ISHII 2bit
  * mail:   bit_by_bit@2bit.jp
