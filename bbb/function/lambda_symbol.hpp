@@ -205,6 +205,7 @@ namespace bbb {
 
         using namespace lambda_symbol;
     };
+    using function::lambda_symbol::lambda;
 };
 
 #define bbb_use_lambda_symbol(sym) decltype(bbb::function::lambda) & sym = bbb::function::lambda;
