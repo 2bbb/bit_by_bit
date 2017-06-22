@@ -58,6 +58,31 @@ namespace bbb {
 //                { return {std::tuple<direct_function, index_t>(*this, index)}; }
             };
 
+            namespace detail {
+                template <typename t>
+                struct holder {};
+            };
+
+            template <typename cast_type, typename castee_type>
+            struct cast_holder : direct_function<op_type::cast_holder, castee_type, detail::holder<cast_type>> {
+                using direct_function<op_type::cast_holder, castee_type, detail::holder<cast_type>>::operator();
+                cast_holder(castee_type v)
+                : direct_function<op_type::cast_holder, castee_type, detail::holder<cast_type>>({v}) {};
+            };
+
+            template <typename cast_type, typename castee_type>
+            cast_holder<cast_type, castee_type> cast(castee_type v) {
+                return cast_holder<cast_type, castee_type>(v);
+            }
+
+            template <typename cast_type, typename castee_type>
+            struct eval<op_type::cast_holder, castee_type, detail::holder<cast_type>> {
+                template <typename ... arguments>
+                constexpr const cast_type evaluate(const std::tuple<castee_type, detail::holder<cast_type>> &holder, arguments && ... args) const {
+                    return (cast_type)(std::get<0>(holder)(std::forward<arguments>(args) ...));
+                }
+            };
+
 #define def_unary_op_eval(f, name)\
             template <typename function_type>\
             struct eval<op_type::name, function_type> {\
@@ -114,4 +139,5 @@ namespace bbb {
 #undef def_unary_function_eval
         };
     };
+    using function::direct_lambda::cast;
 };
