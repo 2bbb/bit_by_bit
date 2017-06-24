@@ -38,8 +38,8 @@ namespace bbb {
             };
         };
         
-        static inline auto reverse()
-        -> command::reverse
-        { return {}; }
+        namespace {
+            inline command::reverse reverse() { return {}; }
+        }
     };
 };

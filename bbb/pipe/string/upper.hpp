@@ -65,6 +65,8 @@ namespace bbb {
                 const bool head_only;
             };
         };
-        command::upper upper(bool head_only = false) { return {head_only}; }
+        namespace {
+            inline command::upper upper(bool head_only = false) { return {head_only}; }
+        }
     };
 };

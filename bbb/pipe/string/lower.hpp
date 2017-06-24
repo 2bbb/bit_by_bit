@@ -56,6 +56,8 @@ namespace bbb {
                 }
             };
         };
-        command::lower lower() { return {}; }
+        namespace {
+            inline command::lower lower() { return {}; }
+        }
     };
 };
