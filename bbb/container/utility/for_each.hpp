@@ -20,7 +20,7 @@
 
 namespace bbb {
     template <typename Container, typename Function>
-    void for_each(Container &&c, Function f) {
+    inline void for_each(Container &&c, Function f) {
         std::for_each(c.begin(), c.end(), f);
     }
 };
