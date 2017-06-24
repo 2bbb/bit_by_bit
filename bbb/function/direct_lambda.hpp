@@ -25,15 +25,10 @@
 #include <bbb/function/direct_lambda/direct_function.hpp>
 #include <bbb/function/direct_lambda/value_holder.hpp>
 #include <bbb/function/direct_lambda/placeholder.hpp>
+#include <bbb/function/direct_lambda/cast.hpp>
 #include <bbb/function/direct_lambda/type_traits.hpp>
 #include <bbb/function/direct_lambda/op.hpp>
 #include <bbb/function/direct_lambda/unary_function.hpp>
 #include <bbb/function/direct_lambda/math.hpp>
-
-namespace bbb {
-    namespace function {
-        using namespace direct_lambda;
-    };
-};
 
 using bbb::function::operator ""_;

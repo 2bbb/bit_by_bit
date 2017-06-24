@@ -25,7 +25,7 @@ namespace bbb {
             using too_long = unsigned long long;
 
             enum class op_type : std::uint_fast8_t {
-                placeholder, value_holder, const_value_holder,
+                placeholder, value_holder, const_value_holder, cast_holder,
                 unary_not, unary_bit_not, unary_plus, unary_minus,
                 address, dereference,
                 subscript,
@@ -36,7 +36,8 @@ namespace bbb {
                 land, lor,
                 band, bor, bxor,
                 lshift, rshift,
-                unary_func_apply
+                unary_func_apply,
+                binary_func_apply
             };
         };
     };

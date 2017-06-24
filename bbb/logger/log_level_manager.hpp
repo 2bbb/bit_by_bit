@@ -50,8 +50,10 @@ namespace bbb {
 			}
 		};
 		
-		void set_log_level(log_level lv) {
-			log_level_manager::set_log_level(lv);
-		};
+		namespace {
+			inline void set_log_level(log_level lv) {
+				log_level_manager::set_log_level(lv);
+			};
+		}
 	};
 };

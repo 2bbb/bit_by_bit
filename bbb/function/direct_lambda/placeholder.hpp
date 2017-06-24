@@ -58,6 +58,11 @@ namespace bbb {
             struct is_placeholder<placeholder<n>> {
                 static constexpr too_long value = n;
             };
+
+            template <too_long n>
+            struct is_direct_function<placeholder<n>> : std::true_type {};
         };
+
+        using direct_lambda::operator""_;
     };
 };
