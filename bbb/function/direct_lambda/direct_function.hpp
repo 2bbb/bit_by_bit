@@ -17,6 +17,7 @@
 #pragma once
 
 #include <bbb/core.hpp>
+#include <bbb/function/direct_lambda/constants.hpp>
 #include <bbb/function/direct_lambda/base_class.hpp>
 
 namespace bbb {
@@ -44,44 +45,24 @@ namespace bbb {
                 def_unary_op(-, unary_minus);
                 def_unary_op(&, address);
                 def_unary_op(*, dereference);
-
 #undef def_unary_op
+
                 template <typename index_t>
                 constexpr auto operator[](const index_t &index) const
                 -> direct_function<op_type::subscript, direct_function, index_t>
                 { return {std::tuple<direct_function, index_t>(*this, index)}; }
 
                 // TODO implement member pointer
-//                template <typename index_t>
-//                constexpr auto operator->*(const index_t &index) const
-//                -> function<op_type::member_pointer, direct_function, index_t>
-//                { return {std::tuple<direct_function, index_t>(*this, index)}; }
+                template <typename obj, typename result, typename ... arguments>
+                constexpr auto operator->*(result(obj::*meth)(arguments ...)) const
+                -> direct_function<op_type::member_pointer, direct_function, result(obj::*)(arguments ...)>
+                { return {std::tuple<direct_function, result(obj::*)(arguments ...)>(*this, meth)}; }
             };
 
-            namespace detail {
-                template <typename t>
-                struct holder {};
-            };
-
-            template <typename cast_type, typename castee_type>
-            struct cast_holder : direct_function<op_type::cast_holder, castee_type, detail::holder<cast_type>> {
-                using direct_function<op_type::cast_holder, castee_type, detail::holder<cast_type>>::operator();
-                cast_holder(castee_type v)
-                : direct_function<op_type::cast_holder, castee_type, detail::holder<cast_type>>({v}) {};
-            };
-
-            template <typename cast_type, typename castee_type>
-            cast_holder<cast_type, castee_type> cast(castee_type v) {
-                return cast_holder<cast_type, castee_type>(v);
-            }
-
-            template <typename cast_type, typename castee_type>
-            struct eval<op_type::cast_holder, castee_type, detail::holder<cast_type>> {
-                template <typename ... arguments>
-                constexpr const cast_type evaluate(const std::tuple<castee_type, detail::holder<cast_type>> &holder, arguments && ... args) const {
-                    return (cast_type)(std::get<0>(holder)(std::forward<arguments>(args) ...));
-                }
-            };
+            template <typename>
+            struct is_direct_function : std::false_type {};
+            template <op_type op, typename ... holders>
+            struct is_direct_function<direct_function<op, holders ...>> : std::true_type {};
 
 #define def_unary_op_eval(f, name)\
             template <typename function_type>\
@@ -135,9 +116,8 @@ namespace bbb {
             #define f_member_pointer(f, x) (f->*x)
             def_unary_function_eval(f_member_pointer, member_pointer);
             #undef f_member_pointer
-
 #undef def_unary_function_eval
+
         };
     };
-    using function::direct_lambda::cast;
 };
