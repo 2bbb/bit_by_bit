@@ -52,11 +52,16 @@ namespace bbb {
                 { return {std::tuple<direct_function, index_t>(*this, index)}; }
 
                 // TODO implement member pointer
-//                template <typename index_t>
-//                constexpr auto operator->*(const index_t &index) const
-//                -> function<op_type::member_pointer, direct_function, index_t>
-//                { return {std::tuple<direct_function, index_t>(*this, index)}; }
+               template <typename obj, typename result, typename ... arguments>
+               constexpr auto operator->*(result(obj::*meth)(arguments ...)) const
+               -> function<op_type::member_pointer, direct_function, result(obj::*meth)(arguments ...)>
+               { return {std::tuple<direct_function, result(obj::*meth)(arguments ...)>(*this, meth)}; }
             };
+
+            template <typename>
+            struct is_direct_function : std::false_type {};
+            template <op_type op, typename ... holders>
+            struct is_direct_function<direct_function<op, holders ...>> : std::true_type {};
 
             namespace detail {
                 template <typename t>
@@ -82,6 +87,9 @@ namespace bbb {
                     return (cast_type)(std::get<0>(holder)(std::forward<arguments>(args) ...));
                 }
             };
+
+            template <typename cast_type, typename castee_type>
+            struct is_direct_function<cast_holder<cast_type, castee_type> : std::true_type {};
 
 #define def_unary_op_eval(f, name)\
             template <typename function_type>\
