@@ -63,7 +63,9 @@ namespace bbb {
             };
         };
 
-        static inline command::keys keys(const bool allow_multiple_key = false) { return {allow_multiple_key}; }
-        static inline command::keys multiple_keys() { return {true}; }
+        namespace {
+            inline command::keys keys(const bool allow_multiple_key = false) { return {allow_multiple_key}; }
+            inline command::keys multiple_keys() { return {true}; }
+        }
     };
 };

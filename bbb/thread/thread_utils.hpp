@@ -27,26 +27,28 @@
 #include <bbb/core.hpp>
 
 namespace bbb {
-    void sleep_seconds(double sec) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<long long>(sec * 1000.0)));
-    }
+    namespace {
+        inline void sleep_seconds(double sec) {
+            std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<long long>(sec * 1000.0)));
+        }
 
-    void sleep_milliseconds(double msec) {
-        std::this_thread::sleep_for(std::chrono::microseconds(static_cast<long long>(msec * 1000.0)));
-    }
+        inline void sleep_milliseconds(double msec) {
+            std::this_thread::sleep_for(std::chrono::microseconds(static_cast<long long>(msec * 1000.0)));
+        }
 
-    void sleep_microseconds(double usec) {
-        std::this_thread::sleep_for(std::chrono::nanoseconds(static_cast<long long>(usec * 1000.0)));
-    }
+        inline void sleep_microseconds(double usec) {
+            std::this_thread::sleep_for(std::chrono::nanoseconds(static_cast<long long>(usec * 1000.0)));
+        }
 
-    void sleep_nanoseconds(double nsec) {
-        std::this_thread::sleep_for(std::chrono::nanoseconds(static_cast<long long>(nsec)));
-    }
+        inline void sleep_nanoseconds(double nsec) {
+            std::this_thread::sleep_for(std::chrono::nanoseconds(static_cast<long long>(nsec)));
+        }
 
-    inline void sleep(double sec) {
-        sleep_seconds(sec);
+        inline void sleep(double sec) {
+            sleep_seconds(sec);
+        }
     }
-
+    
     namespace multithread {
         using process = std::function<void(std::size_t index, std::mutex &mutex)>;
 

@@ -90,8 +90,10 @@ namespace bbb {
             };
         };
         
-        template <typename callback_type>
-        static inline command::map<callback_type> map(callback_type callback)
-        { return {callback}; }
+        namespace {
+            template <typename callback_type>
+            inline command::map<callback_type> map(callback_type callback)
+            { return {callback}; }
+        }
     };
 };
