@@ -41,14 +41,14 @@ namespace bbb {
             template <typename lhs, typename rhs>\
             auto operator op(const lhs &l, const rhs &r)\
             -> type_enable_if_t<\
-                disjunction<is_direct_lambdable<lhs>, is_direct_lambdable<rhs>>,\
+                disjunction<is_direct_function<lhs>, is_direct_function<rhs>>,\
                 direct_function<\
                     op_type::name,\
-                    get_type<wrap_const_value_type<lhs>>,\
-                    get_type<wrap_const_value_type<rhs>>\
+                    wrap_const_value_type_t<lhs>,\
+                    wrap_const_value_type_t<rhs>\
                 >\
             > {\
-                return {std::tuple<get_type<wrap_const_value_type<lhs>>, get_type<wrap_const_value_type<rhs>>>(l, r)};\
+                return {std::tuple<wrap_const_value_type_t<lhs>, wrap_const_value_type_t<rhs>>(l, r)};\
             };
 
 #define def_op(op, name)\
