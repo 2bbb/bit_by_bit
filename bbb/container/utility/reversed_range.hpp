@@ -63,7 +63,7 @@ namespace bbb {
     };
 
     template <typename Container>
-    reversed_range<Container> make_reverse(Container &container) {
+    inline reversed_range<Container> make_reverse(Container &container) {
         return reversed_range<Container>(container);
     }
 }
