@@ -36,7 +36,8 @@ namespace bbb {
                 }
             };
         };
-
-        static inline command::values values() { return {}; }
+        namespace {
+            inline command::values values() { return {}; }
+        }
     };
 };
