@@ -59,14 +59,16 @@ namespace bbb {
             };
         };
         
-        template <typename char_type, typename traits, typename alloc>
-        static inline auto replace(const std::basic_string<char_type, traits, alloc> &from,
-                                   const std::basic_string<char_type, traits, alloc> &to)
-        -> command::replace<char_type, traits, alloc>
-        { return {from, to}; }
-        
-        static inline auto replace(const char * const from, const char * const to)
-        -> command::replace<char>
-        { return {from, to}; }
+        namespace {
+            template <typename char_type, typename traits, typename alloc>
+            inline auto replace(const std::basic_string<char_type, traits, alloc> &from,
+                                    const std::basic_string<char_type, traits, alloc> &to)
+            -> command::replace<char_type, traits, alloc>
+            { return {from, to}; }
+            
+            inline auto replace(const char * const from, const char * const to)
+            -> command::replace<char>
+            { return {from, to}; }
+        }
     };
 };

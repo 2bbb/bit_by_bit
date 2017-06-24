@@ -65,8 +65,10 @@ namespace bbb {
             };
         };
         
-        template <typename callback_type>
-        static inline command::filter<callback_type> filter(callback_type callback)
-        { return {callback}; }
+        namespace {
+            template <typename callback_type>
+            inline command::filter<callback_type> filter(callback_type callback)
+            { return {callback}; }
+        }
     };
 };

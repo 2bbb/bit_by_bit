@@ -70,8 +70,10 @@ namespace bbb {
                 const bool upper_camel;
             };
         };
-        command::camelize camelize(bool upper_camel = false) { return {upper_camel}; }
-        command::camelize upper_camelize() { return {true}; }
-        command::camelize lower_camelize() { return {false}; }
+        namespace {
+            inline command::camelize camelize(bool upper_camel = false) { return {upper_camel}; }
+            inline command::camelize upper_camelize() { return {true}; }
+            inline command::camelize lower_camelize() { return {false}; }
+        };
     };
 };
