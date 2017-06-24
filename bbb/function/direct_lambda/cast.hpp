@@ -48,6 +48,9 @@ namespace bbb {
                     return (cast_type)(std::get<0>(holder)(std::forward<arguments>(args) ...));
                 }
             };
+
+            template <typename cast_type, typename castee_type>
+            struct is_direct_function<cast_holder<cast_type, castee_type>> : std::true_type {};
         };
     };
     using function::direct_lambda::cast;
