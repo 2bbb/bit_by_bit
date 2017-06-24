@@ -36,7 +36,8 @@ namespace bbb {
                 land, lor,
                 band, bor, bxor,
                 lshift, rshift,
-                unary_func_apply
+                unary_func_apply,
+                binary_func_apply
             };
         };
     };
