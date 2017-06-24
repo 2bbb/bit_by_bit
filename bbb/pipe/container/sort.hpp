@@ -151,23 +151,25 @@ namespace bbb {
             };
         };
 
-        static inline command::sort sort(const bool desc = false, const bool use_stable = false)
-        { return {desc, use_stable}; }
-        static inline command::sort sort_asc(const bool use_stable = false)
-        { return {true, use_stable}; }
-        static inline command::sort sort_desc(const bool use_stable = false)
-        { return {false, use_stable}; }
+        namespace {
+            inline command::sort sort(const bool desc = false, const bool use_stable = false)
+            { return {desc, use_stable}; }
+            inline command::sort sort_asc(const bool use_stable = false)
+            { return {true, use_stable}; }
+            inline command::sort sort_desc(const bool use_stable = false)
+            { return {false, use_stable}; }
 
-        template <typename callback_type>
-        static inline auto sort(callback_type callback,  const bool use_stable = false)
-        -> command::callback_sort<callback_type> { return {callback, use_stable}; }
+            template <typename callback_type>
+            inline auto sort(callback_type callback,  const bool use_stable = false)
+            -> command::callback_sort<callback_type> { return {callback, use_stable}; }
 
-        static inline command::sort stable_sort(const bool desc = false) { return {desc, true}; }
-        static inline command::sort stable_sort_asc() { return {true, true}; }
-        static inline command::sort stable_sort_desc() { return {false, true}; }
+            inline command::sort stable_sort(const bool desc = false) { return {desc, true}; }
+            inline command::sort stable_sort_asc() { return {true, true}; }
+            inline command::sort stable_sort_desc() { return {false, true}; }
 
-        template <typename callback_type>
-        static inline auto stable_sort(callback_type callback)
-        -> command::callback_sort<callback_type> { return {callback, true}; }
+            template <typename callback_type>
+            inline auto stable_sort(callback_type callback)
+            -> command::callback_sort<callback_type> { return {callback, true}; }
+        }
     };
 };

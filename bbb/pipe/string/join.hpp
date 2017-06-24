@@ -72,13 +72,15 @@ namespace bbb {
             };
         };
         
-        template <typename char_type, typename traits, typename alloc>
-        static inline auto join(const std::basic_string<char_type, traits, alloc> &str)
-        -> command::join<char_type, traits, alloc>
-        { return {str}; }
-        
-        static inline auto join(const char * const str = "")
-        -> command::join<char>
-        { return {str}; }
+        namespace {
+            template <typename char_type, typename traits, typename alloc>
+            inline auto join(const std::basic_string<char_type, traits, alloc> &str)
+            -> command::join<char_type, traits, alloc>
+            { return {str}; }
+            
+            inline auto join(const char * const str = "")
+            -> command::join<char>
+            { return {str}; }
+        };
     };
 };

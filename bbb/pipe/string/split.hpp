@@ -61,13 +61,15 @@ namespace bbb {
             };
         };
         
-        template <typename char_type, typename traits, typename alloc>
-        static inline auto split(const std::basic_string<char_type, traits, alloc> &str)
-        -> command::split<char_type, traits, alloc>
-        { return {str}; }
-        
-        static inline auto split(const char * const str = "")
-        -> command::split<char>
-        { return {str}; }
+        namespace {
+            template <typename char_type, typename traits, typename alloc>
+            inline auto split(const std::basic_string<char_type, traits, alloc> &str)
+            -> command::split<char_type, traits, alloc>
+            { return {str}; }
+            
+            inline auto split(const char * const str = "")
+            -> command::split<char>
+            { return {str}; }
+        }
     };
 };
