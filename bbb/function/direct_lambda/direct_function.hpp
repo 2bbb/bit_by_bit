@@ -43,29 +43,7 @@ namespace bbb {
                     return eval<op, holders ...>().evaluate(holder, std::forward<arguments>(args) ...);
                 }
 
-#define def_unary_op(op, name)\
-                constexpr auto operator op() const\
-                -> direct_function<op_type::name, direct_function>\
-                { return {*this}; }
-
-                def_unary_op(!, unary_not);
-                def_unary_op(~, unary_bit_not);
-                def_unary_op(+, unary_plus);
-                def_unary_op(-, unary_minus);
-                def_unary_op(&, address);
-                def_unary_op(*, dereference);
-#undef def_unary_op
-
-                template <typename index_t>
-                constexpr auto operator[](const index_t &index) const
-                -> direct_function<op_type::subscript, direct_function, index_t>
-                { return {std::tuple<direct_function, index_t>(*this, index)}; }
-
-                // TODO implement member pointer
-                template <typename obj, typename result, typename ... arguments>
-                constexpr auto operator->*(result(obj::*meth)(arguments ...)) const
-                -> direct_function<op_type::member_pointer, direct_function, result(obj::*)(arguments ...)>
-                { return {std::tuple<direct_function, result(obj::*)(arguments ...)>(*this, meth)}; }
+#include <bbb/function/direct_lambda/direct_function.inc>
             };
 
             template <typename>
@@ -120,12 +98,34 @@ namespace bbb {
             #define f_subscript(f, x) f[x]
             def_unary_function_eval(f_subscript, subscript);
             #undef f_subscript
-
-            // TODO implement member pointer
-            #define f_member_pointer(f, x) (f->*x)
-            def_unary_function_eval(f_member_pointer, member_pointer);
-            #undef f_member_pointer
 #undef def_unary_function_eval
+
+            template <
+                typename function_type,
+                typename object_type,
+                typename result_type,
+                typename ... arguments_type
+            >
+            struct eval<
+                op_type::member_pointer,
+                function_type,
+                result_type(object_type::*)(arguments_type ...) const
+            > {
+                template <typename ... arguments>
+                constexpr result_type evaluate(
+                    const std::tuple<
+                        function_type,
+                        result_type(object_type::*)(arguments_type ...) const
+                    > &holder,
+                    arguments && ... args
+                ) const {
+                    return (
+                        (std::get<0>(holder))(std::forward<arguments>(args) ...)
+                        ->*
+                        (std::get<1>(holder))
+                    )();
+                }
+            };
 
         };
     };

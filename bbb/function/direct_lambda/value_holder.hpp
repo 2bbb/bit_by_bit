@@ -32,29 +32,7 @@ namespace bbb {
                     return eval<op_type::value_holder, value_t &>().evaluate(holder, std::forward<arguments>(args) ...);
                 }
 
-#define def_unary_op(op, name)\
-                constexpr auto operator op() const\
-                -> direct_function<op_type::name, direct_function>\
-                { return {*this}; }
-
-                def_unary_op(!, unary_not);
-                def_unary_op(~, unary_bit_not);
-                def_unary_op(+, unary_plus);
-                def_unary_op(-, unary_minus);
-                def_unary_op(&, address);
-                def_unary_op(*, dereference);
-#undef def_unary_op
-
-                template <typename index_t>
-                constexpr auto operator[](const index_t &index) const
-                -> direct_function<op_type::subscript, direct_function, index_t>
-                { return {std::tuple<direct_function, index_t>(*this, index)}; }
-
-                // TODO implement member pointer
-                template <typename obj, typename result, typename ... arguments>
-                constexpr auto operator->*(result(obj::*meth)(arguments ...)) const
-                -> direct_function<op_type::member_pointer, direct_function, result(obj::*)(arguments ...)>
-                { return {std::tuple<direct_function, result(obj::*)(arguments ...)>(*this, meth)}; }
+#include <bbb/function/direct_lambda/direct_function.inc>
             };
             template <typename value_t>
             struct direct_function<op_type::const_value_holder, value_t> {
@@ -66,29 +44,7 @@ namespace bbb {
                     return eval<op_type::const_value_holder, value_t>().evaluate(holder, std::forward<arguments>(args) ...);
                 }
 
-#define def_unary_op(op, name)\
-                constexpr auto operator op() const\
-                -> direct_function<op_type::name, direct_function>\
-                { return {*this}; }
-
-                def_unary_op(!, unary_not);
-                def_unary_op(~, unary_bit_not);
-                def_unary_op(+, unary_plus);
-                def_unary_op(-, unary_minus);
-                def_unary_op(&, address);
-                def_unary_op(*, dereference);
-#undef def_unary_op
-
-                template <typename index_t>
-                constexpr auto operator[](const index_t &index) const
-                -> direct_function<op_type::subscript, direct_function, index_t>
-                { return {std::tuple<direct_function, index_t>(*this, index)}; }
-
-                // TODO implement member pointer
-                template <typename obj, typename result, typename ... arguments>
-                constexpr auto operator->*(result(obj::*meth)(arguments ...)) const
-                -> direct_function<op_type::member_pointer, direct_function, result(obj::*)(arguments ...)>
-                { return {std::tuple<direct_function, result(obj::*)(arguments ...)>(*this, meth)}; }
+#include <bbb/function/direct_lambda/direct_function.inc>
             };
 
             template <typename value_t>
@@ -100,30 +56,7 @@ namespace bbb {
                 {
                     return eval<op_type::const_value_holder, const value_t &>().evaluate(holder, std::forward<arguments>(args) ...);
                 }
-
-#define def_unary_op(op, name)\
-                constexpr auto operator op() const\
-                -> direct_function<op_type::name, direct_function>\
-                { return {*this}; }
-
-                def_unary_op(!, unary_not);
-                def_unary_op(~, unary_bit_not);
-                def_unary_op(+, unary_plus);
-                def_unary_op(-, unary_minus);
-                def_unary_op(&, address);
-                def_unary_op(*, dereference);
-#undef def_unary_op
-
-                template <typename index_t>
-                constexpr auto operator[](const index_t &index) const
-                -> direct_function<op_type::subscript, direct_function, index_t>
-                { return {std::tuple<direct_function, index_t>(*this, index)}; }
-
-                // TODO implement member pointer
-                template <typename obj, typename result, typename ... arguments>
-                constexpr auto operator->*(result(obj::*meth)(arguments ...)) const
-                -> direct_function<op_type::member_pointer, direct_function, result(obj::*)(arguments ...)>
-                { return {std::tuple<direct_function, result(obj::*)(arguments ...)>(*this, meth)}; }
+#include <bbb/function/direct_lambda/direct_function.inc>
             };
 
             template <typename value_t>
@@ -187,8 +120,19 @@ namespace bbb {
             constexpr const_value_holder<unsigned long long> operator""_c(unsigned long long value) {
                 return {value};
             }
+
+            template <typename value_type>
+            constexpr const_value_holder<value_type> val(value_type &&value) {
+                return {std::forward<value_type>(value)};
+            }
+            template <typename value_type>
+            constexpr value_holder<value_type> ref(value_type &value) {
+                return {value};
+            }
         };
         using direct_lambda::operator""_c;
+        using direct_lambda::val;
+        using direct_lambda::ref;
     };
 };
 
