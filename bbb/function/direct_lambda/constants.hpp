@@ -37,7 +37,9 @@ namespace bbb {
                 band, bor, bxor,
                 lshift, rshift,
                 unary_func_apply,
-                binary_func_apply
+                binary_func_apply,
+                binded_function,
+                binded_function_apply
             };
         };
     };

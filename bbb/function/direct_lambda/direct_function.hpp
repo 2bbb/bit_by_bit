@@ -26,12 +26,21 @@ namespace bbb {
             template <op_type op, typename ... holders>
             struct direct_function {
                 std::tuple<holders ...> holder;
+                direct_function() {};
+                direct_function(const direct_function &df)
+                : holder(df.holder) {};
+                direct_function(direct_function &&df)
+                : holder(std::move(df.holder)) {};
+                direct_function(const std::tuple<holders ...> &holder)
+                : holder(holder) {};
+                direct_function(std::tuple<holders ...> &&holder)
+                : holder(std::move(holder)) {};
 
                 template <typename ... arguments>
                 constexpr auto operator()(arguments && ... args) const
-                -> decltype((eval<op, holders ...>()).evaluate(holder, std::forward<arguments>(args) ...))
+                -> decltype(eval<op, holders ...>().evaluate(holder, std::forward<arguments>(args) ...))
                 {
-                    return (eval<op, holders ...>()).evaluate(holder, std::forward<arguments>(args) ...);
+                    return eval<op, holders ...>().evaluate(holder, std::forward<arguments>(args) ...);
                 }
 
 #define def_unary_op(op, name)\
