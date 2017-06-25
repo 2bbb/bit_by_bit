@@ -45,6 +45,56 @@ namespace bbb {
             };
             template <typename value_type>
             using wrap_const_value_type_t = get_type<wrap_const_value_type<value_type>>;
+
+            template <typename value_type>
+            struct wrap_type
+                : embedding<wrap_const_value_type_t<value_type>> {};
+            template <typename value_type>
+            struct wrap_type<value_type &>
+                : embedding<wrap_value_type_t<value_type>> {};
+            template <typename value_type>
+            struct wrap_type<const value_type &>
+                : embedding<wrap_const_value_type_t<value_type>> {};
+            
+            template <typename value_type>
+            using wrap_type_t = get_type<wrap_type<value_type>>;
+
+            template <typename value_type>
+            auto wrap(value_type && v)
+                -> type_enable_if_t<
+                    is_direct_function<value_type>,
+                    value_type &&
+                >
+            {
+                return v;
+            }
+            template <typename value_type>
+            auto wrap(value_type & v)
+                -> type_enable_if_t<
+                    is_direct_function<value_type>,
+                    value_type &
+                >
+            {
+                return v;
+            }
+            template <typename value_type>
+            auto wrap(value_type & v)
+                -> type_enable_if_t<
+                    negation<is_direct_function<value_type>>,
+                    value_holder<value_type>
+                >
+            {
+                return {v};
+            }
+            template <typename value_type>
+            auto wrap(value_type && v)
+                -> type_enable_if_t<
+                    negation<is_direct_function<value_type>>,
+                    const_value_holder<value_type>
+                >
+            {
+                return {std::forward<value_type>(v)};
+            }
         };
     };
 };

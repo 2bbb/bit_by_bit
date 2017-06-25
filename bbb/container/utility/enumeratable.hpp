@@ -162,12 +162,12 @@ namespace bbb {
         };
 
         template<typename Container>
-        enumeratable_wrapper<Container> enumerate(Container &t) {
+        inline enumeratable_wrapper<Container> enumerate(Container &t) {
             return {t};
         }
 
         template<typename Container>
-        enumeratable_wrapper<const Container> enumerate(const Container &t) {
+        inline enumeratable_wrapper<const Container> enumerate(const Container &t) {
             return {t};
         }
     };
