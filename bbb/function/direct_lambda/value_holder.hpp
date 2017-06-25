@@ -23,6 +23,110 @@ namespace bbb {
     namespace function {
         namespace direct_lambda {
             template <typename value_t>
+            struct direct_function<op_type::value_holder, value_t &> {
+                std::tuple<const value_t &> holder;
+                template <typename ... arguments>
+                constexpr auto operator()(arguments && ... args) const
+                -> decltype(eval<op_type::value_holder, value_t &>().evaluate(holder, std::forward<arguments>(args) ...))
+                {
+                    return eval<op_type::value_holder, value_t &>().evaluate(holder, std::forward<arguments>(args) ...);
+                }
+
+#define def_unary_op(op, name)\
+                constexpr auto operator op() const\
+                -> direct_function<op_type::name, direct_function>\
+                { return {*this}; }
+
+                def_unary_op(!, unary_not);
+                def_unary_op(~, unary_bit_not);
+                def_unary_op(+, unary_plus);
+                def_unary_op(-, unary_minus);
+                def_unary_op(&, address);
+                def_unary_op(*, dereference);
+#undef def_unary_op
+
+                template <typename index_t>
+                constexpr auto operator[](const index_t &index) const
+                -> direct_function<op_type::subscript, direct_function, index_t>
+                { return {std::tuple<direct_function, index_t>(*this, index)}; }
+
+                // TODO implement member pointer
+                template <typename obj, typename result, typename ... arguments>
+                constexpr auto operator->*(result(obj::*meth)(arguments ...)) const
+                -> direct_function<op_type::member_pointer, direct_function, result(obj::*)(arguments ...)>
+                { return {std::tuple<direct_function, result(obj::*)(arguments ...)>(*this, meth)}; }
+            };
+            template <typename value_t>
+            struct direct_function<op_type::const_value_holder, value_t> {
+                std::tuple<value_t> holder;
+                template <typename ... arguments>
+                constexpr auto operator()(arguments && ... args) const
+                -> decltype(eval<op_type::const_value_holder, value_t>().evaluate(holder, std::forward<arguments>(args) ...))
+                {
+                    return eval<op_type::const_value_holder, value_t>().evaluate(holder, std::forward<arguments>(args) ...);
+                }
+
+#define def_unary_op(op, name)\
+                constexpr auto operator op() const\
+                -> direct_function<op_type::name, direct_function>\
+                { return {*this}; }
+
+                def_unary_op(!, unary_not);
+                def_unary_op(~, unary_bit_not);
+                def_unary_op(+, unary_plus);
+                def_unary_op(-, unary_minus);
+                def_unary_op(&, address);
+                def_unary_op(*, dereference);
+#undef def_unary_op
+
+                template <typename index_t>
+                constexpr auto operator[](const index_t &index) const
+                -> direct_function<op_type::subscript, direct_function, index_t>
+                { return {std::tuple<direct_function, index_t>(*this, index)}; }
+
+                // TODO implement member pointer
+                template <typename obj, typename result, typename ... arguments>
+                constexpr auto operator->*(result(obj::*meth)(arguments ...)) const
+                -> direct_function<op_type::member_pointer, direct_function, result(obj::*)(arguments ...)>
+                { return {std::tuple<direct_function, result(obj::*)(arguments ...)>(*this, meth)}; }
+            };
+
+            template <typename value_t>
+            struct direct_function<op_type::const_value_holder, const value_t &> {
+                std::tuple<value_t> holder;
+                template <typename ... arguments>
+                constexpr auto operator()(arguments && ... args) const
+                -> decltype(eval<op_type::const_value_holder, const value_t &>().evaluate(holder, std::forward<arguments>(args) ...))
+                {
+                    return eval<op_type::const_value_holder, const value_t &>().evaluate(holder, std::forward<arguments>(args) ...);
+                }
+
+#define def_unary_op(op, name)\
+                constexpr auto operator op() const\
+                -> direct_function<op_type::name, direct_function>\
+                { return {*this}; }
+
+                def_unary_op(!, unary_not);
+                def_unary_op(~, unary_bit_not);
+                def_unary_op(+, unary_plus);
+                def_unary_op(-, unary_minus);
+                def_unary_op(&, address);
+                def_unary_op(*, dereference);
+#undef def_unary_op
+
+                template <typename index_t>
+                constexpr auto operator[](const index_t &index) const
+                -> direct_function<op_type::subscript, direct_function, index_t>
+                { return {std::tuple<direct_function, index_t>(*this, index)}; }
+
+                // TODO implement member pointer
+                template <typename obj, typename result, typename ... arguments>
+                constexpr auto operator->*(result(obj::*meth)(arguments ...)) const
+                -> direct_function<op_type::member_pointer, direct_function, result(obj::*)(arguments ...)>
+                { return {std::tuple<direct_function, result(obj::*)(arguments ...)>(*this, meth)}; }
+            };
+
+            template <typename value_t>
             struct value_holder : direct_function<op_type::value_holder, value_t &> {
                 value_holder(value_t &v)
                     : direct_function<op_type::value_holder, value_t &>({v}) {};
@@ -66,14 +170,14 @@ namespace bbb {
             struct eval<op_type::const_value_holder, const value_t &> {
                 template <typename ... arguments>
                 constexpr const value_t &evaluate(const std::tuple<const value_t &> &holder,
-                                            arguments && ... args) const
+                                                  arguments && ... args) const
                 { return std::get<0>(holder); }
             };
             template <typename value_t>
             struct eval<op_type::const_value_holder, value_t> {
                 template <typename ... arguments>
                 constexpr const value_t &evaluate(const std::tuple<value_t> &holder,
-                                            arguments && ... args) const
+                                                  arguments && ... args) const
                 { return std::get<0>(holder); }
             };
 

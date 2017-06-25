@@ -33,7 +33,7 @@ namespace bbb {
             struct cast_holder : direct_function<op_type::cast_holder, castee_type, detail::holder<cast_type>> {
                 using direct_function<op_type::cast_holder, castee_type, detail::holder<cast_type>>::operator();
                 cast_holder(castee_type v)
-                : direct_function<op_type::cast_holder, castee_type, detail::holder<cast_type>>({v}) {};
+                : direct_function<op_type::cast_holder, castee_type, detail::holder<cast_type>>(std::tuple<castee_type, detail::holder<cast_type>>(v, {})) {};
             };
 
             template <typename cast_type, typename castee_type>
