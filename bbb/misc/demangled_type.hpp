@@ -42,10 +42,11 @@ namespace bbb {
 #endif
                 };
             };
-
+        };
+        namespace {
             template <class type>
             inline std::string demangled_type(const type &t) { return detail::demangle(typeid(t).name()); }
-        };
+        }
     };
     using namespace demangled;
 };
