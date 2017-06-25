@@ -21,5 +21,6 @@
 #include <bbb/function/direct_lambda.hpp>
 
 namespace bbb {
+    namespace fun = function;
     using namespace function;
 };

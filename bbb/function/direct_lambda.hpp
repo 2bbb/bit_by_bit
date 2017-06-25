@@ -30,5 +30,6 @@
 #include <bbb/function/direct_lambda/op.hpp>
 #include <bbb/function/direct_lambda/unary_function.hpp>
 #include <bbb/function/direct_lambda/math.hpp>
+#include <bbb/function/direct_lambda/direct_bind.hpp>
 
 using bbb::function::operator ""_;
