@@ -18,6 +18,7 @@
 
 #include <bbb/logger/custom_logger.hpp>
 #include <bbb/logger/builtin_modules.hpp>
+#include <bbb/type/variable_inliner.hpp>
 
 namespace bbb {
 	namespace loggers {
@@ -27,9 +28,9 @@ namespace bbb {
 		using trasher = custom_logger<null_stream>;
 		
 		namespace {
-			logger log;
-			file_logger flog;
-			string_logger slog;
+			logger &log{variable_inliner<logger>::get()};
+			file_logger &flog{variable_inliner<file_logger>::get()};;
+			string_logger &slog{variable_inliner<string_logger>::get()};;
 		}
 	};
 };
