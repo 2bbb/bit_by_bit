@@ -51,3 +51,6 @@ fabric.properties
 
 examples/*
 !examples/*.cpp
+
+*.map
+*.md5
