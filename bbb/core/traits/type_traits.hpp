@@ -44,12 +44,12 @@ namespace bbb {
      */
 #if bbb_is_cpp14
     using std::is_null_pointer;
-    using std::is_null_pointer_t;
+    
+    template <typename type>
+    constexpr bool is_null_pointer_v = is_null_pointer<type>::value;
 #else
     template <typename type>
     struct is_null_pointer : std::false_type {};
-    template <typename type>
-    using is_null_pointer_t = get_type<is_null_pointer<type>>;
 
     template <>
     struct is_null_pointer<std::nullptr_t> : std::true_type {};
