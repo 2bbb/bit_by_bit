@@ -16,14 +16,15 @@
 
 #pragma once
 
-#include <string>
-#include <algorithm>
-
-#include <bbb/core.hpp>
 #include <bbb/pipe/string/split.hpp>
 #include <bbb/pipe/string/join.hpp>
 #include <bbb/pipe/string/upper.hpp>
 #include <bbb/pipe/functional/map.hpp>
+
+#include <bbb/core.hpp>
+
+#include <string>
+#include <algorithm>
 
 namespace bbb {
     namespace pipe  {

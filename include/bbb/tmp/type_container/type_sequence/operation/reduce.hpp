@@ -16,10 +16,12 @@
 
 #pragma once
 
-#include <bbb/core.hpp>
-#include <bbb/tmp/variadic.hpp>
 #include <bbb/tmp/type_container/type_sequence/type_sequence.hpp>
 #include <bbb/tmp/type_container/type_sequence/operation/push.hpp>
+
+#include <bbb/tmp/variadic.hpp>
+
+#include <bbb/core.hpp>
 
 namespace bbb {
     namespace tmp {

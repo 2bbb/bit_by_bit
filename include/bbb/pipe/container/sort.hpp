@@ -16,9 +16,9 @@
 
 #pragma once
 
-#include <algorithm>
-
 #include <bbb/core.hpp>
+
+#include <algorithm>
 
 namespace bbb {
     namespace pipe {

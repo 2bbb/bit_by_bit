@@ -16,6 +16,10 @@
 
 #pragma once
 
+#include <bbb/core/traits/type_traits.hpp>
+
+#include <bbb/core/basic.hpp>
+
 #include <bitset>
 #include <array>
 
@@ -33,9 +37,6 @@
 #include <initializer_list>
 
 #include <string>
-
-#include <bbb/core/basic.hpp>
-#include <bbb/core/traits/type_traits.hpp>
 
 namespace bbb {
     namespace container_info {

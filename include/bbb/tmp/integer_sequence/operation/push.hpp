@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * bbb/push.hpp
+ * bbb/tmp/integer_sequence/operation/push.hpp
  *
  * author: ISHII 2bit
  * mail:   bit_by_bit@2bit.jp

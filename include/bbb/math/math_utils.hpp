@@ -16,10 +16,10 @@
 
 #pragma once
 
+#include <bbb/core.hpp>
+
 #include <random>
 #include <algorithm>
-
-#include <bbb/core.hpp>
 
 namespace bbb {
     namespace random {

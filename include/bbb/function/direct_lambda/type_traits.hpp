@@ -16,10 +16,11 @@
 
 #pragma once
 
-#include <bbb/core.hpp>
 #include <bbb/function/direct_lambda/base_class.hpp>
 #include <bbb/function/direct_lambda/direct_function.hpp>
 #include <bbb/function/direct_lambda/placeholder.hpp>
+
+#include <bbb/core.hpp>
 
 namespace bbb {
     namespace function {

@@ -16,8 +16,9 @@
 
 #pragma once
 
-#include <bbb/core.hpp>
 #include <bbb/function/direct_lambda/direct_function.hpp>
+
+#include <bbb/core.hpp>
 
 namespace bbb {
     namespace function {

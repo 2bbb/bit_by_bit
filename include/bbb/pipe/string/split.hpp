@@ -16,10 +16,10 @@
 
 #pragma once
 
+#include <bbb/core.hpp>
+
 #include <string>
 #include <sstream>
-
-#include <bbb/core.hpp>
 
 namespace bbb {
     namespace pipe  {

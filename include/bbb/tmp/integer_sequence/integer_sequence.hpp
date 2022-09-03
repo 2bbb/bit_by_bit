@@ -7,7 +7,7 @@
  *     _/_/_/    _/_/_/    _/_/_/
  *
  * bit by bit
- * bbb/core/type/sequence/integer_sequence.hpp
+ * bbb/tmp/integer_sequence/integer_sequence.hpp
  *
  * author: ISHII 2bit
  * mail:   bit_by_bit@2bit.jp
@@ -16,8 +16,9 @@
 
 #pragma once
 
-#include <bbb/core.hpp>
 #include <bbb/tmp/utility.hpp>
+
+#include <bbb/core.hpp>
 
 namespace bbb {
     namespace tmp {

@@ -18,3 +18,4 @@
 
 #include <bbb/type/explicit_types.hpp>
 #include <bbb/type/notifier.hpp>
+#include <bbb/type/variable_inliner.hpp>

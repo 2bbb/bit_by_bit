@@ -16,11 +16,12 @@
 
 #pragma once
 
-#include <bbb/core.hpp>
-
-#include <bbb/tmp/logic.hpp>
 #include <bbb/tmp/type_container/type_set/type_set.hpp>
 #include <bbb/tmp/type_container/type_set/operation/make_difference.hpp>
+
+#include <bbb/tmp/logic.hpp>
+
+#include <bbb/core.hpp>
 
 namespace bbb {
     namespace tmp {

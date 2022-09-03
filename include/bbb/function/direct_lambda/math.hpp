@@ -16,9 +16,6 @@
 
 #pragma once
 
-#include <cmath>
-
-#include <bbb/core.hpp>
 #include <bbb/function/direct_lambda/constants.hpp>
 #include <bbb/function/direct_lambda/utility.hpp>
 #include <bbb/function/direct_lambda/base_class.hpp>
@@ -28,6 +25,9 @@
 #include <bbb/function/direct_lambda/type_traits.hpp>
 #include <bbb/function/direct_lambda/unary_function.hpp>
 #include <bbb/function/direct_lambda/binary_function.hpp>
+
+#include <bbb/core.hpp>
+#include <cmath>
 
 namespace bbb {
     namespace function {

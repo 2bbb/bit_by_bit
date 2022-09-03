@@ -19,11 +19,11 @@
 #ifndef bbb_type_notifier_hpp
 #define bbb_type_notifier_hpp
 
-#include <bbb/core.hpp>
-
 #include <bbb/type/notifier/arithmetic_notifier.hpp>
 #include <bbb/type/notifier/referenced_arithmetic_notifier.hpp>
 #include <bbb/type/notifier/string_notifier.hpp>
+
+#include <bbb/core.hpp>
 
 namespace bbb {
     namespace notifiers {

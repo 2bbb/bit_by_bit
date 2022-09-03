@@ -16,8 +16,9 @@
 
 #pragma once
 
-#include <bbb/core.hpp>
 #include <bbb/function/direct_lambda.hpp>
+
+#include <bbb/core.hpp>
 
 namespace bbb {
     namespace binder {

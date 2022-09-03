@@ -16,8 +16,9 @@
 
 #pragma once
 
-#include <tuple>
 #include <bbb/core.hpp>
+
+#include <tuple>
 
 namespace bbb {
     namespace function {

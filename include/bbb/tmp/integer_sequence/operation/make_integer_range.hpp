@@ -16,10 +16,12 @@
 
 #pragma once
 
-#include <bbb/core.hpp>
-#include <bbb/tmp/utility.hpp>
 #include <bbb/tmp/integer_sequence/integer_sequence.hpp>
 #include <bbb/tmp/integer_sequence/operation/push.hpp>
+
+#include <bbb/tmp/utility.hpp>
+
+#include <bbb/core.hpp>
 
 namespace bbb {
     namespace tmp {

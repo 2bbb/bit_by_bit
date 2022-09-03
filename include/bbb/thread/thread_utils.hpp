@@ -16,6 +16,8 @@
 
 #pragma once
 
+#include <bbb/core.hpp>
+
 #include <thread>
 #include <mutex>
 
@@ -23,8 +25,6 @@
 #include <functional>
 
 #include <vector>
-
-#include <bbb/core.hpp>
 
 namespace bbb {
     namespace {

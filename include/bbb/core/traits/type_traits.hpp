@@ -16,11 +16,12 @@
 
 #pragma once
 
-#include <type_traits>
-#include <tuple>
+#include <bbb/core/basic.hpp>
 
 #include <bbb/core/constants.hpp>
-#include <bbb/core/basic.hpp>
+
+#include <type_traits>
+#include <tuple>
 
 namespace bbb {
     /**

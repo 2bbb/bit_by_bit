@@ -16,8 +16,8 @@
 
 #pragma once
 
-#include <bbb/core.hpp>
 #include <bbb/tmp.hpp>
+#include <bbb/core.hpp>
 
 namespace bbb {
     namespace function {

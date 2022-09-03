@@ -16,12 +16,13 @@
 
 #pragma once
 
+#include <bbb/core/traits/type_traits.hpp>
+
+#include <bbb/core/basic.hpp>
+
 #include <type_traits>
 #include <tuple>
 #include <functional>
-
-#include <bbb/core/basic.hpp>
-#include <bbb/core/traits/type_traits.hpp>
 
 namespace bbb {
     namespace function_info {

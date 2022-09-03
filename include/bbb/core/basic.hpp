@@ -16,9 +16,9 @@
 
 #pragma once
 
-#include <type_traits>
-
 #include <bbb/core/constants.hpp>
+
+#include <type_traits>
 
 namespace bbb {
     template <typename T>

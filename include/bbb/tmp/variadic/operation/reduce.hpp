@@ -16,12 +16,13 @@
 
 #pragma once
 
-#include <bbb/core.hpp>
 #include <bbb/tmp/type_container/type_sequence/type_sequence.hpp>
 
 #if BBB_EXEC_UNIT_TEST
 #   include <bbb/tmp/logic.hpp>
 #endif
+
+#include <bbb/core.hpp>
 
 namespace bbb {
     namespace tmp {

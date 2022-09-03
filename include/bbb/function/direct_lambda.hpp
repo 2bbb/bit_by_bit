@@ -16,9 +16,6 @@
 
 #pragma once
 
-#include <bbb/core.hpp>
-
-#include <bbb/core.hpp>
 #include <bbb/function/direct_lambda/constants.hpp>
 #include <bbb/function/direct_lambda/utility.hpp>
 #include <bbb/function/direct_lambda/base_class.hpp>
@@ -31,5 +28,7 @@
 #include <bbb/function/direct_lambda/unary_function.hpp>
 #include <bbb/function/direct_lambda/math.hpp>
 #include <bbb/function/direct_lambda/direct_bind.hpp>
+
+#include <bbb/core.hpp>
 
 using bbb::function::operator ""_;

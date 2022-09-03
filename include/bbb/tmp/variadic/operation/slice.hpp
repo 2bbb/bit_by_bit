@@ -16,9 +16,11 @@
 
 #pragma once
 
-#include <bbb/core.hpp>
-#include <bbb/tmp/integer_sequence.hpp>
 #include <bbb/tmp/type_container/type_sequence/type_sequence.hpp>
+
+#include <bbb/tmp/integer_sequence.hpp>
+
+#include <bbb/core.hpp>
 
 namespace bbb {
     namespace tmp {

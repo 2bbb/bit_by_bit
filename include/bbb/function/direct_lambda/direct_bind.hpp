@@ -16,10 +16,6 @@
 
 #pragma once
 
-#include <tuple>
-
-#include <bbb/core.hpp>
-#include <bbb/tmp.hpp>
 #include <bbb/function/direct_lambda/constants.hpp>
 #include <bbb/function/direct_lambda/utility.hpp>
 #include <bbb/function/direct_lambda/base_class.hpp>
@@ -27,6 +23,11 @@
 #include <bbb/function/direct_lambda/value_holder.hpp>
 #include <bbb/function/direct_lambda/placeholder.hpp>
 #include <bbb/function/direct_lambda/type_traits.hpp>
+
+#include <bbb/tmp.hpp>
+#include <bbb/core.hpp>
+
+#include <tuple>
 
 namespace bbb {
     namespace function {

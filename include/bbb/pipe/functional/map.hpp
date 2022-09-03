@@ -16,9 +16,9 @@
 
 #pragma once
 
-#include <iterator>
-
 #include <bbb/core.hpp>
+
+#include <iterator>
 
 namespace bbb {
     namespace pipe {
