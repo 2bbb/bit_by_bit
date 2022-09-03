@@ -96,6 +96,22 @@ namespace bbb {
         struct detect_result_type {
             using type = decltype(std::declval<callback_type>()(std::declval<arg_types>() ...));
         };
+
+        template <typename Fn, typename Type>
+        constexpr bool is_argument_same_to() {
+            return std::is_same<
+                typename std::remove_reference<typename function_traits<Fn>::template argument_type<0>>::type,
+                Type
+            >::value;
+        }
+        
+        template <typename A, typename B>
+        constexpr bool composable() {
+            return std::is_same<
+                typename function_traits<A>::result_type,
+                typename std::remove_reference<typename function_traits<B>::template argument_type<0>>::type
+            >::value;
+        }
     };
     using namespace function_info;
 };
