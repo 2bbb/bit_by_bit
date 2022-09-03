@@ -39,22 +39,6 @@ namespace bbb {
     template <bool b, typename T, typename F>
     using conditional_t = get_type<conditional<b, T, F>>;
 
-    /**
-     * is_null_pointer
-     */
-#if bbb_is_cpp14
-    using std::is_null_pointer;
-    
-    template <typename type>
-    constexpr bool is_null_pointer_v = is_null_pointer<type>::value;
-#else
-    template <typename type>
-    struct is_null_pointer : std::false_type {};
-
-    template <>
-    struct is_null_pointer<std::nullptr_t> : std::true_type {};
-#endif
-
 #if bbb_is_cpp17
     using std::void_t;
     using std::bool_constant;
