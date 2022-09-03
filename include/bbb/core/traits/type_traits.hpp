@@ -119,6 +119,20 @@ namespace bbb {
     constexpr bool is_same_f() { return is_same<T, U>::value; };
 
     /**
+     * is_null_pointer
+     */
+    template <typename T>
+    using is_null_pointer = is_same<T, std::nullptr_t>;
+
+#if bbb_is_cpp14
+    template <typename T>
+    constexpr bool is_null_pointer_v = is_null_pointer<T>::value;
+#endif
+
+    template <typename T>
+    constexpr bool is_null_pointer_f() { return is_null_pointer<T>::value; };
+
+    /**
      * is_const
      */
     using std::is_const;
