@@ -24,6 +24,5 @@
 #include <bbb/thread.hpp>
 #include <bbb/math.hpp>
 #include <bbb/pipe.hpp>
-#include <bbb/logger.hpp>
 #include <bbb/misc.hpp>
 #include <bbb/dirty.hpp>

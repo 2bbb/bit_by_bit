@@ -54,9 +54,9 @@ namespace bbb {
 #pragma mark byte_array : cast
 
             operator T&() { return raw_val.t; }
-            const operator T&() const { return raw_val.t; }
+            operator const T&() const { return raw_val.t; }
             operator array_type&() { return raw_val.bytes; }
-            const operator array_type&() const { return raw_val.bytes; }
+            operator const array_type&() const { return raw_val.bytes; }
 
 #pragma mark byte_array : array operatros
 
